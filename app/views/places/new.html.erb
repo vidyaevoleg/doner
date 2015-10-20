@@ -1,0 +1,19 @@
+
+<div ng-controller="NewPlaceCtrl">
+    <!-- <div "popup" ng-show="current_place">
+        <h1> {{current_place }}</h1>
+        <span ng-click="closePlacePopup()"> close </span>
+    </div> -->
+    <div class="yd-map">	
+			<ya-map ya-zoom="15" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl" ya-event-click="mapClick($event)">
+    		    
+			</ya-map>
+    </div>
+    <h1> {{metro}},{{adres}},{{coords}}</h1>
+</div>
+<%= form_for @place do |f| %>
+	<%= f.text_field :street, placeholder: 'улица' %>
+	<%= f.text_field :metro, placeholder: 'метро' %>
+	<%= f.text_field :coordinates, placeholder: 'координаты' %>
+	<%= f.submit 'OK'%>
+<% end %>

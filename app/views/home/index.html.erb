@@ -1,0 +1,77 @@
+<div ng-controller="PlacesCtrl">
+	<div class="cont">
+		<div class="cont-head">doner.io</div>
+		<div class="lo">
+			<div class="lo-l">
+				<div class="lo-l-map yd-map">
+
+					<ya-map ya-zoom="15" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl">
+						<ya-cluster ya-options="{preset:'islands#invertedVioletClusterIcons'}">
+							<ya-geo-object ya-options="{preset: 'islands#violetIcon'}" ng-repeat="place in places" ya-source="place" ya-event-click="openPlacePopup(place)" ></ya-geo-object>
+						</ya-cluster>
+					</ya-map>
+
+				</div>
+				<div class="lo-l-filter">Filter</div>
+			</div>
+			<div class="lo-r">
+
+				<div class="lo-r-card">
+					<div class="lo-r-card-title">ул. Полежаевская 45/2</div>
+					<div class="lo-r-card-metro lo-r-card-metro-sok">м. Улица 1905 года</div>
+					<div class="lo-r-card-rating">
+						<span class="lo-r-card-rating-1">7.</span>
+						<span class="lo-r-card-rating-2">3</span>
+					</div>
+					<a class="lo-r-card-create" href="#">Написать обзор</a>
+				</div>
+				<div class="lo-r-border"></div>
+
+
+
+				<div class="lo-r-cont">
+					<div class="lo-r-cont-review">
+						<div class="lo-r-cont-review-title">Не лучший вариант для новичка</div>
+						<div class="lo-r-cont-review-rating">6</div>
+						<div class="lo-r-cont-review-body">
+							Your tread must be light and sure, as though your path were upon rice paper. It is said, a Shaolin priest can walk through walls. Looked for, he can not be seen. Listened for, he can not be heard. Touched, can not be felt.
+							<a class="lo-r-cont-review-body-open" href="#">Читать далее</a>
+						</div>
+					</div>
+					<div class="lo-r-cont-review">
+						<div class="lo-r-cont-review-title">Вцелом заебца</div>
+						<div class="lo-r-cont-review-rating">8</div>
+						<div class="lo-r-cont-review-body">
+							Your tread must be light and sure, as though your path were upon rice paper. It is said, a Shaolin priest can walk through walls. Looked for, he can not be seen. Listened for, he can not be heard. Touched, can not be felt.
+							<a class="lo-r-cont-review-body-open" href="#">Читать далее</a>
+						</div>
+					</div>
+					<div class="lo-r-cont-review">
+						<div class="lo-r-cont-review-title">Не впечатлен</div>
+						<div class="lo-r-cont-review-rating">5</div>
+						<div class="lo-r-cont-review-body">
+							Your tread must be light and sure, as though your path were upon rice paper. It is said, a Shaolin priest can walk through walls. Looked for, he can not be seen. Listened for, he can not be heard. Touched, can not be felt.
+							<a class="lo-r-cont-review-body-open" href="#">Читать далее</a>
+						</div>
+					</div>
+					<div class="lo-r-cont-review">
+						<div class="lo-r-cont-review-title">Пиздец какой-то пацаны</div>
+						<div class="lo-r-cont-review-rating">3</div>
+						<div class="lo-r-cont-review-body">
+							Your tread must be light and sure, as though your path were upon rice paper. It is said, a Shaolin priest can walk through walls. Looked for, he can not be seen. Listened for, he can not be heard. Touched, can not be felt.
+							<a class="lo-r-cont-review-body-open" href="#">Читать далее</a>
+						</div>
+					</div>
+					<div class="lo-r-cont-review">
+						<div class="lo-r-cont-review-title">Маэстро просто охуел</div>
+						<div class="lo-r-cont-review-rating">2</div>
+						<div class="lo-r-cont-review-body">
+							Your tread must be light and sure, as though your path were upon rice paper. It is said, a Shaolin priest can walk through walls. Looked for, he can not be seen. Listened for, he can not be heard. Touched, can not be felt.
+							<a class="lo-r-cont-review-body-open" href="#">Читать далее</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

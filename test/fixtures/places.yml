@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  street: MyString
+  metro: MyString
+  coordinates: MyString
+  rating: MyString
+  vegetables: MyString
+  meat: MyString
+  sanitation: MyString
+  service: MyString
+
+two:
+  street: MyString
+  metro: MyString
+  coordinates: MyString
+  rating: MyString
+  vegetables: MyString
+  meat: MyString
+  sanitation: MyString
+  service: MyString
