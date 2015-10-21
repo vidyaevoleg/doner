@@ -29,24 +29,20 @@ ActiveRecord::Schema.define(version: 20151020205111) do
     t.string   "street"
     t.string   "metro"
     t.string   "coordinates"
-    t.integer  "rating"
-    t.integer  "vegetables"
-    t.integer  "meat"
-    t.integer  "sanitation"
-    t.integer  "service"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "place_id"
-    t.integer  "rating"
+    t.integer  "sanitation"
     t.integer  "vegetables"
     t.integer  "meat"
     t.integer  "service"
     t.text     "body"
     t.string   "author"
-    t.string   "price"
+    t.string   "max_price"
+    t.string   "min_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

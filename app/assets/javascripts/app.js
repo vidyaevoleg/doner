@@ -1,7 +1,2 @@
-var Topdoner = angular.module('Topdoner', ['yaMap'])
-
-
-
-
-
+var Topdoner = angular.module('Topdoner', ['yaMap','ngResource'])
 

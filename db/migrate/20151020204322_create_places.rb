@@ -4,11 +4,6 @@ class CreatePlaces < ActiveRecord::Migration
       t.string :street
       t.string :metro
       t.string :coordinates
-      t.integer :rating
-      t.integer :vegetables
-      t.integer :meat
-      t.integer :sanitation
-      t.integer :service
 
       t.timestamps null: false
     end

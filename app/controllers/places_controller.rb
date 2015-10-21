@@ -14,7 +14,7 @@ class PlacesController < ApplicationController
 	end
 
 	def get_places
-		render json: {}
+		render json: Place.all.map {|place| place.to_nice_json }
 	end
 
 	def destroy
@@ -26,7 +26,7 @@ class PlacesController < ApplicationController
 	private
 	
 	def place_params
-		params.require(:place).permit(:street,:metro,:coordinates,:rating,:vegetables,:meat,:sanitation,:service)
+		params.require(:place).permit(:street,:metro,:coordinates)
 	end
 
 end

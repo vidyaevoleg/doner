@@ -1,8 +1,6 @@
 class ReviewsController < ApplicationController
 	before_action :set_place, only: :create
 
-	
-
 	def create
 		@place = @place.reviews.build(:review_params)
 	end
@@ -10,7 +8,7 @@ class ReviewsController < ApplicationController
 	private
 
 	def review_params
-		params.require(:review).permit(:body,:author,:price,:rating,:vegetables,:meat,:sanitation,:service)
+		params.require(:review).permit(:body,:author,:max_price,:min_price,:rating,:vegetables,:meat,:sanitation,:service,:place_id)
 	end
 
 	def set_place

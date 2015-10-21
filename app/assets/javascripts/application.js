@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require angular.min
 //= require angular-yandex
+//= require angular-route.min
+//= require angular-resource.min
 //= require app
 //= require main
 //= require_tree ./factories
