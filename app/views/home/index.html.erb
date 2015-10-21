@@ -1,4 +1,4 @@
-<div ng-controller="PlacesCtrl">
+<div>
 <!--
 	<div class="popup" ng-show="current_place">
 		<h1>{{current_place }}</h1>
@@ -7,14 +7,45 @@
 -->
 	<div class="cont">
 		<div class="cont-head">
-			<div class="cont-head-logo">DONER.IO</div>
+			<div class="cont-head-logo">DONER.IO<span>&#946;</span></div>
 		</div>
 		<div class="lo">
 			<div class="lo-l">
-				<div class="lo-l-map">
-					<ya-map ya-zoom="15" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl">
-						<ya-cluster ya-options="{preset:'islands#invertedVioletClusterIcons'}">
-							<ya-geo-object ya-options="{preset: 'islands#violetIcon'}" ng-repeat="place in places" ya-source="place" ya-event-click="openPlacePopup(place)" ></ya-geo-object>
+				<div class="lo-l-map" ng-controller="PlacesCtrl">
+					<ya-template-layout ya-key="circleLayout">
+						<div class="placemark_layout_container">
+<!--							<div class="circle_layout">#</div>-->
+							<svg width="36px" height="36px" viewBox="0 0 393 393" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+								<defs>
+									<filter x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" id="filter-1">
+										<feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+										<feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+										<feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.7 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+										<feMerge>
+											<feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+											<feMergeNode in="SourceGraphic"></feMergeNode>
+										</feMerge>
+									</filter>
+								</defs>
+								<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+									<circle d="M197,389 C303.590962,389 390,302.590962 390,196 C390,89.409038 303.590962,3 197,3 C90.409038,3 4,89.409038 4,196 C4,302.590962 90.409038,389 197,389 Z M197,389" id="Oval-1" fill="#FFFFFF" filter="url(#filter-1)" sketch:type="MSShapeGroup" cx="197" cy="196" r="193"></circle>
+									<circle d="M196.5,351 C282.380283,351 352,281.380283 352,195.5 C352,109.619717 282.380283,40 196.5,40 C110.619717,40 41,109.619717 41,195.5 C41,281.380283 110.619717,351 196.5,351 Z M196.5,351" id="Oval-2" fill="#F0433D" sketch:type="MSShapeGroup" cx="196.5" cy="195.5" r="155.5"></circle>
+									<path d="M101.37126,122.405306 L300.30929,178.183786 L306.952798,158.171856 L105.863772,101.939453 L101.37126,122.405306 Z M101.37126,122.405306" id="Rectangle-3" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+									<path d="M100.119141,309.818447 L121.042171,311.669568 L123.544561,107.561536 L100.119141,105.182339 L100.119141,309.818447 Z M100.119141,309.818447" id="Rectangle-1" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+									<path d="M267.503385,324.627409 L288.426415,326.478529 L307.194336,159.909014 L284.185981,157.61783 L267.503385,324.627409 Z M267.503385,324.627409" id="Rectangle-1" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+									<path d="M100.119141,341.792839 L120.651173,343.561448 L121.23767,295.723628 L100.119141,293.831251 L100.119141,341.792839 Z M100.119141,341.792839" id="Rectangle-4" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+									<path d="M265.313794,346.547416 L285.963126,348.340778 L290.068608,311.903697 L268.963112,310.014071 L265.313794,346.547416 Z M265.313794,346.547416" id="Rectangle-5" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+									<path d="M301.968885,181.92089 L297.070047,161.406519 L170.538033,186.37042 L176.644011,207.139532 L301.968885,181.92089 Z M301.968885,181.92089" id="Rectangle-6" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+									<path d="M212.491413,239.297302 L225.974852,223.036808 L120.303944,143.931717 L107.386859,160.311727 L212.491413,239.297302 Z M212.491413,239.297302" id="Rectangle-1" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+									<path d="M195.333307,372.215908 L215.591641,373.926758 L226.289355,222.707204 L204.15423,220.600297 L195.333307,372.215908 Z M195.333307,372.215908" id="Rectangle-7" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+								</g>
+							</svg>
+						</div>
+					</ya-template-layout>
+<!--				КАРТА-->
+					<ya-map ya-zoom="10" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl">
+						<ya-cluster ya-options="{preset:'islands#invertedRedClusterIcons'}">
+							<ya-geo-object ya-options="{iconLayout: 'circleLayout'}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ></ya-geo-object>
 						</ya-cluster>
 					</ya-map>
 				</div>
@@ -52,7 +83,7 @@
 				<div ng-controller="ReviewsCtrl" class="fixed">
 <!--					<div class="lo-r-add">+</div>-->
 					<div ng-repeat="review in reviews" class="lo-r-cont">
-						<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" >
+						<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" ng-click="makeReviewCurrent(review)" >
 							<div class="lo-r-cont-review-title">
 								{{review.title}}
 							</div>
@@ -60,11 +91,12 @@
 							<div class="lo-r-cont-review-body">
 								<div ng-show="current_review !== review ">
 									{{ review.body | limitTo: 140 }}{{review.body.length > 100 ? '...' : ''}}
-									<span class="lo-r-cont-review-body-open" ng-click="makeReviewCurrent(review)">Читать</span>
+<!--									<span class="lo-r-cont-review-body-open">Читать</span>-->
 								</div>
 								<div ng-show="current_review == review ">
 									{{ review.body}}
 								</div>
+								<img ng-show="review.img" src="{{review.img}}">
 							</div>
 						</div>
 					</div>

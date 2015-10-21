@@ -4,7 +4,7 @@
 
 $bg: #f4f4f4;
 $win: #fff;
-$act: #00f;
+$act: rgb(240,67,61);
 
 
 a {
@@ -48,12 +48,19 @@ body {
 			box-sizing: border-box;
 //			border: 5px solid $act;
 //			border-radius: 3px;
-			color: $act;
+			color: rgb(240,67,61);
 			font-weight: 900;
 			font-style: italic;
 //			line-height: 40px;
 			padding-top: 15px;
 			font-size: 25px;
+			& span {
+				font-size: 10px;
+				top: -10px;
+				left: 6px;
+				position: relative;
+				opacity: .4;
+			}
 		}
 	}
 }
@@ -242,6 +249,7 @@ position: relative;
 					font-weight: 800;
 					font-size: 30px;
 					color: #ffce06;
+					font-family: 'helvetica';
 				}
 				&-2 {
 					font-weight: bold;
@@ -305,6 +313,7 @@ position: relative;
 				margin-bottom: 10px;
 				border-radius: 3px;
 				max-height: 90px;
+				cursor: pointer;
 //				transition: height .2s ease;
 					   -moz-transition: max-height .8s ease;
 					-webkit-transition: max-height .8s ease;
@@ -318,12 +327,20 @@ position: relative;
 //				&:last-child {
 //					border-radius: 0 0 3px 3px;
 //				}
-				&.ext {
-					max-height: 1700px;
-//					background: yellow;
-					& .lo-r-cont-review-title {
-						color: #000;
+				img {
+					width: 100%;
+					display: block;
+					margin: 14px 0 14px;
+				}
+				&:hover {
+					.lo-r-cont-review-title {
+						color: #000 !important;
 					}
+				}
+				&.ext {
+					cursor: default !important;
+					max-height: 4200px;
+//					background: yellow;
 					& .lo-r-cont-review-body {
 						color: #000;
 					}
@@ -395,3 +412,18 @@ ya-map {
 //	height: 500px;
 //}
 
+
+.placemark_layout_container {
+	width: 36px;
+	height: 36px;
+	display: block;
+	border-radius: 100%;
+				-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+	
+	 		transform: translate(-18px,-18px);
+    -webkit-transform: translate(-18px,-18px); /** Chrome & Safari **/
+    	 -o-transform: translate(-18px,-18px); /** Opera **/
+       -moz-transform: translate(-18px,-18px); /** Firefox **/
+}
