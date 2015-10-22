@@ -56,15 +56,20 @@
 				</div>
 <!--				<div class="lo-l-filter">Filter</div>-->
 			</div>
-			<div class="lo-r">
-
+			<div class="lo-r-cont" ng-hide="place">
+				<div class="lo-r-cont-place">place1</div>
+				<div class="lo-r-cont-place">place3</div>
+				<div class="lo-r-cont-place">place4</div>
+				<div class="lo-r-cont-place">place5</div>
+			</div>
+			<div class="lo-r" ng-show="place">
 				<div class="lo-r-card">
-					<div class="lo-r-card-close" ng-show="place_title" ng-click="closePlace(place)">✕</div>
+					<div class="lo-r-card-close" ng-click="closePlace(place)">✕</div>
 					<div class="lo-r-card-title">
-						<span ng-show="place_title">{{place_title}}</span>
-						<span ng-hide="place_title">Ткните на метку</span>
+						<span>{{place.properties.title}}</span>
+						<span>Ткните на метку</span>
 					</div>
-					<div class="lo-r-card-metro lo-r-card-metro-tk" ng-show="place_title">
+					<div class="lo-r-card-metro lo-r-card-metro-tk">
 						<div class="lo-r-catd-metro-logo">
 							<svg width="13px" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 								<title>Slice 1</title>
@@ -77,26 +82,19 @@
 								</g>
 							</svg>
 						</div>
-						<div class="lo-r-card-metro-title">{{place_metro}}</div>
+						<div class="lo-r-card-metro-title">{{place.properties.metro}}</div>
 					</div>
-					<div class="lo-r-card-rating" ng-show="place_title">
-						<span class="lo-r-card-rating-1">7.3</span>
+					<div class="lo-r-card-rating">
+						<span class="lo-r-card-rating-1">{{place.properties.rating}}</span>
 <!--						<span class="lo-r-card-rating-2">3</span>-->
 					</div>
 				</div>
 				<div class="lo-r-border"></div>
 				<div ng-controller="ReviewsCtrl">
-<!--					<div class="lo-r-add">+</div>-->
-					<div class="lo-r-cont" ng-hide="place_title">
-						<div class="lo-r-cont-place">place1</div>
-						<div class="lo-r-cont-place">place3</div>
-						<div class="lo-r-cont-place">place4</div>
-						<div class="lo-r-cont-place">place5</div>
-					</div>
-					<div ng-show="place_title" ng-repeat="review in reviews" class="lo-r-cont">
-						<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" ng-click="makeReviewCurrent(review)" >
+					<div ng-repeat="review in reviews" class="lo-r-cont">
+						<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" >
 <!--							<div class="lo-r-cont-review" ng-class="getExtClass(review)" ng-click="openReview(review)" >-->
-							<div class="lo-r-cont-review-title">
+							<div class="lo-r-cont-review-title" ng-click="makeReviewCurrent(review)">
 								{{review.title}}
 							</div>
 <!--							<div class="lo-r-cont-review-close" ng-click="closeCurrentReview(review)">•••</div>-->
@@ -108,7 +106,10 @@
 								</div>
 								<div ng-show="current_review == review ">
 									{{ review.body}}
+									<span style="color: blue;cursor: pointer;" ng-click="closeReview()"> закрыть </span>
 								</div>
+
+								
 								<img ng-show="review.img" src="{{review.img}}">
 							</div>
 						</div>
