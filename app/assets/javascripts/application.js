@@ -15,5 +15,6 @@
 //= require angular.min
 //= require angular-yandex
 //= require app
+//= require main
 //= require_tree ./factories
 //= require_tree ./controllers

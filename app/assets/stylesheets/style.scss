@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,900&subset=latin,cyrillic-ext);
+//@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,900&subset=latin,cyrillic-ext);
+@import "http://webfonts.ru/import/ralewayc.css";
 
 
 $bg: #f4f4f4;
@@ -13,13 +14,18 @@ a {
 	}
 }
 
+html {
+	overflow-y: scroll;
+}
+
 body {
 	width: 100%;
 	height: 100%;
 	padding: 0;
 	margin: 0;
 	background: $bg;
-	font-family: 'Roboto', sans-serif;
+//	font-family: 'Roboto', sans-serif;
+	font-family: 'Raleway Cyr';
 }
 
 .cont {
@@ -28,11 +34,27 @@ body {
 	margin: auto;
 	background: red;
 	&-head {
-		width: 100%;
+		width: 900px;
 		position: fixed;
 		height: 60px;
 		background: $bg;
 		z-index: 3;
+		&-logo {
+			width: 130px;
+			height: 40px;
+			position: relative;
+			top: 10px;
+			left:0;
+			box-sizing: border-box;
+//			border: 5px solid $act;
+//			border-radius: 3px;
+			color: $act;
+			font-weight: 900;
+			font-style: italic;
+//			line-height: 40px;
+			padding-top: 15px;
+			font-size: 25px;
+		}
 	}
 }
 
@@ -57,19 +79,33 @@ body {
 			height: 400px;
 			display: block;
 			background: #b0b0b0;
+			border-radius: 3px;
+//			overflow: hidden !Important;
+			   -moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			 -khtml-border-radius: 3px;
+					border-radius: 3px;
+
+overflow: hidden;
+
+position: relative;
+
+/* chrome bug fix */
+-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
 //			-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 //			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 //					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
-			&.yd-map {
-				width: 560px !important;
-				height: 400px !important;
-			}
+//			&.yd-map {
+//				width: 560px !important;
+//				height: 400px !important;
+//			}
 		}
 		&-filter {
 			width: 100%;
 			height: 80px;
 			margin-top: 10px;
 			background: $win;
+			border-radius: 3px;
 //			-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 //			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 //					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
@@ -88,12 +124,13 @@ body {
 		&-card {
 			width: 330px;
 			position: fixed;
-			height: 94px;
+//			height: 94px;
+			height: 70px;
 			top: 60px;
-			border-radius: 2px;
+			border-radius: 3px;
 			background: $win;
-			z-index: 4;
-			transition: all .2s ease;
+			z-index: 5;
+//			transition: all .2s ease;
 			background: $win;
 //			-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 //			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
@@ -101,43 +138,83 @@ body {
 			box-sizing: border-box;
 			padding: 14px;
 			&-title {
-				font-weight: bold;
+//				font-weight: bold;
+				font-weight: 800;
 				font-size: 16px;
 				color: #000;
 			}
 			&-metro {
 				margin-top: 6px;
 				font-size: 13px;
-				font-weight: 100;
+				font-weight: 500;
+				color: #808080 !important;
+				div {
+					display: inline-block;
+				}
+				&-logo {
+					width: 13px;
+					height: 13px;
+					overflow: hidden;
+				}
 				&-sok {
 					color: red;
+					& #metro-logo {
+						fill: red;
+					}
 				}
 				&-zam {
 					color: green;
+					& #metro-logo {
+						fill: green;
+					}
 				}
 				&-ap {
 					color: blue;
+					& #metro-logo {
+						fill: blue;
+					}
 				}
 				&-fil {
 					color: deepskyblue;
+					& #metro-logo {
+						fill: deepskyblue;
+					}
 				}
 				&-kol {
 					color: brown;
+					& #metro-logo {
+						fill: brown;
+					}
 				}
 				&-kr {
 					color: orange;
+					& #metro-logo {
+						fill: orange;
+					}
 				}
 				&-tk {
 					color: purple;
+					& #metro-logo {
+						fill: purple;
+					}
 				}
 				&-kal {
 					color: #b8b800;
+					& #metro-logo {
+						fill: #b8b800;
+					}
 				}
 				&-st {
 					color: dimgray;
+					& #metro-logo {
+						fill: dimgray;
+					}
 				}
 				&-lub {
 					color: #86d907;
+					& #metro-logo {
+						fill: #86d907;
+					}
 				}
 				&-kah {
 					color: darkcyan;
@@ -154,20 +231,24 @@ body {
 				position: absolute;
 				top: 14px;
 				right: 12px;
-				width: 80px;
+				width: 55px;
 				height: 42px;
 				line-height: 42px;
 				text-align: center;
-				border-left: 1px solid #c5c5c5;
+				border-left: 2px solid $bg;
+//				background: pink;
+				padding-left: 20px;
 				&-1 {
-					font-weight: bold;
-					font-size: 26px;
-					color: #000;
+					font-weight: 800;
+					font-size: 30px;
+					color: #ffce06;
 				}
 				&-2 {
 					font-weight: bold;
-					font-size: 16px;
-					color: #000;
+					font-size: 26px;
+//					color: #000;
+					color: #ffce06;
+
 //					color: #424242;
 				}
 			}
@@ -186,45 +267,100 @@ body {
 			height: 10px;
 			background: $bg;
 			position: fixed;
-			top: 154px;
+//			top: 154px;
+			top: 130px;
 			z-index: 4;
 //			-webkit-box-shadow-bottom: 0px 0px 3px 0px rgba(0,0,0,0.14);
 //			   -moz-box-shadow-bottom: 0px 0px 3px 0px rgba(0,0,0,0.14);
 //					box-shadow-bottom: 0px 0px 3px 0px rgba(0,0,0,0.14);
 		}
+		&-add {
+			position: relative;
+			right: 0;
+			top: 25px;
+			width: 24px;
+			height: 24px;
+			border-radius: 12px;
+			background: $act;
+			color: #fff;
+			font-size: 24px;
+			font-weight: 700;
+			line-height: 24px;
+			text-align: center;
+			cursor: pointer;
+			margin: auto;
+			top: 58px;
+			z-index: 5;
+		}
 		&-cont {
 			width: 100%;
 			position: relative;
-			top: 104px;
+//			top: 104px;
+			top: 80px;
 			&-review {
 				background: $win;
 				box-sizing: border-box;
-				padding: 10px;
+				padding: 13px 10px;
 				position: relative;
-				border-radius: 2px;
-				margin-bottom: 2px;
+				margin-bottom: 10px;
+				border-radius: 3px;
+				max-height: 90px;
+//				transition: height .2s ease;
+					   -moz-transition: max-height .8s ease;
+					-webkit-transition: max-height .8s ease;
+					   -moz-transition: max-height .8s ease;
+						 -o-transition: max-height .8s ease;
+							transition: max-height .8s ease;
+				overflow: hidden;
+//				&:first-child {
+//					border-radius: 3px 3px 0 0;
+//				}
+//				&:last-child {
+//					border-radius: 0 0 3px 3px;
+//				}
+				&.ext {
+					max-height: 1700px;
+//					background: yellow;
+					& .lo-r-cont-review-title {
+						color: #000;
+					}
+					& .lo-r-cont-review-body {
+						color: #000;
+					}
+					& .lo-r-cont-review-rating {
+						color: #ce1378;
+					}
+				}
 				&-title {
 					font-size: 14px;
-					font-weight: bold;
+					font-weight: 800;
+					color: #a7a7a7;
 				}
 				&-rating {
 					position: absolute;
-					top: 12px;
+					top: 10px;
 					right: 12px;
 					width: 40px;
 					text-align: right;
 //					background: #eee;
-					color: #ea1c6b;
-					font-weight: bold;
+					color: #a7a7a7;
+					font-weight: 800;
+					font-size: 15px;
 				}
 				&-body {
 					position: relative;
 					margin-top: 8px;
-					font-weight: 100;
-					font-size: 14px;
-					color: #000;
+					font-weight: normal;
+					font-size: 11px;
+//					font-family: 'courier new';
+					color: #a7a7a7;
 					&-open {
+						cursor: pointer;
 						color: $act;
+						font-weight: 600;
+						&:hover {
+							text-decoration: underline;
+						}
 					}
 				}
 			}
@@ -234,27 +370,28 @@ body {
 
 
 
-.yd-map {
-//    display: block;
-//    position: relative;
-//    margin: auto;
-    width: 80%;
-    height: 500px;
-}
+//.yd-map {
+////    display: block;
+////    position: relative;
+////    margin: auto;
+//    width: 80%;
+//    height: 500px;
+//}
 
 ya-map {
 	position: absolute;
-	width: 500px;
+	width: 100%;
 	height: 400px;
+	
 }
-
-.popup  {
-	z-index: 1000;
-	width: 80%;
-	position: absolute;
-	left: 50%;
-	top: 100px;
-	background: yellow;
-	height: 500px;
-}
+//
+//.popup  {
+//	z-index: 1000;
+//	width: 80%;
+//	position: absolute;
+//	left: 50%;
+//	top: 100px;
+//	background: yellow;
+//	height: 500px;
+//}
 
