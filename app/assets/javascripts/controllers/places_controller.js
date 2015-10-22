@@ -3,20 +3,21 @@ Topdoner.controller('PlacesCtrl', function ($scope,places) {
   $scope.places = places.getPlaces()
   
   $scope.choosePlace = function(place){
-//      $scope.current_place = place.properties.title
-//	  console.log(place.properties.street);
 	  $scope.place = place
-	  
-	  document.location.hash = "place/" + $scope.place_id;
-//	  console.log($scope.cp);
+	  $scope.reviews = places.getReviews(place)
+    document.location.hash = "place/" + $scope.place.properties.id;
   };
 	
 	$scope.closePlace = function(place){
 		$scope.place = undefined;
 	}
+  
+  $scope.makeReviewCurrent = function(review){
+    $scope.current_review = review;
+  }
+  $scope.closeReview = function(){
+    $scope.current_review = undefined
+  }
 
-//  $scope.closePlacePopup = function(){
-//    $scope.current_place = undefined
-//  };
 });
 

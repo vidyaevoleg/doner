@@ -1,13 +1,7 @@
 // только один активынй отзыв
 Topdoner.controller('ReviewsCtrl',function ($scope,places,reviews) {
-	$scope.reviews = reviews;
 
-	$scope.makeReviewCurrent = function(review){
-		$scope.current_review = review;
-	}
-	$scope.closeReview = function(){
-		$scope.current_review = undefined
-	}
+
 //	$scope.openedReview = [];
 //	$scope.openReview = function(review) {
 ////		console.log(review.id);

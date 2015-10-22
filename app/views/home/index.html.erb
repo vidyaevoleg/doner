@@ -66,8 +66,7 @@
 				<div class="lo-r-card">
 					<div class="lo-r-card-close" ng-click="closePlace(place)">✕</div>
 					<div class="lo-r-card-title">
-						<span>{{place.properties.title}}</span>
-						<span>Ткните на метку</span>
+						<span>{{place.properties.title || 'Ткните на метку'}}</span>
 					</div>
 					<div class="lo-r-card-metro lo-r-card-metro-tk">
 						<div class="lo-r-catd-metro-logo">
@@ -90,12 +89,11 @@
 					</div>
 				</div>
 				<div class="lo-r-border"></div>
-				<div ng-controller="ReviewsCtrl">
 					<div ng-repeat="review in reviews" class="lo-r-cont">
 						<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" >
 <!--							<div class="lo-r-cont-review" ng-class="getExtClass(review)" ng-click="openReview(review)" >-->
 							<div class="lo-r-cont-review-title" ng-click="makeReviewCurrent(review)">
-								{{review.title}}
+								рейтинг - {{review.rating}}; {{min_price}}-{{max_price}} rub
 							</div>
 <!--							<div class="lo-r-cont-review-close" ng-click="closeCurrentReview(review)">•••</div>-->
 							<div class="lo-r-cont-review-rating">{{review.rating}}</div>
@@ -114,8 +112,7 @@
 							</div>
 						</div>
 					</div>
-					<br><br><br><br><br><br>
-				</div>
+				<br><br><br><br><br><br>
 			</div>
 		</div>
 	</div>

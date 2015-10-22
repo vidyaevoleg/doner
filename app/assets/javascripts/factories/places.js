@@ -9,6 +9,13 @@ Topdoner.factory('places', ['$http',function($http){
             angular.copy(data,places);
         })      
         return places
+      },
+      getReviews: function(place){
+        var reviews = []
+        $http.get('/places/'+place.properties.id+'/get_reviews').success(function(data){
+            angular.copy(data,reviews);
+        })      
+        return reviews
       }      
     }
     return places

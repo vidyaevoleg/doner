@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :images 
   resources :places do
     get 'get_places', on: :collection
+    get 'get_reviews', on: :member
   end
   resources :reviews
   # The priority is based upon order of creation: first created -> highest priority.

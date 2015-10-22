@@ -8,6 +8,19 @@ class Review < ActiveRecord::Base
 		sum = attrs.inject(0){|sum,x| sum + x} 
 		avarage = (sum/attrs.count).to_i
 	end
-
+	def to_nice_json
+		json={}
+		json[:id] = id
+		json[:vegetables] = vegetables
+		json[:meat] = meat
+		json[:service] = service
+		json[:sanitation] = sanitation
+		json[:rating] = rating
+		json[:min_price] = min_price
+		json[:max_price] = max_price
+		json[:body] = body
+		json[:author] = author
+		json
+	end
 
 end
