@@ -1,0 +1,25 @@
+@media screen and (min-width: 1020px) {
+	.cont {
+//		background: pink !important;
+//		display: none !important;
+		width: 1000px !important;
+	}
+	
+	.lo {
+		&-r {
+			width: 430px !important;
+			&-cont {
+				&-review {
+					min-height: 100px;
+					padding: 15px !important;
+					&-title {
+						font-size: 16px !important;
+					}
+					&-body {
+						font-size: 14px !important;
+					}
+				}
+			}
+		}
+	}
+}

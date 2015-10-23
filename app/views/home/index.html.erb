@@ -5,16 +5,20 @@
 		<span ng-click="closePlacePopup()"> close </span>
 	</div>
 -->
-	<div class="cont">
+	<div class="cont" ng-controller="PlacesCtrl">
 		<div class="cont-head">
-			<div class="cont-head-logo">DONER.IO<span>&#946;</span></div>
+			<div class="cont-head-logo">
+				DONER.IO
+<!--				<span>&#946;</span>-->
+			</div>
 		</div>
-		<div class="lo">
+		<div class="lo" ng-controller="PlacesCtrl">
 			<div class="lo-l">
-				<div class="lo-l-map" ng-controller="PlacesCtrl">
+				<div class="lo-l-map">
+<!--
 					<ya-template-layout ya-key="circleLayout">
 						<div class="placemark_layout_container">
-<!--							<div class="circle_layout">#</div>-->
+							<div class="circle_layout">#</div>
 							<svg width="36px" height="36px" viewBox="0 0 393 393" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 								<defs>
 									<filter x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" id="filter-1">
@@ -42,20 +46,25 @@
 							</svg>
 						</div>
 					</ya-template-layout>
+-->
 <!--				КАРТА-->
 					<ya-map ya-zoom="10" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl">
 						<ya-cluster ya-options="{preset:'islands#invertedRedClusterIcons'}">
-							<ya-geo-object ya-options="{iconLayout: 'circleLayout'}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ></ya-geo-object>
+							<ya-geo-object href="#/places/{{place.id}}" ya-options="{preset: 'islands#redIcon'}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ></ya-geo-object>
 						</ya-cluster>
 					</ya-map>
 				</div>
-				<div class="lo-l-filter">Filter</div>
+<!--				<div class="lo-l-filter">Filter</div>-->
 			</div>
 			<div class="lo-r">
 
 				<div class="lo-r-card">
-					<div class="lo-r-card-title">ул. Полежаевская 45/2</div>
-					<div class="lo-r-card-metro lo-r-card-metro-tk">
+					<div class="lo-r-card-close" ng-show="place_title" ng-click="closePlace(place)">✕</div>
+					<div class="lo-r-card-title">
+						<span ng-show="place_title">{{place_title}}</span>
+						<span ng-hide="place_title">Ткните на метку</span>
+					</div>
+					<div class="lo-r-card-metro lo-r-card-metro-tk" ng-show="place_title">
 						<div class="lo-r-catd-metro-logo">
 							<svg width="13px" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 								<title>Slice 1</title>
@@ -68,25 +77,29 @@
 								</g>
 							</svg>
 						</div>
-						<div class="lo-r-card-metro-title">Улица 1905 года</div>
+						<div class="lo-r-card-metro-title">{{place_metro}}</div>
 					</div>
-					<div class="lo-r-card-rating">
+					<div class="lo-r-card-rating" ng-show="place_title">
 						<span class="lo-r-card-rating-1">7.3</span>
 <!--						<span class="lo-r-card-rating-2">3</span>-->
 					</div>
-<!--					<a class="lo-r-card-create" href="#">Написать обзор</a>-->
 				</div>
 				<div class="lo-r-border"></div>
-
-				
-
-				<div ng-controller="ReviewsCtrl" class="fixed">
+				<div ng-controller="ReviewsCtrl">
 <!--					<div class="lo-r-add">+</div>-->
-					<div ng-repeat="review in reviews" class="lo-r-cont">
+					<div class="lo-r-cont" ng-hide="place_title">
+						<div class="lo-r-cont-place">place1</div>
+						<div class="lo-r-cont-place">place3</div>
+						<div class="lo-r-cont-place">place4</div>
+						<div class="lo-r-cont-place">place5</div>
+					</div>
+					<div ng-show="place_title" ng-repeat="review in reviews" class="lo-r-cont">
 						<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" ng-click="makeReviewCurrent(review)" >
+<!--							<div class="lo-r-cont-review" ng-class="getExtClass(review)" ng-click="openReview(review)" >-->
 							<div class="lo-r-cont-review-title">
 								{{review.title}}
 							</div>
+<!--							<div class="lo-r-cont-review-close" ng-click="closeCurrentReview(review)">•••</div>-->
 							<div class="lo-r-cont-review-rating">{{review.rating}}</div>
 							<div class="lo-r-cont-review-body">
 								<div ng-show="current_review !== review ">
@@ -102,22 +115,7 @@
 					</div>
 					<br><br><br><br><br><br>
 				</div>
-				
-<!--
-				<div ng-controller="ReviewsCtrl">
-					<div ng-repeat="review in reviews" class="lo-r-cont">
-						<div class="lo-r-cont-review" ng-class="openedReviews[review] ? 'ext' : ''" ng-click="openReview(review)">
-							<div class="lo-r-cont-review-title">
-								{{review.title}}
-							</div>
-							<div class="lo-r-cont-review-body">
-									{{ review.body}}
-							</div>
-						</div>
-					</div>
-					<hr>
-				</div>
--->			</div>
+			</div>
 		</div>
 	</div>
 </div>
