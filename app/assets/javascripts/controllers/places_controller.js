@@ -4,6 +4,9 @@ Topdoner.controller('PlacesCtrl', ['$scope','places','$location','$rootScope', f
 	$scope.dropPlace = function(){
     $scope.new_place = undefined
   }
+  $scope.choosePlace = function(place){    
+    $location.path('/places/'+place.properties.id);    
+  };
 	$scope.mapClick=function(e){
 //		console.log('pop');
       var coords = e.get('coords');
