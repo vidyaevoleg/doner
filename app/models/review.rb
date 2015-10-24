@@ -2,6 +2,7 @@ class Review < ActiveRecord::Base
   belongs_to :place
   has_many :images, as: :imaginable
 
+  attr_reader :images_id
 
 	def rating
 		attrs = [self.vegetables,self.meat,self.service,self.sanitation].compact
