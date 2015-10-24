@@ -1,12 +1,6 @@
 Topdoner.controller('PlacesCtrl', ['$scope','places','$location','$rootScope', function ($scope,places,$location,$rootScope) {
   $rootScope.places = places.getPlaces();
-	
-//	$scope.mapCenter=[37.415983, 55.792559];
-  $scope.choosePlace = function(place){
-    $location.path('/places/'+place.properties.id);
-//	$rootScope.mapCenter = place.geometry.coordinates;
-//	  console.log(place.geometry.coordinates);
-  };
+
 	$scope.dropPlace = function(){
     $scope.new_place = undefined
   }

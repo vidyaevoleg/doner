@@ -1,5 +1,11 @@
 var Topdoner = angular.module('Topdoner', ['yaMap','ui.router']);
-
+Topdoner.filter('isRated', function () {
+  return function(items) {
+    return items.filter(function(item){
+      return item.properties.rating
+    })
+  }
+});
 Topdoner.config(['$stateProvider','$urlRouterProvider',
 function($stateProvider, $urlRouterProvider) {
   $stateProvider

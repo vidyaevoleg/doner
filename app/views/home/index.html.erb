@@ -22,7 +22,7 @@
 <script type="text/ng-template" id="/index.html">
 	<div class="lo-r">
 		<div class="lo-r-places">
-			<div ng-repeat="place in places | orderBy:'-properties.rating' | limitTo:5">
+			<div ng-repeat="place in places | isRated | orderBy:'-properties.rating' | limitTo:5">
 				<div class="lo-r-places-place" ng-click="choosePlace(place)">
 					<div class="lo-r-places-place-title">
 						{{place.properties.street}}
