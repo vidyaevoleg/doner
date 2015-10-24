@@ -2,7 +2,8 @@ class ReviewsController < ApplicationController
 	before_action :set_place, only: :create
 
 	def create
-		@place = @place.reviews.build(:review_params)
+		@place.reviews.create(review_params)
+		redirect_to '/#place/' + @place.id.to_s
 	end
 
 	private
@@ -12,6 +13,6 @@ class ReviewsController < ApplicationController
 	end
 
 	def set_place
-		@place = Place.find(params[:place_id])
+		@place = Place.find(params[:review][:place_id].to_i)
 	end
 end

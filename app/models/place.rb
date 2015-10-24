@@ -4,52 +4,57 @@ class Place < ActiveRecord::Base
   serialize :coordinates
 
   def rating
-  	if self.reviews.count > 0
-  		return (self.reviews.map {|review| review.rating}.inject(0){|sum,x| sum+x} / self.reviews.count).to_f.to_s[0..2]
+  	if reviews.count > 0
+      data = reviews.map {|review| review.rating}.compact
+  		return (data.inject(0){|sum,x| sum+x} / data.count).to_f.to_s[0..2]
   	end
   	nil
   end
 
   def min_price
   	if self.reviews.count > 0
-  		return self.reviews.map {|rew| rew.min_price}.min
+  		return self.reviews.map {|rew| rew.min_price}.compact.min
   	end
   	nil
   end
 
   def max_price
   	if self.reviews.count > 0
-  		return self.reviews.map {|rew| rew.max_price}.max
+  		return self.reviews.map {|rew| rew.max_price}.compact.max
   	end
   	nil
   end
 
   def vegetables
-  	if self.reviews.count > 0
-  		return (self.reviews.map {|review| review.vegetables}.inject(0){|sum,x| sum+x} / self.reviews.count).to_i
-  	end
-  	nil  
+    data = reviews.map {|review| review.vegetables}.compact
+    if data.count > 0
+      return (data.inject(0){|sum,x| sum+x} / data.count).to_i
+    end
+    nil  
   end
 
   def sanitation
-  	if self.reviews.count > 0
-  		return (self.reviews.map {|review| review.sanitation}.inject(0){|sum,x| sum+x} / self.reviews.count).to_i
-  	end
-  	nil 
+    data = reviews.map {|review| review.sanitation}.compact
+    if data.count > 0
+      return (data.inject(0){|sum,x| sum+x} / data.count).to_i
+    end
+    nil 
   end
 
   def meat
-  	if self.reviews.count > 0
-  		return (self.reviews.map {|review| review.meat}.inject(0){|sum,x| sum+x} / self.reviews.count).to_i
-  	end
-  	nil   
+    data = reviews.map {|review| review.meat}.compact
+    if data.count > 0
+      return (data.inject(0){|sum,x| sum+x} / data.count).to_i
+    end
+    nil   
   end
 
   def service
-  	if self.reviews.count > 0
-  		return (self.reviews.map {|review| review.service}.inject(0){|sum,x| sum+x} / self.reviews.count).to_i
-  	end
-  	nil 
+    data = reviews.map {|review| review.service}.compact
+    if data.count > 0
+      return (data.inject(0){|sum,x| sum+x} / data.count).to_i
+    end
+    nil 
   end
 
   def to_nice_json

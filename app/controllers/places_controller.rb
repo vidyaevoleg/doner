@@ -23,6 +23,11 @@ class PlacesController < ApplicationController
 		render json: reviews || nil
 	end
 
+	def show
+		@place = Place.find(params[:id])
+		render json: @place.to_nice_json
+	end
+	
 	def destroy
 		@place = Place.find(params[:id])
 		@place.destroy!

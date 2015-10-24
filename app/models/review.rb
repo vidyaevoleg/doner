@@ -4,10 +4,14 @@ class Review < ActiveRecord::Base
 
 
 	def rating
-		attrs = [self.vegetables,self.meat,self.service,self.sanitation]
-		sum = attrs.inject(0){|sum,x| sum + x} 
-		avarage = (sum/attrs.count).to_f
+		attrs = [self.vegetables,self.meat,self.service,self.sanitation].compact
+		if attrs.count > 0
+			avarage = (attrs.inject(0){|sum,x| sum + x}/attrs.count).to_f 
+		else
+			nil
+		end
 	end
+	
 	def to_nice_json
 		json={}
 		json[:id] = id
@@ -20,6 +24,7 @@ class Review < ActiveRecord::Base
 		json[:max_price] = max_price
 		json[:body] = body
 		json[:author] = author
+		json[:date] = created_at
 		json
 	end
 

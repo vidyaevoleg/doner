@@ -498,3 +498,8 @@ ya-map {
     	 -o-transform: translate(-18px,-18px); /** Opera **/
        -moz-transform: translate(-18px,-18px); /** Firefox **/
 }
+.new-place-map {
+	width: 500px;
+	height: 400px;
+	position: relative;
+}

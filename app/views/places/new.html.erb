@@ -4,16 +4,22 @@
         <h1> {{current_place }}</h1>
         <span ng-click="closePlacePopup()"> close </span>
     </div> -->
-    <div class="yd-map">	
-			<ya-map ya-zoom="15" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl" ya-event-click="mapClick($event)">
-    		    
-			</ya-map>
+    <div class="new-place-map">
+        <div class="yd-map">	
+    			<ya-map ya-zoom="15" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl" ya-event-click="mapClick($event)">
+        		    
+    			</ya-map>
+        </div>
     </div>
-    <h1> {{metro}},{{adres}},{{coords}}</h1>
 </div>
-<%= form_for @place do |f| %>
-	<%= f.text_field :street, placeholder: 'улица' %>
-	<%= f.text_field :metro, placeholder: 'метро' %>
-	<%= f.text_field :coordinates, placeholder: 'координаты' %>
-	<%= f.submit 'OK'%>
-<% end %>
+<div class="new-place-form">
+    <%= form_for @place do |f| %>
+    	<%= f.text_field :street, placeholder: 'улица', :id => 'place_street', :'ng-value' => "adress" %>
+    	<%= f.text_field :metro, placeholder: 'метро', :id => 'place_metro', :'ng-value' => "metro" %>
+    	<%= f.text_field :coordinates, placeholder: 'координаты', :id => 'place_coordinates', :'ng-value' => "coordinates" %>
+    	<%= f.submit 'OK'%>
+    <% end %>
+
+    <h1> {{adress}}</h1>
+    <h1>{{metro}}</h1>
+</div>
