@@ -12,6 +12,11 @@ function($stateProvider, $urlRouterProvider) {
 	  url: '/places/{id}',
 	  templateUrl: '/place.html',
 	  controller: 'PlaceCtrl'
+	})
+	.state('new_review', {
+	  url: '/places/{id}/new_review',
+	  templateUrl: '/new_review.html',
+	  controller: 'NewReviewCtrl'
 	});
   $urlRouterProvider.otherwise('home');
 }])

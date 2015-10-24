@@ -1,5 +1,5 @@
-Topdoner.controller('PlacesCtrl', ['$scope','places','$location', function ($scope,places,$location) {
-  $scope.places = places.getPlaces()
+Topdoner.controller('PlacesCtrl', ['$scope','places','$location','$rootScope', function ($scope,places,$location,$rootScope) {
+  $rootScope.places = places.getPlaces()
   $scope.choosePlace = function(place){
     $location.path('/places/'+place.properties.id)
   };
