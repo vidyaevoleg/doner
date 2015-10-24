@@ -1,8 +1,9 @@
-Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',function ($scope,$stateParams,places,$rootScope) {
+Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope','$location',function ($scope,$stateParams,places,$rootScope,$location) {
   $scope.reviews = places.getReviews($stateParams.id)
-  $scope.place = places.getPlace($stateParams.id)
+  $rootScope.place = places.getPlace($stateParams.id)
+
   $scope.closePlace = function(place){
-    $scope.place = undefined;
+    $location.path('/home')
   }
   
   $scope.makeReviewCurrent = function(review){
@@ -15,5 +16,8 @@ Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',
   
   $scope.changeWritingReview = function(){
     $scope.writing_review = !$scope.writing_review
+  }
+  $scope.writeReview = function(place){
+    $location.path('/places/'+place.properties.id+'/new_review')
   }
 }]);

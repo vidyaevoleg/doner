@@ -1,100 +1,130 @@
-<ui-view></ui-view>
-<div class="lo-l">
-	<div class="lo-l-map">
-		<ya-map ya-zoom="10" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl">
-			<ya-cluster ya-options="{preset:'islands#invertedRedClusterIcons'}">
-				<ya-geo-object href="#/places/{{place.id}}" ya-options="{preset: 'islands#redIcon'}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ></ya-geo-object>
-			</ya-cluster>
-		</ya-map>
+<div class="cont">
+	<div class="cont-head">
+		<div class="cont-head-logo">
+			<a ng-href="#/home">DONER.IO</a>
+		</div>
+	</div>
+	<div class="lo">
+		<div class="lo-l">
+			<div class="lo-l-map">
+				<ya-map ya-zoom="10" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl">
+					<ya-cluster ya-options="{preset:'islands#invertedRedClusterIcons'}">
+						<ya-geo-object href="#/places/{{place.id}}" ya-options="{preset: 'islands#redIcon'}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ></ya-geo-object>
+					</ya-cluster>
+				</ya-map>
+			</div>
+		</div>
+		<ui-view></ui-view>
 	</div>
 </div>
 <script type="text/ng-template" id="/index.html">
-	<div>
-		<div class="cont">
-			<div class="cont-head">
-				<div class="cont-head-logo">
-					<a ng-href="#/home">DONER.IO</a>
-				</div>
+	<div class="lo-r">
+		<div class="lo-r-places">
+			<div class="lo-r-places-place">
+				<div class="lo-r-places-place-title">МЕСТО 1</div>
 			</div>
-			<div class="lo">
-				<div class="lo-r">
-					<div class="lo-r-places">
-						<div class="lo-r-places-place">
-							<div class="lo-r-places-place-title">МЕСТО 1</div>
-						</div>
-						<div class="lo-r-places-place">
-							<div class="lo-r-places-place-title">МЕСТО 2</div>
-						</div>
-						<div class="lo-r-places-place">
-							<div class="lo-r-places-place-title">МЕСТО 3</div>
-						</div>
-					</div>
-				</div>
+			<div class="lo-r-places-place">
+				<div class="lo-r-places-place-title">МЕСТО 2</div>
+			</div>
+			<div class="lo-r-places-place">
+				<div class="lo-r-places-place-title">МЕСТО 3</div>
 			</div>
 		</div>
 	</div>
 </script>
 <script type="text/ng-template" id="/place.html">
-<div>
-	<div class="cont">
-		<div class="cont-head">
-			<div class="cont-head-logo" >
-				<a ng-href="#/home">DONER.IO</a>
+	<div class="lo-r">
+		<div class="lo-r-card">
+			<div class="lo-r-card-close" ng-click="closePlace()">✕</div>
+			<div class="lo-r-card-create" ng-click="writeReview(place)">
+				Оставить отзыв
+			</div>
+			<div class="lo-r-card-title">
+				<span>{{place.properties.street}}</span>
+			</div>
+			
+			<div class="lo-r-card-metro lo-r-card-metro-tk">
+				<div class="lo-r-catd-metro-logo">
+					<svg width="13px" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+						<title>Slice 1</title>
+						<description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+						<defs></defs>
+						<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+							<g id="metro-logo" sketch:type="MSLayerGroup" fill="#D9242A">
+								<path d="M334.561,471.297 L443.284,282.322 L488.424,410.315 L451.976,410.315 L451.976,466.639 L669.121,466.639 L669.121,410.315 L627.676,410.315 L471.695,0 L334.561,252.627 L197.427,0 L41.446,410.315 L0,410.315 L0,466.639 L217.146,466.639 L217.146,410.315 L180.697,410.315 L225.837,282.322 L334.561,471.297" id="Page-1" sketch:type="MSShapeGroup"></path>
+							</g>
+						</g>
+					</svg>
+				</div>
+				<div class="lo-r-card-metro-title">{{place.properties.metro}}</div>
+			</div>
+			<div class="lo-r-card-rating">
+				<span class="lo-r-card-rating-1">{{place.properties.rating}}</span>
 			</div>
 		</div>
-		<div class="lo">
-			<div class="lo-r">
-				<div class="lo-r-card">
-					<div class="lo-r-card-close" ng-click="closePlace(place)">✕</div>
-					<div class="lo-r-card-create" ng-click="changeWritingReview()">
-						Оставить отзыв
-					</div>
-					<div class="lo-r-card-title">
-						<span>{{place.properties.street || 'Ткните на метку'}}</span>
-					</div>
-					
-					<div class="lo-r-card-metro lo-r-card-metro-tk">
-						<div class="lo-r-catd-metro-logo">
-							<svg width="13px" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-								<title>Slice 1</title>
-								<description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
-								<defs></defs>
-								<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-									<g id="metro-logo" sketch:type="MSLayerGroup" fill="#D9242A">
-										<path d="M334.561,471.297 L443.284,282.322 L488.424,410.315 L451.976,410.315 L451.976,466.639 L669.121,466.639 L669.121,410.315 L627.676,410.315 L471.695,0 L334.561,252.627 L197.427,0 L41.446,410.315 L0,410.315 L0,466.639 L217.146,466.639 L217.146,410.315 L180.697,410.315 L225.837,282.322 L334.561,471.297" id="Page-1" sketch:type="MSShapeGroup"></path>
-									</g>
-								</g>
-							</svg>
-						</div>
-						<div class="lo-r-card-metro-title">{{place.properties.metro}}</div>
-					</div>
-					<div class="lo-r-card-rating">
-						<span class="lo-r-card-rating-1">{{place.properties.rating}}</span>
-					</div>
-				</div>
-				<div class="lo-r-border"></div>
-				<div ng-repeat="review in reviews | orderBy:'-date'" class="lo-r-cont">
-					<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" >
+		<div class="lo-r-border"></div>
+		<div ng-repeat="review in reviews | orderBy:'-date'" class="lo-r-cont">
+			<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" >
 <!--							<div class="lo-r-cont-review" ng-class="getExtClass(review)" ng-click="openReview(review)" >-->
-						<div class="lo-r-cont-review-title" ng-click="makeReviewCurrent(review)">
-							рейтинг - {{review.rating}}; {{review.min_price}}-{{review.max_price}} rub
-						</div>
+				<div class="lo-r-cont-review-title" ng-click="makeReviewCurrent(review)">
+					рейтинг - {{review.rating}}; {{review.min_price}}-{{review.max_price}} rub
+				</div>
 <!--							<div class="lo-r-cont-review-close" ng-click="closeCurrentReview(review)">•••</div>-->
-						<div class="lo-r-cont-review-rating">{{review.rating}}</div>
-						<div class="lo-r-cont-review-body">
-							<div ng-show="current_review !== review ">
-								{{ review.body | limitTo: 140 }}{{review.body.length > 100 ? '...' : ''}}
+				<div class="lo-r-cont-review-rating">{{review.rating}}</div>
+				<div class="lo-r-cont-review-body">
+					<div ng-show="current_review !== review ">
+						{{ review.body | limitTo: 140 }}{{review.body.length > 100 ? '...' : ''}}
 <!--									<span class="lo-r-cont-review-body-open">Читать</span>-->
-							</div>
-							<div ng-show="current_review == review ">
-								{{ review.body}}
-								<span style="color: blue;cursor: pointer;" ng-click="closeReview()"> закрыть </span>
-							</div>
-						</div>
 					</div>
+					<div ng-show="current_review == review ">
+						{{ review.body}}
+						<span style="color: blue;cursor: pointer;" ng-click="closeReview()"> закрыть </span>
+					</div>
+
+					
+					<img ng-show="review.img" src="{{review.img}}">
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</script>
+	<script type="text/ng-template" id="/new_review.html">
+	<div class="lo-r">
+		<div class="lo-r-card">
+			<div class="lo-r-card-close" ng-click="closePlace()">✕</div>
+			<div class="lo-r-card-title">
+				<span>{{place.properties.street }}</span>
+			</div>
+			<div class="lo-r-card-metro lo-r-card-metro-tk">
+				<div class="lo-r-catd-metro-logo">
+					<svg width="13px" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+						<title>Slice 1</title>
+						<description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+						<defs></defs>
+						<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+							<g id="metro-logo" sketch:type="MSLayerGroup" fill="#D9242A">
+								<path d="M334.561,471.297 L443.284,282.322 L488.424,410.315 L451.976,410.315 L451.976,466.639 L669.121,466.639 L669.121,410.315 L627.676,410.315 L471.695,0 L334.561,252.627 L197.427,0 L41.446,410.315 L0,410.315 L0,466.639 L217.146,466.639 L217.146,410.315 L180.697,410.315 L225.837,282.322 L334.561,471.297" id="Page-1" sketch:type="MSShapeGroup"></path>
+							</g>
+						</g>
+					</svg>
+				</div>
+				<div class="lo-r-card-metro-title">{{place.properties.metro}}</div>
+			</div>
+			<div class="lo-r-card-rating">
+				<span class="lo-r-card-rating-1">{{place.properties.rating}}</span>
+			</div>
+		</div>
+		<div class="lo-r-border"></div>
+		<div class="lo-r-cont">
+			<%= form_for Review.new do |f| %>
+			<%= f.text_area :body, placeholder: 'отзыв' %>
+			<%= f.text_field :meat, placeholder: 'мясо' %>
+			<%= f.text_field :vegetables, placeholder: 'овощи' %>
+			<%= f.text_field :service, placeholder: 'обслуживание' %>
+			<%= f.text_field :sanitation, placeholder: 'чистота' %>
+			<%= f.text_field :place_id, "ng-value"=>"place.properties.id", type: 'hidden' %>
+			<%= f.submit 'ok' %>
+			<% end %>
+		</div>
+	</div>
 </script>
