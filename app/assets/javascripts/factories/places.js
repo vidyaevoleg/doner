@@ -1,4 +1,4 @@
-Topdoner.factory('places', ['$http',function($http){
+Topdoner.factory('places', ['$http','$location','$rootScope',function($http,$location,$rootScope){
   // return $resource('/places/:id',{id: '@id'},{
   //   get_places: {method: 'GET',isArray: true, responseType: 'json'}
   // });
@@ -23,6 +23,13 @@ Topdoner.factory('places', ['$http',function($http){
             angular.copy(data,reviews);
         })      
         return reviews
+      },
+      createPlace: function(place){
+        $http.post('/places',{place: place}).success(function(data){
+          $rootScope.place = data
+          $rootScope.places.push(data)
+          $location.path('/places/'+data.properties.id)
+        })
       }      
     }
     return places

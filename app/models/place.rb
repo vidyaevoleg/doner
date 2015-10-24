@@ -75,7 +75,7 @@ class Place < ActiveRecord::Base
   end
 
   def get_coords
-  	coordinates.tr('[]', '').split(',').map {|coord| coord.to_f}
+  	coordinates.to_s.tr('[]', '').split(',').map {|coord| coord.to_f}
   end
 
 end

@@ -7,11 +7,13 @@ Topdoner.controller('PlacesCtrl', ['$scope','places','$location','$rootScope', f
 //	$rootScope.mapCenter = place.geometry.coordinates;
 //	  console.log(place.geometry.coordinates);
   };
-	
+	$scope.dropPlace = function(){
+    $scope.new_place = undefined
+  }
 	$scope.mapClick=function(e){
 //		console.log('pop');
       var coords = e.get('coords');
-      $scope.coords = coords;
+      $scope.new_place = {coordinates: coords.toString()}
       ymaps.geocode(coords,{kind: 'metro'}).then(function (res) {
           var names = [];
           res.geoObjects.each(function (obj) {
@@ -19,7 +21,7 @@ Topdoner.controller('PlacesCtrl', ['$scope','places','$location','$rootScope', f
           });
           var metro = names[0]
           $scope.$apply(function(){
-            $scope.metro = metro
+            $scope.new_place['metro'] = metro
           });
       });
       ymaps.geocode(coords).then(function (res) {
@@ -29,12 +31,15 @@ Topdoner.controller('PlacesCtrl', ['$scope','places','$location','$rootScope', f
           });
           var adress = names[0]
           $scope.$apply(function(){
-            $scope.adress = adress
+            $scope.new_place['street'] = adress
           });
       });
-      // $('#place_cooridnates') = 
     };
 
+    $scope.createPlace = function(){
+      var new_place = $scope.new_place
+      places.createPlace(new_place)
+    }
 	
 
   // $scope.show = function(what, how) {

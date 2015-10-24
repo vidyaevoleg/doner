@@ -2,6 +2,7 @@
 	<div class="cont-head">
 		<div class="cont-head-logo">
 			<a ng-href="#/home">DONER.IO</a>
+			<button><a href="#/create_place">Добавить место</a></button>
 		</div>
 	</div>
 	<div class="lo">
@@ -14,6 +15,7 @@
 				</ya-map>
 			</div>
 		</div>
+
 		<ui-view></ui-view>
 	</div>
 </div>
@@ -137,10 +139,10 @@
 	</div>
 </script>
 <script type="text/ng-template" id="/create_place.html">
-	<div class="lo-r">
+	<div class="lo-r" ng-init="dropPlace()">
 		<h2>Выбери место</h2>
-		<div>{{metro}}</div>
-		<div>{{adress}}</div>
-		<div>{{coords}}</div>
+		<div>{{new_place.metro}}</div>
+		<div>{{new_place.street}}</div>
+		<button ng-show="new_place.street" ng-click="createPlace()">Создать</button>
 	</div>
 </script>

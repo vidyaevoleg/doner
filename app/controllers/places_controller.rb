@@ -7,9 +7,7 @@ class PlacesController < ApplicationController
 	def create
 		@place = Place.create(place_params)
 		if @place.save
-			respond_to do |f|
-				f.html { redirect_to :back }
-			end
+			render json: @place.to_nice_json
 		end
 	end
 
