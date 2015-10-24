@@ -7,7 +7,6 @@ class ReviewsController < ApplicationController
 		if images_id.size>0
 			images_id.map do |id|
 				image = Image.find(id)
-				binding.pry
 				image.update_attributes(imaginable_id: @review.id,imaginable_type: @review.class.to_s)
 			end 
 		end

@@ -8,6 +8,7 @@ Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',
   
   $scope.makeReviewCurrent = function(review){
     $scope.current_review = review;
+    console.log(review)
     
   }
   $scope.closeReview = function(){

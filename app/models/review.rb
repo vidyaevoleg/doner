@@ -26,6 +26,7 @@ class Review < ActiveRecord::Base
 		json[:body] = body
 		json[:author] = author
 		json[:date] = created_at
+		json[:images] = images.map {|i| i.file.url} if images
 		json
 	end
 

@@ -80,8 +80,9 @@
 						<span style="color: blue;cursor: pointer;" ng-click="closeReview()"> закрыть </span>
 					</div>
 
-					
-					<img ng-show="review.img" src="{{review.img}}">
+					<div ng-repeat="image in review.images">
+						<img src="{{image}}" style="width: 200px;">
+					</div>
 				</div>
 			</div>
 		</div>
@@ -91,8 +92,8 @@
 	<div class="lo-r">
 		<div class="lo-r-card">
 			<div class="lo-r-card-close" ng-click="closePlace()">✕</div>
-			<div class="lo-r-card-title">
-				<span>{{place.properties.street }}</span>
+			<div class="lo-r-card-title" >
+				<span><a ng-href="#/places/{{place.properties.id}}">{{place.properties.street }}</a></span>
 			</div>
 			<div class="lo-r-card-metro lo-r-card-metro-tk">
 				<div class="lo-r-catd-metro-logo">
@@ -123,6 +124,8 @@
 				<p>санитария<%= f.number_field :sanitation, min: 1,max: 10,"ng-model" => "new_review.sanitation" %></p>
 				<p><%= f.text_field :images_id, "ng-model" => "new_review.images_id",type: 'hidden' %></p>
 				<p><%= f.text_field :place_id, "ng-model" => "place.properties.id",type: 'hidden' %></p>
+				<p>минимальная цена<%= f.text_field :min_price,"ng-model" => "new_review.min_price" %></p>
+				<p>максимальная цена<%= f.text_field :max_price,"ng-model" => "new_review.max_price" %></p>
 			<% end %>
 			<button ng-click="submitReview()">Отправить</button>
 			<%= form_tag Image.new, class: "dropzone", id: "media-dropzone" do %>
