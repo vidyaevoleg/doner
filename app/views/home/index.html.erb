@@ -6,10 +6,10 @@
 	</div>
 	<div class="lo">
 		<div class="lo-l">
-			<div class="lo-l-map">
-				<ya-map ya-zoom="10" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl">
+			<div class="lo-l-map"  ya-center="{{mapCenter}}" ng-controller="MapCtrl">
+				<ya-map ya-zoom="12" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl" ya-event-click="mapClick($event)">
 					<ya-cluster ya-options="{preset:'islands#invertedRedClusterIcons'}">
-						<ya-geo-object href="#/places/{{place.id}}" ya-options="{preset: 'islands#redIcon'}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ></ya-geo-object>
+						<ya-geo-object href="#/places/{{place.id}}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ya-options="{preset: 'islands#redIcon'}" ></ya-geo-object>
 					</ya-cluster>
 				</ya-map>
 			</div>
@@ -134,5 +134,13 @@
 			  </div>
 			<% end %>
 		</div>
+	</div>
+</script>
+<script type="text/ng-template" id="/create_place.html">
+	<div class="lo-r">
+		<h2>Выбери место</h2>
+		<div>{{metro}}</div>
+		<div>{{adress}}</div>
+		<div>{{coords}}</div>
 	</div>
 </script>

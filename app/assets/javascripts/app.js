@@ -13,6 +13,11 @@ function($stateProvider, $urlRouterProvider) {
 	  templateUrl: '/place.html',
 	  controller: 'PlaceCtrl'
 	})
+	.state('new_place', {
+	  url: '/create_place',
+	  templateUrl: '/create_place.html',
+	  controller: 'NewPlaceCtrl'
+	})
 	.state('new_review', {
 	  url: '/places/{id}/new_review',
 	  templateUrl: '/new_review.html',
