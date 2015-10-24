@@ -19,14 +19,13 @@
 		<script type="text/ng-template" id="/index.html">
 			<div class="lo-r">
 				<div class="lo-r-places">
-					<div class="lo-r-places-place">
-						<div class="lo-r-places-place-title">МЕСТО 1</div>
-					</div>
-					<div class="lo-r-places-place">
-						<div class="lo-r-places-place-title">МЕСТО 2</div>
-					</div>
-					<div class="lo-r-places-place">
-						<div class="lo-r-places-place-title">МЕСТО 3</div>
+					<div ng-repeat="place in places | orderBy:'-properties.rating' | limitTo:5">
+						<div class="lo-r-places-place" ng-click="choosePlace(place)">
+							<div class="lo-r-places-place-title">
+								{{place.properties.street}}
+							</div>
+							{{place.properties.rating}}
+						</div>
 					</div>
 				</div>
 			</div>
