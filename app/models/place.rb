@@ -5,7 +5,7 @@ class Place < ActiveRecord::Base
 
   def rating
   	if self.reviews.count > 0
-  		return (self.reviews.map {|review| review.rating}.inject(0){|sum,x| sum+x} / self.reviews.count).to_i
+  		return (self.reviews.map {|review| review.rating}.inject(0){|sum,x| sum+x} / self.reviews.count).to_f.to_s[0..2]
   	end
   	nil
   end

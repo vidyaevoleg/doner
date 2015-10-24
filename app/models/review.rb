@@ -6,7 +6,7 @@ class Review < ActiveRecord::Base
 	def rating
 		attrs = [self.vegetables,self.meat,self.service,self.sanitation]
 		sum = attrs.inject(0){|sum,x| sum + x} 
-		avarage = (sum/attrs.count).to_i
+		avarage = (sum/attrs.count).to_f
 	end
 	def to_nice_json
 		json={}

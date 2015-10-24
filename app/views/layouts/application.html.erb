@@ -6,10 +6,15 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body ng-app="Topdoner">
-	
+<body ng-app="Topdoner" ng-controller="PlacesCtrl">
 
 <%= yield %>
+
+<div class="prnj hidden"></div>
+	<div class="popup hidden">
+		<div class="popup-close" ng-click="closePp">✕</div>
+		Popup here plz.
+	</div>
 
 </body>
 </html>

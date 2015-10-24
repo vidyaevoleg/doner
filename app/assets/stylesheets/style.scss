@@ -6,6 +6,10 @@ $bg: #f4f4f4;
 $win: #fff;
 $act: rgb(240,67,61);
 
+.hidden {
+	display: none !important;
+}
+
 
 a {
 	text-decoration: none;
@@ -26,6 +30,42 @@ body {
 	background: $bg;
 //	font-family: 'Roboto', sans-serif;
 	font-family: 'Raleway Cyr';
+}
+
+.prnj {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: rgba(0,0,0,.8);
+	opacity: 0;
+	z-index: 10;
+}
+
+.popup {
+	width: 800px;
+	height: 400px;
+	position: fixed;
+	top: 0; left: 0; right: 0; bottom: 0;
+	margin: auto;
+	background: #fff;
+	box-sizing: border-box;
+	padding: 20px;
+	z-index: 11;
+	border-radius: 3px;
+	&-close {
+		position: absolute;
+		top: 20px;
+		width: 14px;
+		height: 14px;
+		text-align: center;
+		right: 30px;
+		font-size: 16px;
+		color: #969696;
+		cursor: pointer;
+		&:hover {
+			color: $act;
+		}
+	}
 }
 
 
@@ -117,7 +157,6 @@ body {
 		right: 0;
 //		right: 0;
 //		margin-right: 10px;
-		font-weight: 100;
 		font-size: 13px;
 		&-card {
 			width: inherit;
@@ -243,7 +282,7 @@ body {
 				position: absolute;
 				top: 14px;
 				right: 12px;
-				width: 55px;
+				width: 50px;
 				height: 42px;
 				line-height: 42px;
 				text-align: center;
@@ -267,12 +306,13 @@ body {
 			}
 			&-create {
 				position: absolute;
-				bottom: 12px;
-				right: 14px;
-				text-align: right;
-				font-weight: bold;
-				color: $act;
-				font-size: 14px;
+				right: 92px;
+				top: 14px;
+				cursor: pointer;
+				&:hover {
+					color: $act;
+					text-decoration: underline;
+				}
 			}
 		}
 		&-border {
@@ -387,6 +427,29 @@ body {
 							text-decoration: underline;
 						}
 					}
+				}
+			}
+		}
+		
+		&-places {
+			width: inherit;
+			&-place {
+				width: inherit;
+				background: #fff;
+				border-radius: 3px;
+				margin-bottom: 10px;
+				position: relative;
+				box-sizing: border-box;
+				padding: 14px;
+				&:hover {
+					.lo-r-places-place-title {
+						color: #000;
+					}
+				}
+				&-title {
+					font-size: 14px;
+					font-weight: 800;
+					color: #535353;
 				}
 			}
 		}

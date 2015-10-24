@@ -5,7 +5,7 @@
 		<span ng-click="closePlacePopup()"> close </span>
 	</div>
 -->
-	<div class="cont" ng-controller="PlacesCtrl">
+	<div class="cont">
 		<div class="cont-head">
 			<div class="cont-head-logo">
 				DONER.IO
@@ -56,15 +56,25 @@
 				</div>
 <!--				<div class="lo-l-filter">Filter</div>-->
 			</div>
-			<div class="lo-r-cont" ng-hide="place">
-				<div class="lo-r-cont-place">place1</div>
-				<div class="lo-r-cont-place">place3</div>
-				<div class="lo-r-cont-place">place4</div>
-				<div class="lo-r-cont-place">place5</div>
+			<div class="lo-r" ng-hide="place">
+				<div class="lo-r-places">
+					<div class="lo-r-places-place">
+						<div class="lo-r-places-place-title">МЕСТО 1</div>
+					</div>
+					<div class="lo-r-places-place">
+						<div class="lo-r-places-place-title">МЕСТО 2</div>
+					</div>
+					<div class="lo-r-places-place">
+						<div class="lo-r-places-place-title">МЕСТО 3</div>
+					</div>
+				</div>
 			</div>
 			<div class="lo-r" ng-show="place">
 				<div class="lo-r-card">
 					<div class="lo-r-card-close" ng-click="closePlace(place)">✕</div>
+					<div class="lo-r-card-create" ng-click="ppReview(place)">
+						Оставить отзыв
+					</div>
 					<div class="lo-r-card-title">
 						<span>{{place.properties.title || 'Ткните на метку'}}</span>
 					</div>
@@ -89,11 +99,11 @@
 					</div>
 				</div>
 				<div class="lo-r-border"></div>
-					<div ng-repeat="review in reviews" class="lo-r-cont">
+				<div ng-repeat="review in reviews" class="lo-r-cont">
 						<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" >
 <!--							<div class="lo-r-cont-review" ng-class="getExtClass(review)" ng-click="openReview(review)" >-->
 							<div class="lo-r-cont-review-title" ng-click="makeReviewCurrent(review)">
-								рейтинг - {{review.rating}}; {{min_price}}-{{max_price}} rub
+								рейтинг - {{review.rating}}; {{review.min_price}}-{{review.max_price}} rub
 							</div>
 <!--							<div class="lo-r-cont-review-close" ng-click="closeCurrentReview(review)">•••</div>-->
 							<div class="lo-r-cont-review-rating">{{review.rating}}</div>
@@ -112,7 +122,6 @@
 							</div>
 						</div>
 					</div>
-				<br><br><br><br><br><br>
 			</div>
 		</div>
 	</div>
