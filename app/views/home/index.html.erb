@@ -9,30 +9,30 @@
 	</div>
 </div>
 <script type="text/ng-template" id="/index.html">
-<div>
-	<div class="cont">
-		<div class="cont-head">
-			<div class="cont-head-logo">
-				<a ng-href="#/home">DONER.IO</a>
+	<div>
+		<div class="cont">
+			<div class="cont-head">
+				<div class="cont-head-logo">
+					<a ng-href="#/home">DONER.IO</a>
+				</div>
 			</div>
-		</div>
-		<div class="lo">
-			<div class="lo-r">
-				<div class="lo-r-places">
-					<div class="lo-r-places-place">
-						<div class="lo-r-places-place-title">МЕСТО 1</div>
-					</div>
-					<div class="lo-r-places-place">
-						<div class="lo-r-places-place-title">МЕСТО 2</div>
-					</div>
-					<div class="lo-r-places-place">
-						<div class="lo-r-places-place-title">МЕСТО 3</div>
+			<div class="lo">
+				<div class="lo-r">
+					<div class="lo-r-places">
+						<div class="lo-r-places-place">
+							<div class="lo-r-places-place-title">МЕСТО 1</div>
+						</div>
+						<div class="lo-r-places-place">
+							<div class="lo-r-places-place-title">МЕСТО 2</div>
+						</div>
+						<div class="lo-r-places-place">
+							<div class="lo-r-places-place-title">МЕСТО 3</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </script>
 <script type="text/ng-template" id="/place.html">
 <div>
@@ -90,9 +90,6 @@
 								{{ review.body}}
 								<span style="color: blue;cursor: pointer;" ng-click="closeReview()"> закрыть </span>
 							</div>
-
-							
-							<img ng-show="review.img" src="{{review.img}}">
 						</div>
 					</div>
 				</div>

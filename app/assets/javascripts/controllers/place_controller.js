@@ -1,6 +1,6 @@
-Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places',function ($scope,$stateParams,places) {
-  $scope.place = places.getPlace($stateParams.id)
+Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',function ($scope,$stateParams,places,$rootScope) {
   $scope.reviews = places.getReviews($stateParams.id)
+  $scope.place = places.getPlace($stateParams.id)
   $scope.closePlace = function(place){
     $scope.place = undefined;
   }
