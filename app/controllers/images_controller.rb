@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
-	before_action :set_imaginable, only: :create
+	# before_action :set_imaginable, only: :create
 	def create
-		@image = @imaginable.images.build(image_params)
+		@image = Image.new(file: params[:file])
 		if @image.save
 			render json: @image
 		else
@@ -15,7 +15,7 @@ class ImagesController < ApplicationController
 	private
 
 	def image_params
-		params.require(:image).permit(:file)
+		params.require(:image).permit(:image)
 	end
 	
 	def set_imaginable
