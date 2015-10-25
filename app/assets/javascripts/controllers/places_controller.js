@@ -1,10 +1,41 @@
 Topdoner.controller('PlacesCtrl', ['$scope','places','$location','$rootScope', function ($scope,places,$location,$rootScope) {
-  $rootScope.places = places.getPlaces()
+  $rootScope.places = places.getPlaces();
+	
+//	$scope.mapCenter=[37.415983, 55.792559];
   $scope.choosePlace = function(place){
-    $location.path('/places/'+place.properties.id)
+    $location.path('/places/'+place.properties.id);
+//	$rootScope.mapCenter = place.geometry.coordinates;
+//	  console.log(place.geometry.coordinates);
   };
 	
- 
+	$scope.mapClick=function(e){
+//		console.log('pop');
+      var coords = e.get('coords');
+      $scope.coords = coords;
+      ymaps.geocode(coords,{kind: 'metro'}).then(function (res) {
+          var names = [];
+          res.geoObjects.each(function (obj) {
+              names.push(obj.properties.get('name'));
+          });
+          var metro = names[0]
+          $scope.$apply(function(){
+            $scope.metro = metro
+          });
+      });
+      ymaps.geocode(coords).then(function (res) {
+          var names = [];
+          res.geoObjects.each(function (obj) {
+              names.push(obj.properties.get('name'));
+          });
+          var adress = names[0]
+          $scope.$apply(function(){
+            $scope.adress = adress
+          });
+      });
+      // $('#place_cooridnates') = 
+    };
+
+	
 
   // $scope.show = function(what, how) {
   // 	var p = what,

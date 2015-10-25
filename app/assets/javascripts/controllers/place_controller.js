@@ -20,4 +20,22 @@ Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',
   $scope.writeReview = function(place){
     $location.path('/places/'+place.properties.id+'/new_review')
   }
+  
+  
+//	$scope.colorPlace = function(place) {
+//		console.log('as');
+//		if (place == $scope.place) {
+//			
+//			return {preset: 'islands#blueIcon'}
+//		} else {
+//			console.log(place.prpoerties.street);
+//			console.log($scope.place.prpoerties.street);
+//			return {preset: 'islands#redIcon'}
+//		}
+//	}
+//	$scope.colorChoosenPlace = function(e, place) {
+//		if (place == $scope.place) {
+//			e.get('target').options.set('preset', 'islands#greenIcon');
+//		}
+//	}
 }]);
