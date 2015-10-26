@@ -1,8 +1,7 @@
 Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope','$location',function ($scope,$stateParams,places,$rootScope,$location) {
 
   $scope.reviews = places.getReviews($stateParams.id)
-  $rootScope.place = places.getPlace($stateParams.id)
-
+  $scope.place = places.getPlace($stateParams.id)
   $scope.closePlace = function(place){
     $location.path('/home')
   }
@@ -26,7 +25,7 @@ Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',
 			return false
 		}
 	}
-  
+
   $scope.closeReview = function(){
     $scope.current_review = undefined
   }
@@ -38,7 +37,6 @@ Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',
     $location.path('/places/'+place.properties.id+'/new_review')
   }
   
-  $scope.reviews_number = $scope.reviews.length;
   
 //	$scope.colorPlace = function(place) {
 //		console.log('as');

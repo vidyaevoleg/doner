@@ -2,6 +2,11 @@ class Place < ActiveRecord::Base
   has_many :images, as: :imaginable
   has_many :reviews
   serialize :coordinates
+  before_create :cut_city
+
+  def cut_city
+    city.split(',').uniq
+  end
 
   def rating
   	if reviews.count > 0
@@ -68,10 +73,16 @@ class Place < ActiveRecord::Base
   	json[:properties][:sanitation] = sanitation
   	json[:properties][:service] = service
   	json[:geometry][:type] = 'Point'
+    json[:properties][:city] = city
   	json[:geometry][:coordinates] = get_coords
   	json[:properties][:street] = street
   	json[:properties][:metro] = metro
-  	json
+    if reviews.any? 
+      json[:properties][:reviews_count] = reviews.count
+    else 
+      json[:properties][:reviews_count] = 0 
+  	end
+    json
   end
 
   def get_coords
