@@ -13,11 +13,15 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require dropzone
 //= require angular.min
 //= require angular-yandex
 //= require ui-router
+//= require angular-rails-templates
+//= require_tree ./templates
 //= require app
 //= require main
+
 //= require_tree ./factories
 //= require_tree ./controllers

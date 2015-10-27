@@ -1,0 +1,53 @@
+<div class="lo-r">
+	<div class="lo-r-card">
+		<div class="lo-r-card-title" >
+			<span><a ng-href="#/places/{{place.properties.id}}">{{place.properties.street }}</a></span>
+		</div>
+		<div class="lo-r-card-metro lo-r-card-metro-tk">
+			<div class="lo-r-catd-metro-logo">
+				<svg width="13px" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+					<title>Slice 1</title>
+					<description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+					<defs></defs>
+					<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+						<g id="metro-logo" sketch:type="MSLayerGroup" fill="#D9242A">
+							<path d="M334.561,471.297 L443.284,282.322 L488.424,410.315 L451.976,410.315 L451.976,466.639 L669.121,466.639 L669.121,410.315 L627.676,410.315 L471.695,0 L334.561,252.627 L197.427,0 L41.446,410.315 L0,410.315 L0,466.639 L217.146,466.639 L217.146,410.315 L180.697,410.315 L225.837,282.322 L334.561,471.297" id="Page-1" sketch:type="MSShapeGroup"></path>
+						</g>
+					</g>
+				</svg>
+			</div>
+			<div class="lo-r-card-metro-title">{{place.properties.metro}}</div>
+		</div>
+		<div class="lo-r-card-rating">
+			<span class="lo-r-card-rating-1">{{place.properties.rating}}</span>
+		</div>
+	</div>
+	
+	<div class="add-review" ng-init="dropzone()">
+		<%= form_for Review.new do |f| %>
+			<%= f.text_area :body, placeholder: 'Дело было так...',"ng-model" => "new_review.body", "class" => "add-review-body" %>
+			
+			<p>мясо
+			<div class="star-rating" star-rating rating-value="new_review.meat" data-max="10" on-rating-selected="rateFunction(rating)"></div>
+			
+
+			<%= f.number_field :meat, min: 1,max: 10,"ng-model" => "new_review.meat" %></p>
+			<p>овощи<%= f.number_field :vegetables, min: 1,max: 10,"ng-model" => "new_review.vegetables" %></p>
+			<p>обслуживание<%= f.number_field :service, min: 1,max: 10,"ng-model" => "new_review.service" %></p>
+			<p>санитария<%= f.number_field :sanitation, min: 1,max: 10,"ng-model" => "new_review.sanitation" %></p>
+			<p><%= f.text_field :images_id, "ng-model" => "new_review.images_id",type: 'hidden' %></p>
+			<p><%= f.text_field :place_id, "ng-model" => "place.properties.id",type: 'hidden' %></p>
+			<p>Цена: <%= f.text_field :min_price,"ng-model" => "new_review.min_price" %> – <%= f.text_field :max_price,"ng-model" => "new_review.max_price" %> руб</p>
+		<% end %>
+		<div class="dropzone-wrap" ng-init="fixDropzone()">
+			<form action="/images" id="media-dropzone" class="dropzone" enctype="multipart/form-data">
+			  <div class="fallback">
+			    <input name="image" type="image" multiple />
+			  </div>
+			</form>
+		</div>
+		<div class="add-review-submit-wrap">
+			<button ng-click="submitReview()" class="add-review-submit">Отправить</button>
+		</div>
+	</div>
+</div>
