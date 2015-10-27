@@ -2,7 +2,7 @@
 @import "http://webfonts.ru/import/ralewayc.css";
 
 
-$bg: #f4f4f4;
+$bg: rgb(248, 248, 248);
 $win: #fff;
 $act: rgb(240,67,61);
 
@@ -75,12 +75,13 @@ body {
 	margin: auto;
 	&-head {
 		width: inherit;
+		padding-right: 10px;
 		position: fixed;
 		height: 60px;
 		background: $bg;
 		z-index: 3;
 		&-logo {
-			width: 130px;
+			width: 150px;
 			height: 40px;
 			position: relative;
 			top: 10px;
@@ -102,6 +103,50 @@ body {
 				opacity: .4;
 			}
 		}
+		&-toplist {
+			position: absolute;
+			right: 0;
+			top: 10px;
+			width:40px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			font-size: 20px;
+			color: #a3a3a3;
+			&.active {
+				color: $act !important;
+			}
+		}
+	}
+}
+
+.what {
+	position: fixed;
+	bottom: 10px;
+	left: 8px;
+	width: 100px;
+	height: 16px;
+	cursor: pointer;
+	path {
+		fill: #7c7c7c;
+	}
+	&:hover {
+		& .what-tip {
+			display: inline-block;
+			color: $act;
+		}
+		path {
+			fill: $act;
+		}
+	}
+	&-tip {
+		font-size: 10px;
+		font-weight: 800;
+		position: relative;
+		top: -4px;
+		left: 3px;
+		display: none;
+		color: #7c7c7c;
 	}
 }
 
@@ -134,7 +179,9 @@ body {
 					border-radius: 3px;
 			overflow: hidden;
 			position: relative;
-			-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+			-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 		}
 		&-filter {
 			width: 100%;
@@ -145,6 +192,33 @@ body {
 //			-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 //			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 //					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+		}
+		&-addplace {
+			display: block;
+			width: 155px;
+			height: 40px;
+			position: relative;
+			margin: 50px auto;
+			border-radius: 20px;
+//			border: 1px solid $act;
+			background: $act;
+			color: #fff;
+			line-height: 40px;
+			text-align: center;
+			-webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
+			   -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
+					box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
+			   -moz-transition: max-height .8s ease;
+			-webkit-transition: max-height .8s ease;
+			   -moz-transition: max-height .8s ease;
+				 -o-transition: max-height .8s ease;
+					transition: max-height .8s ease;
+			&:hover {
+				text-decoration: none;
+				-webkit-box-shadow: 0px rgba(0,0,0,0.2);
+				   -moz-box-shadow: 0px rgba(0,0,0,0.2);
+						box-shadow: 0px rgba(0,0,0,0.2);
+			}
 		}
 	}
 	&-r {
@@ -158,20 +232,31 @@ body {
 //		right: 0;
 //		margin-right: 10px;
 		font-size: 13px;
-		&-card {
-			width: inherit;
+		&-card-wrapper {
 			position: fixed;
-//			height: 94px;
-			height: 70px;
+			height: 90px;
 			top: 60px;
-			border-radius: 3px;
-			background: $win;
+			width: inherit;
 			z-index: 5;
+		}
+		&-card {
+			&-places {
+				margin-bottom: 10px;
+			}
+			position: relative;
+			width: inherit;
+//			position: fixed;
+			height: 90px;
+//			height: 70px;
+//			top: 60px;
+			border-radius: 3px;
+			background: rgb(255, 255, 255) !Important;
+//			z-index: 5;
 //			transition: all .2s ease;
 			background: $win;
-//			-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
-//			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
-//					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+			-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 			box-sizing: border-box;
 			padding: 14px;
 			&-close {
@@ -202,80 +287,75 @@ body {
 				div {
 					display: inline-block;
 				}
-				&-logo {
-					width: 13px;
-					height: 13px;
-					overflow: hidden;
-				}
+//				&-logo {
+//					width: 13px;
+//					height: 13px;
+//					overflow: hidden;
+//				}
 				&-sok {
-					color: red;
 					& #metro-logo {
 						fill: red;
 					}
 				}
 				&-zam {
-					color: green;
 					& #metro-logo {
 						fill: green;
 					}
 				}
 				&-ap {
-					color: blue;
 					& #metro-logo {
 						fill: blue;
 					}
 				}
 				&-fil {
-					color: deepskyblue;
 					& #metro-logo {
 						fill: deepskyblue;
 					}
 				}
 				&-kol {
-					color: brown;
 					& #metro-logo {
 						fill: brown;
 					}
 				}
 				&-kr {
-					color: orange;
 					& #metro-logo {
 						fill: orange;
 					}
 				}
 				&-tk {
-					color: purple;
 					& #metro-logo {
 						fill: purple;
 					}
 				}
 				&-kal {
-					color: #b8b800;
 					& #metro-logo {
-						fill: #b8b800;
+						fill: #FFCB31;
 					}
 				}
 				&-st {
-					color: dimgray;
 					& #metro-logo {
 						fill: dimgray;
 					}
 				}
 				&-lub {
-					color: #86d907;
 					& #metro-logo {
 						fill: #86d907;
 					}
 				}
 				&-kah {
-					color: darkcyan;
+					& #metro-logo {
+						fill: darkcyan;
+					}
 				}
 				&-but {
-					color: #66b2b6;
+					& #metro-logo {
+						fill: #66b2b6;
+					}
 				}
 				&-tim {
-					color: royalblue;
-					border-bottom: 1px dashed royalblue;
+					& #metro-logo {
+						fill: #011e66;
+					}
 				}
 			}
 			&-rating {
@@ -286,12 +366,12 @@ body {
 				height: 42px;
 				line-height: 42px;
 				text-align: center;
-				border-left: 2px solid $bg;
+//				border-left: 2px solid #a4ebd3;
 //				background: pink;
 				padding-left: 20px;
 				&-1 {
 					font-weight: 800;
-					font-size: 30px;
+					font-size: 24px;
 					color: #ffce06;
 					font-family: 'helvetica';
 				}
@@ -306,12 +386,65 @@ body {
 			}
 			&-create {
 				position: absolute;
-				right: 92px;
-				top: 14px;
+				right: 14px;
+				bottom: 10px;
 				cursor: pointer;
+				color: $act;
+				path {
+					fill: $act;
+				}
+				&-icon {
+					position: relative;
+					left: 2px;
+					top: 2px;
+				}
+				span:first-child {
+					width: 10px;
+				}
 				&:hover {
-					color: $act;
-					text-decoration: underline;
+//					text-decoration: underline;
+				}
+			}
+			&-share {
+				width: 16px;
+				height: 16px;
+				position: absolute;
+				bottom: 11px;
+				right: 96px;
+				path {
+					fill: #cecece;
+//					fill: blue;
+				}
+			}
+			&-revnum {
+				&-places {
+					right: 12px !important;
+				}
+				position: absolute;
+				bottom: 11px;
+				right: 120px;
+				display: inline-block;
+				height: 12px;
+				height: 16px;
+				path {
+					fill: #cecece;
+					position: absolute;
+				}
+				&-icon {
+					position: relative;
+					top: 2px;
+				}
+				&-num {
+					position: relative;
+//					top: 1px;
+					left: 2px;
+					color: #000;
+					width: 22px;
+					text-align: center;
+					font-family: 'helvetica';
+					color: #cecece;
+					font-weight: 400;
+					font-size: 14px;
 				}
 			}
 		}
@@ -320,8 +453,8 @@ body {
 			height: 10px;
 			background: $bg;
 			position: fixed;
-//			top: 154px;
-			top: 130px;
+			top: 150px;
+//			top: 130px;
 			z-index: 4;
 //			-webkit-box-shadow-bottom: 0px 0px 3px 0px rgba(0,0,0,0.14);
 //			   -moz-box-shadow-bottom: 0px 0px 3px 0px rgba(0,0,0,0.14);
@@ -348,8 +481,8 @@ body {
 		&-cont {
 			width: inherit;
 			position: relative;
-//			top: 104px;
-			top: 80px;
+			top: 100px;
+//			top: 80px;
 			&-review {
 				background: $win;
 				box-sizing: border-box;
@@ -366,12 +499,6 @@ body {
 						 -o-transition: max-height .8s ease;
 							transition: max-height .8s ease;
 				overflow: hidden;
-//				&:first-child {
-//					border-radius: 3px 3px 0 0;
-//				}
-//				&:last-child {
-//					border-radius: 0 0 3px 3px;
-//				}
 				img {
 					width: 100%;
 					display: block;
