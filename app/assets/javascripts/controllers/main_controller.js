@@ -70,6 +70,7 @@ Topdoner.controller('MainCtrl', ['$scope','places','$location','$rootScope','$st
 	}
 	
 	$scope.addPlaceAction = function() {
+    $scope.new_place = undefined
 		$('.lo-l-addplace').after('<span class="lo-l-addplace-tip">Выбирай на карте место, браток.</span>');
 		setTimeout(function(){
 			$('.lo-l-addplace-tip').fadeOut(1000);
