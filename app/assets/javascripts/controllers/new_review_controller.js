@@ -1,9 +1,9 @@
 Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootScope','$location','$http',function ($scope,$stateParams,places,$rootScope,$location,$http) {
 
 
-  $scope.rateFunction = function(rating) {
-   console.log('Rating selected - ' + rating);
-  };
+//  $scope.rateFunction = function(rating) {
+////   console.log('Rating selected - ' + rating);
+//  };
   $scope.place = places.getPlace($stateParams.id)
   $scope.new_review = {
     place_id: $stateParams.id,

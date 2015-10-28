@@ -204,15 +204,25 @@
 		<div class="add-review" ng-init="dropzone()">
 			<%= form_for Review.new do |f| %>
 				<%= f.text_area :body, placeholder: 'Дело было так...',"ng-model" => "new_review.body", "class" => "add-review-body" %>
-				
-				<p>мясо
-				<div class="star-rating" star-rating rating-value="new_review.meat" data-max="10" on-rating-selected="rateFunction(rating)"></div>
-				
+				<div class="add-review-rate">
+					<div class="add-review-rate-titles">
+						<div class="add-review-rate-titles-item">Мясо</div>
+						<div class="add-review-rate-titles-item">Овощи</div>
+						<div class="add-review-rate-titles-item">Сервис</div>
+						<div class="add-review-rate-titles-item">Санитария</div>
+					</div>
+					<div class="add-review-rate-stars">
+						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.meat" data-max="10" on-rating-selected=""></div>
+						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.vegetables" data-max="10" on-rating-selected=""></div>
+						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.service" data-max="10" on-rating-selected=""></div>
+						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.sanitation" data-max="10" on-rating-selected=""></div>
+					</div>
+				</div>
+				<%= f.number_field :meat, min: 1,max: 10,"ng-model" => "new_review.meat", "class" => "hidden" %>
+				<%= f.number_field :vegetables, min: 1,max: 10,"ng-model" => "new_review.vegetables", "class" => "hidden" %>
+				<%= f.number_field :service, min: 1,max: 10,"ng-model" => "new_review.service", "class" => "hidden" %></p>
+				<%= f.number_field :sanitation, min: 1,max: 10,"ng-model" => "new_review.sanitation", "class" => "hidden" %></p>
 
-				<%= f.number_field :meat, min: 1,max: 10,"ng-model" => "new_review.meat" %></p>
-				<p>овощи<%= f.number_field :vegetables, min: 1,max: 10,"ng-model" => "new_review.vegetables" %></p>
-				<p>обслуживание<%= f.number_field :service, min: 1,max: 10,"ng-model" => "new_review.service" %></p>
-				<p>санитария<%= f.number_field :sanitation, min: 1,max: 10,"ng-model" => "new_review.sanitation" %></p>
 				<p><%= f.text_field :images_id, "ng-model" => "new_review.images_id",type: 'hidden' %></p>
 				<p><%= f.text_field :place_id, "ng-model" => "place.properties.id",type: 'hidden' %></p>
 				<p>Цена: <%= f.text_field :min_price,"ng-model" => "new_review.min_price" %> – <%= f.text_field :max_price,"ng-model" => "new_review.max_price" %> руб</p>
