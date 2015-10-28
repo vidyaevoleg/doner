@@ -2,7 +2,8 @@
 @import "http://webfonts.ru/import/ralewayc.css";
 
 
-$bg: rgb(248, 248, 248);
+//$bg: rgb(248, 248, 248);
+$bg: rgb(255, 255, 255);
 $win: #fff;
 $act: rgb(240,67,61);
 
@@ -36,30 +37,32 @@ body {
 	width: 100%;
 	height: 100%;
 	position: fixed;
-	background: rgba(0,0,0,.8);
-	opacity: 0;
+	background: rgba(0, 0, 0, 0.85);
 	z-index: 10;
 }
 
 .popup {
-	width: 800px;
-	height: 400px;
-	position: fixed;
-	top: 0; left: 0; right: 0; bottom: 0;
-	margin: auto;
-	background: #fff;
-	box-sizing: border-box;
-	padding: 20px;
-	z-index: 11;
-	border-radius: 3px;
+	&-about {
+		max-width: 800px;
+		width: 90%;
+		position: relative;
+		height: auto;
+		z-index: 11;
+		top: 20px;
+		margin: 0 auto 20px;
+		background: #fff;
+		border-radius: 2px;
+		padding: 30px;
+		box-sizing: border-box;
+	}
 	&-close {
 		position: absolute;
 		top: 20px;
-		width: 14px;
-		height: 14px;
+		width: 18px;
+		height: 18px;
 		text-align: center;
 		right: 30px;
-		font-size: 16px;
+		font-size: 18px;
 		color: #969696;
 		cursor: pointer;
 		&:hover {
@@ -89,12 +92,17 @@ body {
 			box-sizing: border-box;
 //			border: 5px solid $act;
 //			border-radius: 3px;
-			color: rgb(240,67,61);
 			font-weight: 900;
 			font-style: italic;
 //			line-height: 40px;
 			padding-top: 15px;
 			font-size: 25px;
+			a {
+				color: rgb(240,67,61);
+				&:hover {
+					text-decoration: none;
+				}
+			}
 			& span {
 				font-size: 10px;
 				top: -10px;
@@ -123,18 +131,18 @@ body {
 .what {
 	position: fixed;
 	bottom: 10px;
-	left: 8px;
-	width: 100px;
+	right: 8px;
+	width: 20px;
 	height: 16px;
 	cursor: pointer;
 	path {
 		fill: #7c7c7c;
 	}
 	&:hover {
-		& .what-tip {
-			display: inline-block;
-			color: $act;
-		}
+//		& .what-tip {
+//			display: inline-block;
+//			color: $act;
+//		}
 		path {
 			fill: $act;
 		}
@@ -172,6 +180,7 @@ body {
 			display: block;
 			background: #b0b0b0;
 			border-radius: 3px;
+			box-sizing: border-box;
 //			overflow: hidden !Important;
 			   -moz-border-radius: 3px;
 			-webkit-border-radius: 3px;
@@ -194,30 +203,35 @@ body {
 //					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 		}
 		&-addplace {
-			display: block;
-			width: 155px;
+			display: inline-block;
+//			width: 155px;
+			font-weight: 500;
 			height: 40px;
 			position: relative;
-			margin: 50px auto;
-			border-radius: 20px;
+			margin-top: 10px;
+//			border-radius: 2px;
 //			border: 1px solid $act;
-			background: $act;
-			color: #fff;
+//			background: $act;
+//			color: #fff;
+			color: $act;
 			line-height: 40px;
 			text-align: center;
-			-webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
-			   -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
-					box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
-			   -moz-transition: max-height .8s ease;
-			-webkit-transition: max-height .8s ease;
-			   -moz-transition: max-height .8s ease;
-				 -o-transition: max-height .8s ease;
-					transition: max-height .8s ease;
+//			   -moz-transition: max-height .8s ease;
+//			-webkit-transition: max-height .8s ease;
+//			   -moz-transition: max-height .8s ease;
+//				 -o-transition: max-height .8s ease;
+//					transition: max-height .8s ease;
 			&:hover {
 				text-decoration: none;
-				-webkit-box-shadow: 0px rgba(0,0,0,0.2);
-				   -moz-box-shadow: 0px rgba(0,0,0,0.2);
-						box-shadow: 0px rgba(0,0,0,0.2);
+//				-webkit-box-shadow: 0px rgba(0,0,0,0.2);
+//				   -moz-box-shadow: 0px rgba(0,0,0,0.2);
+//						box-shadow: 0px rgba(0,0,0,0.2);
+			}
+			&-tip {
+				margin-left: 30px;
+				position: relative;
+				font-size: 14px;
+				color: #797979;
 			}
 		}
 	}
@@ -237,26 +251,30 @@ body {
 			height: 90px;
 			top: 60px;
 			width: inherit;
-			z-index: 5;
+			z-index: 6;
 		}
 		&-card {
 			&-places {
-				margin-bottom: 10px;
+				cursor: pointer;
 			}
 			position: relative;
+			margin-bottom: 10px;
 			width: inherit;
 //			position: fixed;
 			height: 90px;
 //			height: 70px;
 //			top: 60px;
 			border-radius: 3px;
-			background: rgb(255, 255, 255) !Important;
+//			background: rgb(255, 255, 255) !Important;
+//			background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiNkZGQiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=");
+			background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiNlZWUiIHN0cm9rZS13aWR0aD0iMiI+PC9wYXRoPgo8L3N2Zz4=");
+//			background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiNlZWUiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=");
 //			z-index: 5;
 //			transition: all .2s ease;
-			background: $win;
-			-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
-			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
-					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+//			background: $win;
+//			-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+//			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+//					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 			box-sizing: border-box;
 			padding: 14px;
 			&-close {
@@ -281,6 +299,7 @@ body {
 			}
 			&-metro {
 				margin-top: 6px;
+				display: inline-block;
 				font-size: 13px;
 				font-weight: 500;
 				color: #808080 !important;
@@ -479,19 +498,24 @@ body {
 			z-index: 5;
 		}
 		&-cont {
+			&-fix {
+				top: 100px;
+			}
 			width: inherit;
 			position: relative;
-			top: 100px;
+//			top: 100px;
 //			top: 80px;
 			&-review {
 				background: $win;
 				box-sizing: border-box;
+				border-top: 1px solid #eee;
 				padding: 13px 10px;
 				position: relative;
 				margin-bottom: 10px;
-				border-radius: 3px;
+//				border-radius: 3px;
 				max-height: 90px;
 				cursor: pointer;
+//				padding: none !Important;
 //				transition: height .2s ease;
 					   -moz-transition: max-height .8s ease;
 					-webkit-transition: max-height .8s ease;
@@ -520,7 +544,7 @@ body {
 						color: #000;
 					}
 					& .lo-r-cont-review-rating {
-						color: #ce1378;
+						color: #ffce06;
 					}
 				}
 				&-title {
@@ -535,7 +559,7 @@ body {
 					width: 40px;
 					text-align: right;
 //					background: #eee;
-					color: #a7a7a7;
+					color: #ffce06;
 					font-weight: 800;
 					font-size: 15px;
 				}
@@ -581,6 +605,77 @@ body {
 			}
 		}
 	}
+}
+
+.add-review {
+	width: inherit;
+	position: relative;
+	margin-top: 10px;
+//	border-radius: 3px;
+	background: #fff;
+//	-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+//			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+//					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+	box-sizing: border-box;
+	padding: 14px 14px 14px 14px;
+	&-body {
+		width: 100%;
+		height: 100px;
+		resize: none;
+		border: 1px solid #fff;
+		box-sizing: border-box;
+		padding: 8px;
+		font-size: 13px;
+		-webkit-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
+		   -moz-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
+				box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
+		border-radius: 3px;
+		&:focus {
+			outline: none;
+			border: 1px solid #959595;
+		}
+	}
+	&-submit {
+		color: $act;
+//		width: 90px;
+		font-size: 14px;
+		font-weight: 500;
+		height: 30px;
+//		color: #fff;
+//		float: right;
+		border: none;
+		background: none;
+//		border-radius: 2px;
+		cursor: pointer;
+		&:focus {
+			outline: none;
+		}
+		&-wrap {
+			text-align: right;
+		}
+	}
+}
+
+#media-dropzone {
+	width: 100%;
+	height: 60px !important;
+	border: none;
+	border-radius: 2px;
+	position: relative;
+	margin-bottom: 10px;
+	background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiNlZWUiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=");
+	box-sizing: border-box;
+	border-top: 1px solid #fff;
+	&:hover {
+		border: 1px dashed $act;
+		.dz-message {
+			color: $act;
+		}
+	}
+}
+.dz-message {
+	height: 20px !important;
+	color: #6a6a6a;
 }
 
 
@@ -629,4 +724,28 @@ ya-map {
 	width: 500px;
 	height: 400px;
 	position: relative;
+}
+
+
+.rating{
+  color: #a9a9a9;
+  margin: 0;
+  padding: 0;
+}
+
+ul.rating {
+  display: inline-block;
+}
+
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.rating .filled {
+  color: #21568b;
 }

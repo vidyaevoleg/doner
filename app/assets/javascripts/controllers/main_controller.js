@@ -5,7 +5,7 @@ Topdoner.controller('MainCtrl', ['$scope','places','$location','$rootScope','$st
     $location.path('/places/'+place.properties.id);    
   };	
 	
-	$rootScope.getMetroColor = function(place) {
+	$rootScope.getMetroColor = function(station) {
     if (place){
       var m = [
         ['Бульвар Рокоссовского','Черкизовская','Преображенская площадь','Сокольники','Красносельская','Комсомольская','Красные ворота','Чистые пруды','Лубянка','Охотный ряд','Библиотека им. Ленина','Кропоткинская','Парк культуры','Фрунзенская','Спортивная','Воробьёвы горы','Университет','Проспект Вернадского','Юго-Западная','Тропарёво'],
@@ -24,10 +24,10 @@ Topdoner.controller('MainCtrl', ['$scope','places','$location','$rootScope','$st
         ['Тимирязевская','Улица Милашенкова','Телецентр','Улица Академика Королёва','Выставочный центр','Улица Сергея Эйзенштейна']
       ],
       mm = ['sok', 'zam', 'ap', 'fil', 'kol', 'kr', 'tk', 'kal', 'st', 'lub', 'kah', 'but', 'tim'];
-
+      console.log(station);
       for (var i=0; i<12; i++) {
         for (var j=0; j<m[i].length; j++) {
-          if (place.properties.metro === m[i][j]) {
+          if (station === m[i][j]) {
   //          console.log('lo-r-card-metro-'+mm[i]);
             return 'lo-r-card-metro-'+mm[i];
           }
@@ -63,4 +63,39 @@ Topdoner.controller('MainCtrl', ['$scope','places','$location','$rootScope','$st
           });
       });
     };
+	
+	
+	$scope.fixDropzone = function() {
+		$('.dz-message').html('Перетащи фото или кликни');
+	}
+	
+	$scope.addPlaceAction = function() {
+		$('.lo-l-addplace').after('<span class="lo-l-addplace-tip">Выбирай на карте место, браток.</span>');
+		setTimeout(function(){
+			$('.lo-l-addplace-tip').fadeOut(1000);
+		}, 1000);
+	}
+	
+	$scope.opn = function(what) {
+		what.css('opacity', 0)
+			.removeClass('hidden')
+			.fadeTo(200,1);
+	}
+	$scope.cls = function(what){
+		what.fadeTo(200,0);
+		setTimeout(function(){
+			what.addClass('hidden');
+		}, 210);
+	}
+	
+	$scope.openAbout = function() {
+		$scope.opn($('.prnj'));
+		$scope.opn($('.popup-about'));
+		$('.lo-r-cont').css('position', 'fixed');
+	}
+	$scope.closePopup = function() {
+		$scope.cls($('.popup'));
+		$scope.cls($('.prnj'));
+		$('.lo-r-cont').css('position', 'relative');
+	}
 }]);
