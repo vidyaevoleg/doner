@@ -3,11 +3,9 @@
 		<div class="cont-head-logo">
 			<a ng-href="#/home">DONER.io</a>
 		</div>
-<!--
-		<a class="cont-head-toplist" ng-class="place ? '' : 'active'" ng-href="#/home">
-			&#9733;
-		</a>
--->
+		<div class="cont-head-toplist" ng-click="openPopup('.popup-login')">
+			login
+		</div>
 	</div>
 	
 	<div class="lo">
@@ -25,7 +23,7 @@
 		<ui-view></ui-view>
 	</div>
 </div>
-<div class="what" ng-click="openAbout()">
+<div class="what" ng-click="openPopup('.popup-about')">
 	<span>
 		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
 		<path id="help-icon" d="M259.462,462c-24.864,0-45.03-20.166-45.03-45.039c0-24.86,20.166-45.02,45.03-45.02

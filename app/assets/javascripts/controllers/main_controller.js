@@ -89,14 +89,16 @@ Topdoner.controller('MainCtrl', ['$scope','places','$location','$rootScope','$st
 		}, 210);
 	}
 	
-	$scope.openAbout = function() {
+	$scope.openPopup = function(popup_sel) {
 		$scope.opn($('.prnj'));
-		$scope.opn($('.popup-about'));
+		$scope.opn($(popup_sel));
 		$('.lo-r-cont').css('position', 'fixed');
+		$('.cont').addClass('blured');
 	}
 	$scope.closePopup = function() {
 		$scope.cls($('.popup'));
 		$scope.cls($('.prnj'));
 		$('.lo-r-cont').css('position', 'relative');
+		$('.cont').removeClass('blured');
 	}
 }]);
