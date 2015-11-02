@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  namespace :users do
+    get 'omniauth_callbacks/facebook'
+    get 'omniauth_callbacks/vkontakte'
+  end
+
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root 'home#index'
   get 'home/manage'
   get 'home/index'

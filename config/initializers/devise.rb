@@ -142,8 +142,10 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 8..72
-
+  config.password_length = 8..72             
+  YAML.load_file(Rails.root.join("config", "oauth.yml"))[Rails.env].each do |key, value|
+    config.omniauth key, value[:app_id], value[:app_secret], (value[:params] || {})
+  end 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.

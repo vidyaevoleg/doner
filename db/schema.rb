@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026202405) do
+ActiveRecord::Schema.define(version: 20151031114509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,10 @@ ActiveRecord::Schema.define(version: 20151026202405) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "city"
+    t.integer  "user_id"
   end
+
+  add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "place_id"
@@ -46,9 +49,13 @@ ActiveRecord::Schema.define(version: 20151026202405) do
     t.string   "min_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "total"
+    t.string   "title"
+    t.integer  "user_id"
   end
 
   add_index "reviews", ["place_id"], name: "index_reviews_on_place_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -63,10 +70,16 @@ ActiveRecord::Schema.define(version: 20151026202405) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "username"
+    t.string   "nickname"
+    t.string   "url"
+    t.string   "provider"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "places", "users"
   add_foreign_key "reviews", "places"
+  add_foreign_key "reviews", "users"
 end

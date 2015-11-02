@@ -14,7 +14,9 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
     sanitation: 1,
     images_id: '',
     min_price: '',
-    max_price: ''
+    max_price: '',
+    total: 1,
+    title: ''
   }
   $scope.dropzone = function(){
     var mediaDropzone = new Dropzone("#media-dropzone")

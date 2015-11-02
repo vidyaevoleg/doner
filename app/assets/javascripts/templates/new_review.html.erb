@@ -25,6 +25,7 @@
 	
 	<div class="add-review" ng-init="dropzone()">
 			<form>
+				<input name="total" placeholder="Заебись или не очень?" ng-model="new_review.title" class="add-review-title"></textarea>
 				<textarea name="body" placeholder="Дело было так..." ng-model="new_review.body" class="add-review-body"></textarea>
 				<div class="add-review-rate">
 					<div class="add-review-rate-titles">
@@ -32,19 +33,22 @@
 						<div class="add-review-rate-titles-item">Овощи</div>
 						<div class="add-review-rate-titles-item">Сервис</div>
 						<div class="add-review-rate-titles-item">Санитария</div>
+						<div class="add-review-rate-titles-item">Ну а в общем как?</div>
+					
 					</div>
 					<div class="add-review-rate-stars">
 						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.meat" data-max="10" on-rating-selected=""></div>
 						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.vegetables" data-max="10" on-rating-selected=""></div>
 						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.service" data-max="10" on-rating-selected=""></div>
 						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.sanitation" data-max="10" on-rating-selected=""></div>
+						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.total" data-max="10" on-rating-selected=""></div>
 					</div>
 				</div>
 				<input name="meat" ng-model="new_review.meat" class="hidden">
 				<input name="vegetables" ng-model="new_review.vegetables" class="hidden">
 				<input name="service" ng-model="new_review.service" class="hidden">
 				<input name="sanitation" ng-model="new_review.sanitation" class="hidden">
-				
+				<input name="total" ng-model="new_review.total" class="hidden">
 				<input name="images_id" ng-model="new_review.images_id", type="hidden">
 				<input name="place_id" ng-model="place.properties.id", type="hidden">
 				<p>Цена: 

@@ -1,11 +1,12 @@
 class Review < ActiveRecord::Base
   belongs_to :place
+  belongs_to :user
   has_many :images, as: :imaginable
 
   attr_reader :images_id
 
 	def rating
-		attrs = [self.vegetables,self.meat,self.service,self.sanitation].compact
+		attrs = [self.vegetables,self.meat,self.service,self.sanitation,self.total].compact
 		if attrs.count > 0
 			avarage = (attrs.inject(0){|sum,x| sum + x}/attrs.count).to_f 
 		else
@@ -24,6 +25,8 @@ class Review < ActiveRecord::Base
 		json[:min_price] = min_price
 		json[:max_price] = max_price
 		json[:body] = body
+		json[:title] = title
+		json[:total] = total
 		json[:author] = author
 		json[:date] = created_at
 		json[:images] = images.map {|i| i.file.url} if images

@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
 gem 'angular-rails-templates'
 gem 'mini_magick'
 gem 'carrierwave'

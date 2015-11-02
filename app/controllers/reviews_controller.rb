@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
 	private
 
 	def review_params
-		params.require(:review).permit(:body,:author,:max_price,:min_price,:rating,:vegetables,:meat,:sanitation,:service,:place_id)
+		params.require(:review).permit(:body,:total,:title,:author,:max_price,:min_price,:rating,:vegetables,:meat,:sanitation,:service,:place_id)
 	end
 
 	def set_place

@@ -1,0 +1,11 @@
+development: &defaults
+  :vkontakte:
+    :app_id: 5131636
+    :app_secret: KisJT49Ykm9sO7Lw5azl
+    :adapter: :Vkontakte
+    :provider_ignores_state: true
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

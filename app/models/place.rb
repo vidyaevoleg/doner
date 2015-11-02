@@ -1,6 +1,7 @@
 class Place < ActiveRecord::Base
   has_many :images, as: :imaginable
   has_many :reviews
+  belongs_to :user
   serialize :coordinates
   before_create :cut_city
 
