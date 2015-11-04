@@ -4,6 +4,14 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
 //  $scope.rateFunction = function(rating) {
 ////   console.log('Rating selected - ' + rating);
 //  };
+  $scope.signIn = function(){
+    if ($rootScope.current_user){
+      return true
+    } else {
+      // вернуться назад нужно
+      $rootScope.openPopup('.popup-login')
+    }
+  }
   $scope.place = places.getPlace($stateParams.id)
   $scope.new_review = {
     place_id: $stateParams.id,
@@ -52,7 +60,6 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
     var review = $scope.new_review
     if (reviewValid(review)){
       $http.post('/reviews',{review: review}).success(function(data){
-        console.log('allright')
         $location.path('/places/'+ $stateParams.id)
       }).error(function(data,status){
         alert('error')

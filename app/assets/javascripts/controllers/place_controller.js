@@ -8,14 +8,13 @@ Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',
   
   $scope.current_review = [];
   $scope.makeReviewCurrent = function(review){
-//    $scope.current_review = review;
-	$scope.current_review.push(review.id);
+	 $scope.current_review.push(review.id);
   }
   
   $scope.openReview = function(review) {
-	if ($scope.current_review.indexOf(review.id) !== -1) {
-		return 'ext'
-	}
+  	if ($scope.current_review.indexOf(review.id) !== -1) {
+  		return 'ext'
+  	}
   }
   
 	$scope.isReviewCurrent = function(review) {

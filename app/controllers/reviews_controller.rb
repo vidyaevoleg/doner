@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 	before_action :set_place, only: :create
 
 	def create
-		@review = Review.create(review_params)
+		@review = current_user.review.create(review_params)
 		images_id = params[:review][:images_id].to_s.split(',')
 		if images_id.size>0
 			images_id.map do |id|

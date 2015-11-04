@@ -3,8 +3,8 @@ Rails.application.routes.draw do
     get 'omniauth_callbacks/facebook'
     get 'omniauth_callbacks/vkontakte'
   end
-
-
+  get '/get_current_user', to: 'application#get_current_user'
+  get '/logout', to: 'application#logout'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root 'home#index'
   get 'home/manage'

@@ -5,7 +5,7 @@ class PlacesController < ApplicationController
 	end
 
 	def create
-		@place = Place.create(place_params)
+		@place = current_user.places.create(place_params)
 		if @place.save
 			render json: @place.to_nice_json
 		end

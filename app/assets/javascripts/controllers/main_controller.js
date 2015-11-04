@@ -89,7 +89,7 @@ Topdoner.controller('MainCtrl', ['$scope','places','$location','$rootScope','$st
 		}, 210);
 	}
 	
-	$scope.openPopup = function(popup_sel) {
+	$rootScope.openPopup = function(popup_sel) {
 		$scope.opn($('.prnj'));
 		$scope.opn($(popup_sel));
 		$('.lo-r-cont').css('position', 'fixed');
