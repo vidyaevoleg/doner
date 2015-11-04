@@ -15,20 +15,21 @@ class Review < ActiveRecord::Base
 	end
 	
 	def to_nice_json
-		json={}
-		json[:id] = id
-		json[:vegetables] = vegetables
-		json[:meat] = meat
-		json[:service] = service
-		json[:sanitation] = sanitation
-		json[:rating] = rating
-		json[:min_price] = min_price
-		json[:max_price] = max_price
-		json[:body] = body
-		json[:title] = title
-		json[:total] = total
-		json[:author] = author
-		json[:date] = created_at
+		json={
+			id: id,
+			vegetables: vegetables,
+			meat: meat,
+			service: service,
+			sanitation: sanitation,
+			rating: rating,
+			min_price: min_price,
+			max_price: max_price,
+			body: body,
+			title: title,
+			total: total,
+			author: user,
+			date: created_at
+		}
 		json[:images] = images.map {|i| i.file.url} if images
 		json
 	end
