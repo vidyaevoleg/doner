@@ -17,7 +17,6 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
   $scope.new_review = {
     place_id: $stateParams.id,
     meat: 1,
-    user_id: '',
     body: '',
     vegetables: 1,
     service: 1,
