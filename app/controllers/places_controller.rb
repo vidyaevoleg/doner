@@ -1,10 +1,11 @@
 class PlacesController < ApplicationController
-
+	skip_before_filter :verify_authenticity_token, only: :create
 	def new
 		@place = Place.new
 	end
 
 	def create
+		binding.pry
 		@place = current_user.places.create(place_params)
 		if @place.save
 			render json: @place.to_nice_json
