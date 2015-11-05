@@ -4,15 +4,16 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
 //  $scope.rateFunction = function(rating) {
 ////   console.log('Rating selected - ' + rating);
 //  };
+
+  $scope.place = places.getPlace($stateParams.id)
   $scope.signIn = function(){
     if ($rootScope.current_user){
       return true
     } else {
-      // вернуться назад нужно
+      $location.path('/places/'+$stateParams.id); 
       $rootScope.openPopup('.popup-login')
     }
-  }
-  $scope.place = places.getPlace($stateParams.id)
+  }  
   $scope.new_review = {
     place_id: $stateParams.id,
     meat: 1,
@@ -26,6 +27,7 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
     total: 1,
     title: ''
   }
+
   $scope.dropzone = function(){
     var mediaDropzone = new Dropzone("#media-dropzone")
     mediaDropzone.options.dropzone = {

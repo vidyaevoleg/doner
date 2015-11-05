@@ -57,6 +57,9 @@
 				<!--рейтинг - {{review.rating}}; {{review.min_price}}-{{review.max_price}} rub-->
 				{{ review.title }}
 			</div>
+			<div class="lo-r-cont-review-author">
+				<h2>{{review.author.username}}</h2>
+			</div>
 			<div class="lo-r-cont-review-rating">{{review.rating}}</div>
 			<div class="lo-r-cont-review-body">
 				<div ng-show="!isReviewCurrent(review)">
