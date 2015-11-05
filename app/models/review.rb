@@ -2,6 +2,7 @@ class Review < ActiveRecord::Base
   belongs_to :place
   belongs_to :user
   has_many :images, as: :imaginable
+  before_save :n_to_br
 
   attr_reader :images_id
 
@@ -14,6 +15,10 @@ class Review < ActiveRecord::Base
 		end
 	end
 	
+	def n_to_br
+		self.body = self.body.gsub(/\n/, '<br>')
+	end
+
 	def to_nice_json
 		json={
 			id: id,
@@ -24,7 +29,7 @@ class Review < ActiveRecord::Base
 			rating: rating,
 			min_price: min_price,
 			max_price: max_price,
-			body: body,
+			body: body.html_safe,
 			title: title,
 			total: total,
 			author: user,

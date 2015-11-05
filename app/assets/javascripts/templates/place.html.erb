@@ -64,7 +64,7 @@
 <!--									<span class="lo-r-cont-review-body-open">Читать</span>-->
 				</div>
 				<div ng-show="isReviewCurrent(review)">
-					{{ review.body}}
+					<p ng-bind-html="review.body"></p>
 					<!-- <span style="color: blue;cursor: pointer;" ng-click="closeReview()"> закрыть </span> -->
 				</div>
 
