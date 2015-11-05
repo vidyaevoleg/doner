@@ -13,12 +13,11 @@
 				<a ng-href="#/home"></a>
 			</div>
 			<div class="cont-head-nav">
-				<div class="cont-head-nav-item" ng-hide="current_user" ng-click="openPopup('.popup-login')">
-					login
+				<div class="cont-head-nav-login" ng-hide="current_user" ng-click="openPopup('.popup-login')">
+					Войти
 				</div>
 				<div class="cont-head-nav-user" ng-show="current_user">
-					<div class="cont-head-nav-user-img">
-						<img src="{{current_user.image_url}}"/>
+					<div class="cont-head-nav-user-img" style="background-image: url({{current_user.image_url}})">
 					</div>
 					<a href="{{current_user.link}}" class="cont-head-nav-user-name" target="_blank">{{ current_user.username }}</a>
 					

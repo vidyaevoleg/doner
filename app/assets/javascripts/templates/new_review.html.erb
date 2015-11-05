@@ -25,15 +25,17 @@
 	
 	<div class="add-review" ng-init="dropzone()">
 			<form>
-				<input name="total" placeholder="Заебись или не очень?" ng-model="new_review.title" class="add-review-title"></textarea>
+				<input name="total" placeholder="Заголовок" ng-model="new_review.title" class="add-review-title"></textarea>
 				<textarea name="body" placeholder="Дело было так..." ng-model="new_review.body" class="add-review-body"></textarea>
+				<p>Цена: 
+					<input name="min_price" ng-model="new_review.min_price" class="add-review-price"> – <input name="max_price" ng-model="new_review.max_price" class="add-review-price"> руб</p>
 				<div class="add-review-rate">
 					<div class="add-review-rate-titles">
 						<div class="add-review-rate-titles-item">Мясо</div>
 						<div class="add-review-rate-titles-item">Овощи</div>
 						<div class="add-review-rate-titles-item">Сервис</div>
 						<div class="add-review-rate-titles-item">Санитария</div>
-						<div class="add-review-rate-titles-item">Ну а в общем как?</div>
+						<div class="add-review-rate-titles-item">ИТОГ</div>
 					
 					</div>
 					<div class="add-review-rate-stars">
@@ -51,8 +53,6 @@
 				<input name="total" ng-model="new_review.total" class="hidden">
 				<input name="images_id" ng-model="new_review.images_id", type="hidden">
 				<input name="place_id" ng-model="place.properties.id", type="hidden">
-				<p>Цена: 
-					<input name="min_price" ng-model="new_review.min_price"> – <input name="max_price" ng-model="new_review.max_price"> руб</p>
 			</form>
 		<div class="dropzone-wrap" ng-init="fixDropzone()">
 			<form action="/images" id="media-dropzone" class="dropzone" enctype="multipart/form-data">

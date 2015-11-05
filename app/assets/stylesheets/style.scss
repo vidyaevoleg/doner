@@ -1,6 +1,55 @@
 //@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,900&subset=latin,cyrillic-ext);
 //@import "http://webfonts.ru/import/ralewayc.css";
 
+@font-face {
+    font-family: 'Raleway';
+    src: local('Raleway Light'), local('Raleway-Light'), url('ralewaylight.woff2') format('woff2'), url('ralewaylight.woff') format('woff'), url('fonts/ralewaylight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: local('Raleway Regular'), local('Raleway-Regular'), url('fonts/ralewayregular.woff2') format('woff2'), url('ralewayregular.woff') format('woff'), url('ralewayregular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: local('Raleway Medium'), local('Raleway-Medium'), url('fonts/ralewaymedium.woff2') format('woff2'), url('ralewaymedium.woff') format('woff'), url('ralewaymedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: local('Raleway SemiBold'), local('Raleway-SemiBold'), url('fonts/ralewaysemibold.woff2') format('woff2'), url('ralewaysemibold.woff') format('woff'), url('ralewaysemibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: local('Raleway Bold'), local('Raleway-Bold'), url('fonts/ralewaybold.woff2') format('woff2'), url('ralewaybold.woff') format('woff'), url('ralewaybold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: local('Raleway ExtraBold'), local('Raleway-ExtraBold'), url('fonts/ralewayextrabold.woff2') format('woff2'), url('ralewayextrabold.woff') format('woff'), url('ralewayextrabold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: local('Raleway Black'), local('Raleway-Black'), url('fonts/ralewayblack.woff2') format('woff2'), url('ralewayblack.woff') format('woff'), url('ralewayblack.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
 
 //$bg: rgb(248, 248, 248);
 $bg: rgb(255, 255, 255);
@@ -30,7 +79,7 @@ body {
 	margin: 0;
 	background: $bg;
 //	font-family: 'Roboto', sans-serif;
-	font-family: 'Raleway Cyr';
+	font-family: 'Raleway';
 }
 
 .prnj {
@@ -131,8 +180,16 @@ body {
 			right: 10px;
 			top: 0;
 			display: inline-block;
-//			background: pink;
 			vertical-align: top;
+			&-login {
+				display: inline-block;
+				height: 30px;
+				line-height: 30px;
+				top: 15px;
+				position: absolute;
+				right: 0;
+				cursor: pointer;
+			}
 			&-user {
 //				width: 300px;
 				position: absolute;
@@ -146,6 +203,9 @@ body {
 					display: inline-block;
 					overflow: hidden;
 					border-radius: 100%;
+//					background-size: contain;
+					background-position: center;
+					background-repeat: no-repeat;
 				}
 				&-name {
 					position: relative;
@@ -155,8 +215,12 @@ body {
 					line-height: 30px;
 //					top: -10px;
 					vertical-align: top;
-					font-weight: bold;
-//					margin-left: 8px;
+					font-weight: 800;
+					margin-left: 8px;
+					color: #000;
+					&:hover {
+						text-decoration: none;
+					}
 				}
 				&-exit {
 					display: inline-block;
@@ -165,6 +229,7 @@ body {
 					vertical-align: top;
 					font-size: 12px;
 					margin-left: 10px;
+					
 				}
 			}
 		}
@@ -345,7 +410,7 @@ body {
 				display: inline-block;
 				font-size: 13px;
 				font-weight: 500;
-				color: #808080 !important;
+				color: #575757 !important;
 				div {
 					display: inline-block;
 				}
@@ -609,7 +674,7 @@ body {
 				&-body {
 					position: relative;
 					margin-top: 8px;
-					font-weight: normal;
+					font-weight: 400;
 					font-size: 11px;
 //					font-family: 'courier new';
 					color: #a7a7a7;
@@ -621,6 +686,10 @@ body {
 							text-decoration: underline;
 						}
 					}
+				}
+				&-author {
+					text-align: right;
+					font-size: 12px;
 				}
 			}
 		}
@@ -651,9 +720,10 @@ body {
 }
 
 .add-review {
+	font-weight: 500;
 	width: inherit;
 	position: relative;
-	margin-top: 10px;
+//	margin-top: 10px;
 //	border-radius: 3px;
 	background: #fff;
 //	-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
@@ -661,21 +731,39 @@ body {
 //					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 	box-sizing: border-box;
 	padding: 14px 14px 14px 14px;
-	&-body {
+	&-title {
+		border: none;
 		width: 100%;
-		height: 100px;
-		resize: none;
-		border: 1px solid #fff;
+		height: 40px;
+		line-height: 40px;
 		box-sizing: border-box;
-		padding: 8px;
-		font-size: 13px;
-		-webkit-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
-		   -moz-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
-				box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
-		border-radius: 3px;
+		padding-left: 10px;
+		background: #f5f5f5;
+		border-radius: 2px;
+		font-weight: 800;
+		font-size: 14px;
+		position: relative;
+		margin-bottom: 10px;
 		&:focus {
 			outline: none;
-			border: 1px solid #959595;
+		}
+	}
+	&-body {
+		width: 100%;
+		height: 150px;
+		resize: none;
+		padding: 14px 10px;
+		background: #f5f5f5;
+		border-radius: 2px;
+		border: none;
+		box-sizing: border-box;
+		font-size: 13px;
+//		-webkit-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
+//		   -moz-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
+//				box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
+		&:focus {
+			outline: none;
+//			border: 1px solid #959595;
 		}
 	}
 	&-rate {
@@ -696,6 +784,10 @@ body {
 				text-align: right;
 				height: 34px;
 //				line-height: 42px;
+				&:last-child {
+					font-weight: 900;
+					margin-top: 10px;
+				}
 			}
 		}
 		&-stars {
@@ -708,7 +800,23 @@ body {
 //				margin-top: -4px;
 				height: 34px;
 //				margin-bottom: 8px;
+				&:last-child {
+					margin-top: 10px;
+				}
 			}
+		}
+	}
+	&-price {
+//		padding-left: 10px;
+		text-align: center;
+		border: none;
+		background: #f5f5f5;
+		border-radius: 2px;
+		width: 40px;
+		height: 20px;
+		line-height: 20px;
+		&:focus {
+			outline: none;
 		}
 	}
 	&-submit {

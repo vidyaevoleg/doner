@@ -54,11 +54,8 @@
 		<!--<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" ng-click="makeReviewCurrent(review)">-->
 		<div class="lo-r-cont-review" ng-class="openReview(review)" ng-click="makeReviewCurrent(review)">
 			<div class="lo-r-cont-review-title">
-				<!--рейтинг - {{review.rating}}; {{review.min_price}}-{{review.max_price}} rub-->
+<!--				рейтинг - {{review.rating}}; {{review.min_price}}-{{review.max_price}} rub-->
 				{{ review.title }}
-			</div>
-			<div class="lo-r-cont-review-author">
-				<h2>{{review.author.username}}</h2>
 			</div>
 			<div class="lo-r-cont-review-rating">{{review.rating}}</div>
 			<div class="lo-r-cont-review-body">
@@ -73,6 +70,9 @@
 
 				<div ng-repeat="image in review.images">
 					<img src="{{image}}">
+				</div>
+				<div class="lo-r-cont-review-author">
+					{{review.author.username}}
 				</div>
 			</div>
 		</div>
