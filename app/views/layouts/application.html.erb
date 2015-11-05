@@ -10,18 +10,22 @@
 	<div class="cont" ng-controller="UsersCtrl">
 		<div class="cont-head">
 			<div class="cont-head-logo">
-				<a ng-href="#/home">DONER.io</a>
+				<a ng-href="#/home"></a>
 			</div>
 			<div class="cont-head-nav">
-				<div class="cont-head-toplist" ng-hide="current_user" ng-click="openPopup('.popup-login')">
+				<div class="cont-head-nav-item" ng-hide="current_user" ng-click="openPopup('.popup-login')">
 					login
 				</div>
-				<div class="cont-head-nav-profile" ng-show="current_user">
-					<p><a href="{{current_user.link}}" target="_blank">{{ current_user.username }}</a></p>
-					<p>{{current_user.image_url}}</p>
-					<p>{{current_user.places_count}}</p>
-					<p>{{current_user.reviews_count}}</p>
-					<a href="#" ng-click="logOut()">logout</a>
+				<div class="cont-head-nav-user" ng-show="current_user">
+					<div class="cont-head-nav-user-img">
+						<img src="{{current_user.image_url}}"/>
+					</div>
+					<a href="{{current_user.link}}" class="cont-head-nav-user-name" target="_blank">{{ current_user.username }}</a>
+					
+<!--					<span ng-show="current_user.places_count">{{current_user.places_count}}</span>-->
+<!--					<span ng-show="current_user.places_count">{{current_user.reviews_count}}</span>-->
+					
+					<a href="#" class="cont-head-nav-user-exit" ng-click="logOut()">Выйти</a>
 				</div>
 			</div>
 		</div>
@@ -40,14 +44,15 @@
 			<ui-view></ui-view>
 		</div>
 	</div>
+	
+<!--
 	<div class="what" ng-click="openPopup('.popup-about')">
-		<span>
-			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-			<path id="help-icon" d="M259.462,462c-24.864,0-45.03-20.166-45.03-45.039c0-24.86,20.166-45.02,45.03-45.02
-				c24.87,0,45.029,20.159,45.029,45.02C304.491,441.834,284.332,462,259.462,462z M294.865,328.9v8.1c0,0-67.513,0-74.229,0v-8.1 c0-22.922,3.344-52.326,29.956-77.89c26.613-25.567,59.87-46.687,59.87-78.625c0-35.309-24.503-53.985-55.399-53.985 c-51.483,0-54.846,53.393-56.115,65.149H126.75C128.673,127.874,152.206,50,255.494,50c89.513,0,129.756,59.949,129.756,116.166 C385.25,255.646,294.865,271.189,294.865,328.9z"/>
-			</svg>
-		</span>
+		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+				<path id="help-icon" d="M259.462,462c-24.864,0-45.03-20.166-45.03-45.039c0-24.86,20.166-45.02,45.03-45.02
+					c24.87,0,45.029,20.159,45.029,45.02C304.491,441.834,284.332,462,259.462,462z M294.865,328.9v8.1c0,0-67.513,0-74.229,0v-8.1 c0-22.922,3.344-52.326,29.956-77.89c26.613-25.567,59.87-46.687,59.87-78.625c0-35.309-24.503-53.985-55.399-53.985 c-51.483,0-54.846,53.393-56.115,65.149H126.75C128.673,127.874,152.206,50,255.494,50c89.513,0,129.756,59.949,129.756,116.166 C385.25,255.646,294.865,271.189,294.865,328.9z"/>
+				</svg>
 	</div>
+-->
 
 	<div class="prnj hidden" ng-click="closePopup()"></div>
 	<div class="popup popup-about hidden">
