@@ -7,12 +7,13 @@ class Review < ActiveRecord::Base
   attr_reader :images_id
 
 	def rating
-		attrs = [self.vegetables,self.meat,self.service,self.sanitation,self.total].compact
-		if attrs.count > 0
-			avarage = (attrs.inject(0){|sum,x| sum + x}/attrs.count).to_f 
-		else
-			nil
-		end
+		# attrs = [self.vegetables,self.meat,self.service,self.sanitation,self.total].compact
+		# if attrs.count > 0
+		# 	avarage = (attrs.inject(0){|sum,x| sum + x}/attrs.count).to_f 
+		# else
+		# 	nil
+		# end
+		total if total
 	end
 	
 	def n_to_br
