@@ -798,7 +798,7 @@ body {
 	padding: 14px 14px 14px 14px;
 	&-title {
 		border: none;
-		width: 240px;
+		width: 250px;
 		height: 40px;
 		line-height: 40px;
 		box-sizing: border-box;
@@ -830,6 +830,9 @@ body {
 			outline: none;
 //			border: 1px solid #959595;
 		}
+	}
+	&-price {
+		width: 250px;
 	}
 	&-stars {
 		height: 50px;

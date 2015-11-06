@@ -72,27 +72,6 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
     $location.path('/home')
   }  
   
-  $scope.rateExt = function(e) {
-	  if (!$('.add-review-stars').hasClass('ext')) {
-		  $('.add-review-stars').addClass('ext');
-		  $('.add-review-rate-showext').html('Скрыть');
-		  setTimeout(function(){
-			  $('.add-review-rate-ext').css('opacity', 0)
-				.removeClass('hidden')
-				.fadeTo(200,1);
-		  }, 500)
-	  } else {
-		  console.log('as')
-		  $('.add-review-rate-ext').fadeTo(200,0);
-		  setTimer(function(){
-			  $('.add-review-stars').removeClass('ext');
-			  setTimer(function(){
-				  $('.add-review-rate-showext').html('Доп. параметры');
-			  }, 500)
-		  }, 200);
-	  }
-	  
-  }
   
   
 }]);

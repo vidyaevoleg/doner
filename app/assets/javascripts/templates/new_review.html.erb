@@ -27,9 +27,13 @@
 			<form>
 				<input name="total" placeholder="Заголовок" ng-model="new_review.title" class="add-review-title"></textarea>
 				<textarea name="body" placeholder="Дело было так..." ng-model="new_review.body" class="add-review-body"></textarea>
-				<p>Цена: 
-					<input name="min_price" ng-model="new_review.min_price" class="add-review-price"> – <input name="max_price" ng-model="new_review.max_price" class="add-review-price"> руб</p>
-				<div class="add-review-stars">
+				<div class="add-review-price">
+					Прайс <input name="min_price" ng-model="new_review.min_price" class="add-review-price"> – <input name="max_price" ng-model="new_review.max_price" class="add-review-price"> &#8381;
+				</div>
+				
+				
+		
+		<div class="add-review-stars">
 					<div class="add-review-rate">
 						<div class="add-review-rate-titles">
 							<div class="add-review-rate-titles-item">ИТОГ</div>

@@ -24,9 +24,9 @@
 						<div class="lo-l-head-nav-user" ng-show="current_user">
 							<div class="lo-l-head-nav-user-img" style="background-image: url({{current_user.image_url}})"></div>
 							<div class="lo-l-head-nav-user-logout" ng-click="logOut()">Выйти</div>
-							<div class="lo-l-head-nav-user-name">
+							<a href="{{current_user.link}}" class="lo-l-head-nav-user-name">
 								{{ current_user.username }}
-							</div>
+							</a>
 						</div>
 					</div>
 <!--
