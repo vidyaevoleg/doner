@@ -29,21 +29,31 @@
 				<textarea name="body" placeholder="Дело было так..." ng-model="new_review.body" class="add-review-body"></textarea>
 				<p>Цена: 
 					<input name="min_price" ng-model="new_review.min_price" class="add-review-price"> – <input name="max_price" ng-model="new_review.max_price" class="add-review-price"> руб</p>
-				<div class="add-review-rate">
-					<div class="add-review-rate-titles">
-						<div class="add-review-rate-titles-item">Мясо</div>
-						<div class="add-review-rate-titles-item">Овощи</div>
-						<div class="add-review-rate-titles-item">Сервис</div>
-						<div class="add-review-rate-titles-item">Санитария</div>
-						<div class="add-review-rate-titles-item">ИТОГ</div>
-					
+				<div class="add-review-stars">
+					<div class="add-review-rate">
+						<div class="add-review-rate-titles">
+							<div class="add-review-rate-titles-item">ИТОГ</div>
+						</div>
+						<div class="add-review-rate-stars">
+							<div class="add-review-rate-stars-item" star-rating rating-value="new_review.total" data-max="10" on-rating-selected=""></div>
+						</div>
+						<div class="add-review-rate-showext" ng-click="rateExt()">Доп. параметры</div>
 					</div>
-					<div class="add-review-rate-stars">
-						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.meat" data-max="10" on-rating-selected=""></div>
-						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.vegetables" data-max="10" on-rating-selected=""></div>
-						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.service" data-max="10" on-rating-selected=""></div>
-						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.sanitation" data-max="10" on-rating-selected=""></div>
-						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.total" data-max="10" on-rating-selected=""></div>
+					<div class="add-review-rate add-review-rate-ext hidden">
+						<div class="add-review-rate-titles">
+							<div class="add-review-rate-titles-item">Мясо</div>
+							<div class="add-review-rate-titles-item">Овощи</div>
+							<div class="add-review-rate-titles-item">Сервис</div>
+							<div class="add-review-rate-titles-item">Санитария</div>
+	<!--						<div class="add-review-rate-titles-item">ИТОГ</div>-->
+						</div>
+						<div class="add-review-rate-stars">
+							<div class="add-review-rate-stars-item" star-rating rating-value="new_review.meat" data-max="10" on-rating-selected=""></div>
+							<div class="add-review-rate-stars-item" star-rating rating-value="new_review.vegetables" data-max="10" on-rating-selected=""></div>
+							<div class="add-review-rate-stars-item" star-rating rating-value="new_review.service" data-max="10" on-rating-selected=""></div>
+							<div class="add-review-rate-stars-item" star-rating rating-value="new_review.sanitation" data-max="10" on-rating-selected=""></div>
+	<!--						<div class="add-review-rate-stars-item" star-rating rating-value="new_review.total" data-max="10" on-rating-selected=""></div>-->
+						</div>
 					</div>
 				</div>
 				<input name="meat" ng-model="new_review.meat" class="hidden">

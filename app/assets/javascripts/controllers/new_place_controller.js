@@ -6,4 +6,13 @@ Topdoner.controller('NewPlaceCtrl', ['$scope','places','$location','$rootScope',
     places.createPlace(new_place)
 //	console.log(new_place);
   }
+  
+  $scope.signIn = function(){
+    if ($rootScope.current_user){
+      return true
+    } else {
+      $location.path('/home'); 
+      $rootScope.openPopup('.popup-login');
+    }
+  }
 }]);

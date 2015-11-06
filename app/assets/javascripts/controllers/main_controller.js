@@ -93,12 +93,14 @@ Topdoner.controller('MainCtrl', ['$scope','places','$location','$rootScope','$st
 		$scope.opn($('.prnj'));
 		$scope.opn($(popup_sel));
 		$('.lo-r-cont').css('position', 'fixed');
+		$('.lo-r-card').css('position', 'fixed');
 		$('.cont').addClass('blured');
 	}
 	$scope.closePopup = function() {
 		$scope.cls($('.popup'));
 		$scope.cls($('.prnj'));
 		$('.lo-r-cont').css('position', 'relative');
+		$('.lo-r-card').css('position', 'relative');
 		$('.cont').removeClass('blured');
 	}
 }]);
