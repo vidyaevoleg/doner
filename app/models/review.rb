@@ -13,7 +13,7 @@ class Review < ActiveRecord::Base
 		# else
 		# 	nil
 		# end
-		total if total
+		total ? total : 0
 	end
 	
 	def n_to_br

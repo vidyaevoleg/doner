@@ -72,6 +72,12 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
     $location.path('/home')
   }  
   
+  $scope.openExtRates = function() {
+	  var panel = $('.add-review-extrate');
+	  if (panel.hasClass('hidden')) {
+		  panel.removeClass('hidden').css('opacity', '0').fadeTo(600,1);
+	  }
+  }
   
   
 }]);
