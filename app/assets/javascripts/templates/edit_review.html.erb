@@ -21,17 +21,29 @@
 		<div class="lo-r-card-rating">
 			<span class="lo-r-card-rating-1">{{place.properties.rating}}</span>
 		</div>
+
 	</div>
 	
-	<div class="add-review" ng-init="dropzone()">
+	<div class="add-review" ng-show="review" ng-init="dropzone()">
 		<form>
-			<input name="total" placeholder="Заголовок" ng-model="new_review.title" class="add-review-title"></textarea>
-			<textarea name="body" placeholder="Дело было так..." ng-model="new_review.body" class="add-review-body"></textarea>
+			<h3> Редактирование ))</h3>
+			<p><span ng-show="can(review)" ng-click="deleteReview(review.id)">удалить</span></p>
+			<input name="total" placeholder="Заголовок" ng-model="review.title" class="add-review-title"></textarea>
+			<textarea name="body" placeholder="Дело было так..." ng-model="review.body" class="add-review-body"></textarea>
 			<div class="add-review-price">
-				Прайс <input name="min_price" ng-model="new_review.min_price" class="add-review-price-input"><span> – </span><input name="max_price" ng-model="new_review.max_price" class="add-review-price-input"><span>&#8381;руб.</span>
+				Прайс <input name="min_price" ng-model="review.min_price" class="add-review-price-input"><span> – </span><input name="max_price" ng-model="review.max_price" class="add-review-price-input"><span>&#8381; руб</span>
+			</div>
+			<div class="add-review-images" ng-show="review.images.length > 0">
+				<div ng-repeat="image in review.images">
+					<div ng-attr-id="{{ 'image-' + image.id }}">
+						<img class="add-review-images-one" src="{{image.url}}">
+						<br>
+						<span ng-click="deleteImage(image.id)">удалить</span>
+					</div>
+				</div>
 			</div>
 			<div class="add-review-rate" ng-click="openExtRates()">
-				<dic class="add-review-rate-stars" star-rating rating-value="new_review.total" data-max="10" on-rating-selected=""></dic>
+				<dic class="add-review-rate-stars" star-rating rating-value="review.total" data-max="10" on-rating-selected=""></dic>
 			</div>
 			<div class="add-review-extrate hidden">
 				<div class="add-review-extrate-title">Доп. параметры (опционально)</div>
@@ -43,20 +55,20 @@
 						<div class="add-review-extrate-titles-item">Санитария</div>
 					</div>
 					<div class="add-review-extrate-stars">
-						<div class="add-review-extrate-stars-item" star-rating rating-value="new_review.meat" data-max="10" on-rating-selected=""></div>
-						<div class="add-review-extrate-stars-item" star-rating rating-value="new_review.vegetables" data-max="10" on-rating-selected=""></div>
-						<div class="add-review-extrate-stars-item" star-rating rating-value="new_review.service" data-max="10" on-rating-selected=""></div>
-						<div class="add-review-extrate-stars-item" star-rating rating-value="new_review.sanitation" data-max="10" on-rating-selected=""></div>
+						<div class="add-review-extrate-stars-item" star-rating rating-value="review.meat" data-max="10" on-rating-selected=""></div>
+						<div class="add-review-extrate-stars-item" star-rating rating-value="review.vegetables" data-max="10" on-rating-selected=""></div>
+						<div class="add-review-extrate-stars-item" star-rating rating-value="review.service" data-max="10" on-rating-selected=""></div>
+						<div class="add-review-extrate-stars-item" star-rating rating-value="review.sanitation" data-max="10" on-rating-selected=""></div>
 					</div>
 				</div>
 			</div>
-			<input name="meat" ng-model="new_review.meat" class="hidden">
-			<input name="vegetables" ng-model="new_review.vegetables" class="hidden">
-			<input name="service" ng-model="new_review.service" class="hidden">
-			<input name="sanitation" ng-model="new_review.sanitation" class="hidden">
-			<input name="total" ng-model="new_review.total" class="hidden">
-			<input name="images_id" ng-model="new_review.images_id", type="hidden">
-			<input name="place_id" ng-model="place.properties.id", type="hidden">
+			<input name="meat" ng-model="review.meat" type="hidden">
+			<input name="vegetables" ng-model="review.vegetables" type="hidden">
+			<input name="service" ng-model="review.service" type="hidden">
+			<input name="sanitation" ng-model="review.sanitation" type="hidden">
+			<input name="total" ng-model="review.total" type="hidden">
+			<input name="images_id" ng-model="new_images_id" type="hidden">
+			<input name="place_id" ng-model="place.properties.id" type="hidden">
 		</form>
 		<div class="add-review-dropzone" ng-init="fixDropzone()">
 			<form action="/images" id="media-dropzone" class="dropzone" enctype="multipart/form-data">
@@ -68,7 +80,7 @@
 			</form>
 		</div>
 		<div class="add-review-submit">
-			<button ng-click="submitReview()">Отправить</button>
+			<button ng-click="updateReview()">Обновить</button>
 		</div>
 	</div>
 </div>
