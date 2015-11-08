@@ -113,6 +113,12 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 		})
 		.state('new_place', {
 		  resolve: {
+				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
+			    return places.getPlaces().then(function(data){
+						$rootScope.place = $filter('getPlaceById')(data, $stateParams.id)
+						$rootScope.places = data				
+			    })
+			  }],		
 			  current_user: ['users','$rootScope', function(users,$rootScope){
 			    return users.getCurrentUser().then(function(data){
 			    	$rootScope.current_user = data

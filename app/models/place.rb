@@ -64,26 +64,32 @@ class Place < ActiveRecord::Base
   end
 
   def to_nice_json
-  	json = {}
-  	json[:properties] = {}
-  	json[:geometry] = {}
-  	json[:properties][:id] = id
-  	json[:properties][:rating] = rating
-  	json[:properties][:meat] = meat
-  	json[:properties][:vegetables] = vegetables
-  	json[:properties][:sanitation] = sanitation
-  	json[:properties][:service] = service
-  	json[:geometry][:type] = 'Point'
-    json[:properties][:city] = city
-  	json[:geometry][:coordinates] = get_coords
-  	json[:properties][:street] = street
-  	json[:properties][:metro] = metro
-    json[:properties][:author] = user
+  	json = {
+      properties: {
+        id: id,
+        rating: rating,
+        meat: meat,
+        vegetables: vegetables,
+        sanitation: sanitation,
+        service: service,
+        city: city,
+        street: street,
+        metro: metro,
+        author: user,
+      },
+      geometry: {
+        coordinates: get_coords,
+        type: 'Point'
+      }
+    }
     if reviews.any? 
       json[:properties][:reviews_count] = reviews.count
     else 
       json[:properties][:reviews_count] = 0 
   	end
+    if images.any?
+      json[:properties][:image] = {url: images.last.file.url}
+    end
     json
   end
 
