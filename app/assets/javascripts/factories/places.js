@@ -1,39 +1,31 @@
-Topdoner.factory('places', ['$http','$location','$rootScope',function($http,$location,$rootScope){
-  // return $resource('/places/:id',{id: '@id'},{
-  //   get_places: {method: 'GET',isArray: true, responseType: 'json'}
-  // });
-    var places = {
-      getPlaces: function(){
-        var places = []
-        $http.get('/places/get_places').success(function(data){
-            angular.copy(data,places);
+Topdoner.factory('places', ['$http','$location','$rootScope','$q',function($http,$location,$rootScope,$q){
+      this.getPlaces = function(){
+        return $http.get('/places/get_places').then(function(res){
+            return res.data;
         })      
-        return places
-      },
-      getPlace: function(place_id){
-        var place = []
-          $http.get('/places/'+place_id).success(function(data){
-              angular.copy(data,place);
-          })
-        return place     
-      },
-      getReviews: function(place_id){
-        var reviews = []
-        $http.get('/places/'+place_id+'/get_reviews').success(function(data){
-            angular.copy(data,reviews);
+      }
+      this.getPlace = function(place_id){
+        return $http.get('/places/'+place_id).success(function(res){
+            return res.data
+        })  
+      }
+      this.getReviews = function(place_id){
+        return $http.get('/places/'+place_id+'/get_reviews').success(function(res){
+            if (res.data){
+              return res.data
+            }
         })      
-        return reviews
-      },
-      deletePlace: function (place_id) {
+      }
+      this.deletePlace = function (place_id) {
         $http.delete('/places/'+place_id)
-      },
-      createPlace: function(place){
+      }
+      this.createPlace = function(place){
         $http.post('/places',{place: place}).success(function(data){
           $rootScope.place = data
           $rootScope.places.push(data)
           $location.path('/places/'+data.properties.id)
         })
-      }      
-    }
-    return places
+      }
+
+      return this
 }]);

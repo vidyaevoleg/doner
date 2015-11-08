@@ -44,6 +44,7 @@
 				<span>{{place.properties.street}}</span>
 			</div>
 			<p><span ng-show="can(place)" ng-click="deletePlace(place.properties.id)">удалить</span></p>
+			<p><a ng-show="can(place)" href="/#/places/{{place.properties.id}}/edit_place">редактировать</a></p>
 			<div class="lo-r-card-metro">
 				<div class="lo-r-card-metro-logo">
 					<svg width="13px" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
