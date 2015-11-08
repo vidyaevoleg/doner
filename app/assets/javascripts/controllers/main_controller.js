@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','users','$location','$rootScope','$stateParams', function ($scope,$filter,places,reviews,users,$location,$rootScope,$stateParams) {
-	$rootScope.places = places.getPlaces();
 
-=======
-Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$location','$rootScope','$stateParams', function ($scope,$filter,places,reviews,$location,$rootScope,$stateParams) {
-$rootScope.places = places.getPlaces();
-  
->>>>>>> 35a40d46432ddea8e0b5acdadad21c4e64872e61
+Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','users','$location','$rootScope','$stateParams', function ($scope,$filter,places,reviews,users,$location,$rootScope,$stateParams) {
+	$rootScope.places = places.getPlaces();  
+
   $rootScope.choosePlace = function(place){   
     $location.path('/places/'+place.properties.id);    
   };	
