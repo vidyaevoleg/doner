@@ -51,7 +51,7 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
     });
   }
   function reviewValid(review){
-    if ((review.place_id.length < 1) || (review.meat.length < 1) || (review.vegetables.length < 1) || (review.body.length < 1) || (review.service.length<1) || (review.sanitation.length <1)){
+    if ((review.place_id.length < 1) || (review.body.length < 1)){
       alert('чувак заполни все формы')
       return false
     }

@@ -103,4 +103,21 @@ Topdoner.controller('MainCtrl', ['$scope','places','$location','$rootScope','$st
 		$('.lo-r-card').css('position', 'relative');
 		$('.cont').removeClass('blured');
 	}
+	
+//	$scope.placesSort = '-properties.rating';
+	$scope.choosePlacesSort = function(what) {
+		$('.lo-r-nav-select-item').removeClass('active');
+//		console.log($(s);
+		if (what === 'r') {
+			$('.lo-r-nav-select-item-r').addClass('active');
+		}
+		if (what === 'p') {
+			$('.lo-r-nav-select-item-p').addClass('active');
+		}
+		if (what === 'n') {
+			$('.lo-r-nav-select-item-n').addClass('active');
+		}
+	}
+
+	
 }]);

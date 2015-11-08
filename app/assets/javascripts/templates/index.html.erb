@@ -1,4 +1,11 @@
 <div class="lo-r">
+	<div class="lo-r-nav">
+		<div class="lo-r-nav-select">
+			<span ng-click="choosePlacesSort('r')" class="lo-r-nav-select-item lo-r-nav-select-item-r active">Лучшие</span>
+			<span ng-click="choosePlacesSort('p')" class="lo-r-nav-select-item lo-r-nav-select-item-p">Популярные</span>
+			<span ng-click="choosePlacesSort('n')" class="lo-r-nav-select-item lo-r-nav-select-item-n">Ближайшие</span>
+		</div>
+	</div>
 	<div class="lo-r-places">
 		<div ng-repeat="place in places | isRated | orderBy:'-properties.rating' | limitTo:12">
 			<!--<div class="lo-r-places-place" ng-click="choosePlace(place)">
@@ -7,7 +14,7 @@
 				</div>
 				{{place.properties.rating}} -->
 			
-			<div class="lo-r-card lo-r-card-places" ng-click="choosePlace(place)">
+			<div class="lo-r-card lo-r-card-places" ng-click="choosePlace(place)" style="background: url(http://cs623622.vk.me/v623622290/4eae6/i5912Gqw5Bo.jpg);">
 <!--
 				<div ng-hide="true" class="lo-r-card-create" ng-click="writeReview(place)">
 					<span class="lo-r-card-create-icon">
@@ -39,6 +46,7 @@
 					<span class="lo-r-card-revnum-num">{{place.properties.reviews_count}}</span>
 				</div>
 -->
+				<div class="lo-r-card-lay"></div>
 				<div class="lo-r-card-title">
 					<span>{{place.properties.street}}</span>
 				</div>
@@ -57,7 +65,10 @@
 				</div>
 				
 				<div class="lo-r-card-rating">
-					<span class="lo-r-card-rating-1">{{place.properties.rating}}</span>
+					<div class="lo-r-card-rating-num">{{place.properties.rating}}</div>
+					<div class="lo-r-card-rating-count">{{place.properties.reviews_count}}</div>
+					<div class="lo-r-card-rating-stars" star-rating rating-value="place.properties.rating" data-max="10"></div>
+<!--					<span class="lo-r-card-rating-1">{{place.properties.rating}}</span>-->
 				</div>
 			</div>
 		</div>

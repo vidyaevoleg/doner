@@ -1,7 +1,15 @@
 <div class="lo-r" ng-init="signIn()">
+	<div class="lo-r-nav">
+		<div class="lo-r-nav-select">
+<!--			Назад-->
+<!--			<span ng-click="choosePlacesSort('r')" class="lo-r-nav-select-item lo-r-nav-select-item-r active">Рейтинг </span>-->
+<!--			<span ng-click="choosePlacesSort('p')" class="lo-r-nav-select-item lo-r-nav-select-item-p">Популярность</span>-->
+		</div>
+	</div>
 	<div class="lo-r-card">
 		<div class="lo-r-card-title" >
-			<span><a ng-href="#/places/{{place.properties.id}}">{{place.properties.street }}</a></span>
+<!--			<span><a ng-href="#/places/{{place.properties.id}}">{{place.properties.street }}</a></span>-->
+			{{place.properties.street }}
 		</div>
 		<div class="lo-r-card-metro lo-r-card-metro-tk">
 			<div class="lo-r-catd-metro-logo">
@@ -19,7 +27,10 @@
 			<div class="lo-r-card-metro-title">{{place.properties.metro}}</div>
 		</div>
 		<div class="lo-r-card-rating">
-			<span class="lo-r-card-rating-1">{{place.properties.rating}}</span>
+			<div class="lo-r-card-rating-num">{{place.properties.rating}}</div>
+			<div class="lo-r-card-rating-count">{{place.properties.reviews_count}}</div>
+			<div class="lo-r-card-rating-stars" star-rating rating-value="place.properties.rating" data-max="10"></div>
+<!--			<span class="lo-r-card-rating-1">{{place.properties.rating}}</span>-->
 		</div>
 	</div>
 	

@@ -2,7 +2,7 @@ var Topdoner = angular.module('Topdoner', ['yaMap','ui.router','templates','ngSa
 Topdoner.filter('isRated', function () {
   return function(items) {
     return items.filter(function(item){
-      return item.properties.rating
+      return parseInt(item.properties.rating) > 0
     })
   }
 })
