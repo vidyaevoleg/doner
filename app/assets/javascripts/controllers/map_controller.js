@@ -1,7 +1,4 @@
 Topdoner.controller('MapCtrl', ['$scope','places','$location','$rootScope', function ($scope,places,$location,$rootScope) {
-//	$rootScope.places = places.getPlaces()
-	$scope.places = $rootScope.places;
-	$scope.place = $rootScope.place;
 	
 //	$scope.colorPlace = function(place) {
 //		if (place == $scope.place) {

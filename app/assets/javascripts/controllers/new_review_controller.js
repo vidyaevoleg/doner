@@ -1,6 +1,5 @@
 Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootScope','$location','$http',function ($scope,$stateParams,places,$rootScope,$location,$http) {
 
-  $scope.place = places.getPlace($stateParams.id)
   $scope.signIn = function(){
     if ($rootScope.current_user){
       return true

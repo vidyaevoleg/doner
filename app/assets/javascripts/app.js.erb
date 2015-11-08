@@ -65,6 +65,11 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 	  $stateProvider
 		.state('home', {
 		  resolve: {
+			  places: ['places','$stateParams','$rootScope', function(places,$stateParams,$rootScope){
+			    return places.getPlaces().then(function(data){
+						$rootScope.places = data
+			    })
+			  }],
 			  current_user: ['users','$rootScope', function(users,$rootScope){
 			    return users.getCurrentUser().then(function(data){
 			    	$rootScope.current_user = data
@@ -80,19 +85,26 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 		  templateUrl: "<%= asset_path('templates/place.html.erb') %>",
 		  controller: 'PlaceCtrl',
 		  resolve: {
+				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
+			    return places.getPlaces().then(function(data){
+						$rootScope.place = $filter('getPlaceById')(data, $stateParams.id)
+						$rootScope.places = data				
+			    })
+			  }],		  
+			  // place: ['$stateParams','$rootScope', function($stateParams,$rootScope){
+			  // 	console.log($rootScope.places)
+					// return $rootScope.place = $filter('getPlaceById')($rootScope.places, $stateParams.id)
+			  // }],
+			  reviews: ['places','$stateParams','$rootScope', function(places,$stateParams,$rootScope){
+			    return places.getReviews($stateParams.id).then(function(res){
+						$rootScope.reviews = res.data
+			    })
+			  }],		  
 			  current_user: ['users','$rootScope', function(users,$rootScope){
 			    return users.getCurrentUser().then(function(data){
-					$rootScope.current_user = data
+						$rootScope.current_user = data
 			    })
 			  }]
-				
-
-//			  place: ['places','$stateParams','$rootScope', function(places,$stateParams,$rootScope){
-//			    return places.getPlaces().then(function(data){
-//			    	console.log(data)
-//					$rootScope.place = data
-//			    })
-//			  }]
 			},
 		  url: '/places/{id}',
 		  templateUrl: "<%= asset_path('templates/place.html.erb') %>",
@@ -113,6 +125,12 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 		})
 		.state('new_review', {
 		  resolve: {
+				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
+			    return places.getPlaces().then(function(data){
+						$rootScope.place = $filter('getPlaceById')(data, $stateParams.id)
+						$rootScope.places = data				
+			    })
+			  }],				  
 			  current_user: ['users','$rootScope', function(users,$rootScope){
 			    return users.getCurrentUser().then(function(data){
 			    	$rootScope.current_user = data
@@ -126,10 +144,16 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 		.state('edit_review', {
 		  resolve: {
 			  review: ['reviews','$stateParams','$rootScope', function(reviews,$stateParams,$rootScope){
-			    return reviews.getReview($stateParams.review_id).then(function(data){
-			    	$rootScope.review = data.review
+			    return reviews.getReview($stateParams.review_id).then(function(res){
+			    	$rootScope.review = res.review
 			    })
 			  }],
+				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
+			    return places.getPlaces().then(function(data){
+						$rootScope.place = $filter('getPlaceById')(data, $stateParams.id)
+						$rootScope.places = data				
+			    })
+			  }],	
 			  current_user: ['users','$rootScope', function(users,$rootScope){
 			    return users.getCurrentUser().then(function(data){
 			    	$rootScope.current_user = data
@@ -140,11 +164,24 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 		  templateUrl: "<%= asset_path('templates/edit_review.html.erb') %>",
 		  controller: 'EditReviewCtrl'
 		})
+		.state('edit_place', {
+		  resolve: {
+				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
+			    return places.getPlaces().then(function(data){
+						$rootScope.place = $filter('getPlaceById')(data, $stateParams.id)
+						$rootScope.places = data				
+			    })
+			  }],	
+			  current_user: ['users','$rootScope', function(users,$rootScope){
+			    return users.getCurrentUser().then(function(data){
+			    	$rootScope.current_user = data
+			    })
+			  }]
+			},
+		  url: '/places/{id}/edit_place',
+		  templateUrl: "<%= asset_path('templates/edit_place.html.erb') %>",
+		  controller: 'EditPlaceCtrl'
+		})
 
-		// console.log(angular.toJson($stateProvider.get()));
-		// $stateProvider.state.forEach(function(state) {
-  //       console.log($stateProvider.state(state.state, state.config));
-		// })
-		// console.log($state.get())
 	  $urlRouterProvider.otherwise('home');
 }])

@@ -1,7 +1,5 @@
 Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope','$location',function ($scope,$stateParams,places,$rootScope,$location) {
 
-  $scope.reviews = places.getReviews($stateParams.id)
-  $scope.place = places.getPlace($stateParams.id)
   $scope.closePlace = function(place){
     $location.path('/home')
   }

@@ -1,8 +1,8 @@
 Topdoner.factory('reviews', ['$http','$location','$rootScope',function($http,$location,$rootScope){
 	this.getReview = function(review_id){
     return $http.get('/reviews/'+ review_id)
-      .then(function(response) {
-        return response.data;
+      .then(function(res) {
+        return res.data;
     	}
     );
 	}
