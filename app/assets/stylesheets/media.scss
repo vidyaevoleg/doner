@@ -23,3 +23,22 @@
 		}
 	}
 }
+
+//@media screen and (max-width: 1040px) {
+//	.cont {
+//		width: 900px;
+//	}
+//	.lo-l {
+//		width: 360px !important;
+//	}
+//}
+//
+@media screen and (max-width: 940px) {
+	.cont {
+		width: 900px;
+	}
+	.lo-l-map {
+		width: 460px !important;
+		background: cyan;
+	}
+}

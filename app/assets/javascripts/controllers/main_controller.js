@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','users','$location','$rootScope','$stateParams', function ($scope,$filter,places,reviews,users,$location,$rootScope,$stateParams) {
 	$rootScope.places = places.getPlaces();
 
+=======
+Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$location','$rootScope','$stateParams', function ($scope,$filter,places,reviews,$location,$rootScope,$stateParams) {
+$rootScope.places = places.getPlaces();
+  
+>>>>>>> 35a40d46432ddea8e0b5acdadad21c4e64872e61
   $rootScope.choosePlace = function(place){   
     $location.path('/places/'+place.properties.id);    
   };	
@@ -121,4 +127,21 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','users','
 		$('.lo-r-card').css('position', 'relative');
 		$('.cont').removeClass('blured');
 	}
+	
+//	$scope.placesSort = '-properties.rating';
+	$scope.choosePlacesSort = function(what) {
+		$('.lo-r-nav-select-item').removeClass('active');
+//		console.log($(s);
+		if (what === 'r') {
+			$('.lo-r-nav-select-item-r').addClass('active');
+		}
+		if (what === 'p') {
+			$('.lo-r-nav-select-item-p').addClass('active');
+		}
+		if (what === 'n') {
+			$('.lo-r-nav-select-item-n').addClass('active');
+		}
+	}
+
+	
 }]);
