@@ -14,7 +14,7 @@ Topdoner.factory('places', ['$http','$location','$rootScope',function($http,$loc
         var place = []
           $http.get('/places/'+place_id).success(function(data){
               angular.copy(data,place);
-          })      
+          })
         return place     
       },
       getReviews: function(place_id){

@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 	before_action :set_place, only: :create
 	before_action :set_review, only: [:update,:destroy,:show]
 	before_action :check_ability, only: [:destroy,:update]
-	skip_before_filter :verify_authenticity_token, only: [:create,:destroy]
+	skip_before_filter :verify_authenticity_token, only: [:create,:destroy,:update]
 	def create
 		@review = current_user.reviews.create(review_params)
 		if params[:review][:images_id]
@@ -46,7 +46,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def check_ability
-		if current_user.id = @review.user.id
+		if current_user.id == @review.user.id
 			true
 		else
 			return

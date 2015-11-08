@@ -420,7 +420,7 @@ body {
 				position: absolute;
 				top:0;
 				left: 0;
-				background: rgba(255,255,255,.6);
+				background: rgba(0,0,0,.6);
 				width: 100%;
 				height: 100%;
 			}
@@ -465,7 +465,7 @@ body {
 //				font-weight: bold;
 				font-weight: 800;
 				font-size: 14px;
-				color: #000;
+				color: #fff;
 			}
 			&-metro {
 				margin-top: 6px;
@@ -473,7 +473,7 @@ body {
 				font-size: 13px;
 				font-weight: 500;
 //				color: #575757 !important;
-				color: #626060;
+				color: #bfbfbf;
 				div {
 					display: inline-block;
 				}

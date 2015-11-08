@@ -86,9 +86,15 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 		  resolve: {
 			  current_user: ['users','$rootScope', function(users,$rootScope){
 			    return users.getCurrentUser().then(function(data){
-			    	$rootScope.current_user = data
+					$rootScope.current_user = data
 			    })
 			  }]
+//			  place: ['places','$stateParams','$rootScope', function(places,$stateParams,$rootScope){
+//			    return places.getPlaces().then(function(data){
+//			    	console.log(data)
+//					$rootScope.place = data
+//			    })
+//			  }]
 			},
 		  url: '/places/{id}',
 		  templateUrl: "<%= asset_path('templates/place.html.erb') %>",

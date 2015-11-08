@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-	skip_before_filter :verify_authenticity_token, only: [:create,:destroy]
+	skip_before_filter :verify_authenticity_token, only: [:create,:destroy,:update]
 	before_action :set_place, only: [:show,:destroy,:update,:get_reviews]
 	before_action :check_ability, only: :destroy
 
@@ -42,7 +42,7 @@ class PlacesController < ApplicationController
 	private
 
 	def check_ability
-		if current_user.id = @place.user.id #TODO: or admin 
+		if current_user.id == @place.user.id #TODO: or admin 
 			true
 		else
 			return 
