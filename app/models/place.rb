@@ -1,6 +1,6 @@
 class Place < ActiveRecord::Base
-  has_many :images, as: :imaginable
-  has_many :reviews
+  has_many :images, as: :imaginable, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   belongs_to :user
   serialize :coordinates
   before_create :cut_city
@@ -78,6 +78,7 @@ class Place < ActiveRecord::Base
   	json[:geometry][:coordinates] = get_coords
   	json[:properties][:street] = street
   	json[:properties][:metro] = metro
+    json[:properties][:author] = user
     if reviews.any? 
       json[:properties][:reviews_count] = reviews.count
     else 

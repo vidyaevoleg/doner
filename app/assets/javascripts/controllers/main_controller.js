@@ -1,10 +1,22 @@
-Topdoner.controller('MainCtrl', ['$scope','places','$location','$rootScope','$stateParams', function ($scope,places,$location,$rootScope,$stateParams) {
+Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$location','$rootScope','$stateParams', function ($scope,$filter,places,reviews,$location,$rootScope,$stateParams) {
 	$rootScope.places = places.getPlaces();
   
   $rootScope.choosePlace = function(place){   
     $location.path('/places/'+place.properties.id);    
   };	
 	
+  $rootScope.deletePlace = function(place_id) {
+    places.deletePlace(place_id)
+    var place = $filter('getPlaceById')($rootScope.places, place_id)
+    $rootScope.places.splice($rootScope.places.indexOf(place), 1 );
+    $location.path('/home')
+
+  }
+  $rootScope.deleteReview = function(review_id){
+    reviews.deleteReview(review_id)
+    $('#review-'+review_id).toggle(500)
+    $location.path('/places/'+ $stateParams.id)
+  }
 	$rootScope.getMetroColor = function(station) {
     if (place){
       var m = [
@@ -68,7 +80,13 @@ Topdoner.controller('MainCtrl', ['$scope','places','$location','$rootScope','$st
 	$scope.fixDropzone = function() {
 		$('.dz-message').html('Перетащи фото или кликни');
 	}
-	
+  $rootScope.reviewValid = function(review){
+    if ((review.place_id.length < 1) || (review.meat.length < 1) || (review.vegetables.length < 1) || (review.body.length < 1) || (review.service.length<1) || (review.sanitation.length <1)){
+      alert('чувак заполни все формы')
+      return false
+    }
+    return true
+  }	
 	$scope.addPlaceAction = function() {
     $scope.new_place = undefined
 		$('.lo-l-addplace').after('<span class="lo-l-addplace-tip">Выбирай на карте место, браток.</span>');

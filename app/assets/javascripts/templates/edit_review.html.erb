@@ -1,0 +1,86 @@
+<div class="lo-r" ng-init="signIn()">
+	<div class="lo-r-card">
+		<div class="lo-r-card-title" >
+			<span><a ng-href="#/places/{{place.properties.id}}">{{place.properties.street }}</a></span>
+		</div>
+		<div class="lo-r-card-metro lo-r-card-metro-tk">
+			<div class="lo-r-catd-metro-logo">
+				<svg width="13px" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+					<title>Slice 1</title>
+					<description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+					<defs></defs>
+					<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+						<g id="metro-logo" sketch:type="MSLayerGroup" fill="#D9242A">
+							<path d="M334.561,471.297 L443.284,282.322 L488.424,410.315 L451.976,410.315 L451.976,466.639 L669.121,466.639 L669.121,410.315 L627.676,410.315 L471.695,0 L334.561,252.627 L197.427,0 L41.446,410.315 L0,410.315 L0,466.639 L217.146,466.639 L217.146,410.315 L180.697,410.315 L225.837,282.322 L334.561,471.297" id="Page-1" sketch:type="MSShapeGroup"></path>
+						</g>
+					</g>
+				</svg>
+			</div>
+			<div class="lo-r-card-metro-title">{{place.properties.metro}}</div>
+		</div>
+		<div class="lo-r-card-rating">
+			<span class="lo-r-card-rating-1">{{place.properties.rating}}</span>
+		</div>
+
+	</div>
+	
+	<div class="add-review" ng-show="review" ng-init="dropzone()">
+		<form>
+			<h3> Редактирование ))</h3>
+			<p><span ng-show="can(review)" ng-click="deleteReview(review.id)">удалить</span></p>
+			<input name="total" placeholder="Заголовок" ng-model="review.title" class="add-review-title"></textarea>
+			<textarea name="body" placeholder="Дело было так..." ng-model="review.body" class="add-review-body"></textarea>
+			<div class="add-review-price">
+				Прайс <input name="min_price" ng-model="review.min_price" class="add-review-price-input"><span> – </span><input name="max_price" ng-model="review.max_price" class="add-review-price-input"><span>&#8381; руб</span>
+			</div>
+			<div class="add-review-images" ng-show="review.images.length > 0">
+				<div ng-repeat="image in review.images">
+					<div ng-attr-id="{{ 'image-' + image.id }}">
+						<img class="add-review-images-one" src="{{image.url}}">
+						<br>
+						<span ng-click="deleteImage(image.id)">удалить</span>
+					</div>
+				</div>
+			</div>
+			<div class="add-review-rate" ng-click="openExtRates()">
+				<dic class="add-review-rate-stars" star-rating rating-value="review.total" data-max="10" on-rating-selected=""></dic>
+			</div>
+			<div class="add-review-extrate hidden">
+				<div class="add-review-extrate-title">Доп. параметры (опционально)</div>
+				<div class="add-review-extrate-wrap">
+					<div class="add-review-extrate-titles">
+						<div class="add-review-extrate-titles-item">Мясо</div>
+						<div class="add-review-extrate-titles-item">Овощи</div>
+						<div class="add-review-extrate-titles-item">Сервис</div>
+						<div class="add-review-extrate-titles-item">Санитария</div>
+					</div>
+					<div class="add-review-extrate-stars">
+						<div class="add-review-extrate-stars-item" star-rating rating-value="review.meat" data-max="10" on-rating-selected=""></div>
+						<div class="add-review-extrate-stars-item" star-rating rating-value="review.vegetables" data-max="10" on-rating-selected=""></div>
+						<div class="add-review-extrate-stars-item" star-rating rating-value="review.service" data-max="10" on-rating-selected=""></div>
+						<div class="add-review-extrate-stars-item" star-rating rating-value="review.sanitation" data-max="10" on-rating-selected=""></div>
+					</div>
+				</div>
+			</div>
+			<input name="meat" ng-model="review.meat" type="hidden">
+			<input name="vegetables" ng-model="review.vegetables" type="hidden">
+			<input name="service" ng-model="review.service" type="hidden">
+			<input name="sanitation" ng-model="review.sanitation" type="hidden">
+			<input name="total" ng-model="review.total" type="hidden">
+			<input name="images_id" ng-model="new_images_id" type="hidden">
+			<input name="place_id" ng-model="place.properties.id" type="hidden">
+		</form>
+		<div class="add-review-dropzone" ng-init="fixDropzone()">
+			<form action="/images" id="media-dropzone" class="dropzone" enctype="multipart/form-data">
+<!--
+				<div class="fallback">
+					<input name="image" type="image" multiple />
+				</div>
+-->
+			</form>
+		</div>
+		<div class="add-review-submit">
+			<button ng-click="updateReview()">Обновить</button>
+		</div>
+	</div>
+</div>

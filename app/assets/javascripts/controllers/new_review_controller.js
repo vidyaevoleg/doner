@@ -1,10 +1,5 @@
 Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootScope','$location','$http',function ($scope,$stateParams,places,$rootScope,$location,$http) {
 
-
-//  $scope.rateFunction = function(rating) {
-////   console.log('Rating selected - ' + rating);
-//  };
-
   $scope.place = places.getPlace($stateParams.id)
   $scope.signIn = function(){
     if ($rootScope.current_user){
@@ -44,23 +39,16 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
     }
     return mediaDropzone.on("success", function(file, responseText) {
       if ($scope.new_review.images_id.length > 0){
-        $scope.$apply( $scope.new_review.images_id = $scope.new_review.images_id + ','+ responseText.id.toString())
+        $scope.$apply( $scope.new_review.images_id = $scope.new_review.images_id + ','+ responseText.image.id.toString())
       } else {
-        $scope.$apply( $scope.new_review.images_id = $scope.new_review.images_id + responseText.id.toString())
+        $scope.$apply( $scope.new_review.images_id = $scope.new_review.images_id + responseText.image.id.toString())
       }
     });
-  }
-  function reviewValid(review){
-    if ((review.place_id.length < 1) || (review.body.length < 1)){
-      alert('чувак заполни все формы')
-      return false
-    }
-    return true
   }
 
   $scope.submitReview = function(){
     var review = $scope.new_review
-    if (reviewValid(review)){
+    if ($rootScope.reviewValid(review)){
       $http.post('/reviews',{review: review}).success(function(data){
         $location.path('/places/'+ $stateParams.id)
       }).error(function(data,status){

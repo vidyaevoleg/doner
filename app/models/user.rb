@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
 
   def to_nice_json
     json = {
+      id: id,
       username: username,
       image_url: image_url,
       link: link,

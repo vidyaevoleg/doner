@@ -24,6 +24,9 @@ Topdoner.factory('places', ['$http','$location','$rootScope',function($http,$loc
         })      
         return reviews
       },
+      deletePlace: function (place_id) {
+        $http.delete('/places/'+place_id)
+      },
       createPlace: function(place){
         $http.post('/places',{place: place}).success(function(data){
           $rootScope.place = data

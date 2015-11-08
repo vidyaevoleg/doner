@@ -6,9 +6,19 @@ Topdoner.filter('isRated', function () {
     })
   }
 })
-
+Topdoner.filter('getPlaceById', function() {
+  return function(input, id) {
+    var i=0, len=input.length;
+    for (; i<len; i++) {
+      if (input[i].properties.id == id) {
+        return input[i];
+      }
+    }
+    return null;
+  }
+});
 Topdoner.directive('starRating',
-	function() {
+	function($compile) {
 		return {
 			restrict : 'A',
 			template : '<ul class="rating">'
@@ -42,6 +52,13 @@ Topdoner.directive('starRating',
 					function(oldVal, newVal) {
 						if (newVal) {
 							updateStars();
+							$compile(
+								'<ul class="rating">'
+						 		+ '<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">'
+						 		+ '\u2605'
+						 		+ '</li>'
+						 		+ '</ul>'
+							)
 						}
 					}
 				);
@@ -54,24 +71,75 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider) {
 	  $stateProvider
 		.state('home', {
+		  resolve: {
+			  current_user: ['users','$rootScope', function(users,$rootScope){
+			    return users.getCurrentUser().then(function(data){
+			    	$rootScope.current_user = data
+			    })
+			  }]
+			},
 		  url: '/home',
 		  templateUrl: "<%= asset_path('templates/index.html.erb') %>",
 		  controller: 'PlacesCtrl'
 		})
 		.state('places', {
+		  resolve: {
+			  current_user: ['users','$rootScope', function(users,$rootScope){
+			    return users.getCurrentUser().then(function(data){
+			    	$rootScope.current_user = data
+			    })
+			  }]
+			},
 		  url: '/places/{id}',
 		  templateUrl: "<%= asset_path('templates/place.html.erb') %>",
 		  controller: 'PlaceCtrl'
 		})
 		.state('new_place', {
+		  resolve: {
+			  current_user: ['users','$rootScope', function(users,$rootScope){
+			    return users.getCurrentUser().then(function(data){
+			    	$rootScope.current_user = data
+			    })
+			  }]
+			},
 		  url: '/create_place',
 		  templateUrl: "<%= asset_path('templates/new_place.html.erb') %>",
 		  controller: 'NewPlaceCtrl'
 		})
 		.state('new_review', {
+		  resolve: {
+			  current_user: ['users','$rootScope', function(users,$rootScope){
+			    return users.getCurrentUser().then(function(data){
+			    	$rootScope.current_user = data
+			    })
+			  }]
+			},
 		  url: '/places/{id}/new_review',
 		  templateUrl: "<%= asset_path('templates/new_review.html.erb') %>",
 		  controller: 'NewReviewCtrl'
-		});
+		})
+		.state('edit_review', {
+		  resolve: {
+			  review: ['reviews','$stateParams','$rootScope', function(reviews,$stateParams,$rootScope){
+			    return reviews.getReview($stateParams.review_id).then(function(data){
+			    	$rootScope.review = data.review
+			    })
+			  }],
+			  current_user: ['users','$rootScope', function(users,$rootScope){
+			    return users.getCurrentUser().then(function(data){
+			    	$rootScope.current_user = data
+			    })
+			  }]
+			},
+		  url: '/places/{id}/edit_review/{review_id}',
+		  templateUrl: "<%= asset_path('templates/edit_review.html.erb') %>",
+		  controller: 'EditReviewCtrl'
+		})
+
+		// console.log(angular.toJson($stateProvider.get()));
+		// $stateProvider.state.forEach(function(state) {
+  //       console.log($stateProvider.state(state.state, state.config));
+		// })
+		// console.log($state.get())
 	  $urlRouterProvider.otherwise('home');
 }])

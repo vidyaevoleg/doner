@@ -3,13 +3,16 @@ class ImagesController < ApplicationController
 	def create
 		@image = Image.new(file: params[:file])
 		if @image.save
-			render json: @image
+			render json: {image: @image}
 		else
 			render json: {},status: 500
 		end
 	end
 
 	def destroy
+		image = Image.find(params[:id])
+		image.destroy!
+		render json: {}
 	end
 	
 	private
