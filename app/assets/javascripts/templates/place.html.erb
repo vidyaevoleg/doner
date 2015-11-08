@@ -43,7 +43,6 @@
 			<div class="lo-r-card-title">
 				<span>{{place.properties.street}}</span>
 			</div>
-			<p><span ng-show="can(place)" ng-click="deletePlace(place.properties.id)">удалить</span></p>
 			<div class="lo-r-card-metro">
 				<div class="lo-r-card-metro-logo">
 					<svg width="13px" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
@@ -57,6 +56,7 @@
 
 				<div class="lo-r-card-metro-title">{{place.properties.metro}}</div>
 			</div>
+			<span ng-show="can(place)" ng-click="deletePlace(place.properties.id)">удалить</span>
 			<div class="lo-r-card-rating">
 				<div class="lo-r-card-rating-num">{{place.properties.rating}}</div>
 				<div class="lo-r-card-rating-count">{{place.properties.reviews_count}}</div>
@@ -74,20 +74,28 @@
 	<div ng-repeat="review in reviews | orderBy:'-date'" class="lo-r-cont">
 		<!--<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" ng-click="makeReviewCurrent(review)">-->
 		<div class="lo-r-cont-review" ng-class="openReview(review)" ng-click="makeReviewCurrent(review)" ng-attr-id="{{'review-'+review.id}}">
-			<div class="lo-r-cont-review-title">
-<!--				рейтинг - {{review.rating}}; {{review.min_price}}-{{review.max_price}} rub-->
-				{{ review.title }}
+			<div class="lo-r-cont-review-head">
+				<div class="lo-r-cont-review-head-user">
+					<div class="lo-r-cont-review-head-user-img" ng-hide="review.anonym" style="background-image: url({{review.author.image_url}})"></div>
+					<div class="lo-r-cont-review-head-user-img" ng-show="review.anonym" style="background-image: url(http://lh6.googleusercontent.com/-cD7TPhhmge8/AAAAAAAAAAI/AAAAAAAAABA/pCJAxHQD4Wk/s512-c/photo.jpg)"></div>
+					<div class="lo-r-cont-review-head-user-name" ng-hide="review.anonym">{{review.author.username}}</div>
+					<div class="lo-r-cont-review-head-user-name" ng-show="review.anonym">Некто</div>
+				</div>
+				<div class="lo-r-cont-review-head-rating">
+					{{review.rating}}
+				</div>
 			</div>
-			<p><a ng-show="can(review)" href="/#/places/{{place.properties.id}}/edit_review/{{review.id}}">редактировать</a></p>
-			<p><a ng-show="can(review)" ng-click="deleteReview(review.id)">удалить</a></p>
-			<div class="lo-r-cont-review-rating">{{review.rating}}</div>
+			<div class="lo-r-cont-review-title">{{ review.title }}</div>
+			
+<!--			<p><a ng-show="can(review)" href="/#/places/{{place.properties.id}}/edit_review/{{review.id}}">редактировать</a></p>-->
+<!--			<p><a ng-show="can(review)" ng-click="deleteReview(review.id)">удалить</a></p>-->
 			<div class="lo-r-cont-review-body">
 				<div ng-show="!isReviewCurrent(review)" ng-bind-html="review.body">
-					{{ review.body | limitTo: 140 }}{{review.body.length > 100 ? '...' : ''}}
+<!--					{{ review.body | limitTo: 140 }}{{review.body.length > 100 ? '...' : ''}}-->
 <!--									<span class="lo-r-cont-review-body-open">Читать</span>-->
 				</div>
-				<div ng-show="isReviewCurrent(review)">
-					<p ng-bind-html="review.body"></p>
+				<div ng-show="isReviewCurrent(review)" ng-bind-html="review.body">
+<!--					<p ></p>-->
 					<!-- <span style="color: blue;cursor: pointer;" ng-click="closeReview()"> закрыть </span> -->
 				</div>
 
@@ -95,9 +103,11 @@
 					<img src="{{image.url}}">
 				</div>
 			</div>
+<!--
 			<div class="lo-r-cont-review-author" ng-hide="review.anonym">
 				{{review.author.username}}
 			</div>
+-->
 		</div>
 	</div>
 </div>
