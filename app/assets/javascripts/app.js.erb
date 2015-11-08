@@ -52,13 +52,6 @@ Topdoner.directive('starRating',
 					function(oldVal, newVal) {
 						if (newVal) {
 							updateStars();
-							$compile(
-								'<ul class="rating">'
-						 		+ '<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">'
-						 		+ '\u2605'
-						 		+ '</li>'
-						 		+ '</ul>'
-							)
 						}
 					}
 				);
@@ -83,16 +76,16 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 		  controller: 'PlacesCtrl'
 		})
 		.state('places', {
+		  url: '/places/{id}',
+		  templateUrl: "<%= asset_path('templates/place.html.erb') %>",
+		  controller: 'PlaceCtrl',
 		  resolve: {
 			  current_user: ['users','$rootScope', function(users,$rootScope){
 			    return users.getCurrentUser().then(function(data){
 			    	$rootScope.current_user = data
 			    })
 			  }]
-			},
-		  url: '/places/{id}',
-		  templateUrl: "<%= asset_path('templates/place.html.erb') %>",
-		  controller: 'PlaceCtrl'
+			}	
 		})
 		.state('new_place', {
 		  resolve: {

@@ -86,9 +86,9 @@
 					<img src="{{image.url}}">
 				</div>
 			</div>
-			<div class="lo-r-cont-review-author">
-					{{review.author.username}}
-				</div>
+			<div class="lo-r-cont-review-author" ng-hide="review.anonym">
+				{{review.author.username}}
+			</div>
 		</div>
 	</div>
 </div>

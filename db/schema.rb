@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151031114509) do
+ActiveRecord::Schema.define(version: 20151108090104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,11 +47,12 @@ ActiveRecord::Schema.define(version: 20151031114509) do
     t.string   "author"
     t.string   "max_price"
     t.string   "min_price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "total"
     t.string   "title"
     t.integer  "user_id"
+    t.boolean  "anonym",     default: false
   end
 
   add_index "reviews", ["place_id"], name: "index_reviews_on_place_id", using: :btree

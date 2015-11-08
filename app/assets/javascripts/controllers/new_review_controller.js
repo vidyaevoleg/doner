@@ -20,6 +20,7 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
     min_price: '',
     max_price: '',
     total: 1,
+    anonym: false,
     title: ''
   }
 

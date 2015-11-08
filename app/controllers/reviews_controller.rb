@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
+	skip_before_filter :verify_authenticity_token, only: [:create,:destroy,:update]
 	before_action :set_place, only: :create
 	before_action :set_review, only: [:update,:destroy,:show]
 	before_action :check_ability, only: [:destroy,:update]
-	skip_before_filter :verify_authenticity_token, only: [:create,:destroy]
 	def create
 		@review = current_user.reviews.create(review_params)
 		if params[:review][:images_id]
@@ -54,7 +54,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def review_params
-		params.require(:review).permit(:body,:total,:title,:max_price,:min_price,:vegetables,:meat,:sanitation,:service,:place_id)
+		params.require(:review).permit(:body,:total,:title,:max_price,:min_price,:vegetables,:meat,:anonym,:sanitation,:service,:place_id)
 	end
 
 	def set_review
