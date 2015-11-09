@@ -22,7 +22,6 @@ Topdoner.controller('EditReviewCtrl', ['$scope','$stateParams','places','reviews
     delete review['images']
     review['images_id'] = $scope.new_images_id    
     if ($rootScope.reviewValid(review)){
-      console.log('valid')
       $http.put('/reviews/'+review.id,{review: review}).then(function(){
         $location.path('/places/'+ $stateParams.id)
       })

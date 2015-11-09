@@ -8,14 +8,21 @@ class PlacesController < ApplicationController
 	end
 
 	def create
-#		binding.pry
 		@place = current_user.places.create(place_params)
-		if @place.save
-			render json: @place.to_nice_json
-		end
+		if params[:place][:images_id]
+			images_id = params[:place][:images_id].to_s.split(',')
+			bind_image_and_place(images_id)
+		end 
+		render json: @place.to_nice_json
 	end
 
 	def update
+		@place.update_attributes(place_params)
+		if params[:place][:images_id]
+			images_id = params[:place][:images_id].to_s.split(',')
+			bind_image_and_place(images_id)
+		end
+		render json: {}
 	end
 	
 	def get_places
@@ -40,6 +47,19 @@ class PlacesController < ApplicationController
 	end
 
 	private
+	
+	def bind_image_and_place(images_id)
+		if images_id.size>0
+			images_id.map do |id|
+				image = Image.find(id)
+				image.update_attributes(imaginable_id: @place.id,imaginable_type: @place.class.to_s)
+			end 
+		end
+		last_image_id = @place.images.last.id
+		@place.images.map do |image|
+			image.destroy! unless image.id = last_image_id
+		end
+	end
 
 	def check_ability
 		if current_user.id == @place.user.id #TODO: or admin 

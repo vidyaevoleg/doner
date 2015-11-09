@@ -77,7 +77,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
     };
 	
 	
-	$scope.fixDropzone = function() {
+	$rootScope.fixDropzone = function() {
 		$('.dz-message').html('Перетащи фото или кликни');
 	}
   $rootScope.reviewValid = function(review){

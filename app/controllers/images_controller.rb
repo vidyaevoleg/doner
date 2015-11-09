@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
-	# before_action :set_imaginable, only: :create
+	skip_before_filter :verify_authenticity_token, only: [:create,:destroy]
+	before_action :check_ability, only: :destroy
 	def create
 		@image = Image.new(file: params[:file])
 		if @image.save
@@ -21,6 +22,14 @@ class ImagesController < ApplicationController
 		params.require(:image).permit(:image)
 	end
 	
+	def check_ability
+		if current_user
+			true
+		else
+			return
+		end
+	end
+
 	def set_imaginable
 		type = params[:imaginable_type].classify.constatize
 		id = params[:imaginable_id]

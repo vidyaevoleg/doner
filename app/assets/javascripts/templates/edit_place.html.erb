@@ -1,6 +1,6 @@
-<div class="lo-r" ng-init="signIn()">
-	<div class="lo-r-card">
-		<div class="lo-r-card-title" >
+<div class="lo-r" ng-init="signIn()" >
+	<div class="lo-r-card" ng-init="dropzone()" style="background-image: url({{place.properties.image.url}})">
+		<div class="lo-r-card-title">
 			<span>{{place.properties.street }}</a></span>
 		</div>
 		<div class="lo-r-card-metro">
@@ -20,7 +20,12 @@
 			<!-- <div>{{new_place.city}}</div> -->
 		</div>
 	</div>
-	<div class="add-review-submit-wrap">
-		<button ng-show="new_place" ng-click="updatePlace()" class="add-review-submit">Обновить</button>
+	<div class="add-place-dropzone" ng-init="fixDropzone()">
+		<h3> Загрузите аватар для ларька </h3>
+		<form action="/images" id="media-dropzone" class="dropzone" enctype="multipart/form-data">
+		</form>
 	</div>
+	<div class="add-review-submit-wrap">
+		<button ng-click="updatePlace()" class="add-place-submit">Обновить</button>
+	</div>	
 </div>
