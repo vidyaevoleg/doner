@@ -34,7 +34,7 @@ Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',
     $location.path('/places/'+place.properties.id+'/new_review')
   }
   
-  
+
 //	$scope.colorPlace = function(place) {
 //		console.log('as');
 //		if (place == $scope.place) {

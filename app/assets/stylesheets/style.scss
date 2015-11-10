@@ -93,6 +93,7 @@ body {
 	left: 0;
 }
 
+
 .blured {
 	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'svgBlur\' x=\'-5%\' y=\'-5%\' width=\'110%\' height='\110%'\><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'5\'/></filter></svg>#svgBlur");
 	-webkit-filter: blur(20px);
@@ -424,12 +425,15 @@ body {
 				width: 100%;
 				height: 100%;
 			}
+			
 			position: relative;
 			margin-bottom: 10px;
 			width: inherit;
 //			position: fixed;
 //			height: 90px;
-			height: 70px;
+			overflow: hidden;
+//			height: 70px;
+			height: 100px;
 //			top: 60px;
 			border-radius: 3px;
 //			background: #f4f7f7;
@@ -446,7 +450,7 @@ body {
 			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 			box-sizing: border-box;
-			padding: 14px;
+//			padding: 14px;
 			&-close {
 				position: absolute;
 				width: 14px;
@@ -466,6 +470,7 @@ body {
 				font-weight: 800;
 				font-size: 14px;
 				color: #fff;
+				z-index: 4 !important;
 			}
 			&-metro {
 				margin-top: 6px;
@@ -474,6 +479,7 @@ body {
 				font-weight: 500;
 //				color: #575757 !important;
 				color: #bfbfbf;
+				z-index: 4 !important;
 				div {
 					display: inline-block;
 				}
@@ -553,6 +559,8 @@ body {
 			}
 			&-rating {
 				position: absolute;
+								z-index: 4 !important;
+
 				top: 14px;
 				right: 14px;
 				width: 64px;
@@ -595,69 +603,90 @@ body {
 					}
 				}
 			}
-			&-create {
+			&-bg {
 				position: absolute;
-				right: 14px;
-				bottom: 10px;
-				cursor: pointer;
-				color: $act;
-				path {
-					fill: $act;
-				}
-				&-icon {
-					position: relative;
-					left: 2px;
-					top: 2px;
-				}
-				span:first-child {
-					width: 10px;
-				}
-				&:hover {
-//					text-decoration: underline;
-				}
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				z-index: 2 !important;
+				background-size: 100%;
+				background-position: center;
 			}
-			&-share {
-				width: 16px;
-				height: 16px;
+			&-cont {
 				position: absolute;
-				bottom: 11px;
-				right: 96px;
-				path {
-					fill: #cecece;
-//					fill: blue;
-				}
+				top: 14px;
+				left: 0px;
+				width: inherit;
+				box-sizing: border-box;
+				padding: 0 14px;
+//				background: pink;
+				height: 42px;
+				z-index: 4 !important;
 			}
-			&-revnum {
-				&-places {
-					right: 12px !important;
-				}
-				position: absolute;
-				bottom: 11px;
-				right: 120px;
-				display: inline-block;
-				height: 12px;
-				height: 16px;
-				path {
-					fill: #cecece;
-					position: absolute;
-				}
-				&-icon {
-					position: relative;
-					top: 2px;
-				}
-				&-num {
-					position: relative;
-//					top: 1px;
-					left: 2px;
-					color: #000;
-					width: 22px;
-					text-align: center;
-					font-family: 'helvetica';
-					color: #cecece;
-					font-weight: 400;
-					font-size: 14px;
-				}
-			}
+//			&-create {
+//				position: absolute;
+//				right: 14px;
+//				bottom: 10px;
+//				cursor: pointer;
+//				color: $act;
+//				path {
+//					fill: $act;
+//				}
+//				&-icon {
+//					position: relative;
+//					left: 2px;
+//					top: 2px;
+//				}
+//				span:first-child {
+//					width: 10px;
+//				}
+//				&:hover {
+////					text-decoration: underline;
+//				}
+//			}
+//			&-share {
+//				width: 16px;
+//				height: 16px;
+//				position: absolute;
+//				bottom: 11px;
+//				right: 96px;
+//				path {
+//					fill: #cecece;
+////					fill: blue;
+//				}
+//			}
+//			&-revnum {
+//				&-places {
+//					right: 12px !important;
+//				}
+//				position: absolute;
+//				bottom: 11px;
+//				right: 120px;
+//				display: inline-block;
+//				height: 12px;
+//				height: 16px;
+//				path {
+//					fill: #cecece;
+//					position: absolute;
+//				}
+//				&-icon {
+//					position: relative;
+//					top: 2px;
+//				}
+//				&-num {
+//					position: relative;
+////					top: 1px;
+//					left: 2px;
+//					color: #000;
+//					width: 22px;
+//					text-align: center;
+//					font-family: 'helvetica';
+//					color: #cecece;
+//					font-weight: 400;
+//					font-size: 14px;
+//				}
+//			}
 		}
 		&-subnav {
 			width: inherit;

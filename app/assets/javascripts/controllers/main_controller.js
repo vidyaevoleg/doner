@@ -136,6 +136,17 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 			$('.lo-r-nav-select-item-n').addClass('active');
 		}
 	}
+	
+	  $scope.stopBlur = function() {
+	  $('.lo-r-card-bg').removeClass('blured');
+	  $('.lo-r-card-cont').addClass('hidden');
+  }
+  $scope.startBlur = function() {
+	  $('.lo-r-card-bg').addClass('blured');
+	  $('.lo-r-card-cont').removeClass('hidden');
+
+  }
+  
 
 	
 }]);
