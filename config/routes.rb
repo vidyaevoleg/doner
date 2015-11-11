@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     get 'get_reviews', on: :member
   end
   resources :reviews
+  namespace :admin do
+    resources :users
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
