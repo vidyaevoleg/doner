@@ -138,12 +138,29 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	}
 	
 	  $scope.stopBlur = function() {
-	  $('.lo-r-card-bg').removeClass('blured');
-	  $('.lo-r-card-cont').addClass('hidden');
+//	  $('.lo-r-card-bg').removeClass('blured');
+		$('.lo-r-card-bg-norm').fadeTo(200,1);
+//		$('.lo-r-card-bg-blured').addClass('hover');
+		  $('.lo-r-card-bg-blured').css('opacity', 0);
+//	  $('.lo-r-card-cont').fadeTo(200,0);
+//		  	  $('.lo-r-card-cont').addClass('hidden');
+		  $('.lo-r-card-cont-top').addClass('hover');
+		  $('.lo-r-card-cont-bottom').addClass('hover');
+
   }
   $scope.startBlur = function() {
-	  $('.lo-r-card-bg').addClass('blured');
-	  $('.lo-r-card-cont').removeClass('hidden');
+	  		$('.lo-r-card-bg-norm').fadeTo(200,0);
+//	  $('.lo-r-card-bg-blured').fadeTo(200,1);
+//	  		$('.lo-r-card-bg-blured').removeClass('hover');
+	  		  $('.lo-r-card-bg-blured').css('opacity', 1);
+
+
+//	  $('.lo-r-card-cont').fadeTo(200,1);
+//	  $('.lo-r-card-cont').removeClass('hidden');
+//	  		  $('.lo-r-card-cont-top','.lo-r-card-cont-bottom').removeClass('hover');
+	  $('.lo-r-card-cont-top').removeClass('hover');
+		  $('.lo-r-card-cont-bottom').removeClass('hover');
+
 
   }
   

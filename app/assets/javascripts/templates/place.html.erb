@@ -8,12 +8,14 @@
 			</div>
 		</div>
 		<div class="lo-r-card" ng-mouseenter="stopBlur()" ng-mouseleave="startBlur()">
-			<div class="lo-r-card-bg blured" style="background-image: url({{place.properties.image.url}})"></div>
-			<div class="lo-r-card-cont">
-				<div class="lo-r-card-title">
-					<span>{{place.properties.street}}</span>
-				</div>
-				<div class="lo-r-card-metro">
+			<div class="lo-r-card-bg lo-r-card-bg-norm" style="background-image: url({{place.properties.image.url}})"></div>
+			<div class="lo-r-card-bg lo-r-card-bg-blured" style="background-image: url({{place.properties.image.url}})">BLURRRRRRR</div>
+<!--			<div class="lo-r-card-cont">-->
+				<div class="lo-r-card-cont lo-r-card-cont-top">
+					<div class="lo-r-card-title">
+						<span>{{place.properties.street}}</span>
+					</div>
+					<div class="lo-r-card-metro">
 					<div class="lo-r-card-metro-logo">
 						<svg width="13px" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
@@ -26,20 +28,24 @@
 
 					<div class="lo-r-card-metro-title">{{place.properties.metro}}</div>
 				</div>
-<!--				<span ng-show="can(place)" ng-click="deletePlace(place.properties.id)">удалить</span>-->
-<!--				<a ng-show="can(place)" href="/#/places/{{place.properties.id}}/edit_place">редактировать</a>-->
-				<div class="lo-r-card-rating">
-					<div class="lo-r-card-rating-num">{{place.properties.rating}}</div>
-					<div class="lo-r-card-rating-count">{{place.properties.reviews_count}}</div>
-	<!--				<div class="lo-r-card-rating-stars" star-rating rating-value="place.properties.rating" data-max="10"></div>-->
+					<div class="lo-r-card-rating">
+						<div class="lo-r-card-rating-num">{{place.properties.rating}}</div>
+						<div class="lo-r-card-rating-count">{{place.properties.reviews_count}}</div>
+		<!--				<div class="lo-r-card-rating-stars" star-rating rating-value="place.properties.rating" data-max="10"></div>-->
+					</div>
 				</div>
-			</div>
+				<div class="lo-r-card-cont lo-r-card-cont-bottom">
+					ДЕВЯТЬ ЛАЙКОВ ТИПА
+				</div>
+<!--			</div>-->
 			
 		</div>
 	<!--</div>
 	<div class="lo-r-border"></div>-->
 	
 	<div class="lo-r-subnav">
+		<span ng-show="can(place)" ng-click="deletePlace(place.properties.id)">удалить</span>
+		<a ng-show="can(place)" href="/#/places/{{place.properties.id}}/edit_place">редактировать</a>
 		<div class="lo-r-subnav-newreview" ng-click="writeReview(place)">
 			Написать обзор
 		</div>
