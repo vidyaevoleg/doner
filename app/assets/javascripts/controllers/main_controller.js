@@ -1,6 +1,8 @@
 
 Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$location','$rootScope','$stateParams', function ($scope,$filter,places,reviews,$location,$rootScope,$stateParams) {
 
+	$scope.places_list_order = '-properties.rating';
+	
   $rootScope.choosePlace = function(place){   
     $location.path('/places/'+place.properties.id);    
   };	
@@ -128,28 +130,39 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 //		console.log($(s);
 		if (what === 'r') {
 			$('.lo-r-nav-select-item-r').addClass('active');
+			$scope.places_list_order = '-properties.rating';
 		}
 		if (what === 'p') {
 			$('.lo-r-nav-select-item-p').addClass('active');
+			$scope.places_list_order = '-properties.reviews_count';
 		}
 		if (what === 'n') {
 			$('.lo-r-nav-select-item-n').addClass('active');
+			var geolocation = ymaps.geolocation;
+			geolocation.get({
+				provider: 'browser',
+				mapStateAutoApply: true
+			}).then(function (result) {
+				$scope.user_location = result.geoObjects.position;
+				console.log(result.geoObjects.position);
+			});
 		}
 	}
 	
 	  $scope.stopBlur = function() {
 //	  $('.lo-r-card-bg').removeClass('blured');
-		$('.lo-r-card-bg-norm').fadeTo(200,1);
+		$('.lo-r-card-bg-norm').css('opacity', 1);
 //		$('.lo-r-card-bg-blured').addClass('hover');
 		  $('.lo-r-card-bg-blured').css('opacity', 0);
 //	  $('.lo-r-card-cont').fadeTo(200,0);
 //		  	  $('.lo-r-card-cont').addClass('hidden');
 		  $('.lo-r-card-cont-top').addClass('hover');
 		  $('.lo-r-card-cont-bottom').addClass('hover');
-
   }
   $scope.startBlur = function() {
-	  		$('.lo-r-card-bg-norm').fadeTo(200,0);
+//	  		$('.lo-r-card-bg-norm').fadeTo(200,0);
+	  		$('.lo-r-card-bg-norm').css('opacity', 0);
+
 //	  $('.lo-r-card-bg-blured').fadeTo(200,1);
 //	  		$('.lo-r-card-bg-blured').removeClass('hover');
 	  		  $('.lo-r-card-bg-blured').css('opacity', 1);
@@ -160,7 +173,8 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 //	  		  $('.lo-r-card-cont-top','.lo-r-card-cont-bottom').removeClass('hover');
 	  $('.lo-r-card-cont-top').removeClass('hover');
 		  $('.lo-r-card-cont-bottom').removeClass('hover');
-
+	  
+	  
 
   }
   
