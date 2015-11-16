@@ -23,6 +23,11 @@
 						</div>
 						<div class="lo-l-head-nav-user" ng-show="current_user">
 							<div class="lo-l-head-nav-user-img" style="background-image: url({{current_user.image_url}})"></div>
+							<a href="{{current_user.link}}" target="_blank" class="lo-l-head-nav-user-name">
+								{{ current_user.username }}
+							</a>
+							<div class="lo-l-head-nav-user-logout" ng-click="logOut()">Выйти</div>
+<!--
 							<div class="lo-l-head-nav-user-logout" ng-click="logOut()">
 								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 									 width="100%" height="100%" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
@@ -34,9 +39,7 @@
 									L366.227,112.407z"/>
 								</svg>
 							</div>
-							<a href="{{current_user.link}}" target="_blank" class="lo-l-head-nav-user-name">
-								{{ current_user.username }}
-							</a>
+-->
 						</div>
 					</div>
 <!--
@@ -44,8 +47,8 @@
 					<div class="lo-l-head-logout"></div>
 -->
 				</div>
-				<div class="lo-l-map"  ng-controller="MapCtrl">
-					<ya-map ya-zoom="{{mapZoom}}" ya-center="{{mapCenter}}" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl" ya-event-click="mapClick($event)">
+				<div class="lo-l-map"  ya-center="{{mapCenter}}" ng-controller="MapCtrl">
+					<ya-map ya-zoom="10" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl" ya-event-click="mapClick($event)">
 						<ya-cluster ya-options="{preset:'islands#invertedRedClusterIcons'}">
 							<ya-geo-object href="#/places/{{place.id}}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ya-options="{preset: 'islands#redIcon'}"></ya-geo-object>
 						</ya-cluster>
