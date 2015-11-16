@@ -76,12 +76,12 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 		  resolve: {
 			  places: ['places','$stateParams','$rootScope', function(places,$stateParams,$rootScope){
 			    return places.getPlaces().then(function(data){
-						$rootScope.places = data
+					$rootScope.places = data;
 			    })
 			  }],
 			  current_user: ['users','$rootScope', function(users,$rootScope){
 			    return users.getCurrentUser().then(function(data){
-			    	$rootScope.current_user = data
+			    	$rootScope.current_user = data;
 			    })
 			  }]
 			},
@@ -96,8 +96,9 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 		  resolve: {
 				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
 			    return places.getPlaces().then(function(data){
-						$rootScope.place = $filter('getPlaceById')(data, $stateParams.id)
-						$rootScope.places = data				
+						$rootScope.place = $filter('getPlaceById')(data, $stateParams.id);
+						$rootScope.places = data;
+						$rootScope.mapCenter = $rootScope.place.geometry.coordinates;
 			    })
 			  }],		  
 			  // place: ['$stateParams','$rootScope', function($stateParams,$rootScope){
@@ -106,19 +107,18 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 			  // }],
 			  reviews: ['places','$stateParams','$rootScope', function(places,$stateParams,$rootScope){
 			    return places.getReviews($stateParams.id).then(function(res){
-						$rootScope.reviews = res.data
-			    })
+						$rootScope.reviews = res.data;
+			    });
 			  }],		  
 			  current_user: ['users','$rootScope', function(users,$rootScope){
 			    return users.getCurrentUser().then(function(data){
-						$rootScope.current_user = data
+					$rootScope.current_user = data;
 			    })
 			  }]
 			},
 		  url: '/places/{id}',
 		  templateUrl: "<%= asset_path('templates/place.html.erb') %>",
 		  controller: 'PlaceCtrl'
-
 		})
 		.state('new_place', {
 		  resolve: {

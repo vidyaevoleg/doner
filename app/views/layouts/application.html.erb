@@ -15,7 +15,7 @@
 						<a ng-href="#/home"></a>
 					</div>
 					<div class="lo-l-head-nav">
-						<div class="lo-l-head-nav-item" ng-hide="current_user" ng-click="openPopup('.popup-about')">
+						<div class="lo-l-head-nav-item" ng-click="openPopup('.popup-about')">
 							Что это?
 						</div>
 						<div class="lo-l-head-nav-item" ng-hide="current_user" ng-click="openPopup('.popup-login')">
@@ -44,10 +44,10 @@
 					<div class="lo-l-head-logout"></div>
 -->
 				</div>
-				<div class="lo-l-map"  ya-center="{{mapCenter}}" ng-controller="MapCtrl">
-					<ya-map ya-zoom="12" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl" ya-event-click="mapClick($event)">
+				<div class="lo-l-map"  ng-controller="MapCtrl">
+					<ya-map ya-zoom="{{mapZoom}}" ya-center="{{mapCenter}}" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl" ya-event-click="mapClick($event)">
 						<ya-cluster ya-options="{preset:'islands#invertedRedClusterIcons'}">
-							<ya-geo-object href="#/places/{{place.id}}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ya-options="{preset: 'islands#redIcon'}" ></ya-geo-object>
+							<ya-geo-object href="#/places/{{place.id}}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ya-options="{preset: 'islands#redIcon'}"></ya-geo-object>
 						</ya-cluster>
 					</ya-map>
 				</div>
@@ -66,7 +66,7 @@
 				</svg>
 	</div>
 -->
-	<div class="what" ng-show="current_user" ng-click="openPopup('.popup-about')">?</div>
+	<div class="what" ng-click="openPopup('.popup-about')">?</div>
 
 
 	<%= yield %>

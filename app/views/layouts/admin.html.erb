@@ -7,7 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<h1> админка </h1>
-	<%= yield %>
+	<div class="admin">
+		<div class="admin-menu">
+			<div class="admin-menu-item-main">
+				<%= link_to 'Topdoner', root_path %>
+			</div>
+			<div class="admin-menu-item">
+				<%= link_to 'Администрирование', '/admin/index' %>
+			</div>
+			<div class="admin-menu-item">
+				<%= link_to 'Ларьки и отзывы', '/admin/places' %>
+			</div>
+			<div class="admin-menu-item">
+				<%= link_to 'Посещаемость', '/admin/stat' %>
+			</div>
+<!-- 			<div class="admin-menu-item">
+			</div>	 -->		
+		</div>
+
+		<%= yield %>
+	</div>
 </body>
 </html>

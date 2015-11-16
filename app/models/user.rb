@@ -31,7 +31,8 @@ class User < ActiveRecord::Base
       image_url: image_url,
       link: link,
       places_count: places.count,
-      reviews_count: reviews.count
+      reviews_count: reviews.count,
+      role: role
     }
     json
   end
