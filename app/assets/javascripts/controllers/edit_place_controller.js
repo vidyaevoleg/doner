@@ -29,7 +29,7 @@ Topdoner.controller('EditPlaceCtrl', ['$scope','places','$http','$location','$ro
       }
     }
     return mediaDropzone.on("success", function(file, responseText) {
-      $('.lo-r-card').css('background-image','url('+responseText.image.file.url+')')
+      $('.lo-r-card-bg').css('background-image','url('+responseText.image.file.url+')')
       if ($scope.images_id.length > 0){
         $scope.$apply( $scope.images_id = $scope.images_id + ','+ responseText.image.id.toString())
       } else {
