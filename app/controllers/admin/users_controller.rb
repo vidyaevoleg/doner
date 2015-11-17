@@ -2,7 +2,7 @@ class Admin::UsersController < AdminController
 	before_action :set_user, only: [:destroy,:show]
 
 	def index
-		@users = User.all
+		@users = User.order(:created_at)
 		respond_to do |f|
 			f.html  
 			f.json 

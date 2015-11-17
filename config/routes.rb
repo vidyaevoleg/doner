@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   resources :reviews
   namespace :admin do
     get 'index'
+    get 'stat'
     resources :users
-    resources :places
+
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

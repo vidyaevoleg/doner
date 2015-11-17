@@ -1,0 +1,20 @@
+<h1> Пользователи </h1>
+
+<div class="admin-users">
+	<% @users.each do |user| %>
+		<div class="admin-user">
+			<div class="admin-user-avatar" style="background-image: url(<%= user.image_url %>)">
+				<a href="#{user.link}" target="_blank"></a>
+			</div>
+			<div class="admin-user-username">
+				<a href="#{user.link}" target="_blank"><%= user.username %></a>
+			</div>
+			<div class="admin-user-since">
+				c <%= user.created_at %>
+			</div>
+			<div class="admin-user-provider">
+				<%= user.provider %>
+			</div>
+		</div>
+	<% end %>
+</div>
