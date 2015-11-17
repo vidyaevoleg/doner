@@ -50,7 +50,7 @@
 				<div class="lo-l-map"  ya-center="{{mapCenter}}" ng-controller="MapCtrl">
 					<ya-map ya-zoom="10" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl" ya-event-click="mapClick($event)">
 						<ya-cluster ya-options="{preset:'islands#invertedRedClusterIcons'}">
-							<ya-geo-object href="#/places/{{place.id}}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ya-options="{preset: 'islands#redIcon'}" ></ya-geo-object>
+							<ya-geo-object href="#/places/{{place.id}}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ya-options="{preset: 'islands#redIcon'}"></ya-geo-object>
 						</ya-cluster>
 					</ya-map>
 				</div>
@@ -69,7 +69,7 @@
 				</svg>
 	</div>
 -->
-	<div class="what" ng-show="current_user" ng-click="openPopup('.popup-about')">?</div>
+	<div class="what" ng-click="openPopup('.popup-about')">?</div>
 
 
 	<%= yield %>
@@ -94,7 +94,7 @@
 				</svg>
 			</div>
 			<div class="popup-login-button-title">Авторизоваться</div>
-			<a href="users/auth/facebook"></a>
+			<a href="users/auth/vkontakte"></a>
 		</div>
 		
 		<div class="popup-login-button fb">

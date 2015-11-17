@@ -1,0 +1,16 @@
+<h2> Все места </h2>
+
+<div class="admin-places">
+	<div class="adpin-places-sort">
+		
+	</div>
+	<% @places.each do |place| %>
+		<div class="admin-place">
+			метро: <%= place.metro %>
+			улица: <%= place.street %>
+			отзывов: <%= place.reviews.count %>
+			создан: <%= place.created_at %>
+			автор: <%= place.user.username %>
+		</div>
+	<% end %>
+</div>

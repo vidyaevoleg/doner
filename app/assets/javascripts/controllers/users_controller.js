@@ -13,16 +13,17 @@ Topdoner.controller('UsersCtrl', ['$scope','$location','$rootScope','users',func
     }) 
   }
   $rootScope.can = function(object) {
-    if ($rootScope.current_user){
+    var user = $rootScope.current_user;
+    if (user){
       if (object.id){
         // review
-        if ($rootScope.current_user.id == object.author.id){
+        if ((user.id == object.author.id) || (user.role == 'admin')){
           return true
         } else {
           return false
-        }
+        } // place
       } else if (object.properties){
-        if ($rootScope.current_user.id == object.properties.author.id){
+        if ((user.id == object.properties.author.id) || (user.role == 'admin')){
           return true
         } else {
           return false

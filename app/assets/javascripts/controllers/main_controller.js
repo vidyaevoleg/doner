@@ -1,10 +1,11 @@
-
 Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$location','$rootScope','$stateParams', function ($scope,$filter,places,reviews,$location,$rootScope,$stateParams) {
+
 
 	$scope.places_list_order = '-properties.rating';
 	
+
   $rootScope.choosePlace = function(place){   
-    $location.path('/places/'+place.properties.id);    
+    $location.path('/places/'+place.properties.id);   
   };	
 	
   $rootScope.deletePlace = function(place_id) {
@@ -14,6 +15,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
     $location.path('/home')
 
   }
+
   $rootScope.deleteReview = function(review_id){
     reviews.deleteReview(review_id)
     $('#review-'+review_id).toggle(500)
