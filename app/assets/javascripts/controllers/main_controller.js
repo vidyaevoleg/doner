@@ -138,14 +138,35 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		}
 		if (what === 'n') {
 			$('.lo-r-nav-select-item-n').addClass('active');
+			console.log('go');
 			var geolocation = ymaps.geolocation;
 			geolocation.get({
 				provider: 'browser',
 				mapStateAutoApply: true
 			}).then(function (result) {
-				$scope.user_location = result.geoObjects.position;
+				$rootScope.user_location = result.geoObjects.position;
 				console.log(result.geoObjects.position);
+				console.log('------------------------start');
+				function toRads(angle) {
+					return angle * (Math.PI / 180);
+				}
+				if (!$rootScope.places[1].properties.dist) {
+					for (var i=0; i < $rootScope.places.length; i++) {
+						var place = $rootScope.places[i].geometry.coordinates,
+							me = $rootScope.user_location,
+							d=0;
+						d = Math.acos(Math.sin(toRads(me[0]))*Math.sin(toRads(place[0])) + Math.cos(toRads(me[0]))*Math.cos(toRads(place[0]))*Math.cos(toRads(me[1]) - toRads(place[1])));
+						$rootScope.places[i].properties.dist = Math.round(d * 6371);
+	//					console.log(d * 6371);
+					}
+					console.log('-------------------------end');
+				} else {
+					console.log('dist exist');
+				}
+				$scope.$apply($scope.places_list_order = 'properties.dist');
 			});
+			
+//			console.log('init');
 		}
 	}
 	

@@ -444,7 +444,7 @@ body {
 				line-height: 40px;
 				font-weight: 800;
 				font-size: 16px;
-				color: #a3a3a3;
+				color: #c3c3c3;
 				span {
 					margin-right: 14px;
 					cursor: pointer;
@@ -469,6 +469,19 @@ body {
 			&-places {
 				cursor: pointer;
 				height: 70px !important;
+				background: none;
+				border-bottom: 1px solid #eee;
+				-webkit-box-shadow: none;
+				   -moz-box-shadow: none;
+						box-shadow: none;
+				color: #000 !important;
+				.lo-r-card-title {
+					color: #000;
+					text-shadow: none;
+				}
+				.lo-r-card-metro {
+					color: #505050;
+				}
 			}
 			position: relative;
 			margin-bottom: 10px;
@@ -716,16 +729,15 @@ body {
 				&-bottom {
 					position: absolute;
 					left: 0px;
-					padding: 0 14px;
-					width: inherit;
+					padding: 0 64px 0 0;
+					width: 100%;
 					height: 100%;
 					box-sizing: border-box;
 					z-index: 4 !important;
 					bottom: 14px;
 					height: 20px;
-//					background: yellow;
-					color: #fff;
-					text-align: right;
+					color: blue;
+					text-align: right !important;
 					a {
 						color: #fff;
 					}

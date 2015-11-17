@@ -15,8 +15,7 @@
 				{{place.properties.rating}} -->
 			<div class="lo-r-card lo-r-card-places" ng-click="choosePlace(place)">
 <!--				<div class="lo-r-card-bg lo-r-card-bg-norm" style="background-image: url({{place.properties.image.url}})"></div>-->
-				<div class="lo-r-card-bg lo-r-card-bg-blured" style="background-image: url({{place.properties.image.url}})">BLURRRRRRR</div>
-	<!--			<div class="lo-r-card-cont">-->
+<!--				<div class="lo-r-card-bg lo-r-card-bg-blured" style="background-image: url({{place.properties.image.url}})">BLURRRRRRR</div>-->
 					<div class="lo-r-card-cont lo-r-card-cont-top">
 						<div class="lo-r-card-title">
 							<span>{{place.properties.street}}</span>
@@ -40,13 +39,10 @@
 			<!--				<div class="lo-r-card-rating-stars" star-rating rating-value="place.properties.rating" data-max="10"></div>-->
 						</div>
 					</div>
-	<!--
-					<div class="lo-r-card-cont lo-r-card-cont-bottom">
-						ДЕВЯТЬ ЛАЙКОВ ТИПА
+	
+					<div class="lo-r-card-cont lo-r-card-cont-bottom" ng-show="place.properties.dist">
+						{{place.properties.dist}}км
 					</div>
-	-->
-	<!--			</div>-->
-
 			</div>
 		</div>
 	</div>
