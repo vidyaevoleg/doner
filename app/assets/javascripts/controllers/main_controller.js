@@ -26,8 +26,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
       var m = [
         ['Бульвар Рокоссовского','Черкизовская','Преображенская площадь','Сокольники','Красносельская','Комсомольская','Красные ворота','Чистые пруды','Лубянка','Охотный ряд','Библиотека им. Ленина','Кропоткинская','Парк культуры','Фрунзенская','Спортивная','Воробьёвы горы','Университет','Проспект Вернадского','Юго-Западная','Тропарёво'],
         ['Алма-Атинская','Красногвардейская','Домодедовская','Орехово','Царицыно','Кантемировская','Каширская','Коломенская','Автозаводская','Павелецкая','Новокузнецкая','Театральная','Тверская','Маяковская','Белорусская','Динамо','Аэропорт','Сокол','Войковская','Водный стадион','Речной вокзал'],
-        ['Пятницкое шоссе','Митино','Волоколамская','Мякинино','Строгино','Крылатское','Молодежная','Кунцевская','Славянский бульвар','Парк Победы','Киевская','Смоленская','Арбатская','Площадь Революции','Курская','Бауманская','Электрозаводская','Семеновская','Партизанская','Измайловская','Первомайская','Щелковская'
-  ],
+        ['Пятницкое шоссе','Митино','Волоколамская','Мякинино','Строгино','Крылатское','Молодежная','Кунцевская','Славянский бульвар','Парк Победы','Киевская','Смоленская','Арбатская','Площадь Революции','Курская','Бауманская','Электрозаводская','Семеновская','Партизанская','Измайловская','Первомайская','Щелковская'],
         ['Александровский сад','Арбатская','Смоленская','Киевская','Выставочная','Международная','Студенческая','Кутузовская','Фили','Багратионовская','Филевский парк','Пионерская','Кунцевская'],
         ['Белорусская','Новослободская','Проспект Мира','Комсомольская','Курская','Таганская','Павелецкая','Добрынинская','Октябрьская','Парк культуры','Киевская','Краснопресненская'],
         ['Медведково','Бабушкинская','Свиблово','Ботанический сад','ВДНХ','Алексеевская','Рижская','Проспект Мира','Сухаревская','Тургеневская','Китай-город','Третьяковская','Октябрьская','Шаболовская','Ленинский проспект','Академическая','Профсоюзная','Новые Черемушки','Калужская','Беляево','Коньково','Теплый Стан','Ясенево','Новоясеневская'],
@@ -141,35 +140,64 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		if (what === 'n') {
 			$('.lo-r-nav-select-item-n').addClass('active');
 			console.log('go');
-			var geolocation = ymaps.geolocation;
-			geolocation.get({
-				provider: 'browser',
-				mapStateAutoApply: true
-			}).then(function (result) {
-				$rootScope.user_location = result.geoObjects.position;
-				console.log(result.geoObjects.position);
-				console.log('------------------------start');
-				function toRads(angle) {
-					return angle * (Math.PI / 180);
-				}
+//			var geolocation = ymaps.geolocation;
+//			geolocation.get({
+//				provider: 'browser',
+//				mapStateAutoApply: true
+//			}).then(function (result) {
+//				$rootScope.user_location = result.geoObjects.position;
+//				console.log(result.geoObjects.position);
+//				console.log('------------------------start');
+//				function toRads(angle) {
+//					return angle * (Math.PI / 180);
+//				}
+//				if (!$rootScope.places[1].properties.dist) {
+//					for (var i=0; i < $rootScope.places.length; i++) {
+//						var place = $rootScope.places[i].geometry.coordinates,
+//							me = $rootScope.user_location,
+//							d=0;
+//						d = Math.acos(Math.sin(toRads(me[0]))*Math.sin(toRads(place[0])) + Math.cos(toRads(me[0]))*Math.cos(toRads(place[0]))*Math.cos(toRads(me[1]) - toRads(place[1])));
+//						$rootScope.places[i].properties.dist = Math.round(d * 6371);
+//	//					console.log(d * 6371);
+//					}
+//					console.log('-------------------------end');
+//				} else {
+//					console.log('dist exist');
+//				}
+//				$scope.$apply($scope.places_list_order = 'properties.dist');
+//			});
+			if (navigator.geolocation) {
+//				console.log('so..')
+				navigator.geolocation.getCurrentPosition(showPosition);
+				console.log('GOT POSSITION');
+			} else {
+//				x.innerHTML = "Geolocation is not supported by this browser.";
+				console.log('geolocation error :(');
+			}
+			function showPosition(position) {
+				$rootScope.user_location = [position.coords.longitude, position.coords.latitude];
 				if (!$rootScope.places[1].properties.dist) {
 					for (var i=0; i < $rootScope.places.length; i++) {
 						var place = $rootScope.places[i].geometry.coordinates,
 							me = $rootScope.user_location,
 							d=0;
-						d = Math.acos(Math.sin(toRads(me[0]))*Math.sin(toRads(place[0])) + Math.cos(toRads(me[0]))*Math.cos(toRads(place[0]))*Math.cos(toRads(me[1]) - toRads(place[1])));
-						$rootScope.places[i].properties.dist = Math.round(d * 6371);
-	//					console.log(d * 6371);
+						$rootScope.places[i].properties.dist = $scope.calcDist(me, place);
+						console.log($rootScope.places[i].properties.dist);
 					}
 					console.log('-------------------------end');
 				} else {
 					console.log('dist exist');
 				}
 				$scope.$apply($scope.places_list_order = 'properties.dist');
-			});
-			
-//			console.log('init');
+			}
 		}
+	}
+	
+	$scope.calcDist = function(me, place) {
+		function toRads(angle) {
+			return angle * (Math.PI / 180);
+		}
+		return Math.round(6371 * Math.acos(Math.sin(toRads(me[0]))*Math.sin(toRads(place[0])) + Math.cos(toRads(me[0]))*Math.cos(toRads(place[0]))*Math.cos(toRads(me[1]) - toRads(place[1]))));
 	}
 	
 	  $scope.stopBlur = function() {
