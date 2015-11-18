@@ -165,56 +165,37 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		}
 		if (what === 'n') {
 			$('.lo-r-nav-select-item-n').addClass('active');
-			console.log('go');
-//			var geolocation = ymaps.geolocation;
-//			geolocation.get({
-//				provider: 'browser',
-//				mapStateAutoApply: true
-//			}).then(function (result) {
-//				$rootScope.user_location = result.geoObjects.position;
-//				console.log(result.geoObjects.position);
-//				console.log('------------------------start');
-//				function toRads(angle) {
-//					return angle * (Math.PI / 180);
-//				}
-//				if (!$rootScope.places[1].properties.dist) {
-//					for (var i=0; i < $rootScope.places.length; i++) {
-//						var place = $rootScope.places[i].geometry.coordinates,
-//							me = $rootScope.user_location,
-//							d=0;
-//						d = Math.acos(Math.sin(toRads(me[0]))*Math.sin(toRads(place[0])) + Math.cos(toRads(me[0]))*Math.cos(toRads(place[0]))*Math.cos(toRads(me[1]) - toRads(place[1])));
-//						$rootScope.places[i].properties.dist = Math.round(d * 6371);
-//	//					console.log(d * 6371);
-//					}
-//					console.log('-------------------------end');
-//				} else {
-//					console.log('dist exist');
-//				}
-//				$scope.$apply($scope.places_list_order = 'properties.dist');
-//			});
-			if (navigator.geolocation) {
-//				console.log('so..')
-				navigator.geolocation.getCurrentPosition(showPosition);
-				console.log('GOT POSSITION');
-			} else {
-//				x.innerHTML = "Geolocation is not supported by this browser.";
-				console.log('geolocation error :(');
-			}
-			function showPosition(position) {
-				$rootScope.user_location = [position.coords.longitude, position.coords.latitude];
-				if (!$rootScope.places[1].properties.dist) {
-					for (var i=0; i < $rootScope.places.length; i++) {
-						var place = $rootScope.places[i].geometry.coordinates,
-							me = $rootScope.user_location,
-							d=0;
-						$rootScope.places[i].properties.dist = $scope.calcDist(me, place);
-						console.log($rootScope.places[i].properties.dist);
-					}
-					console.log('-------------------------end');
+			if (!$rootScope.places[1].properties.dist) {
+//				$('.lo-r-nav-select-wait').removeClass('hidden');
+				$scope.opn($('.lo-r-nav-select-wait'));
+				if (navigator.geolocation) {
+					console.log('so..')
+					navigator.geolocation.getCurrentPosition(showPosition);
+					console.log('GOT POSITION');
 				} else {
-					console.log('dist exist');
+					console.log('geolocation error :(');
 				}
-				$scope.$apply($scope.places_list_order = 'properties.dist');
+				function showPosition(position) {
+					$rootScope.user_location = [position.coords.longitude, position.coords.latitude];
+	//				if (!$rootScope.places[1].properties.dist) {
+						for (var i=0; i < $rootScope.places.length; i++) {
+							var place = $rootScope.places[i].geometry.coordinates,
+								me = $rootScope.user_location,
+								d=0;
+							$rootScope.places[i].properties.dist = $scope.calcDist(me, place);
+//							console.log($rootScope.places[i].properties.dist);
+						}
+	//				} else {
+	//					console.log('dist exist');
+	//				}
+					console.log('done');
+//					$('.lo-r-nav-select-wait').addClass('hidden');
+					$scope.cls($('.lo-r-nav-select-wait'));
+					$scope.$apply($scope.places_list_order = 'properties.dist');
+				}
+			} else {
+				$scope.places_list_order = 'properties.dist';
+				console.log('dist already exist')
 			}
 		}
 	}

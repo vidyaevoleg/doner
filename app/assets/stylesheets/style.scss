@@ -456,6 +456,13 @@ body {
 						margin-right: 0;
 					}
 				}
+				&-wait {
+					font-weight: 300px;
+					color: $act;
+					font-size: 12px;
+					position: relative;
+					margin-top: -14px;
+				}
 			}
 		}
 		&-card-wrapper {
