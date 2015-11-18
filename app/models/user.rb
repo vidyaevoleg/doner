@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def admin?
+    role == 'admin' ? true : false
+  end
+
   def to_nice_json
     json = {
       id: id,

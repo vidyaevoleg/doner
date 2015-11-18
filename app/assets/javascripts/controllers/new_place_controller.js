@@ -1,9 +1,13 @@
 Topdoner.controller('NewPlaceCtrl', ['$scope','places','$location','$rootScope', function ($scope,places,$location,$rootScope) {
   $scope.images_id = ''
-  $scope.createPlace = function(){
-    var new_place = $scope.new_place
-    new_place['images_id'] = $scope.images_id
-    places.createPlace(new_place)
+  var creating =  true
+  $scope.createPlace = function(e){
+    if (creating) {
+        var new_place = $scope.new_place
+      new_place['images_id'] = $scope.images_id
+      places.createPlace(new_place)  
+    };
+    creating = false;
   }
   
   $scope.signIn = function(){
