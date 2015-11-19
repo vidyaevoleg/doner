@@ -9,10 +9,6 @@ class Admin::UsersController < AdminController
 		end
 	end
 	
-	def create
-		redirect_to :back
-	end
-
 	def update
 		@user.update(user_params)
 		respond_to do |f|

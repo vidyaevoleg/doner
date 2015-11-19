@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'index'
     get 'stat'
+    resources :feedbacks
+    resources :places
     resources :users do 
       get 'make_admin', on: :member
     end
