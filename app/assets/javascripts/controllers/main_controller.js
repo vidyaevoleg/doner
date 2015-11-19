@@ -4,9 +4,9 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	$scope.places_list_order = '-properties.rating';
 	
 
-  $rootScope.choosePlace = function(place){   
-    $location.path('/places/'+place.properties.id);   
-  };	
+  $rootScope.choosePlace = function(place){
+    $location.path('/places/'+place.properties.id);
+  };
 	
   $rootScope.deletePlace = function(place_id) {
     places.deletePlace(place_id)
@@ -80,6 +80,8 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
           $scope.$apply(function(){
             $scope.new_place['street'] = house
           });
+		  		  console.log();
+
       });
       ymaps.geocode(coords).then(function (res) {
           var names = [];
@@ -166,7 +168,6 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		if (what === 'n') {
 			$('.lo-r-nav-select-item-n').addClass('active');
 			if (!$rootScope.places[1].properties.dist) {
-//				$('.lo-r-nav-select-wait').removeClass('hidden');
 				$scope.opn($('.lo-r-nav-select-wait'));
 				if (navigator.geolocation) {
 					console.log('so..')
@@ -177,19 +178,13 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 				}
 				function showPosition(position) {
 					$rootScope.user_location = [position.coords.longitude, position.coords.latitude];
+					console.log('STARTS');
 	//				if (!$rootScope.places[1].properties.dist) {
-						for (var i=0; i < $rootScope.places.length; i++) {
-							var place = $rootScope.places[i].geometry.coordinates,
-								me = $rootScope.user_location,
-								d=0;
-							$rootScope.places[i].properties.dist = $scope.calcDist(me, place);
-//							console.log($rootScope.places[i].properties.dist);
-						}
+						$scope.showListDisp();
 	//				} else {
 	//					console.log('dist exist');
 	//				}
 					console.log('done');
-//					$('.lo-r-nav-select-wait').addClass('hidden');
 					$scope.cls($('.lo-r-nav-select-wait'));
 					$scope.$apply($scope.places_list_order = 'properties.dist');
 				}
@@ -205,6 +200,18 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 			return angle * (Math.PI / 180);
 		}
 		return Math.round(6371 * Math.acos(Math.sin(toRads(me[0]))*Math.sin(toRads(place[0])) + Math.cos(toRads(me[0]))*Math.cos(toRads(place[0]))*Math.cos(toRads(me[1]) - toRads(place[1]))));
+	}
+	
+	$scope.showListDisp = function() {
+		if ($rootScope.user_location) {
+			for (var i=0; i < $rootScope.places.length; i++) {
+				var place = $rootScope.places[i].geometry.coordinates,
+					me = $rootScope.user_location,
+					d=0;
+				$rootScope.places[i].properties.dist = $scope.calcDist(me, place);
+//				console.log($rootScope.places[i].properties.dist);
+			}
+		}
 	}
 	
 	  $scope.stopBlur = function() {
@@ -236,6 +243,36 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 
   }
   
+  
+  $scope.isUserLocation = function() {
+	  if ($rootScope.user_location) {
+		  return true
+	  } else {
+		  return false
+	  }
+  }
+  
+  $scope.showPlaceDist = function() {
+	  if ($scope.isUserLocation()) {
+		  var place = $scope.place.geometry.coordinates,
+		  me = $rootScope.user_location;
+	  	return $scope.calcDist(me, place);
+	  }
+	  
+  }
+
+  
+  $scope.renameReviewCount = function(c) {
+	  if (c > 4) {
+		  return c + ' отзывов';
+	  } else if (c > 1) {
+		  return c + ' отзыва';
+	  } else if (c === 1) {
+		  return c + ' отзыв';
+	  } else {
+		  return;
+	  }
+  }
 
 	
 }]);
