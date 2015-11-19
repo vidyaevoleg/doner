@@ -28,8 +28,8 @@ class Place < ActiveRecord::Base
   def rating
   	if reviews.count > 0
       data = reviews.map {|review| review.rating}.compact
-  		(data.inject(0){|sum,x| sum+x}.to_f / data.count.to_f).to_f.to_s[0..2]
-  	else 
+  		rating = (data.inject(0){|sum,x| sum+x}.to_f / data.count.to_f).to_f
+    else 
       nil
     end
   end

@@ -1,4 +1,4 @@
-<div class="lo-r">
+<div class="lo-r" ng-init="findCurrentReview()">
 	<!--<div class="lo-r-card-wrapper">-->
 		<div class="lo-r-nav">
 			<div class="lo-r-nav-select">
@@ -58,9 +58,9 @@
 			Написать обзор
 		</div>
 	</div>
-	<div ng-repeat="review in reviews | orderBy:'-date'" class="lo-r-cont">
+	<div ng-repeat="review in reviews | orderBy:'-date'" class="lo-r-cont" id="review-{{review.id}}">
 		<!--<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" ng-click="makeReviewCurrent(review)">-->
-		<div class="lo-r-cont-review" ng-attr-id="{{'review-'+review.id}}" ng-class="openReview(review)">
+		<div class="lo-r-cont-review ext" ng-class="openedReview(review)">
 			<div class="lo-r-cont-review-head">
 				<div class="lo-r-cont-review-head-user">
 					<div class="lo-r-cont-review-head-user-img" ng-hide="review.anonym" style="background-image: url({{review.author.image_url}})"></div>
@@ -72,8 +72,8 @@
 					{{review.rating}}
 				</div>
 			</div>
-			<div class="lo-r-cont-review-body" ng-click="makeReviewCurrent(review)" ng-class="openReview(review)">
-				<div class="lo-r-cont-review-body-title">{{ review.title }}</div>
+			<div class="lo-r-cont-review-body" ng-class="openReview(review)">
+				<div class="lo-r-cont-review-body-title" ng-click="makeReviewCurrent(review)">{{ review.title }}</div>
 				<div class="lo-r-cont-review-body-text">
 					<div ng-show="!isReviewCurrent(review)" ng-bind-html="review.body"></div>
 					<div ng-show="isReviewCurrent(review)">
