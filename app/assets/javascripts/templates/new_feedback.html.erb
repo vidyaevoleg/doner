@@ -1,0 +1,19 @@
+<div class="lo-r" ng-init="dropzone()">
+
+  <h1>feedback</h1>
+  <select ng-model="new_feedback.feedback_type">
+    <option disabled>Выберите тип</option>
+    <option ng-repeat="type in types" value="{{type}}">{{ type }}</option>
+  </select>
+  <textarea ng-model="new_feedback.body">
+    
+  </textarea> 
+  <div class="add-place-dropzone" ng-init="fixDropzone()">
+    <h3> Прикрепите изображение, если того требует ваша задумка</h3>
+    <form action="/images" id="media-dropzone" class="dropzone" enctype="multipart/form-data">
+    </form>
+  </div>  
+  <div class="add-place-submit-wrap">
+    <button ng-click="submitFeedback()" class="add-review-submit">отправить</button>
+  </div>
+</div>

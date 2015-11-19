@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'home/manage'
   get 'home/index'
   resources :images 
+  resources :feedbacks, only: :create
   resources :places do
     get 'get_places', on: :collection
     get 'get_reviews', on: :member

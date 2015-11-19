@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,:omniauthable,:omniauth_providers => [:vkontakte,:facebook]
   has_many :places
   has_many :reviews
-
+  has_many :feedbacks
  	def self.find_for_vkontakte_oauth access_token
     if user = User.where(:url => access_token.info.urls.Vkontakte).first
       user
