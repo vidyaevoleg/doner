@@ -4,34 +4,30 @@ Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',
     $location.path('/home')
   }
   
-  $scope.current_review = undefined;
+  $scope.current_review = [];
 
   $scope.makeReviewCurrent = function(review){
-   $location.path(/places/ + $stateParams.id + '/reviews/' + review.id)
+    // $('#review-' + review.id).find('.lo-r-cont-review-body').addClass('ext');
+    $scope.current_review.push(review.id)  
   }
   
   $scope.findCurrentReview = function() {
-    if ($stateParams.review_id) {
-      $scope.current_review = $rootScope.review;
+    var review = $rootScope.review
+    if (review) {
+      setTimeout(function() {
+        $('body').animate({ scrollTop: $('#review-' + review.id).offset().top}, 1000);
+      }, 100);
+      $scope.current_review = review;
     }
   }
-
-  $scope.openedReview = function(review) {
-    if ($scope.current_review) {
-      if ($scope.current_review.id == review.id) {
-        return 'ext'
-      };
-    };
-  };
   
 	$scope.isReviewCurrent = function(review) {
-    if ($scope.current_review) {
-      if ($scope.current_review.id == review.id) {
-        return true
-      } else {
-        return false
-      };
-    };
+    if ($scope.current_review.indexOf(review.id) !== -1) {
+      return true
+    } else {
+      return false
+    };      
+
 	};
 
   $scope.closeReview = function(){

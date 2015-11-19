@@ -60,9 +60,9 @@
 	</div>
 	<div ng-repeat="review in reviews | orderBy:'-date'" class="lo-r-cont" id="review-{{review.id}}">
 		<!--<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" ng-click="makeReviewCurrent(review)">-->
-		<div class="lo-r-cont-review ext" ng-class="openedReview(review)">
+		<div class="lo-r-cont-review" ng-click="makeReviewCurrent(review)">
 			<div class="lo-r-cont-review-head">
-				<div class="lo-r-cont-review-head-user">
+				<div class="lo-r-cont-review-head-user" ng-class="isReviewCurrent(review) ? 'ext' : ''">
 					<div class="lo-r-cont-review-head-user-img" ng-hide="review.anonym" style="background-image: url({{review.author.image_url}})"></div>
 					<div class="lo-r-cont-review-head-user-img anon"  ng-show="review.anonym"></div>
 					<div class="lo-r-cont-review-head-user-name" ng-hide="review.anonym">{{review.author.username}}</div>
@@ -72,10 +72,10 @@
 					{{review.rating}}
 				</div>
 			</div>
-			<div class="lo-r-cont-review-body" ng-class="openReview(review)">
-				<div class="lo-r-cont-review-body-title" ng-click="makeReviewCurrent(review)">{{ review.title }}</div>
+			<div class="lo-r-cont-review-body" ng-class="isReviewCurrent(review) ? 'ext' : ''">
+				<div class="lo-r-cont-review-body-title">{{ review.title }}</div>
 				<div class="lo-r-cont-review-body-text">
-					<div ng-show="!isReviewCurrent(review)" ng-bind-html="review.body"></div>
+					<div ng-hide="isReviewCurrent(review)" ng-bind-html="review.body"></div>
 					<div ng-show="isReviewCurrent(review)">
 						<div ng-bind-html="review.body"></div>
 						<div ng-repeat="image in review.images">
@@ -89,7 +89,7 @@
 <!--			<p><a ng-show="can(review)" ng-click="deleteReview(review.id)">удалить</a></p>-->
 			
 			<div class="lo-r-cont-review-subnav">
-				<div class="lo-r-cont-review-subnav-open" ng-click="makeReviewCurrent(review)">Читать</div>
+				<div class="lo-r-cont-review-subnav-open" ng-hide="isReviewCurrent(review)" ng-click="makeReviewCurrent(review)">Читать</div>
 				<a class="lo-r-cont-review-subnav-edit" ng-show="can(place)" href="/#/places/{{place.properties.id}}/edit_review/{{review.id}}">
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="100%" height="100%" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
 						<path fill="#bebebe" id="edit-10-icon" d="M256,90c91.743,0,166,74.245,166,166c0,91.743-74.245,166-166,166c-91.743,0-166-74.245-166-166 C90,164.257,164.245,90,256,90 M256,50C142.229,50,50,142.229,50,256s92.229,206,206,206s206-92.229,206-206S369.771,50,256,50 L256,50z M181.25,275.854l56.86,56.828l-75.235,17.029L181.25,275.854z M369.817,202.847L257.351,315.246l-58.592-58.56 l112.471-112.398L369.817,202.847z"/>
