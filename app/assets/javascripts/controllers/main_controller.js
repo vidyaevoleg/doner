@@ -66,16 +66,19 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
             $scope.new_place['metro'] = metro.substring(6)
           });
       });
-      ymaps.geocode(coords).then(function (res) {
+      ymaps.geocode(coords, {kind: 'street'}).then(function (res) {
           var names = [];
           res.geoObjects.each(function (obj) {
               names.push(obj.properties.get('name'));
+			  console.log(obj.properties.get('name'));
           });
           var adress = names[0],city = names[3] + ',' + names[4]
           $scope.$apply(function(){
             $scope.new_place['city'] = city
             $scope.new_place['street'] = adress
           });
+		  		  console.log();
+
       });
     };
 	
@@ -140,7 +143,6 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		if (what === 'n') {
 			$('.lo-r-nav-select-item-n').addClass('active');
 			if (!$rootScope.places[1].properties.dist) {
-//				$('.lo-r-nav-select-wait').removeClass('hidden');
 				$scope.opn($('.lo-r-nav-select-wait'));
 				if (navigator.geolocation) {
 					console.log('so..')
@@ -163,7 +165,6 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	//					console.log('dist exist');
 	//				}
 					console.log('done');
-//					$('.lo-r-nav-select-wait').addClass('hidden');
 					$scope.cls($('.lo-r-nav-select-wait'));
 					$scope.$apply($scope.places_list_order = 'properties.dist');
 				}
