@@ -1,0 +1,43 @@
+<h1> Обратная связь </h1>
+
+<div class="admin-feedbacks">
+  <% @feedback.each do |feedback| %>
+    <div class="admin-user">
+      <div class="admin-feedback-id">
+        #<%= feedback.id %>
+      </div>
+      <% if feedback.user %>
+        <div class="admin-user-avatar" style="background-image: url(<%= feedback.user.image_url %>)">
+          <a href="#{feedback.user.link}" target="_blank" ></a>
+        </div>
+      <% else %>
+        anonym
+      <% end %>
+      <div class="admin-user-info">
+        <div class="admin-user-info-main">
+          <div class="admin-user-username">
+            <a href="#{user.link} " target="_blank" class="user-link"> <%= user.username %> (<%= user.provider %>)</a>
+          </div>
+          <div class="admin-user-since">
+            <p>зарегестрирован: <%= user.created_at.strftime('%d-%m-%Y') %></p>
+          </div>
+        </div>
+        <div class="admin-user-info-activity">
+          <div class="admin-user-reviews">
+            обзоров: <%= user.reviews.count %>
+          </div>
+          <div class="admin-user-places">
+            мест: <%= user.places.count %>
+          </div>
+        </div>
+        <div class="admin-user-info-make-admin">
+          <% unless user.admin? %>
+            <%= link_to 'сделать админом', make_admin_admin_user_path(user), class: 'make-admin-link' %>
+          <% else %>
+            <%= link_to 'убрать из админов', make_admin_admin_user_path(user), class: 'make-admin-link' %>
+          <% end %> 
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

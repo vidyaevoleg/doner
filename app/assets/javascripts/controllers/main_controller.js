@@ -54,32 +54,57 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	}
 	$rootScope.mapClick=function(e){
 //		console.log('pop');
+
       var coords = e.get('coords');
-      $scope.new_place = {coordinates: coords.toString()}
+      $scope.new_place = {coordinates: coords.toString(),
+      										city: '',
+      										metro: '',
+      										street: ''
+      									};
       ymaps.geocode(coords,{kind: 'metro'}).then(function (res) {
-          var names = [];
+          var metros = [];
           res.geoObjects.each(function (obj) {
-              names.push(obj.properties.get('name'));
+              metros.push(obj.properties.get('name'));
           });
-          var metro = names[0]
+          var metro = metros[0]
           $scope.$apply(function(){
             $scope.new_place['metro'] = metro.substring(6)
           });
       });
-      ymaps.geocode(coords, {kind: 'street'}).then(function (res) {
-          var names = [];
+      ymaps.geocode(coords,{kind: 'house'}).then(function (res) {
+          var houses = [];
           res.geoObjects.each(function (obj) {
-              names.push(obj.properties.get('name'));
-			  console.log(obj.properties.get('name'));
+              houses.push(obj.properties.get('name'));
           });
-          var adress = names[0],city = names[3] + ',' + names[4]
+          var house = houses[0];
           $scope.$apply(function(){
-            $scope.new_place['city'] = city
-            $scope.new_place['street'] = adress
+            $scope.new_place['street'] = house
           });
 		  		  console.log();
 
       });
+      ymaps.geocode(coords).then(function (res) {
+          var names = [];
+          res.geoObjects.each(function (obj) {
+              names.push(obj.properties.get('name'));
+          });
+          var loc = names[names.length-3],
+          		dist = names[names.length-4];
+          for (var i=1;i<names.length;i++) {
+          	var word = names[i];
+          	if (word.indexOf('городской') !== -1 ) {
+          		dist = names[names.indexOf(dist)-1];
+          		break;
+          	};
+          };
+		     	$scope.$apply(function() {
+	         	if (dist == loc) {
+	          	$scope.new_place['city'] = loc;
+	          } else {
+	          	$scope.new_place['city'] = dist + ',' + loc
+	          }
+      	  });
+				});
     };
 	
 	
@@ -97,7 +122,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
     $scope.new_place = undefined
 		$('.lo-l-addplace').after('<span class="lo-l-addplace-tip">Выбирай на карте место, браток.</span>');
 		setTimeout(function(){
-			$('.lo-l-addplace-tip').fadeOut(1000);
+			$('.lo-l-addplace-tip').fadeOut(2000);
 		}, 1000);
 	}
 	

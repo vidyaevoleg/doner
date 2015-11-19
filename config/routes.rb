@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   get '/get_current_user', to: 'application#get_current_user'
   get '/logout', to: 'application#logout'
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks"}
   root 'home#index'
   get 'home/manage'
   get 'home/index'
   resources :images 
+  resources :feedbacks, only: :create
   resources :places do
     get 'get_places', on: :collection
     get 'get_reviews', on: :member
@@ -13,8 +14,12 @@ Rails.application.routes.draw do
   resources :reviews
   namespace :admin do
     get 'index'
-    resources :users
+    get 'stat'
+    resources :feedbacks
     resources :places
+    resources :users do 
+      get 'make_admin', on: :member
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

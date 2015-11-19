@@ -1,0 +1,129 @@
+* {
+	box-sizing: border-box;
+	font-family: 'Arial';
+}
+body {
+	margin: 0;
+}
+
+.admin {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	&-menu {
+
+		width: 100%;
+		height: 100px;
+		position: relative;
+		background: black;
+		&-item {
+			vertical-align: top;
+			position: relative;
+			display: inline-block;
+			width: 150px;
+			height: 100%;
+			box-sizing: border-box;
+			margin: 0;
+			text-align: center;
+			padding-top: 30px;
+		}
+	}
+	&-users {
+		padding: 30px;
+	}
+	&-user {
+		width: 100%;
+		height: 70px;
+		border-bottom: 1px solid black;
+		&-id {
+			vertical-align: top;
+			position: relative;
+			display: inline-block;
+			margin: 10px;
+			font-size: 30px;	
+			padding: 5px;
+			border: 3px solid black;
+			border-radius: 25px;
+		}
+		&-avatar {
+			margin: 5px 0 5px 0;
+			vertical-align: top;
+			position: relative;
+			display: inline-block;
+			height: 60px;
+			width: 60px;
+			background-image: no-repeat;
+			background-size: 100%;
+		}
+		&-info {
+			font-weight: bolder;
+			margin: 5px 0 5px 0;
+			vertical-align: top;
+			position: relative;
+			display: inline-block;
+			width: 600px;
+			&-main {
+				vertical-align: top;
+				position: relative;
+				display: inline-block;
+				width: 250px;
+			}
+			&-activity {
+				vertical-align: top;
+				position: relative;
+				display: inline-block;
+				width: 150px;
+			}
+			&-make-admin {
+				vertical-align: top;
+				position: relative;
+				width: 180px;
+				display: inline-block;
+			}
+		}
+	}
+
+}
+
+
+.main-link {
+	width: 100px !important;
+	background-image: url('logo.png');
+	background-size: 100%;
+}
+.image-link {
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+}
+.make-admin-link {
+	text-decoration: none;
+	color: #aaaaaa;
+	&:hover {
+		color: #818181;
+	}
+}
+.user-link {
+	text-decoration: none;
+	color: #424242;
+	&:hover {
+		color: #272626;
+	}	
+}
+.menu-link {
+	font-weight: bolder;
+	padding-top: 35px;
+	font-size: 27px;
+	color: white;
+	-webkit-transition-duration: 0.5s;
+	-o-transition-duration: 0.5s;
+	-moz-transition-duration: 0.5s;
+	transition-duration: 0.5s;
+	&:hover{
+		color: black;
+		background: white;
+	}
+}

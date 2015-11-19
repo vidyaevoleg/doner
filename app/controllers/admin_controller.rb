@@ -1,10 +1,14 @@
 class AdminController < ApplicationController
 	layout 'admin'
 	before_action :check_ability
+	
 	def index
-		
+
 	end
 
+	def stat
+
+	end
 	private
 
 	def check_ability

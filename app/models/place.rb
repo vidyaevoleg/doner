@@ -9,12 +9,29 @@ class Place < ActiveRecord::Base
     city.split(',').uniq
   end
 
+  def min_price
+    if reviews.count > 0
+      reviews.map {|review| review.min_price}.compact.min
+    else 
+      nil
+    end  
+  end
+
+  def max_price
+    if reviews.count > 0
+      reviews.map {|review| review.min_price}.compact.max
+    else 
+      nil
+    end  
+  end
+
   def rating
   	if reviews.count > 0
       data = reviews.map {|review| review.rating}.compact
-  		return (data.inject(0){|sum,x| sum+x} / data.count).to_f.to_s[0..2]
-  	end
-  	nil
+  		(data.inject(0){|sum,x| sum+x}.to_f / data.count.to_f).to_f.to_s[0..2]
+  	else 
+      nil
+    end
   end
 
   def min_price
@@ -76,6 +93,8 @@ class Place < ActiveRecord::Base
         street: street,
         metro: metro,
         author: user,
+        min_price: min_price,
+        max_price: max_price
       },
       geometry: {
         coordinates: get_coords,

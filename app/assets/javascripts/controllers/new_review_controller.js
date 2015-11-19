@@ -1,5 +1,5 @@
 Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootScope','$location','$http',function ($scope,$stateParams,places,$rootScope,$location,$http) {
-
+  var creating =  true;
   $scope.signIn = function(){
     if ($rootScope.current_user){
       return true
@@ -48,13 +48,16 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
 
   $scope.submitReview = function(){
     var review = $scope.new_review
-    if ($rootScope.reviewValid(review)){
-      $http.post('/reviews',{review: review}).success(function(data){
-        $location.path('/places/'+ $stateParams.id)
-      }).error(function(data,status){
-        alert('error')
-      })       
-    }  
+    if (creating) {
+      if ($rootScope.reviewValid(review)){
+        $http.post('/reviews',{review: review}).success(function(data){
+          $location.path('/places/'+ $stateParams.id)
+        }).error(function(data,status){
+          alert('error')
+        })       
+      }       
+    }
+    creating = false;
   }
   $scope.closePlace = function(place){
     $location.path('/home')

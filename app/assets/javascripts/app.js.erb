@@ -197,6 +197,23 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 		  templateUrl: "<%= asset_path('templates/edit_place.html.erb') %>",
 		  controller: 'EditPlaceCtrl'
 		})
-
+		.state('new_feedback', {
+		  resolve: {
+				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
+			    return places.getPlaces().then(function(data){
+						$rootScope.place = $filter('getPlaceById')(data, $stateParams.id)
+						$rootScope.places = data				
+			    })
+			  }],	
+			  current_user: ['users','$rootScope', function(users,$rootScope){
+			    return users.getCurrentUser().then(function(data){
+			    	$rootScope.current_user = data
+			    })
+			  }]
+			},
+		  url: '/write_us',
+		  templateUrl: "<%= asset_path('templates/new_feedback.html.erb') %>",
+		  controller: 'FeedbackCtrl'
+		})
 	  $urlRouterProvider.otherwise('home');
 }])

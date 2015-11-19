@@ -55,9 +55,11 @@ class PlacesController < ApplicationController
 				image.update_attributes(imaginable_id: @place.id,imaginable_type: @place.class.to_s)
 			end 
 		end
-		last_image_id = @place.images.last.id
-		@place.images.map do |image|
-			image.destroy! unless image.id = last_image_id
+		if @place.images.count > 0
+			last_image_id = @place.images.last.id
+			@place.images.map do |image|
+				image.destroy! unless image.id = last_image_id
+			end
 		end
 	end
 
