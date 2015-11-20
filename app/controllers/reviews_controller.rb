@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
 			images_id = params[:review][:images_id].to_s.split(',')
 			bind_image_and_review(images_id)
 		end 
-		render json: {}
+		render json: @review.to_nice_json
 	end
 
 
@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
 			images_id = params[:review][:images_id].to_s.split(',')
 			bind_image_and_review(images_id)
 		end 
-		render json: {}
+		render json: @review.to_nice_json
 	end
 
 	def destroy

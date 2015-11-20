@@ -6,8 +6,17 @@
 	</div>
 	<% @places.each do |place| %>
 		<div class="admin-place">
-			метро: <%= place.metro %>
-			улица: <%= place.street %>
+			<div class="admin-place-id">
+			#<%= place.id %>
+			</div>
+			<div class="admin-place-adress">
+				<div class="admin-place-metro">
+					метро: <%= place.metro %>
+				</div>
+				<div class="admin-place-street">
+					улица: <%= place.street %>
+				</div>
+			</div>
 			отзывов: <%= place.reviews.count %>
 			создан: <%= place.created_at %>
 			автор: <%= place.user.username %>

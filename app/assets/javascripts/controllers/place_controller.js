@@ -13,11 +13,11 @@ Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',
   
   $scope.findCurrentReview = function() {
     var review = $rootScope.review
-    if (review) {
+    if ($stateParams.review_id) {
       setTimeout(function() {
         $('body').animate({ scrollTop: $('#review-' + review.id).offset().top}, 1000);
       }, 100);
-      $scope.current_review = review;
+      $scope.current_review.push(review.id);
     }
   }
   

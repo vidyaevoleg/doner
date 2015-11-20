@@ -1,40 +1,38 @@
 <h1> Обратная связь </h1>
 
 <div class="admin-feedbacks">
-  <% @feedback.each do |feedback| %>
-    <div class="admin-user">
+  <% @feedbacks.each do |feedback| %>
+    <div class="admin-feedback">
       <div class="admin-feedback-id">
-        #<%= feedback.id %>
+        #<%= feedback.id %> 
       </div>
-      <% if feedback.user %>
-        <div class="admin-user-avatar" style="background-image: url(<%= feedback.user.image_url %>)">
-          <a href="#{feedback.user.link}" target="_blank" ></a>
+      <div class="admin-feedback-user">
+        <div class="admin-feedback-info-type">
+          <%= feedback.feedback_type %>
         </div>
-      <% else %>
-        anonym
-      <% end %>
-      <div class="admin-user-info">
-        <div class="admin-user-info-main">
+        <% if feedback.user %>
+          <div class="admin-user-avatar" style="background-image: url(<%= feedback.user.image_url %>)">
+            <a href="#{feedback.user.link}" target="_blank" ></a>
+          </div>
           <div class="admin-user-username">
-            <a href="#{user.link} " target="_blank" class="user-link"> <%= user.username %> (<%= user.provider %>)</a>
+            <a href="<%= feedback.user.link %>" target="_blank" class="user-link"> <%= feedback.user.username %> (<%= feedback.user.provider %>)</a>
           </div>
-          <div class="admin-user-since">
-            <p>зарегестрирован: <%= user.created_at.strftime('%d-%m-%Y') %></p>
+          <div class="admin-feedback-time">
+            <%= feedback.created_at.strftime('%d-%m-%Y') %>
           </div>
+        <% else %>
+          anonym
+        <% end %>
+      </div
+      ><div class="admin-feedback-info">
+        <div class="admin-feedback-info-body">
+          <%= feedback.body %>
         </div>
-        <div class="admin-user-info-activity">
-          <div class="admin-user-reviews">
-            обзоров: <%= user.reviews.count %>
-          </div>
-          <div class="admin-user-places">
-            мест: <%= user.places.count %>
-          </div>
-        </div>
-        <div class="admin-user-info-make-admin">
-          <% unless user.admin? %>
-            <%= link_to 'сделать админом', make_admin_admin_user_path(user), class: 'make-admin-link' %>
-          <% else %>
-            <%= link_to 'убрать из админов', make_admin_admin_user_path(user), class: 'make-admin-link' %>
+        <div class="admin-feedback-info-images">
+          <% if feedback.images.any? %>
+            <% feedback.images.each do |image| %>
+              <img src="<%= image.file.url %>" class="admin-feedback-info-images-one"> 
+            <% end %>
           <% end %> 
         </div>
       </div>

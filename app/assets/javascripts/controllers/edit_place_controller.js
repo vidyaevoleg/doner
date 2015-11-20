@@ -10,8 +10,11 @@ Topdoner.controller('EditPlaceCtrl', ['$scope','places','$http','$location','$ro
   }
   $scope.updatePlace = function () {
   	var place = $rootScope.place
-  	$http.put('/places/'+ place.properties.id, {place: {images_id: $scope.images_id}}).then(function(){
-        $location.path('/places/'+ place.properties.id)
+  	$http.put('/places/'+ place.properties.id, {place: {images_id: $scope.images_id}}).then(function(res){
+      var updated_place = res.data;
+      $rootScope.places.splice($rootScope.places.indexOf(place), 1);
+      $rootScope.places.push(updated_place)
+      $location.path('/places/'+ updated_place.properties.id)
     })
   }
   $scope.dropzone = function(){

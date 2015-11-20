@@ -12,7 +12,7 @@
 			<div class="admin-user-info">
 				<div class="admin-user-info-main">
 					<div class="admin-user-username">
-						<a href="#{user.link} " target="_blank" class="user-link"> <%= user.username %> (<%= user.provider %>)</a>
+						<a href="<%= user.link %>" target="_blank" class="user-link"> <%= user.username %> (<%= user.provider %>)</a>
 					</div>
 					<div class="admin-user-since">
 						<p>зарегестрирован: <%= user.created_at.strftime('%d-%m-%Y') %></p>

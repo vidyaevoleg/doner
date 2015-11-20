@@ -1,4 +1,4 @@
-Topdoner.controller('EditReviewCtrl', ['$scope','$stateParams','places','reviews','$rootScope','$location','$http',function ($scope,$stateParams,places,reviews,$rootScope,$location,$http) {
+Topdoner.controller('EditReviewCtrl', ['$scope','$filter','$stateParams','places','reviews','$rootScope','$location','$http',function ($scope,$filter,$stateParams,places,reviews,$rootScope,$location,$http) {
   $scope.openExtRates = function() {
     var panel = $('.add-review-extrate');
     if (panel.hasClass('hidden')) {
@@ -22,7 +22,7 @@ Topdoner.controller('EditReviewCtrl', ['$scope','$stateParams','places','reviews
     delete review['images']
     review['images_id'] = $scope.new_images_id    
     if ($rootScope.reviewValid(review)){
-      $http.put('/reviews/'+review.id,{review: review}).then(function(){
+      $http.put('/reviews/'+review.id,{review: review}).then(function(res){
         $location.path('/places/'+ $stateParams.id)
       })
     } 

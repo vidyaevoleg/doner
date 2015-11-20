@@ -22,7 +22,7 @@ class PlacesController < ApplicationController
 			images_id = params[:place][:images_id].to_s.split(',')
 			bind_image_and_place(images_id)
 		end
-		render json: {}
+		render json: @place.to_nice_json
 	end
 	
 	def get_places
