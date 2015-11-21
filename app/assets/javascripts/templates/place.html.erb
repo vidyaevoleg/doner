@@ -58,6 +58,9 @@
 			Написать обзор
 		</div>
 	</div>
+	
+	
+	
 	<div ng-repeat="review in reviews | orderBy:'-date'" class="lo-r-cont" id="review-{{review.id}}">
 		<!--<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" ng-click="makeReviewCurrent(review)">-->
 		<div class="lo-r-cont-review" ng-click="makeReviewCurrent(review)">
@@ -67,7 +70,7 @@
 					<div class="lo-r-cont-review-head-user-img anon"  ng-show="review.anonym"></div>
 					<div class="lo-r-cont-review-head-user-name" ng-hide="review.anonym">{{review.author.username}}</div>
 					<div class="lo-r-cont-review-head-user-name" ng-show="review.anonym">Некто</div>
-					<div><strike>свернуть</strike></div>
+					<div ng-click="unmakeReviewCurrent(review)"><strike>свернуть</strike></div>
 				</div>
 				<div class="lo-r-cont-review-head-rating">
 					{{review.rating}}

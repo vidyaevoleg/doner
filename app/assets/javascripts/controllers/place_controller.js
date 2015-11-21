@@ -8,16 +8,31 @@ Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',
 
   $scope.makeReviewCurrent = function(review){
     // $('#review-' + review.id).find('.lo-r-cont-review-body').addClass('ext');
-    $scope.current_review.push(review.id)  
+	  if ($scope.current_review.indexOf(review.id) === -1){
+		  $scope.current_review.push(review.id);
+	  }
+    
+  }
+  $scope.unmakeReviewCurrent = function(review) {
+	  console.log($scope.current_review);
+//	  console.log('--------');
+//	  console.log($scope.current_review.indexOf(review.id));
+	  if ($scope.current_review.indexOf(review.id) !== -1) {
+		  $scope.current_review.splice($scope.current_review.indexOf(review.id), 1);
+	  }
+	  	  console.log($scope.current_review);
+
+//	  $scope.current_review.indexOf(review.id)
   }
   
   $scope.findCurrentReview = function() {
     var review = $rootScope.review
-    if (review) {
+    if ($stateParams.review_id) {
       setTimeout(function() {
         $('body').animate({ scrollTop: $('#review-' + review.id).offset().top}, 1000);
       }, 100);
-      $scope.current_review = review;
+      $scope.current_review.push(review.id);
+		
     }
   }
   

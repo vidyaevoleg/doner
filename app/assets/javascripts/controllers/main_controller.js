@@ -153,20 +153,30 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		$('.cont').removeClass('blured');
 	}
 	
-//	$scope.placesSort = '-properties.rating';
+	$rootScope.placesSort = 'r';
+	$scope.whatPlacesSort = function(i) {
+		if (i === $rootScope.placesSort) {
+			return 'active';
+		} else {
+			return '';
+		}
+	}
 	$scope.choosePlacesSort = function(what) {
 		$('.lo-r-nav-select-item').removeClass('active');
 //		console.log($(s);
 		if (what === 'r') {
-			$('.lo-r-nav-select-item-r').addClass('active');
+			$rootScope.placesSort = 'r';
+//			$('.lo-r-nav-select-item-r').addClass('active');
 			$scope.places_list_order = '-properties.rating';
 		}
 		if (what === 'p') {
-			$('.lo-r-nav-select-item-p').addClass('active');
+			$rootScope.placesSort = 'p';
+//			$('.lo-r-nav-select-item-p').addClass('active');
 			$scope.places_list_order = '-properties.reviews_count';
 		}
 		if (what === 'n') {
-			$('.lo-r-nav-select-item-n').addClass('active');
+//			$('.lo-r-nav-select-item-n').addClass('active');
+			$rootScope.placesSort = 'n';
 			if (!$rootScope.places[1].properties.dist) {
 				$scope.opn($('.lo-r-nav-select-wait'));
 				if (navigator.geolocation) {

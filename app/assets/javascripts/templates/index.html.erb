@@ -1,9 +1,9 @@
 <div class="lo-r">
 	<div class="lo-r-nav">
 		<div class="lo-r-nav-select">
-			<span ng-click="choosePlacesSort('r')" class="lo-r-nav-select-item lo-r-nav-select-item-r active">Лучшие</span>
-			<span ng-click="choosePlacesSort('p')" class="lo-r-nav-select-item lo-r-nav-select-item-p">Популярные</span>
-			<span ng-click="choosePlacesSort('n')" class="lo-r-nav-select-item lo-r-nav-select-item-n">Ближайшие</span>
+			<span ng-click="choosePlacesSort('r')" class="lo-r-nav-select-item lo-r-nav-select-item-r" ng-class="whatPlacesSort('r')">Лучшие</span>
+			<span ng-click="choosePlacesSort('p')" class="lo-r-nav-select-item lo-r-nav-select-item-p" ng-class="whatPlacesSort('p')">Популярные</span>
+			<span ng-click="choosePlacesSort('n')" class="lo-r-nav-select-item lo-r-nav-select-item-n" ng-class="whatPlacesSort('n')">Ближайшие</span>
 			<div class="lo-r-nav-select-wait hidden">Погоди-ка...</div>
 		</div>
 	</div>
