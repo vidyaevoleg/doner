@@ -32,7 +32,6 @@ Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',
         $('body').animate({ scrollTop: $('#review-' + review.id).offset().top}, 1000);
       }, 100);
       $scope.current_review.push(review.id);
-		
     }
   }
   
