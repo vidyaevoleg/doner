@@ -1,0 +1,60 @@
+<h1>Отзывы для места #<%= @place.id %></h1>
+<div class="admin-review-place">
+	<div class="admin-review-place-adress">
+		<%= 'м.' + @place.metro + ',' + @place.street + ',' + @place.city %>
+		<br>
+		<p>рейтинг: <%= @place.rating %></p>
+	</div>
+	<div class="admin-review-place-author">
+		<img src="<%= @place.user.image_url %>">
+		<br>
+		<%= link_to @place.user.username, @place.user.link, class: 'user-link' %>
+	</div>
+</div>
+<div class="admin-reviews">
+	<% @place.reviews.order(:created_at).reverse.each do |review| %>
+		<div class="admin-review" id="review-<%= review.id %>">
+			<div class="admin-review-main">
+				<div class="admin-review-main-info">
+					<div class="admin-review-main-info-title">
+						<%= review.title %>
+					</div>
+					<div class="admin-review-main-info-meat">
+						<span class="critery">мяско:</span><%= review.meat %>
+					</div>
+					<div class="admin-review-main-info-sanitation">
+					 	<span class="critery">санитария:</span><%= review.sanitation %>
+					</div>
+					<div class="admin-review-main-info-service">
+						<span class="critery">сервис:</span> <%= review.service %>	
+					</div>
+					<div class="admin-review-main-info-vege">
+						<span class="critery">овощи:</span> <%= review.vegetables %> 
+					</div>
+					<div class="admin-review-main-info-rating">
+						<span class="critery">итого:</span> <%= review.rating %>
+					</div>
+				</div>
+				<div class="admin-review-main-author">
+					<img src="<%= review.user.image_url %>">
+					<br>
+					<p><%= link_to review.user.username, review.user.link, class: 'user-link' %></p>
+					<p><%= review.created_at.strftime('%d-%m-%Y') %></p>
+					<p><%= link_to 'удалить', '/admin/places/' + review.id.to_s + '/delete_review', review: review.id, class: 'delete-link', remote: true %></p>
+ 				</div>
+			</div>
+			<div class="admin-review-body">
+				<%= review.body %>
+			</div>
+			<div class="admin-review-images">
+				<% if review.images.any? %>
+					<% review.images.each do |image| %>
+						<div class="admin-review-images-one">
+							<img src="<%= image.file.url %>" class="image-100">
+						</div>
+					<% end %>
+				<% end %> 
+			</div>
+		</div>
+	<% end %>
+</div>

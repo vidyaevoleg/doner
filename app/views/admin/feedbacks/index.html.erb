@@ -2,7 +2,7 @@
 
 <div class="admin-feedbacks">
   <% @feedbacks.each do |feedback| %>
-    <div class="admin-feedback">
+    <div class="admin-feedback" id="feedback-<%= feedback.id %>">
       <div class="admin-feedback-id">
         #<%= feedback.id %> 
       </div>
@@ -25,6 +25,9 @@
         <% end %>
       </div
       ><div class="admin-feedback-info">
+        <div class="admin-feedback-info-delete">
+          <%= button_to 'удалить', admin_feedback_path(feedback), :method => :delete, class: 'delete-link', remote: true %>
+        </div>
         <div class="admin-feedback-info-body">
           <%= feedback.body %>
         </div>

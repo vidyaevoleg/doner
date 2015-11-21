@@ -12,6 +12,7 @@
 //
 
 //= require jquery
+//= require ahoy
 //= require jquery_ujs
 //= require turbolinks
 //= require dropzone
