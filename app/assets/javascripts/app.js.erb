@@ -89,14 +89,14 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 			    if (!($rootScope.places)) {
 				    return places.getPlaces().then(function(data){
 							$rootScope.places = data;
-				    })			    	
+				    })
 			    }
 			  }],
 			  current_user: ['users','$rootScope', function(users,$rootScope){
 			    if (!($rootScope.current_user)) {
 				    return users.getCurrentUser().then(function(data){
 				    	$rootScope.current_user = data;
-				    })			    	
+				    })
 			    }
 			  }]
 			},
@@ -111,13 +111,12 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 				    return places.getPlaces().then(function(data){
 							$rootScope.place = $filter('getPlaceById')(data, $stateParams.id);
 							$rootScope.places = data;
-							$rootScope.mapCenter = $rootScope.place.geometry.coordinates;
-				    })								    	
+				    })
 			    } else {
 							$rootScope.place = $filter('getPlaceById')($rootScope.places, $stateParams.id);
-							$rootScope.mapCenter = $rootScope.place.geometry.coordinates;			    	
+							$rootScope.mapCenter = $rootScope.place.geometry.coordinates;
 			    }
-			  }],		  
+			  }],
 			  // place: ['$stateParams','$rootScope', function($stateParams,$rootScope){
 			  // 	console.log($rootScope.places)
 					// return $rootScope.place = $filter('getPlaceById')($rootScope.places, $stateParams.id)
@@ -126,12 +125,12 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 			    return places.getReviews($stateParams.id).then(function(res){
 						$rootScope.reviews = res.data;
 			    });
-			  }],		  
+			  }],
 			  current_user: ['users','$rootScope', function(users,$rootScope){
 			    if (!($rootScope.current_user)) {
 				    return users.getCurrentUser().then(function(data){
 				    	$rootScope.current_user = data;
-				    })			    	
+				    })
 			    }
 			  }]
 			},

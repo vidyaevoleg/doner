@@ -23,7 +23,7 @@
 		<div class="lo">
 			<div class="lo-l">
 				<div class="lo-l-head">
-					<div class="lo-l-head-logo">
+					<div class="lo-l-head-logo" ng-mouseenter="startLogo()" ng-mouseleave="stopLogo()">
 						<a ng-href="#/home"></a>
 					</div>
 					<div class="lo-l-head-nav">
@@ -72,11 +72,14 @@
 			<ui-view></ui-view>
 		</div>
 	</div>
-
-	<div class="what" ng-click="openPopup('.popup-about')">?</div>
+	
+	
+<!--	<div class="what" ng-click="openPopup('.popup-about')">?</div>-->
 	<div class="feedback">
 		<a ng-href="#/write_us">
-			!
+			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+				<path id="email-3-icon" d="M256.017,273.436L50.847,103.407h410.904L256.017,273.436z M255.983,328.898L50,158.244v250.349h412 V158.653L255.983,328.898z"/>
+			</svg>
 		</a>
 	</div>
 	<%= yield %>

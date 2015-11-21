@@ -11,19 +11,40 @@ Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',
 	  if ($scope.current_review.indexOf(review.id) === -1){
 		  $scope.current_review.push(review.id);
 	  }
+//	  console.log($scope.calcTime(review.date));
+//	  console.log($scope.current_review);
     
   }
   $scope.unmakeReviewCurrent = function(review) {
-	  console.log($scope.current_review);
+//	  console.log($scope.current_review);
 //	  console.log('--------');
 //	  console.log($scope.current_review.indexOf(review.id));
 	  if ($scope.current_review.indexOf(review.id) !== -1) {
 		  $scope.current_review.splice($scope.current_review.indexOf(review.id), 1);
 	  }
-	  	  console.log($scope.current_review);
-
 //	  $scope.current_review.indexOf(review.id)
   }
+  
+
+$scope.calcTime = function(t) {
+	var post = Date.parse(t),
+		now = new Date,
+		d = (now - post)/(1e3*24*3.6e3);
+
+	if (d >= 7) {
+		return Math.round(d/7) + ' нед. назад'
+	} else {
+		if (d >= 1) {
+			return Math.round(d) + ' д. назад'
+		} else {
+			if (d >= 1/24) {
+				return 'недавно'
+			} else {
+				return 'только что'
+			}
+		}
+	}
+}
   
   $scope.findCurrentReview = function() {
     var review = $rootScope.review
