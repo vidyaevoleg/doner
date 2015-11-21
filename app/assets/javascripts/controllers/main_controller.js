@@ -1,7 +1,8 @@
 Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$location','$rootScope','$stateParams', function ($scope,$filter,places,reviews,$location,$rootScope,$stateParams) {
 
-	
+	$rootScope.MAP;
 	$scope.logoCycle;
+	
 	$scope.startLogo = function() {
 		var colors = ['#FFFF00', '#FF00FF', '#FF0000', '#C0C0C0', '#808000', '#800000', '#00FF00', '#008080', '#0000FF', '#000080'],
 			l = colors.length,
@@ -23,35 +24,60 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		$('.lo-l-head-logo').css('background-color', '#000');
 	}
 	
-
 	$scope.places_list_order = '-properties.rating';
 	
+	$rootScope.setDefaultZoom = function(){
+		var place = $rootScope.place;
+		if (place) {
+			$rootScope.MAP.setCenter(place.geometry.coordinates, 12, {duration: 500});
+		}
+	}	
+
+	$scope.goToPlace = function(place) {
+		if ($rootScope.MAP) {
+	  	$rootScope.MAP.panTo(place.geometry.coordinates,{duration: 600});
+	  	setTimeout(function() {
+		    $rootScope.MAP.setCenter(place.geometry.coordinates, 16, {duration: 500});
+	  	}, 600);			
+		}
+	}
+
+	$rootScope.afterMapInit=function(Map){
+    $rootScope.MAP = Map;
+    setTimeout(function() {
+    	var place = $rootScope.place;
+    	if (place) {
+    		$scope.goToPlace(place)    	
+    	}
+    }, 1000);
+	};
 
   $rootScope.choosePlace = function(place){
-	$rootScope.mapCenter = place.geometry.coordinates;
-	$location.path('/places/'+place.properties.id);
+		$location.path('/places/'+place.properties.id);
   };
 	
-$rootScope.deletePlace = function(place_id) {
-	if (confirm('Удалить место?')) {
-		places.deletePlace(place_id)
-		var place = $filter('getPlaceById')($rootScope.places, place_id)
-		$rootScope.places.splice($rootScope.places.indexOf(place), 1 );
-		$location.path('/home')
+	$rootScope.setRightCenter = function() {
+		if ($rootScope.place) {
+			$scope.goToPlace($rootScope.place)
+		}
+	};
+
+	$rootScope.deletePlace = function(place_id) {
+		if (confirm('Удалить место?')) {
+			places.deletePlace(place_id)
+			var place = $filter('getPlaceById')($rootScope.places, place_id)
+			$rootScope.places.splice($rootScope.places.indexOf(place), 1 );
+			$location.path('/home')
+		}
 	}
-}
 
-$rootScope.deleteReview = function(review_id){
-	if (confirm('Удалить обзор?')) {
-		reviews.deleteReview(review_id)
-		$('#review-'+review_id).toggle(500)
-		$location.path('/places/'+ $stateParams.id)
+	$rootScope.deleteReview = function(review_id){
+		if (confirm('Удалить обзор?')) {
+			reviews.deleteReview(review_id)
+			$('#review-'+review_id).toggle(500)
+			$location.path('/places/'+ $stateParams.id)
+		}
 	}
-}
-
-
-
-
 
 	$rootScope.getMetroColor = function(station) {
     if (place){
@@ -143,6 +169,7 @@ $rootScope.deleteReview = function(review_id){
 	$rootScope.fixDropzone = function() {
 		$('.dz-message').html('Перетащи фото или кликни');
 	}
+
   $rootScope.reviewValid = function(review){
     if ((review.place_id.length < 1) || (review.meat.length < 1) || (review.vegetables.length < 1) || (review.body.length < 1) || (review.service.length<1) || (review.sanitation.length <1)){
       alert('чувак заполни все формы')

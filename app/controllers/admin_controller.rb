@@ -17,9 +17,7 @@ class AdminController < ApplicationController
 	private
 
 	def check_ability
-		if current_user && current_user.role == 'admin'
-			true
-		else
+		unless current_user && current_user.role == 'admin'
 			redirect_to root_path
 		end
 	end
