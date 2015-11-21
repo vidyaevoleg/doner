@@ -1,7 +1,7 @@
 Topdoner.controller('FeedbackCtrl', ['$scope','$location','$http',function ($scope,$location,$http) {
   var creating =  true;
  
-  $scope.types = ['баг', 'новая фича', 'сотрудничество', 'угар'];
+  $scope.types = ['Проблема', 'Пожелание', 'Партнерство', 'Другое'];
 
   $scope.new_feedback = {
     body: '',

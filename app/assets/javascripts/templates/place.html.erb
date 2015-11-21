@@ -36,9 +36,6 @@
 					<div class="lo-r-card-count">{{renameReviewCount(place.properties.reviews_count)}}</div>
 					<div class="lo-r-card-dist" ng-show="isUserLocation()">{{showPlaceDist()}} км</div>
 				</div>
-			
-<!--			</div>-->
-			
 		</div>
 	<!--</div>
 	<div class="lo-r-border"></div>-->
@@ -63,7 +60,7 @@
 	
 	<div ng-repeat="review in reviews | orderBy:'-date'" class="lo-r-cont" id="review-{{review.id}}">
 		<!--<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" ng-click="makeReviewCurrent(review)">-->
-		<div class="lo-r-cont-review" ng-click="makeReviewCurrent(review)">
+		<div class="lo-r-cont-review">
 			<div class="lo-r-cont-review-head">
 				<div class="lo-r-cont-review-head-user" ng-class="isReviewCurrent(review) ? 'ext' : ''">
 					<div class="lo-r-cont-review-head-user-img" ng-hide="review.anonym" style="background-image: url({{review.author.image_url}})"></div>
@@ -76,7 +73,7 @@
 					{{review.rating}}
 				</div>
 			</div>
-			<div class="lo-r-cont-review-body" ng-class="isReviewCurrent(review) ? 'ext' : ''">
+			<div class="lo-r-cont-review-body" ng-click="makeReviewCurrent(review)" ng-class="isReviewCurrent(review) ? 'ext' : ''">
 				<div class="lo-r-cont-review-body-title">{{ review.title }}</div>
 				<div class="lo-r-cont-review-body-text">
 					<div ng-hide="isReviewCurrent(review)" ng-bind-html="review.body"></div>

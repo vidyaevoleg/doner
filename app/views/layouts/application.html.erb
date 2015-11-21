@@ -30,11 +30,6 @@
 						<div class="lo-l-head-nav-item" ng-click="openPopup('.popup-about')">
 							Что это?
 						</div>
-<!--						<div class="lo-l-head-nav-item">-->
-							<a ng-href="#/write_us">
-								Написать нам
-							</a>
-<!--						</div>-->
 						<div class="lo-l-head-nav-item" ng-hide="current_user" ng-click="openPopup('.popup-login')">
 							Войти
 						</div>
@@ -79,6 +74,11 @@
 	</div>
 
 	<div class="what" ng-click="openPopup('.popup-about')">?</div>
+	<div class="feedback">
+		<a ng-href="#/write_us">
+			!
+		</a>
+	</div>
 	<%= yield %>
 
 	<div class="prnj hidden" ng-click="closePopup()"></div>

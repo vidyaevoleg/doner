@@ -1,14 +1,21 @@
 <div class="lo-r" ng-init="signIn()">
-	<div class="lo-r-nav"></div>
+	<div class="lo-r-nav">
+		<div class="lo-r-nav-select">
+			<div class="lo-r-nav-back"><a ng-href="#/places/{{place.properties.id}}">Отмена</a></div>
+		</div>
+	</div>
 	<div class="lo-r-card" ng-init="dropzone()" ng-mouseenter="stopBlur()" ng-mouseleave="startBlur()">
 			<div class="lo-r-card-bg lo-r-card-bg-norm" style="background-image: url({{place.properties.image.url}})"></div>
 			<div class="lo-r-card-bg lo-r-card-bg-blured" style="background-image: url({{place.properties.image.url}})"></div>
-<!--			<div class="lo-r-card-cont">-->
-				<div class="lo-r-card-cont lo-r-card-cont-top">
-					<div class="lo-r-card-title">
-						<span>{{place.properties.street}}</span>
-					</div>
-					<div class="lo-r-card-metro" ng-show="place.properties.metro">
+			<div class="lo-r-card-cont lo-r-card-cont-top">
+				<div class="lo-r-card-city">Дубна, Московская область</div>
+				<div class="lo-r-card-title">{{place.properties.street}}</div>
+				<div class="lo-r-card-rating">
+					{{place.properties.rating}}
+				</div>
+			</div>
+			<div class="lo-r-card-cont lo-r-card-cont-bottom">
+				<div class="lo-r-card-metro" ng-show="place.properties.metro">
 					<div class="lo-r-card-metro-logo">
 						<svg width="13px" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
@@ -18,21 +25,11 @@
 							</g>
 						</svg>
 					</div>
-
 					<div class="lo-r-card-metro-title">{{place.properties.metro}}</div>
 				</div>
-					<div class="lo-r-card-rating">
-						<div class="lo-r-card-rating-num">{{place.properties.rating}}</div>
-						<div class="lo-r-card-rating-count">{{place.properties.reviews_count}}</div>
-		<!--				<div class="lo-r-card-rating-stars" star-rating rating-value="place.properties.rating" data-max="10"></div>-->
-					</div>
-				</div>
-<!--
-				<div class="lo-r-card-cont lo-r-card-cont-bottom">
-					ДЕВЯТЬ ЛАЙКОВ ТИПА
-				</div>
--->
-<!--			</div>-->
+				<div class="lo-r-card-count">{{renameReviewCount(place.properties.reviews_count)}}</div>
+				<div class="lo-r-card-dist" ng-show="isUserLocation()">{{showPlaceDist()}} км</div>
+			</div>
 			
 		</div>
 	

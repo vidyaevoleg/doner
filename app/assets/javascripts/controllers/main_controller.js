@@ -153,6 +153,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		$('.cont').removeClass('blured');
 	}
 	
+	
 	$rootScope.placesSort = 'r';
 	$scope.whatPlacesSort = function(i) {
 		if (i === $rootScope.placesSort) {
