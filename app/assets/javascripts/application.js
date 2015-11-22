@@ -18,7 +18,6 @@
 //= require dropzone
 //= require angular.min
 //= require angular-yandex
-//= require_tree ./angular-social
 //= require ui-router
 //= require angular-sanitize
 //= require angular-rails-templates

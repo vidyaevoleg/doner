@@ -122,19 +122,8 @@
 							<img src="{{image.url}}">
 						</div>
 	 					<div ng-controller="ShareReviewCtrl"> 
-<!--
-							<ul ng-social-buttons
-							    data-url="reviewUrlHelper(review)"
-							    data-title="reviewTitleHelper(review)"
-							    data-description="review.body"
-							    data-image="reviewMediaHelper(review)">
-							    <li class="ng-social-facebook">Facebook</li>
-							    <li class="ng-social-vk">Вконтакте</li>
-							</ul>
--->
-						
-							<button ng-click="sharevk('{{reviewUrlHelper(review)}}','{{reviewTitleHelper(review)}}','{{reviewMediaHelper(review)}}','{{review.body}}')"> {шарь меня полностью}</button>
-						    
+							<button ng-click="share_vk(review)"> vk</button>
+							<button ng-click="share_fb(review)"> fb</button>
 						 </div> 
 					</div>
 				</div>
