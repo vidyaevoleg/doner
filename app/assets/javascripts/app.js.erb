@@ -1,4 +1,4 @@
-var Topdoner = angular.module('Topdoner', ['yaMap','ui.router','templates','ngSanitize']);
+var Topdoner = angular.module('Topdoner', ['yaMap','ngSocial','ui.router','templates','ngSanitize']);
 Topdoner.filter('isRated', function () {
   return function(items) {
     return items.filter(function(item){
