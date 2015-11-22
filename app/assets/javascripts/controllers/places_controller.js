@@ -45,6 +45,8 @@ Topdoner.controller('PlacesCtrl', ['$scope','places','$location','$rootScope', f
   // 		pp = $('.popup');
   // //	$scope.hide(pp);
   // }
+	
+	
 
 }]);
 

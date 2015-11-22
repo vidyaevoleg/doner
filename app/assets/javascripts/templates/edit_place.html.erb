@@ -5,15 +5,18 @@
 		</div>
 	</div>
 	<div class="lo-r-card" ng-init="dropzone()" ng-mouseenter="stopBlur()" ng-mouseleave="startBlur()">
-			<div class="lo-r-card-bg lo-r-card-bg-norm" style="background-image: url({{place.properties.image.url}})"></div>
-			<div class="lo-r-card-bg lo-r-card-bg-blured" style="background-image: url({{place.properties.image.url}})"></div>
-<!--			<div class="lo-r-card-cont">-->
+		<div class="lo-r-card-bg lo-r-card-bg-norm" style="background-image: url({{place.properties.image.url}})"></div>
+			<div class="lo-r-card-bg lo-r-card-bg-blured" style="background-image: url({{place.properties.image.url}})">
+				<div class="lo-r-card-bg lo-r-card-bg-filter"></div>
+			</div>
 			<div class="lo-r-card-cont lo-r-card-cont-top">
 				<div class="lo-r-card-city">Дубна, Московская область</div>
 				<div class="lo-r-card-title">{{place.properties.street}}</div>
 				<div class="lo-r-card-rating">
 					{{place.properties.rating}}
 				</div>
+				<div class="lo-r-card-dist" ng-show="isUserLocation()">{{showPlaceDist()}} км</div>
+<!--				<div>{{place.properties.max_price}}</div>-->
 			</div>
 			<div class="lo-r-card-cont lo-r-card-cont-bottom">
 				<div class="lo-r-card-metro" ng-show="place.properties.metro">
@@ -29,9 +32,8 @@
 					<div class="lo-r-card-metro-title">{{place.properties.metro}}</div>
 				</div>
 				<div class="lo-r-card-count">{{renameReviewCount(place.properties.reviews_count)}}</div>
-				<div class="lo-r-card-dist" ng-show="isUserLocation()">{{showPlaceDist()}} км</div>
 			</div>
-		</div>
+	</div>
 	
 	<div class="add-place-dropzone" ng-init="fixDropzone()">
 		<h3> Загрузите аватар для ларька </h3>

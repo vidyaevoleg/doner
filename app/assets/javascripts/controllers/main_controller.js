@@ -1,26 +1,58 @@
 Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$location','$rootScope','$stateParams', function ($scope,$filter,places,reviews,$location,$rootScope,$stateParams) {
 
+	
+	$scope.logoCycle;
+	$scope.startLogo = function() {
+		var colors = ['#FFFF00', '#FF00FF', '#FF0000', '#C0C0C0', '#808000', '#800000', '#00FF00', '#008080', '#0000FF', '#000080'],
+			l = colors.length,
+			logo = $('.lo-l-head-logo'),
+			i=0;
+		$scope.logoCycle = setInterval(function(){
+			if (i > l) {
+				i=0;
+				logo.css('background-color', colors[i]);
+				i++;
+			} else {
+				logo.css('background-color', colors[i]);
+				i++;
+			}
+		}, 100);
+	}
+	$scope.stopLogo = function() {
+		clearInterval($scope.logoCycle);
+		$('.lo-l-head-logo').css('background-color', '#000');
+	}
+	
 
 	$scope.places_list_order = '-properties.rating';
 	
 
   $rootScope.choosePlace = function(place){
-    $location.path('/places/'+place.properties.id);
+	$rootScope.mapCenter = place.geometry.coordinates;
+	$location.path('/places/'+place.properties.id);
   };
 	
-  $rootScope.deletePlace = function(place_id) {
-    places.deletePlace(place_id)
-    var place = $filter('getPlaceById')($rootScope.places, place_id)
-    $rootScope.places.splice($rootScope.places.indexOf(place), 1 );
-    $location.path('/home')
+$rootScope.deletePlace = function(place_id) {
+	if (confirm('Удалить место?')) {
+		places.deletePlace(place_id)
+		var place = $filter('getPlaceById')($rootScope.places, place_id)
+		$rootScope.places.splice($rootScope.places.indexOf(place), 1 );
+		$location.path('/home')
+	}
+}
 
-  }
+$rootScope.deleteReview = function(review_id){
+	if (confirm('Удалить обзор?')) {
+		reviews.deleteReview(review_id)
+		$('#review-'+review_id).toggle(500)
+		$location.path('/places/'+ $stateParams.id)
+	}
+}
 
-  $rootScope.deleteReview = function(review_id){
-    reviews.deleteReview(review_id)
-    $('#review-'+review_id).toggle(500)
-    $location.path('/places/'+ $stateParams.id)
-  }
+
+
+
+
 	$rootScope.getMetroColor = function(station) {
     if (place){
       var m = [
