@@ -16,7 +16,10 @@ Rails.application.routes.draw do
     get 'index'
     get 'stat'
     resources :feedbacks
-    resources :places
+    resources :places do
+      get 'reviews', on: :member
+      get 'delete_review', om: :member
+    end
     resources :users do 
       get 'make_admin', on: :member
     end

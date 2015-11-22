@@ -1,0 +1,11 @@
+<div id="annual">
+</div>
+
+<div id="device">
+</div>
+
+<div id="geo">
+</div>
+<%= content_tag :div, "", id: "chart", data: {visits: @visits } %> 
+<%= content_tag :div, "", id: "chart-device", data: {devices: @devices } %>
+<%= content_tag :div, "", id: "chart-geo", data: {geo: @geo } %>

@@ -28,7 +28,7 @@ class Admin::UsersController < AdminController
 
 	def show
 		respond_to do |f|
-			f.html 
+			f.html {redirect_to :back}
 			f.json 
 		end
 	end
@@ -36,6 +36,7 @@ class Admin::UsersController < AdminController
 	def destroy
 		@user.destroy
 		respond_to do |f|
+			f.html {redirect_to :back}
 			f.js
 		end
 	end

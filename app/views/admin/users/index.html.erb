@@ -2,7 +2,7 @@
 
 <div class="admin-users">
 	<% @users.each do |user| %>
-		<div class="admin-user">
+		<div class="admin-user" id="user-<%= user.id %>">
 			<div class="admin-user-id">
 				#<%= user.id %>
 			</div>
@@ -26,12 +26,17 @@
 						мест: <%= user.places.count %>
 					</div>
 				</div>
-				<div class="admin-user-info-make-admin">
-					<% unless user.admin? %>
-						<%= link_to 'сделать админом', make_admin_admin_user_path(user), class: 'make-admin-link' %>
-					<% else %>
-						<%= link_to 'убрать из админов', make_admin_admin_user_path(user), class: 'make-admin-link' %>
-					<% end %> 
+				<div class="admin-user-info-actions">
+					<div class="admin-user-info-actions-make-admin">
+						<% unless user.admin? %>
+							<%= link_to 'сделать админом', make_admin_admin_user_path(user), class: 'make-admin-link' %>
+						<% else %>
+							<%= link_to 'убрать из админов', make_admin_admin_user_path(user), class: 'make-admin-link' %>
+						<% end %> 
+					</div>
+					<div class="admin-user-info-actions-delete">
+						<%= button_to 'удалить', admin_user_path(user), :confirm => 'Are you sure?', :method => :delete, remote: true, class: 'delete-link' %>
+					</div>
 				</div>
 			</div>
 		</div>

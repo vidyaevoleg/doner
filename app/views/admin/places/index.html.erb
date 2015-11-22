@@ -1,25 +1,46 @@
 <h2> Все места </h2>
 
-<div class="admin-places">
-	<div class="adpin-places-sort">
-		
-	</div>
+<div class="admin-places">	
 	<% @places.each do |place| %>
-		<div class="admin-place">
+		<div class="admin-place" id="place-<%= place.id %>">
 			<div class="admin-place-id">
-			#<%= place.id %>
+				#<%= place.id %>
 			</div>
-			<div class="admin-place-adress">
-				<div class="admin-place-metro">
-					метро: <%= place.metro %>
+			<div class="admin-place-main">
+				<div class="admin-place-main-rating">
+					рейтинг: <%= place.rating %>
 				</div>
-				<div class="admin-place-street">
+				<div class="admin-place-main-date">
+					<%= place.created_at.strftime('%d-%m-%Y') %>
+				</div>
+			</div>
+			<div class="admin-place-address" style="background: url('<%= place.images.last.file.url if place.images.any? %>');">
+				<div class="admin-place-address-filter" >
+				</div>
+
+				<div class="admin-place-address-metro">
+					м. <%= place.metro %>
+				</div>
+				<div class="admin-place-address-street">
 					улица: <%= place.street %>
 				</div>
 			</div>
-			отзывов: <%= place.reviews.count %>
-			создан: <%= place.created_at %>
-			автор: <%= place.user.username %>
+			<div class="admin-place-info">
+				<div class="admin-place-info-reviews">
+					<%= link_to 'отзывы '+ place.reviews.count.to_s , '/admin/places/' +  place.id.to_s + '/reviews', class: 'reviews-link' %>
+				</div>
+				<div class="admin-place-info-author">
+					<div class="admin-place-info-author-avatar">
+						<img src="<%= place.user.image_url %>">
+					</div>
+					<p>
+						<%=link_to place.user.username, place.user.link, class: 'user-link' %>
+					</p>
+				</div>
+			</div>
+			<div class="admin-place-delete">
+				<%= button_to 'удалить', admin_place_path(place), method: :delete, remote: true, class: 'delete-link' %>
+			</div>
 		</div>
 	<% end %>
 </div>
