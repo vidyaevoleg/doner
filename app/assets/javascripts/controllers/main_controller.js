@@ -33,11 +33,11 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		}
 	}	
 
-	$scope.goToPlace = function(place) {
+	$scope.goToPlace = function(place,zoom,location) {
 		if ($rootScope.MAP) {
-	  	$rootScope.MAP.panTo(place.geometry.coordinates,{duration: 600});
+	  	$rootScope.MAP.panTo(location || place.geometry.coordinates,{duration: 600});
 	  	setTimeout(function() {
-		    $rootScope.MAP.setCenter(place.geometry.coordinates, 16, {duration: 500});
+		    $rootScope.MAP.setCenter(location || place.geometry.coordinates, zoom || 16, {duration: 500});
 	  	}, 600);			
 		}
 	}
@@ -247,7 +247,9 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 					console.log('geolocation error :(');
 				}
 				function showPosition(position) {
-					$rootScope.user_location = [position.coords.longitude, position.coords.latitude];
+					var location = [position.coords.longitude, position.coords.latitude];
+					$rootScope.user_location = location;
+					$scope.goToPlace(null, 12, location)				
 					console.log('STARTS');
 	//				if (!$rootScope.places[1].properties.dist) {
 						$scope.showListDisp();
@@ -259,6 +261,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 					$scope.$apply($scope.places_list_order = 'properties.dist');
 				}
 			} else {
+				$scope.goToPlace(null, 12, $rootScope.user_location)
 				$scope.places_list_order = 'properties.dist';
 				console.log('dist already exist')
 			}
