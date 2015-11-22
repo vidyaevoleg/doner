@@ -321,23 +321,23 @@ body {
 //					background: pink;
 					position: relative;
 					&-img {
-						width: 18px;
-						height: 18px;
+						width: 24px;
+						height: 24px;
 						border-radius: 100%;
 						background-position: center;
 						background-size: cover;
 						overflow: hidden;
 						position: relative;
 						margin-right: 6px;
-						top: 3px;
+						top: 6px;
 						display: inline-block;
 					}
 					&-name {
 						display: inline-block;
 						font-weight: 800;
 						color: #000;
+						text-decoration: none;
 						&:hover {
-							text-decoration: none;
 							color: $act;
 						}
 					}
