@@ -1,7 +1,7 @@
 <h1>Отзывы для места #<%= @place.id %></h1>
 <div class="admin-review-place">
 	<div class="admin-review-place-adress">
-		<%= 'м.' + @place.metro + ',' + @place.street + ',' + @place.city %>
+		<%= 'м.' + @place.metro.to_s + ',' + @place.street.to_s + ',' + @place.city.to_s %>
 		<br>
 		<p>рейтинг: <%= @place.rating %></p>
 	</div>

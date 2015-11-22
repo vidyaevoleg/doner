@@ -24,7 +24,7 @@
 			<div class="lo-l">
 				<div class="lo-l-head">
 					<div class="lo-l-head-logo" ng-mouseenter="startLogo()" ng-mouseleave="stopLogo()">
-						<a ng-href="#/home"></a>
+						<a ng-href="#/home" ng-click="setDefaultZoom()"></a>
 					</div>
 					<div class="lo-l-head-nav">
 						<div class="lo-l-head-nav-item act" ng-click="openPopup('.popup-about')">
@@ -59,8 +59,8 @@
 					<div class="lo-l-head-logout"></div>
 -->
 				</div>
-				<div class="lo-l-map"  ya-center="{{mapCenter}}" ng-controller="MapCtrl">
-					<ya-map ya-zoom="10" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl" ya-event-click="mapClick($event)">
+				<div class="lo-l-map" ng-controller="MapCtrl">
+					<ya-map ya-zoom="10" ya-after-init="afterMapInit($target)" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl" ya-event-click="mapClick($event)">
 						<ya-cluster ya-options="{preset:'islands#invertedRedClusterIcons'}">
 							<ya-geo-object href="#/places/{{place.id}}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ya-options="{preset: 'islands#redIcon'}"></ya-geo-object>
 						</ya-cluster>

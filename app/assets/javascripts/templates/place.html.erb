@@ -1,8 +1,8 @@
 <div class="lo-r" ng-init="findCurrentReview()">
 	<!--<div class="lo-r-card-wrapper">-->
-		<div class="lo-r-nav">
+		<div class="lo-r-nav" ng-init="setRightCenter()">
 			<div class="lo-r-nav-select">
-				<div class="lo-r-nav-back act"><a ng-href="#/home">К списку</a></div>
+				<div class="lo-r-nav-back act"><a ng-href="#/home" ng-click="setDefaultZoom()">К списку</a></div>
 <!--				Назад-->
 <!--				<span ng-click="choosePlacesSort('r')" class="lo-r-nav-select-item lo-r-nav-select-item-r active">Рейтинг </span>-->
 <!--				<span ng-click="choosePlacesSort('p')" class="lo-r-nav-select-item lo-r-nav-select-item-p">Популярность</span>-->
@@ -14,7 +14,7 @@
 				<div class="lo-r-card-bg lo-r-card-bg-filter"></div>
 			</div>
 			<div class="lo-r-card-cont lo-r-card-cont-top">
-				<div class="lo-r-card-city">Дубна, Московская область</div>
+				<div class="lo-r-card-city">{{place.properties.city}}</div>
 				<div class="lo-r-card-title">{{place.properties.street}}</div>
 				<div class="lo-r-card-rating">
 					{{place.properties.rating}}

@@ -46,5 +46,8 @@ module StatisticsHelper
 		Image.where("created_at >= ?", Time.zone.now.beginning_of_day).count
 	end
 
+	def today_feedbacks
+		Feedback.where("created_at >= ?", Time.zone.now.beginning_of_day).count
+	end
 
 end

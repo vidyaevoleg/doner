@@ -109,12 +109,11 @@ Topdoner.config(['$stateProvider','$urlRouterProvider',
 				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
 			    if (!($rootScope.places)){
 				    return places.getPlaces().then(function(data){
-							$rootScope.place = $filter('getPlaceById')(data, $stateParams.id);
-							$rootScope.places = data;
+						$rootScope.place = $filter('getPlaceById')(data, $stateParams.id);
+						$rootScope.places = data;
 				    })
 			    } else {
-							$rootScope.place = $filter('getPlaceById')($rootScope.places, $stateParams.id);
-							$rootScope.mapCenter = $rootScope.place.geometry.coordinates;
+						$rootScope.place = $filter('getPlaceById')($rootScope.places, $stateParams.id);
 			    }
 			  }],
 			  // place: ['$stateParams','$rootScope', function($stateParams,$rootScope){
