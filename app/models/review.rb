@@ -33,7 +33,7 @@ class Review < ActiveRecord::Base
 			body: body.html_safe,
 			title: title,
 			total: total,
-			author: user,
+			author: user.to_nice_json,
 			anonym: anonym,
 			date: updated_at
 		}

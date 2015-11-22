@@ -51,6 +51,9 @@
 }
 
 
+
+
+
 //$bg: rgb(248, 248, 248);
 $bg: rgb(255, 255, 255);
 $win: #fff;
@@ -60,13 +63,13 @@ $act: rgb(240,67,61);
 	display: none !important;
 }
 
+//.act {
+//	color: #000;
+//	&:active {
+//		colr
+//	}
+//}
 
-a {
-	text-decoration: none;
-	&:hover {
-		text-decoration: underline;
-	}
-}
 
 html {
 	overflow-y: scroll;
@@ -432,8 +435,9 @@ body {
 //			   -moz-transition: max-height .8s ease;
 //				 -o-transition: max-height .8s ease;
 //					transition: max-height .8s ease;
-			&:hover {
 				text-decoration: none;
+
+			&:hover {
 				color: $act;
 //				-webkit-box-shadow: 0px rgba(0,0,0,0.2);
 //				   -moz-box-shadow: 0px rgba(0,0,0,0.2);
@@ -490,10 +494,11 @@ body {
 			&-back {
 				text-align: left;
 				a {
+						text-decoration: none;
 					color: #000;
 					&:hover {
 						color: $act;
-						text-decoration: none;
+//						text-decoration: none;
 					}
 				}
 			}
@@ -929,6 +934,7 @@ body {
 			&-review {
 				background: $win;
 				box-sizing: border-box;
+				padding: 14px;
 //				border-top: 1px solid #eee;
 //				padding: 13px 10px;
 				height: auto;
@@ -1092,11 +1098,14 @@ body {
 	//					margin-top: 10px;
 						position: relative;
 						float: right;
-						color: $act;
+						color: #000;
 						cursor: pointer;
 						margin-bottom: 30px;
 						font-weight: 800;
 	//					background: cyan;
+						&:active {
+							color: $act;
+						}
 					}
 				}
 				&.ext {
