@@ -11,6 +11,9 @@ module Topdoner
 
     config.assets.initialize_on_precompile = false
     config.time_zone = 'Moscow'
-
+    config.action_dispatch.default_headers.merge!({
+      'Access-Control-Allow-Origin' => '*',
+      'Access-Control-Request-Method' => '*'
+    })
   end
 end
