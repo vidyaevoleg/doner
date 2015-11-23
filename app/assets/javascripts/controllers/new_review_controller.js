@@ -51,6 +51,9 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
     if (creating) {
       if ($rootScope.reviewValid(review)){
         $http.post('/reviews',{review: review}).success(function(data){
+          var updated_place = data.place;
+          $rootScope.places.splice($rootScope.places.indexOf($rootScope.place), 1);
+          $rootScope.places.push(updated_place);
           $location.path('/places/'+ $stateParams.id)
         }).error(function(data,status){
           alert('error')

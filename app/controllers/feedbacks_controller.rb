@@ -21,7 +21,7 @@ class FeedbacksController < ApplicationController
   private
 
   def feedback_params
-    params.require(:feedback).permit(:body,:feedback_type)
+    params.require(:feedback).permit(:body,:feedback_type,:contacts)
   end
 
   def bind_image_and_feedback(images_id)

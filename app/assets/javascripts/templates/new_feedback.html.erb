@@ -17,7 +17,7 @@
 			<textarea ng-change="feedbackValidate()" class="add-review-body lo-r-fb-body" placeholder="Ваше сообщение" ng-model="new_feedback.body"></textarea>
 		</div>
 		<div class="lo-r-fb-who" ng-hide="current_user">
-			<input type="email" placeholder="Ваша почта" required />
+			<input placeholder="Как с вами связаться?" ng-model="new_feedback.contacts"/>
 		</div>
 		<div class="lo-r-fb-addimg" ng-click="addFeedbackImg()">
 			Загрузить изображения
@@ -26,6 +26,6 @@
 			<form action="/images" id="media-dropzone" class="dropzone" enctype="multipart/form-data"></form>
 		</div>
 		<div class="lo-r-fb-submit-wrap">
-			<a ng-click="submitFeedback(current_user)" class="lo-r-fb-submit">Отправить</a>
+			<a ng-click="submitFeedback()" class="lo-r-fb-submit">Отправить</a>
 		</div>
 	</div>
