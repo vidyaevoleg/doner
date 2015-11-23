@@ -1,0 +1,31 @@
+<div class="lo-r" ng-init="dropzone()">
+	<div class="lo-r-nav">
+		<div class="lo-r-nav-select">
+<!--			<div class="lo-r-nav-back"><a ng-href="#/home">К списку</a></div>-->
+		</div>
+	</div>
+
+	<div class="lo-r-fb">
+		<div class="lo-r-fb-title">Обратная связь</div>
+<!--
+		Мотив: 
+		<select ng-model="new_feedback.feedback_type">
+			<option ng-repeat="type in types" value="{{type}}">{{ type }}</option>
+		</select>
+-->
+		<div>
+			<textarea ng-change="feedbackValidate()" class="add-review-body lo-r-fb-body" placeholder="Ваше сообщение" ng-model="new_feedback.body"></textarea>
+		</div>
+		<div class="lo-r-fb-who" ng-hide="current_user">
+			<input placeholder="Как с вами связаться?" ng-model="new_feedback.contacts"/>
+		</div>
+		<div class="lo-r-fb-addimg" ng-click="addFeedbackImg()">
+			Загрузить изображения
+		</div>
+		<div class="lo-r-fb-dropzone add-review-dropzone hidden" ng-init="fixDropzone()">
+			<form action="/images" id="media-dropzone" class="dropzone" enctype="multipart/form-data"></form>
+		</div>
+		<div class="lo-r-fb-submit-wrap">
+			<a ng-click="submitFeedback()" class="lo-r-fb-submit">Отправить</a>
+		</div>
+	</div>
