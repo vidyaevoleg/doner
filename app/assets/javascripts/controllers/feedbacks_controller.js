@@ -1,4 +1,4 @@
-Topdoner.controller('FeedbackCtrl', ['$scope','$location','$http',function ($scope,$location,$http) {
+Topdoner.controller('FeedbackCtrl', ['$scope','$location','$http', '$rootScope', function ($scope,$location,$http,$rootScope) {
   var creating =  true;
  
   $scope.types = ['Проблема', 'Пожелание', 'Партнерство', 'Другое'];
@@ -6,7 +6,7 @@ Topdoner.controller('FeedbackCtrl', ['$scope','$location','$http',function ($sco
   $scope.new_feedback = {
     body: '',
     images_id: '',
-    feedback_type: ''
+    contacts: ''
   };
 	
 	
@@ -41,30 +41,32 @@ Topdoner.controller('FeedbackCtrl', ['$scope','$location','$http',function ($sco
   }
   
 
-  $scope.submitFeedback = function(current_user){
+  $scope.submitFeedback = function() {
+  	var feedback = $scope.new_feedback,
+  			current_user = $rootScope.current_user;
+
 	  if (!current_user) {
-		  if ($('.lo-r-fb-body').val().length > 0 && $('.lo-r-fb-who input').val().length > 0) {
-			var feedback = $scope.new_feedback;
-			if (creating) {
-			  $http.post('/feedbacks',{feedback: feedback}).success(function(data){
-				$location.path('/home')
-			  }).error(function(data,status){
-				$location.path('/home')
-			  })       
-			}
-			creating = false;  
+		  if (feedback.body.length > 0 && feedback.contacts.length > 0) {
+				if (creating) {
+				  $http.post('/feedbacks',{feedback: feedback}).success(function(data){
+						$location.path('/home')
+				  }).error(function(data,status){
+						$location.path('/home')
+				  })       
+				}
+				creating = false;  
 		  }
 	  } else {
-		  if ($('.lo-r-fb-body').val().length > 0) {
-			var feedback = $scope.new_feedback;
-			if (creating) {
-			  $http.post('/feedbacks',{feedback: feedback}).success(function(data){
-				$location.path('/home')
-			  }).error(function(data,status){
-				$location.path('/home')
-			  })       
-			}
-			creating = false;  
+		  if (feedback.body.length > 0) {
+				var feedback = $scope.new_feedback;
+				if (creating) {
+				  $http.post('/feedbacks',{feedback: feedback}).success(function(data){
+						$location.path('/home')
+				  }).error(function(data,status){
+						$location.path('/home')
+				  })       
+				}
+				creating = false;  
 		  }
 	  }
   }

@@ -17,13 +17,16 @@ Topdoner.controller('EditReviewCtrl', ['$scope','$filter','$stateParams','places
   }  
 
   $scope.updateReview = function(){
-    var review = $rootScope.review
+    var review = $rootScope.review;
     review['place_id'] = $scope.place.properties.id
-    delete review['images']
-    review['images_id'] = $scope.new_images_id    
+    delete review['images'];
+    review['images_id'] = $scope.new_images_id;    
     if ($rootScope.reviewValid(review)){
-      $http.put('/reviews/'+review.id,{review: review}).then(function(res){
-        $location.path('/places/'+ $stateParams.id)
+      $http.put('/reviews/'+review.id,{review: review}).then(function(res) {
+        var updated_place = res.data.place;
+        $rootScope.places.splice($rootScope.places.indexOf($rootScope.place), 1);
+        $rootScope.places.push(updated_place);
+        $location.path('/places/'+ updated_place.properties.id); 
       })
     } 
   }

@@ -92,6 +92,7 @@ class Place < ActiveRecord::Base
         city: city,
         street: street,
         metro: metro,
+        metro_line: metro_line,
         author: user,
         min_price: min_price,
         max_price: max_price
