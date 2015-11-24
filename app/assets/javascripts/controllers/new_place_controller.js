@@ -18,6 +18,8 @@ Topdoner.controller('NewPlaceCtrl', ['$scope','places','$location','$rootScope',
       $rootScope.openPopup('.popup-login');
     }
   }
+ 
+  
   $scope.dropzone = function(){
     var mediaDropzone = new Dropzone("#media-dropzone")
     mediaDropzone.options.dropzone = {
@@ -33,8 +35,15 @@ Topdoner.controller('NewPlaceCtrl', ['$scope','places','$location','$rootScope',
       }
     }
     return mediaDropzone.on("success", function(file, responseText) {
-      $('.lo-r-card').css('background-image','url('+responseText.image.file.url+')')
-      $('.add-place-dropzone').fadeOut(500)
+      $('.lo-r-card').css('background-image','url('+responseText.image.file.url+')');
+//		$('.add-place-submit-wrap').removeClass('hidden');
+		$scope.cls($('.add-place-dropzone'));
+		$scope.cls($('.add-place-title'));
+		setTimeout(function(){
+			$scope.opn($('.add-place-submit-wrap'));
+		}, 400);
+//		$('.add-place-title').addClass('hidden');
+//      $('.add-place-dropzone').fadeOut(500);
       if ($scope.images_id.length > 0){
         $scope.$apply( $scope.images_id = $scope.images_id + ','+ responseText.image.id.toString())
       } else {

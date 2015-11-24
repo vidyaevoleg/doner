@@ -279,8 +279,8 @@ body {
 				position: relative;
 				display: inline-block;
 				vertical-align: top;
-				background-color: #000;
-				background-image: url('logo_mask_small.png');
+//				background-color: #000;
+				background-image: url('logo.png');
 				background-size: 100%;
 				box-sizing: border-box;
 				a {
@@ -345,8 +345,9 @@ body {
 						position: absolute;
 						top: 16px;
 						right: 0px;
-						font-weight: 400;
+						font-weight: 500;
 						font-size: 11px;
+						color: darkgray;
 						cursor: pointer;
 						&:hover {
 							color: $act;
@@ -421,7 +422,6 @@ body {
 //			font-weight: 500;
 			font-weight: 800;
 			height: 40px;
-			position: relative;
 			margin-top: 10px;
 //			border-radius: 2px;
 //			border: 1px solid $act;
@@ -601,67 +601,67 @@ body {
 //				}
 				&-sok {
 					& #metro-logo {
-						fill: red;
+						fill: red !important;
 					}
 				}
 				&-zam {
 					& #metro-logo {
-						fill: green;
+						fill: green !important;
 					}
 				}
 				&-ap {
 					& #metro-logo {
-						fill: blue;
+						fill: blue !important;
 					}
 				}
 				&-fil {
 					& #metro-logo {
-						fill: deepskyblue;
+						fill: deepskyblue !important;
 					}
 				}
 				&-kol {
 					& #metro-logo {
-						fill: brown;
+						fill: brown !important;
 					}
 				}
 				&-kr {
 					& #metro-logo {
-						fill: orange;
+						fill: orange !important;
 					}
 				}
 				&-tk {
 					& #metro-logo {
-						fill: purple;
+						fill: purple !important;
 					}
 				}
 				&-kal {
 					& #metro-logo {
-						fill: #FFCB31;
+						fill: #FFCB31 !important;
 					}
 				}
 				&-st {
 					& #metro-logo {
-						fill: dimgray;
+						fill: dimgray !important;
 					}
 				}
 				&-lub {
 					& #metro-logo {
-						fill: #86d907;
+						fill: #86d907 !important;
 					}
 				}
 				&-kah {
 					& #metro-logo {
-						fill: darkcyan;
+						fill: darkcyan !important;
 					}
 				}
 				&-but {
 					& #metro-logo {
-						fill: #66b2b6;
+						fill: #66b2b6 !important;
 					}
 				}
 				&-tim {
 					& #metro-logo {
-						fill: #011e66;
+						fill: #011e66 !important;
 					}
 				}
 			}
@@ -993,6 +993,13 @@ body {
 								color: #272727;
 								display: inline-block;
 								position: relative;
+								a {
+									color: #272727;
+									text-decoration: none;
+									&:hover {
+										color: #000;
+									}
+								}
 							}
 							&-date {
 								position: absolute;
@@ -1141,42 +1148,54 @@ body {
 			width: 100%;
 			position: relative;
 			margin-bottom: 50px;
+			padding: 14px;
+			box-sizing: border-box;
 			&-title {
 				font-size: 20px;
 				font-weight: 800;
 				position: relative;
-				margin-bottom: 40px;
+				margin-bottom: 20px;
 			}
-			&-text {
-				width: 100%;
-				height: 200px;
-				border: none;
-				background: #fafafa;
-				color: #000;
-				border-radius: 2px;
-				display: block;
+			&-who {
 				position: relative;
-				margin: 10px 0 30px;
-				box-sizing: border-box;
-				padding: 14px;
-				font-size: 14px;
-				font-weight: 400;
-				resize: none;
-				&:focus {
-					outline: none;
+				margin: 10px 0;
+				input {
+					width: 70%;
+					height: 30px;
+					border: none;
+					background: #f5f5f5;
+					padding: 0 14px;
+					font-size: 14px;
+					&:focus {
+						outline: none;
+					}
+				}
+			}
+			&-addimg {
+				font-weight: 600;
+				position: relative;
+				margin: 20px 0 0;
+				cursor: pointer;
+				&:active {
+					color: $act;
 				}
 			}
 			&-dropzone {
 				position: relative;
 				margin: 10px 0;
 			}
+			&-submit-wrap {
+				position: relative;
+				margin-top: 14px;
+				text-align: right;
+			}
 			&-submit {
-				border: none;
-				background: none;
-				color: $act;
+				font-weight: 800;
+				color: #000;
 				font-size: 16px;
-				&:focus {
-					outline: none;
+				cursor: pointer;
+				&:hover {
+					color: $act;
 				}
 			}
 		}
@@ -1368,7 +1387,7 @@ body {
 	&-dropzone {
 		width: 100%;
 		height: 80px;
-		background: red;
+//		background: red;
 		border-radius: 3px;
 		margin: 10px 0;
 		position: relative;
@@ -1391,6 +1410,20 @@ body {
 				.dz-message {
 					color: #000;
 				}
+			}
+			.dz-preview {
+				min-height: 50px !important;
+			}
+			.dz-image {
+				border-radius: 2px !important;
+				width: 50px !important;
+				height: 50px !important;
+				img {
+					width: 100%;
+				}
+			}
+			.dz-details {
+				display: none;
 			}
 		}
 	}
@@ -1415,7 +1448,20 @@ body {
 	margin-top: 10px;
 }
 
-
+.add-place {
+	&-submit-wrap {
+		text-align: right;
+	}
+	&-submit {
+		font-weight: 800;
+		color: #000;
+		font-size: 16px;
+		cursor: pointer;
+		&:hover {
+			color: $act;
+		}
+	}
+}
 
 //.yd-map {
 ////    display: block;

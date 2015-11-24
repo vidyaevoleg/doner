@@ -7,16 +7,25 @@
 
 	<div class="lo-r-fb">
 		<div class="lo-r-fb-title">Обратная связь</div>
+<!--
 		Мотив: 
 		<select ng-model="new_feedback.feedback_type">
 			<option ng-repeat="type in types" value="{{type}}">{{ type }}</option>
 		</select>
+-->
 		<div>
-			<textarea class="lo-r-fb-text" ng-model="new_feedback.body"></textarea>
+			<textarea ng-change="feedbackValidate()" class="add-review-body lo-r-fb-body" placeholder="Ваше сообщение" ng-model="new_feedback.body"></textarea>
 		</div>
-		Загрузите изображения, если того требует ситуация
-		<div class="lo-r-fb-dropzone add-review-dropzone" ng-init="fixDropzone()">
+		<div class="lo-r-fb-who" ng-hide="current_user">
+			<input type="email" placeholder="Ваша почта" required />
+		</div>
+		<div class="lo-r-fb-addimg" ng-click="addFeedbackImg()">
+			Загрузить изображения
+		</div>
+		<div class="lo-r-fb-dropzone add-review-dropzone hidden" ng-init="fixDropzone()">
 			<form action="/images" id="media-dropzone" class="dropzone" enctype="multipart/form-data"></form>
 		</div>
-		<button ng-click="submitFeedback()" class="lo-r-fb-submit">Отправить</button>
+		<div class="lo-r-fb-submit-wrap">
+			<a ng-click="submitFeedback(current_user)" class="lo-r-fb-submit">Отправить</a>
+		</div>
 	</div>

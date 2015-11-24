@@ -8,6 +8,14 @@ Topdoner.controller('FeedbackCtrl', ['$scope','$location','$http',function ($sco
     images_id: '',
     feedback_type: ''
   };
+	
+	
+	$scope.addFeedbackImg = function() {
+	  $scope.cls($('.lo-r-fb-addimg'));
+	  setTimeout(function(){
+		  $scope.opn($('.lo-r-fb-dropzone'));
+	  }, 300);
+  }
 
   $scope.dropzone = function(){
     var mediaDropzone = new Dropzone("#media-dropzone")
@@ -31,18 +39,34 @@ Topdoner.controller('FeedbackCtrl', ['$scope','$location','$http',function ($sco
       }
     });
   }
+  
 
-  $scope.submitFeedback = function(){
-    var feedback = $scope.new_feedback;
-    console.log(feedback)
-    if (creating) {
-      $http.post('/feedbacks',{feedback: feedback}).success(function(data){
-        $location.path('/home')
-      }).error(function(data,status){
-        $location.path('/home')
-      })       
-    }
-    creating = false;
+  $scope.submitFeedback = function(current_user){
+	  if (!current_user) {
+		  if ($('.lo-r-fb-body').val().length > 0 && $('.lo-r-fb-who input').val().length > 0) {
+			var feedback = $scope.new_feedback;
+			if (creating) {
+			  $http.post('/feedbacks',{feedback: feedback}).success(function(data){
+				$location.path('/home')
+			  }).error(function(data,status){
+				$location.path('/home')
+			  })       
+			}
+			creating = false;  
+		  }
+	  } else {
+		  if ($('.lo-r-fb-body').val().length > 0) {
+			var feedback = $scope.new_feedback;
+			if (creating) {
+			  $http.post('/feedbacks',{feedback: feedback}).success(function(data){
+				$location.path('/home')
+			  }).error(function(data,status){
+				$location.path('/home')
+			  })       
+			}
+			creating = false;  
+		  }
+	  }
   }
   
   
