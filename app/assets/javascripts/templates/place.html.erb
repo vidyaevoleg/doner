@@ -23,9 +23,9 @@
 <!--				<div>{{place.properties.max_price}}</div>-->
 			</div>
 			<div class="lo-r-card-cont lo-r-card-cont-bottom">
-				<div class="lo-r-card-metro" ng-show="place.properties.metro">
+				<div class="lo-r-card-metro" ng-show="place.properties.metro" ng-class="getMetroColor(place.properties.metro_line)">
 					<div class="lo-r-card-metro-logo">
-						<svg width="13px" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+						<svg width="100%" viewBox="0 0 670 472" version="1.1">
 							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
 								<g id="metro-logo" sketch:type="MSLayerGroup" fill="#011e66">
 									<path d="M334.561,471.297 L443.284,282.322 L488.424,410.315 L451.976,410.315 L451.976,466.639 L669.121,466.639 L669.121,410.315 L627.676,410.315 L471.695,0 L334.561,252.627 L197.427,0 L41.446,410.315 L0,410.315 L0,466.639 L217.146,466.639 L217.146,410.315 L180.697,410.315 L225.837,282.322 L334.561,471.297" id="Page-1" sketch:type="MSShapeGroup"></path>
@@ -121,10 +121,6 @@
 						<div ng-repeat="image in review.images">
 							<img src="{{image.url}}">
 						</div>
-	 					<div ng-controller="ShareReviewCtrl"> 
-							<button ng-click="share_vk(review)"> vk</button>
-							<button ng-click="share_fb(review)"> fb</button>
-						 </div> 
 					</div>
 				</div>
 				<div class="lo-r-cont-review-body-grad"></div>
@@ -133,6 +129,33 @@
 <!--			<p><a ng-show="can(review)" ng-click="deleteReview(review.id)">удалить</a></p>-->
 			
 			<div class="lo-r-cont-review-subnav">
+				<div class="share" ng-controller="ShareReviewCtrl">
+					<div class="share-item vk" ng-click="share_vk(review)">
+						<svg width="100%" height="100%" viewBox="0 0 412 236" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+								<path d="M225.94423,235.528275 C236.39223,235.528275 240.68123,228.551275 240.54323,219.821275 C240.01023,186.909275 252.80323,169.202275 275.88823,192.290275 C301.44323,217.843275 306.72623,235.528275 337.73923,235.528275 L392.67623,235.528275 C435.89423,235.528275 397.38123,192.157275 366.93423,163.899275 C337.98623,137.029275 336.62723,136.395275 361.55523,104.052275 C392.50623,63.9122751 432.94823,12.1942751 397.16323,12.1942751 L328.81623,12.1942751 C315.55523,12.1942751 314.59923,19.9422751 309.88823,31.0642751 C292.81823,71.3432751 260.35023,123.535275 248.01523,115.565275 C235.11523,107.228275 241.02223,78.9532751 242.01123,29.9482751 C242.27223,17.0062751 242.20623,8.11527508 222.42523,3.52427508 C168.41623,-9.01072492 121.61523,15.6462751 140.73323,19.2062751 C167.69623,24.2342751 165.11023,77.9012751 158.82123,103.096275 C147.87023,146.966275 106.70723,68.3442751 89.5472301,29.2002751 C85.4192301,19.7812751 84.1572301,12.1942751 69.3822301,12.1942751 L13.5012301,12.1942751 C2.72823014,12.1942751 -2.55376986,17.1282751 1.20723014,27.1332751 C4.96823014,37.1382751 48.2062301,133.860275 99.3262301,189.042275 C146.63923,240.114275 193.40423,235.528275 225.94423,235.528275 C225.94423,235.528275 193.40423,235.528275 225.94423,235.528275 L225.94423,235.528275 L225.94423,235.528275 Z M225.94423,235.528275" id="vk-icon" fill="#5B7FA6" sketch:type="MSShapeGroup"></path>
+							</g>
+						</svg>
+					</div>
+					<div class="share-item fb" ng-click="share_fb(review)">
+<!--
+						<svg height="100%" viewBox="0 0 191 412" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+								<path d="M43.144,134.692 L0,134.692 L0,205.118 L43.144,205.118 L43.144,412 L126.109,412 L126.109,204.238 L183.991,204.238 L190.153,134.692 L126.109,134.692 L126.109,95.077 C126.109,78.679 129.411,72.187 145.256,72.187 L190.152,72.187 L190.152,0 L132.711,0 C70.977,0 43.144,27.179 43.144,79.231 L43.144,134.692 L43.144,134.692 L43.144,134.692 L43.144,134.692 Z M43.144,134.692" id="facebook-icon" fill="#3b5998" sketch:type="MSShapeGroup"></path>
+							</g>
+						</svg>
+-->
+						<svg width="100%" height="100%" viewBox="0 0 61 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+								<g id="social-media10" sketch:type="MSLayerGroup" fill="#3b5998">
+									<path d="M57.378,0.001 L3.352,0.001 C1.502,0.001 0,1.5 0,3.353 L0,57.379 C0,59.232 1.502,60.733 3.352,60.733 L32.438,60.733 L32.438,37.214 L24.524,37.214 L24.524,28.047 L32.438,28.047 L32.438,21.287 C32.438,13.444 37.227,9.171 44.225,9.171 C47.58,9.171 50.457,9.422 51.296,9.531 L51.296,17.729 L46.442,17.731 C42.637,17.731 41.903,19.54 41.903,22.193 L41.903,28.044 L50.981,28.044 L49.794,37.21 L41.902,37.21 L41.902,60.73 L57.377,60.73 C59.229,60.73 60.732,59.227 60.732,57.379 L60.732,3.351 C60.731,1.5 59.23,0.001 57.378,0.001 L57.378,0.001 L57.378,0.001 L57.378,0.001 Z M57.378,0.001" id="Shape" sketch:type="MSShapeGroup"></path>
+								</g>
+							</g>
+						</svg>
+					</div>
+<!--					<button class="share-icon" ng-click="share_vk(review)"> vk</button>-->
+<!--					<button class="share-icon" ng-click="share_fb(review)"> fb</button>-->
+				</div>
 				<div class="lo-r-cont-review-subnav-open" ng-hide="isReviewCurrent(review)" ng-click="makeReviewCurrent(review)">Читать</div>
 			</div>
 			

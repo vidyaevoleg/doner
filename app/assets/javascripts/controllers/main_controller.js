@@ -1,6 +1,9 @@
 Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$location','$rootScope','$stateParams', function ($scope,$filter,places,reviews,$location,$rootScope,$stateParams) {
 
 	$rootScope.MAP;
+	$scope.list_limit = 4;
+	
+	$rootScope.kek = 'searchControl';
 //	$scope.logoCycle;
 	
 //	$scope.startLogo = function() {
@@ -25,6 +28,15 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 //	}
 	
 	$scope.places_list_order = '-properties.rating';
+	
+	$scope.loadMore = function() {
+		if ($scope.list_limit < $scope.places.length) {
+			$scope.list_limit = $scope.list_limit + 3;
+		} else {
+			$scope.list_limit = $scope.list_limit + 1;
+			$scope.cls($('.load-more'));
+		}
+	}
 	
 	$rootScope.setDefaultZoom = function(){
 		var place = $rootScope.place;

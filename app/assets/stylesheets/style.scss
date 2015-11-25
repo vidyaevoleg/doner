@@ -3,28 +3,36 @@
 
 @font-face {
     font-family: 'Raleway';
-    src: local('Raleway Light'), local('Raleway-Light'), url('ralewaylight.woff2') format('woff2'), url('ralewaylight.woff') format('woff'), url('fonts/ralewaylight.ttf') format('truetype');
+    src: local('Raleway ExtraBold'), local('Raleway-ExtraBold'), url('fonts/ralewayextrabold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Raleway';
+    src: local('Raleway Light'), local('Raleway-Light'), url('fonts/ralewaylight.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Raleway';
-    src: local('Raleway Regular'), local('Raleway-Regular'), url('fonts/ralewayregular.woff2') format('woff2'), url('ralewayregular.woff') format('woff'), url('ralewayregular.ttf') format('truetype');
+    src: local('Raleway Regular'), local('Raleway-Regular'), url('fonts/ralewayregular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Raleway';
-    src: local('Raleway Medium'), local('Raleway-Medium'), url('fonts/ralewaymedium.woff2') format('woff2'), url('ralewaymedium.woff') format('woff'), url('ralewaymedium.ttf') format('truetype');
+    src: local('Raleway Medium'), local('Raleway-Medium'), url('fonts/ralewaymedium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Raleway';
-    src: local('Raleway SemiBold'), local('Raleway-SemiBold'), url('fonts/ralewaysemibold.woff2') format('woff2'), url('ralewaysemibold.woff') format('woff'), url('ralewaysemibold.ttf') format('truetype');
+    src: local('Raleway SemiBold'), local('Raleway-SemiBold'), url('fonts/ralewaysemibold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
 }
@@ -36,12 +44,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'Raleway';
-    src: local('Raleway ExtraBold'), local('Raleway-ExtraBold'), url('fonts/ralewayextrabold.woff2') format('woff2'), url('ralewayextrabold.woff') format('woff'), url('ralewayextrabold.ttf') format('truetype');
-    font-weight: 800;
-    font-style: normal;
-}
 
 @font-face {
     font-family: 'Raleway';
@@ -139,7 +141,6 @@ body {
 	}
 	&-login {
 		text-align: center;
-		
 		&-button {
 			width: 208px;
 			height: 40px;
@@ -454,6 +455,7 @@ body {
 	&-r {
 		width: 330px;
 		position: absolute;
+		margin-bottom: 50px;
 		right: 0;
 		font-size: 13px;
 		&-nav {
@@ -594,11 +596,14 @@ body {
 				#metro-logo {
 					fill: $act !important;
 				}
-//				&-logo {
-//					width: 13px;
-//					height: 13px;
-//					overflow: hidden;
-//				}
+				&-logo {
+					width: 14px;
+//					height: 15px;
+//					background: pink;
+					overflow: hidden;
+					position: relative;
+					top: 1px;
+				}
 				&-sok {
 					& #metro-logo {
 						fill: red !important;
@@ -790,7 +795,7 @@ body {
 					height: 100%;
 					box-sizing: border-box;
 					z-index: 4 !important;
-					bottom: 15px;
+					bottom: 17px;
 //					background: rgba(180,60,60, .4);
 					height: 20px;
 					color: blue;
@@ -1104,13 +1109,13 @@ body {
 				&-subnav {
 					position: relative;
 //					top: -10px;
-//					background: pink;
+//					background: cyan;
 					&-open {
 	//					top: 40px;
 						display: inline-block;
 	//					margin-top: 10px;
-						position: relative;
-						float: right;
+						position: absolute;
+						right: 0;
 						color: #000;
 						cursor: pointer;
 						margin-bottom: 30px;
@@ -1118,6 +1123,29 @@ body {
 	//					background: cyan;
 						&:active {
 							color: $act;
+						}
+					}
+					.share {
+						display: inline-block;
+						&-item {
+							width: 16px;
+							height: 12px;
+							position: relative;
+							margin-right: 14px;
+//							background: pink;
+							cursor: pointer;
+							display: inline-block;
+							&:hover {
+								path {
+									fill: $act;
+								}
+							}
+//							&.vk {
+//								background: #5B7FA6;
+//							}
+//							&.fb {
+//								background: #3b5998;
+//							}
 						}
 					}
 				}
@@ -1481,6 +1509,27 @@ body {
 //    width: 80%;
 //    height: 500px;
 //}
+
+.load-more {
+	position: relative;
+	margin: 10px auto 0;
+	width: 60px;
+	display: block;
+	height: 30px;
+	font-size: 16px;
+	font-weight: 800;
+	color: #000;
+	cursor: pointer;
+	background: none;
+	border: none;
+	&:hover {
+		color: $act;
+	}
+	&:focus {
+		outline: none !Important;
+	}
+}
+
 
 ya-map {
 	position: absolute;
