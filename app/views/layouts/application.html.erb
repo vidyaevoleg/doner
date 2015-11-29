@@ -61,6 +61,7 @@
 				</div>
 				<div class="lo-l-map" ng-controller="MapCtrl">
 					<ya-map ya-zoom="12" ya-after-init="afterMapInit($target)" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl" ya-event-click="mapClick($event)">
+<!--						<ya-control ya-type="searchControl" ></ya-control>-->
 						<ya-cluster ya-options="{preset:'islands#invertedRedClusterIcons'}">
 							<ya-geo-object href="#/places/{{place.id}}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ya-options="{preset: 'islands#redIcon'}"></ya-geo-object>
 						</ya-cluster>

@@ -3,28 +3,36 @@
 
 @font-face {
     font-family: 'Raleway';
-    src: local('Raleway Light'), local('Raleway-Light'), url('ralewaylight.woff2') format('woff2'), url('ralewaylight.woff') format('woff'), url('fonts/ralewaylight.ttf') format('truetype');
+    src: local('Raleway ExtraBold'), local('Raleway-ExtraBold'), url('fonts/ralewayextrabold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Raleway';
+    src: local('Raleway Light'), local('Raleway-Light'), url('fonts/ralewaylight.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Raleway';
-    src: local('Raleway Regular'), local('Raleway-Regular'), url('fonts/ralewayregular.woff2') format('woff2'), url('ralewayregular.woff') format('woff'), url('ralewayregular.ttf') format('truetype');
+    src: local('Raleway Regular'), local('Raleway-Regular'), url('fonts/ralewayregular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Raleway';
-    src: local('Raleway Medium'), local('Raleway-Medium'), url('fonts/ralewaymedium.woff2') format('woff2'), url('ralewaymedium.woff') format('woff'), url('ralewaymedium.ttf') format('truetype');
+    src: local('Raleway Medium'), local('Raleway-Medium'), url('fonts/ralewaymedium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Raleway';
-    src: local('Raleway SemiBold'), local('Raleway-SemiBold'), url('fonts/ralewaysemibold.woff2') format('woff2'), url('ralewaysemibold.woff') format('woff'), url('ralewaysemibold.ttf') format('truetype');
+    src: local('Raleway SemiBold'), local('Raleway-SemiBold'), url('fonts/ralewaysemibold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
 }
@@ -36,12 +44,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'Raleway';
-    src: local('Raleway ExtraBold'), local('Raleway-ExtraBold'), url('fonts/ralewayextrabold.woff2') format('woff2'), url('ralewayextrabold.woff') format('woff'), url('ralewayextrabold.ttf') format('truetype');
-    font-weight: 800;
-    font-style: normal;
-}
 
 @font-face {
     font-family: 'Raleway';
@@ -139,7 +141,6 @@ body {
 	}
 	&-login {
 		text-align: center;
-		
 		&-button {
 			width: 208px;
 			height: 40px;
@@ -401,7 +402,7 @@ body {
 			width: 550px;
 			height: 400px;
 			display: block;
-			background: #b0b0b0;
+			background: #e3e3e3;
 			border-radius: 3px;
 			box-sizing: border-box;
 //			top: 100px;
@@ -412,9 +413,9 @@ body {
 					border-radius: 3px;
 			overflow: hidden;
 			position: relative;
-			-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
-			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
-					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+//			-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+//			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+//					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 		}
 		&-addplace {
 			display: inline-block;
@@ -454,6 +455,7 @@ body {
 	&-r {
 		width: 330px;
 		position: absolute;
+		margin-bottom: 50px;
 		right: 0;
 		font-size: 13px;
 		&-nav {
@@ -538,8 +540,10 @@ body {
 					top: 2px;
 				}
 				.lo-r-card-dist {
-					color: rgb(240,67,61) !important;
-					border-color: rgb(240,67,61);
+//					color: rgb(240,67,61) !important;
+//					border-color: rgb(240,67,61);
+					color: #888 !Important;
+					border-color: #888;
 				}
 				.lo-r-card-city {
 					color: darkgray;
@@ -594,11 +598,15 @@ body {
 				#metro-logo {
 					fill: $act !important;
 				}
-//				&-logo {
-//					width: 13px;
-//					height: 13px;
-//					overflow: hidden;
-//				}
+				&-logo {
+					width: 15px;
+					height: 11px;
+					vertical-align: top;
+//					background: pink;
+					overflow: hidden;
+					position: relative;
+					top: 1px;
+				}
 				&-sok {
 					& #metro-logo {
 						fill: red !important;
@@ -611,7 +619,7 @@ body {
 				}
 				&-ap {
 					& #metro-logo {
-						fill: blue !important;
+						fill: #2d2ddd !important;
 					}
 				}
 				&-fil {
@@ -621,7 +629,7 @@ body {
 				}
 				&-kol {
 					& #metro-logo {
-						fill: brown !important;
+						fill: #966b30 !important;
 					}
 				}
 				&-kr {
@@ -631,7 +639,7 @@ body {
 				}
 				&-tk {
 					& #metro-logo {
-						fill: purple !important;
+						fill: #9b009b !important;
 					}
 				}
 				&-kal {
@@ -641,7 +649,7 @@ body {
 				}
 				&-st {
 					& #metro-logo {
-						fill: dimgray !important;
+						fill: #888 !important;
 					}
 				}
 				&-lub {
@@ -750,6 +758,13 @@ body {
 //					opacity: 0;
 //				}
 			}
+			&-bg-grad {
+				background-image: url('grad_x.png');
+				background-position: left;
+				background-repeat: repeat-y;
+				background-size: 50%;
+				color: cyan;
+			}
 			&-cont {
 					-webkit-transition: -webkit-transform .2s ease;
 					   -moz-transition:    -moz-transform .2s ease;
@@ -784,7 +799,7 @@ body {
 					height: 100%;
 					box-sizing: border-box;
 					z-index: 4 !important;
-					bottom: 15px;
+					bottom: 17px;
 //					background: rgba(180,60,60, .4);
 					height: 20px;
 					color: blue;
@@ -921,6 +936,14 @@ body {
 			margin: auto;
 			top: 58px;
 			z-index: 5;
+		}
+		&-noreviews {
+			font-weight: 500;
+			position: relative;
+			margin-top: 100px;
+			text-align: center;
+			color: #acacac;
+			font-size: 14px;
 		}
 		&-cont {
 			&-fix {
@@ -1094,17 +1117,40 @@ body {
 							display: none;
 						}
 					}
+					.share {
+						display: inline-block;
+						&-item {
+							width: 16px;
+							height: 12px;
+							position: relative;
+							margin-right: 14px;
+//							background: pink;
+							cursor: pointer;
+							display: inline-block;
+							&:hover {
+								path {
+									fill: $act;
+								}
+							}
+//							&.vk {
+//								background: #5B7FA6;
+//							}
+//							&.fb {
+//								background: #3b5998;
+//							}
+						}
+					}
 				}
 				&-subnav {
 					position: relative;
 //					top: -10px;
-//					background: pink;
+//					background: cyan;
 					&-open {
 	//					top: 40px;
 						display: inline-block;
 	//					margin-top: 10px;
-						position: relative;
-						float: right;
+						position: absolute;
+						right: 0;
 						color: #000;
 						cursor: pointer;
 						margin-bottom: 30px;
@@ -1153,8 +1199,13 @@ body {
 			&-title {
 				font-size: 20px;
 				font-weight: 800;
+			}
+			&-subtitle {
+				font-size: 12px;
+				font-weight: 500;
+				color: darkgray;
 				position: relative;
-				margin-bottom: 20px;
+				margin: 2px 0 20px;
 			}
 			&-who {
 				position: relative;
@@ -1176,7 +1227,7 @@ body {
 				position: relative;
 				margin: 20px 0 0;
 				cursor: pointer;
-				&:active {
+				&:hover {
 					color: $act;
 				}
 			}
@@ -1186,7 +1237,7 @@ body {
 			}
 			&-submit-wrap {
 				position: relative;
-				margin-top: 14px;
+				margin-top: 20px;
 				text-align: right;
 			}
 			&-submit {
@@ -1260,7 +1311,7 @@ body {
 		border-radius: 2px;
 		border: none;
 		box-sizing: border-box;
-		font-size: 13px;
+		font-size: 14px;
 //		-webkit-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
 //		   -moz-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
 //				box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
@@ -1405,6 +1456,7 @@ body {
 			top: 0;
 			left: 0;
 			min-height: 0px;
+//			background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J3doaXRlJy8+CiAgPHBhdGggZD0nTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVonIHN0cm9rZT0nIzg4OCcgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPg==");
 			background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiNlZWUiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=");
 			&:hover {
 				.dz-message {
@@ -1432,9 +1484,13 @@ body {
 		button {
 			border: none;
 			background: none;
-			color: $act;
-//			font-weight: 600;
+			color: #000;
+			font-weight: 800;
 			font-size: 16px;
+			cursor: pointer;
+			&:hover {
+				color: $act;
+			}
 			&:focus {
 				outline: none;
 			}
@@ -1470,6 +1526,27 @@ body {
 //    width: 80%;
 //    height: 500px;
 //}
+
+.load-more {
+	position: relative;
+	margin: 10px auto 0;
+	width: 60px;
+	display: block;
+	height: 30px;
+	font-size: 16px;
+	font-weight: 800;
+	color: #000;
+	cursor: pointer;
+	background: none;
+	border: none;
+	&:hover {
+		color: $act;
+	}
+	&:focus {
+		outline: none !Important;
+	}
+}
+
 
 ya-map {
 	position: absolute;

@@ -19,9 +19,9 @@
 <!--				<div>{{place.properties.max_price}}</div>-->
 			</div>
 			<div class="lo-r-card-cont lo-r-card-cont-bottom">
-				<div class="lo-r-card-metro" ng-show="place.properties.metro">
+				<div class="lo-r-card-metro" ng-show="place.properties.metro" ng-class="getMetroColor(place.properties.metro_line)">
 					<div class="lo-r-card-metro-logo">
-						<svg width="13px" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+						<svg width="100%" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
 								<g id="metro-logo" sketch:type="MSLayerGroup" fill="#011e66">
 									<path d="M334.561,471.297 L443.284,282.322 L488.424,410.315 L451.976,410.315 L451.976,466.639 L669.121,466.639 L669.121,410.315 L627.676,410.315 L471.695,0 L334.561,252.627 L197.427,0 L41.446,410.315 L0,410.315 L0,466.639 L217.146,466.639 L217.146,410.315 L180.697,410.315 L225.837,282.322 L334.561,471.297" id="Page-1" sketch:type="MSShapeGroup"></path>
@@ -40,7 +40,16 @@
 			<input name="total" placeholder="Заголовок" ng-model="new_review.title" class="add-review-title">
 			<textarea name="body" placeholder="Дело было так..." ng-model="new_review.body" class="add-review-body"></textarea>
 			<div class="add-review-price">
-				Прайс <input name="min_price" ng-model="new_review.min_price" class="add-review-price-input"><span> – </span><input name="max_price" ng-model="new_review.max_price" class="add-review-price-input"><span>&#8381;руб.</span>
+				Прайс <input name="min_price" ng-model="new_review.min_price" class="add-review-price-input"><span> – </span><input name="max_price" ng-model="new_review.max_price" class="add-review-price-input">
+				<span>
+					<svg width="12px" height="12px" y="2px" viewBox="0 0 464 511" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+						<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+							<g id="ruble" sketch:type="MSLayerGroup" fill="#000000">
+								<path d="M11.786,428.963 L92.944,428.963 L92.944,498.535 C92.944,501.92 94.027,504.691 96.206,506.857 C98.379,509.037 101.157,510.127 104.541,510.127 L165.043,510.127 C168.183,510.127 170.9,509.037 173.195,506.857 C175.49,504.691 176.634,501.919 176.634,498.535 L176.634,428.963 L359.598,428.963 C362.975,428.963 365.754,427.887 367.932,425.707 C370.112,423.529 371.194,420.756 371.194,417.371 L371.194,370.994 C371.194,367.629 370.112,364.838 367.932,362.672 C365.76,360.492 362.975,359.402 359.598,359.402 L176.628,359.402 L176.628,316.648 L299.812,316.648 C348.117,316.648 387.542,301.929 418.105,272.449 C448.656,243 463.939,204.959 463.939,158.324 C463.939,111.72 448.656,73.678 418.105,44.199 C387.548,14.749 348.116,0 299.812,0 L104.535,0 C101.15,0 98.378,1.089 96.2,3.256 C94.027,5.435 92.938,8.225 92.938,11.591 L92.938,239.487 L11.786,239.487 C8.402,239.487 5.629,240.632 3.451,242.926 C1.279,245.221 0.189,247.938 0.189,251.077 L0.189,305.055 C0.189,308.44 1.272,311.213 3.451,313.391 C5.63,315.571 8.396,316.647 11.786,316.647 L92.944,316.647 L92.944,359.401 L11.786,359.401 C8.402,359.401 5.629,360.491 3.451,362.671 C1.279,364.837 0.189,367.622 0.189,370.993 L0.189,417.37 C0.189,420.755 1.272,423.528 3.451,425.706 C5.629,427.887 8.401,428.963 11.786,428.963 C11.786,428.963 8.401,428.963 11.786,428.963 L11.786,428.963 L11.786,428.963 Z M176.628,77.179 L292.566,77.179 C318.166,77.179 338.814,84.664 354.519,99.639 C370.216,114.615 378.068,134.186 378.068,158.33 C378.068,182.486 370.216,202.063 354.519,217.021 C338.814,232.009 318.165,239.494 292.566,239.494 L176.628,239.494 L176.628,77.179 L176.628,77.179 L176.628,77.179 L176.628,77.179 Z M176.628,77.179" id="Shape" sketch:type="MSShapeGroup"></path>
+							</g>
+						</g>
+					</svg>
+				</span>
 			</div>
 			<div class="add-review-rate" ng-click="openExtRates()">
 				<dic class="add-review-rate-stars" star-rating rating-value="new_review.total" data-max="10" on-rating-selected=""></dic>
@@ -88,7 +97,6 @@
 			
 			<input type="checkbox" id="switch-anon" ng-model="new_review.anonym" class="switch" />
 			<label for="switch-anon">Анонимно</label>
-<!--			<div class="info tip tip-for-text" title="Клиент сможет выбрать с каким отделом/филиалом связаться "></div>-->
 			<div class="clear"></div>
 			
 			

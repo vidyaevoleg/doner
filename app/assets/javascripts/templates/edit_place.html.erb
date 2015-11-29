@@ -19,9 +19,9 @@
 <!--				<div>{{place.properties.max_price}}</div>-->
 			</div>
 			<div class="lo-r-card-cont lo-r-card-cont-bottom">
-				<div class="lo-r-card-metro" ng-show="place.properties.metro">
+				<div class="lo-r-card-metro" ng-show="place.properties.metro" ng-class="getMetroColor(place.properties.metro_line)">
 					<div class="lo-r-card-metro-logo">
-						<svg width="13px" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+						<svg width="100%" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
 								<g id="metro-logo" sketch:type="MSLayerGroup" fill="#011e66">
 									<path d="M334.561,471.297 L443.284,282.322 L488.424,410.315 L451.976,410.315 L451.976,466.639 L669.121,466.639 L669.121,410.315 L627.676,410.315 L471.695,0 L334.561,252.627 L197.427,0 L41.446,410.315 L0,410.315 L0,466.639 L217.146,466.639 L217.146,410.315 L180.697,410.315 L225.837,282.322 L334.561,471.297" id="Page-1" sketch:type="MSShapeGroup"></path>
@@ -36,7 +36,7 @@
 	</div>
 	
 	<div class="add-place-dropzone" ng-init="fixDropzone()">
-		<h3> Загрузите аватар для ларька </h3>
+		<h3>Обновить фотографию места</h3>
 <!--		<form action="/images" id="media-dropzone" class="dropzone" enctype="multipart/form-data">-->
 		</form>
 		<div class="add-review-dropzone" ng-init="fixDropzone()">
@@ -44,6 +44,6 @@
 		</div>
 	</div>
 	<div class="add-review-submit-wrap">
-		<button ng-click="updatePlace()" class="add-place-submit">Обновить</button>
-	</div>	
+		<a ng-click="updatePlace()" class="add-place-submit">Обновить</a>
+	</div>
 </div>

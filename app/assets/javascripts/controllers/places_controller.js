@@ -1,6 +1,8 @@
 Topdoner.controller('PlacesCtrl', ['$scope','places','$location','$rootScope', function ($scope,places,$location,$rootScope) {
   
 
+	
+	
 
   // $scope.show = function(what, how) {
   // 	var p = what,
