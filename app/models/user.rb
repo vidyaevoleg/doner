@@ -2,17 +2,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,:omniauthable,:omniauth_providers => [:vkontakte,:facebook]
+         :recoverable, :rememberable, :trackable, :validatable,:omniauthable
   has_many :places
   has_many :reviews
   has_many :feedbacks
- 	def self.find_for_vkontakte_oauth access_token
-    if user = User.where(:url => access_token.info.urls.Vkontakte).first
-      user
-    else 
-      User.create!(:provider => access_token.provider, :url => access_token.info.urls.Vkontakte, :username => access_token.info.name, :nickname => access_token.extra.raw_info.domain, :email => access_token.extra.raw_info.domain+'<hh user=vk>.com', :password => Devise.friendly_token[0,20]) 
-    end
-  end
 
   def link
     if self.provider == 'Facebook'
@@ -42,8 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_facebook_oauth access_token
-    # binding.pry
-    if user = User.where(:uid => access_token.extra.raw_info.id).first
+    if user = User.where(:uid => access_token.extra.raw_info.id).where(provider: 'Facebook').first
       user
     else 
       User.create!(:provider => 'Facebook',
@@ -55,4 +47,18 @@ class User < ActiveRecord::Base
       ) 
     end
   end
+
+  def self.find_for_vkontakte_oauth access_token
+    if user = User.where(:uid => access_token.extra.raw_info.id).where(provider: 'Vkontakte').first
+      user
+    else 
+      User.create!(:provider => 'Vkontakte',
+                  :uid => access_token.extra.raw_info.id,
+                  :username => access_token.info.name,
+                  :image_url => access_token.extra.raw_info['photo_200'],
+                  :email => access_token.info.name.tr(' ','').downcase + '@vk.com',
+                  :password => Devise.friendly_token[0,20]
+      ) 
+    end
+  end  
 end
