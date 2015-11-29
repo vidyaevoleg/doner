@@ -14,3 +14,4 @@
 /tmp
 /config/database.yml
 /config/oauth.yml
+/config/secrets.yml
