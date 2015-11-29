@@ -34,8 +34,16 @@ class User < ActiveRecord::Base
     json
   end
 
+  def update_photo url
+    self.update!(image_url: url)
+  end
+
+
   def self.find_for_facebook_oauth access_token
     if user = User.where(:uid => access_token.extra.raw_info.id).where(provider: 'Facebook').first
+      if user.image_url != access_token.extra.raw_info['photo_200']
+        user.update_photo access_token.extra.raw_info['photo_200']
+      end
       user
     else 
       User.create!(:provider => 'Facebook',
@@ -50,6 +58,9 @@ class User < ActiveRecord::Base
 
   def self.find_for_vkontakte_oauth access_token
     if user = User.where(:uid => access_token.extra.raw_info.id).where(provider: 'Vkontakte').first
+      if user.image_url != access_token.extra.raw_info['photo_200']
+        user.update_photo access_token.extra.raw_info['photo_200']
+      end
       user
     else 
       User.create!(:provider => 'Vkontakte',

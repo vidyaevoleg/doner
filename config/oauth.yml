@@ -5,10 +5,6 @@ development: &defaults
   :facebook:
     :app_id: 529146080586779
     :app_secret: 9649102b146c53be71efabee5386625a
-  # :vk:
-  #   :app_id: 5165818
-  #   :app_secret: LnBQ95gE8SaBmqdY8AST    
-  #   :strategy_class: OmniAuth::Strategies::Vkontakte
 test:
   <<: *defaults
 
