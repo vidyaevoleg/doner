@@ -145,7 +145,9 @@ Devise.setup do |config|
   config.password_length = 8..72             
   YAML.load_file(Rails.root.join("config", "oauth.yml"))[Rails.env].each do |key, value|
     config.omniauth key, value[:app_id], value[:app_secret], (value[:params] || {})
-  end 
+  end
+  # config.omniauth :vk, '5165818', "LnBQ95gE8SaBmqdY8AST", :strategy_class => OmniAuth::Strategies::Vkontakte
+
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
@@ -242,6 +244,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
+
+ 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
@@ -264,4 +268,5 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  config.omniauth_path_prefix = "/users/auth"
 end

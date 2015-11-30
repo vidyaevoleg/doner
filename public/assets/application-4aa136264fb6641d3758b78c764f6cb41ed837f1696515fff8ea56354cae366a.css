@@ -1,0 +1,2046 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Raleway';
+  src: local("Raleway Light"), local("Raleway-Light"), url("ralewaylight.woff2") format("woff2"), url("ralewaylight.woff") format("woff"), url("fonts/ralewaylight.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: local("Raleway Regular"), local("Raleway-Regular"), url("fonts/ralewayregular.woff2") format("woff2"), url("ralewayregular.woff") format("woff"), url("ralewayregular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: local("Raleway Medium"), local("Raleway-Medium"), url("fonts/ralewaymedium.woff2") format("woff2"), url("ralewaymedium.woff") format("woff"), url("ralewaymedium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: local("Raleway SemiBold"), local("Raleway-SemiBold"), url("fonts/ralewaysemibold.woff2") format("woff2"), url("ralewaysemibold.woff") format("woff"), url("ralewaysemibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: local("Raleway Bold"), local("Raleway-Bold"), url("fonts/ralewaybold.woff2") format("woff2"), url("ralewaybold.woff") format("woff"), url("ralewaybold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: local("Raleway ExtraBold"), local("Raleway-ExtraBold"), url("fonts/ralewayextrabold.woff2") format("woff2"), url("ralewayextrabold.woff") format("woff"), url("ralewayextrabold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: local("Raleway Black"), local("Raleway-Black"), url("fonts/ralewayblack.woff2") format("woff2"), url("ralewayblack.woff") format("woff"), url("ralewayblack.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+/* line 62, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.hidden {
+  display: none !important;
+}
+
+/* line 74, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+html {
+  overflow-y: scroll;
+}
+
+/* line 78, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: white;
+  font-family: 'Raleway' !important;
+}
+
+/* line 88, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.prnj {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+
+/* line 101, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.blured {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='svgBlur' x='-5%' y='-5%' width='110%' height='Đ%'><feGaussianBlur in='SourceGraphic' stdDeviation='5'/></filter></svg>#svgBlur");
+  -webkit-filter: blur(20px);
+  -moz-filter: blur(20px);
+  -o-filter: blur(20px);
+  -ms-filter: blur(20px);
+  filter: blur(20px);
+}
+
+/* line 110, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.popup {
+  max-width: 700px;
+  width: 90%;
+  position: relative;
+  height: auto;
+  z-index: 11;
+  top: 20px;
+  margin: 0 auto 40px;
+  color: #fff;
+  border-radius: 2px;
+  padding-top: 60px;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.14);
+}
+/* line 126, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.popup-close {
+  position: absolute;
+  top: 20px;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  right: 30px;
+  font-size: 18px;
+  color: #7b7b7b;
+  cursor: pointer;
+}
+/* line 136, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.popup-close:hover {
+  color: #000;
+}
+/* line 140, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.popup-login {
+  text-align: center;
+}
+/* line 143, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.popup-login-button {
+  width: 208px;
+  height: 40px;
+  border-radius: 2px;
+  position: relative;
+  margin: 30px auto 0;
+}
+/* line 150, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.popup-login-button.vk {
+  background: #5B7FA6;
+}
+/* line 153, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.popup-login-button.fb {
+  background: #3b5998;
+}
+/* line 160, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.popup-login-button-icon {
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: 5px;
+  left: 5px;
+  text-align: center;
+  display: inline-block;
+  margin-left: 4px;
+}
+/* line 171, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.popup-login-button-title {
+  display: inline-block;
+  color: #fff;
+  font-weight: 600;
+  height: 30px;
+  line-height: 30px;
+  position: relative;
+  top: 5px;
+  margin-left: 16px;
+  vertical-align: top;
+}
+/* line 184, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.popup-login-button a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  z-index: 20;
+}
+/* line 197, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.popup-about-logo {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  background-image: url("logo.png");
+  background-size: 100%;
+  border: 4px solid #fff;
+  margin: 30px auto;
+}
+
+/* line 213, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.cont {
+  width: 900px;
+  position: relative;
+  margin: auto;
+}
+
+/* line 219, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.what {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  width: 20px;
+  height: 16px;
+  cursor: pointer;
+  z-index: 3;
+  font-weight: 800;
+}
+/* line 228, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.what:hover {
+  color: #f0433d;
+}
+
+/* line 233, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.feedback {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  height: 18px;
+  width: 18px;
+  z-index: 3;
+  font-weight: 800;
+}
+/* line 242, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.feedback:hover path {
+  fill: #f0433d;
+}
+/* line 246, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.feedback a {
+  display: block;
+  height: 100%;
+  color: #000;
+}
+
+/* line 253, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo {
+  width: 100%;
+  position: relative;
+  margin-top: 20px;
+}
+/* line 258, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l, .lo-r {
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 262, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l {
+  width: 560px;
+  height: 600px;
+  position: fixed;
+}
+/* line 270, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-head {
+  width: inherit;
+  position: relative;
+  margin-bottom: 20px;
+  height: 70px;
+}
+/* line 276, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-head-logo {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  background-image: url("logo.png");
+  background-size: 100%;
+  box-sizing: border-box;
+}
+/* line 286, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-head-logo a {
+  display: block;
+  height: 100%;
+}
+/* line 291, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-head-nav {
+  height: 40px;
+  position: relative;
+  right: 0;
+  top: 15px;
+  display: inline-block;
+  text-align: right;
+  box-sizing: border-box;
+  padding-right: 30px;
+}
+/* line 304, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-head-nav-item {
+  display: inline-block;
+  height: 100%;
+  line-height: 40px;
+  margin-left: 50px;
+  cursor: pointer;
+  font-weight: 800;
+}
+/* line 312, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-head-nav-item:hover {
+  color: #f0433d;
+}
+/* line 316, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-head-nav-user {
+  display: inline-block;
+  height: 100%;
+  line-height: 40px;
+  margin-left: 50px;
+  position: relative;
+}
+/* line 323, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-head-nav-user-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  margin-right: 6px;
+  top: 6px;
+  display: inline-block;
+}
+/* line 335, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-head-nav-user-name {
+  display: inline-block;
+  font-weight: 800;
+  color: #000;
+  text-decoration: none;
+}
+/* line 340, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-head-nav-user-name:hover {
+  color: #f0433d;
+}
+/* line 344, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-head-nav-user-logout {
+  position: absolute;
+  top: 16px;
+  right: 0px;
+  font-weight: 500;
+  font-size: 11px;
+  color: darkgray;
+  cursor: pointer;
+}
+/* line 352, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-head-nav-user-logout:hover {
+  color: #f0433d;
+}
+/* line 400, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-map {
+  width: 550px;
+  height: 400px;
+  display: block;
+  background: #b0b0b0;
+  border-radius: 3px;
+  box-sizing: border-box;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.14);
+}
+/* line 419, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-addplace {
+  display: inline-block;
+  font-weight: 800;
+  height: 40px;
+  margin-top: 10px;
+  color: #000;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+}
+/* line 440, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-addplace:hover {
+  color: #f0433d;
+}
+/* line 446, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-l-addplace-tip {
+  margin-left: 30px;
+  position: relative;
+  font-size: 14px;
+  color: #797979;
+}
+/* line 454, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r {
+  width: 330px;
+  position: absolute;
+  right: 0;
+  font-size: 13px;
+}
+/* line 459, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-nav {
+  width: inherit;
+  height: 70px;
+  margin-bottom: 20px;
+  line-height: 70px;
+}
+/* line 465, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-nav-select {
+  top: 15px;
+  width: inherit;
+  position: relative;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-weight: 800;
+  font-size: 16px;
+  color: #c3c3c3;
+}
+/* line 475, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-nav-select span {
+  margin-right: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+/* line 479, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-nav-select span.active {
+  color: #000 !important;
+}
+/* line 482, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-nav-select span:last-child {
+  margin-right: 0;
+}
+/* line 486, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-nav-select-wait {
+  font-weight: 300px;
+  color: #f0433d;
+  font-size: 12px;
+  position: relative;
+  margin-top: -14px;
+}
+/* line 494, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-nav-back {
+  text-align: left;
+}
+/* line 496, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-nav-back a {
+  text-decoration: none;
+  color: #000;
+}
+/* line 499, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-nav-back a:hover {
+  color: #f0433d;
+}
+/* line 506, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-wrapper {
+  position: fixed;
+  height: 90px;
+  top: 60px;
+  width: inherit;
+  z-index: 6;
+}
+/* line 513, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card {
+  position: relative;
+  margin-bottom: 10px;
+  width: inherit;
+  overflow: hidden;
+  height: 90px;
+  border-radius: 3px;
+  background: #414141;
+  background-position: center !important;
+  background-size: 100% !important;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.14);
+  box-sizing: border-box;
+}
+/* line 514, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-places {
+  cursor: pointer;
+  background: none;
+  margin-bottom: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  color: #000 !important;
+}
+/* line 527, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-places .lo-r-card-title {
+  margin-top: 5px;
+  color: #000;
+  text-shadow: none;
+}
+/* line 532, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-places .lo-r-card-metro {
+  color: #505050;
+}
+/* line 535, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-places .lo-r-card-count {
+  color: darkgray;
+  top: 2px;
+}
+/* line 540, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-places .lo-r-card-dist {
+  color: #f0433d !important;
+  border-color: #f0433d;
+}
+/* line 544, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-places .lo-r-card-city {
+  color: darkgray;
+}
+/* line 565, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-city {
+  font-size: 12px;
+  color: #fff;
+  z-index: 4;
+  position: relative;
+}
+/* line 571, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-title {
+  position: relative;
+  margin-top: 5px;
+  font-weight: 800;
+  font-size: 14px;
+  color: #fff;
+  z-index: 4 !important;
+  text-shadow: 1px 1px 0px #212020;
+}
+/* line 581, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #eee;
+  z-index: 4 !important;
+}
+/* line 591, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro div {
+  display: inline-block;
+}
+/* line 594, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro #metro-logo {
+  fill: #f0433d !important;
+}
+/* line 603, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro-sok #metro-logo {
+  fill: red !important;
+}
+/* line 608, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro-zam #metro-logo {
+  fill: green !important;
+}
+/* line 613, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro-ap #metro-logo {
+  fill: blue !important;
+}
+/* line 618, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro-fil #metro-logo {
+  fill: deepskyblue !important;
+}
+/* line 623, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro-kol #metro-logo {
+  fill: brown !important;
+}
+/* line 628, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro-kr #metro-logo {
+  fill: orange !important;
+}
+/* line 633, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro-tk #metro-logo {
+  fill: purple !important;
+}
+/* line 638, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro-kal #metro-logo {
+  fill: #FFCB31 !important;
+}
+/* line 643, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro-st #metro-logo {
+  fill: dimgray !important;
+}
+/* line 648, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro-lub #metro-logo {
+  fill: #86d907 !important;
+}
+/* line 653, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro-kah #metro-logo {
+  fill: darkcyan !important;
+}
+/* line 658, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro-but #metro-logo {
+  fill: #66b2b6 !important;
+}
+/* line 663, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-metro-tim #metro-logo {
+  fill: #011e66 !important;
+}
+/* line 668, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-rating {
+  position: absolute;
+  z-index: 4 !important;
+  bottom: 3px;
+  right: 13px;
+  width: 48px;
+  height: 22px;
+  line-height: 22px;
+  font-weight: 600;
+  font-size: 26px;
+  text-align: center;
+  font-family: 'helvetica';
+  color: #ffce06;
+  text-shadow: 1px 1px 0px #212020;
+}
+/* line 684, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-count {
+  display: inline-block;
+  right: 14px;
+  top: 0;
+  position: absolute;
+  height: 14px;
+  font-weight: 400;
+  color: #fff;
+  font-family: 'helvetica';
+  font-size: 10px;
+  text-align: center;
+}
+/* line 699, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-dist {
+  font-family: 'helvetica';
+  position: absolute;
+  border: 1px solid #ffce06;
+  line-height: 14px;
+  border-radius: 2px;
+  font-size: 10px;
+  display: inline-block;
+  padding: 0 4px;
+  height: 14px;
+  color: #ffce06 !important;
+  top: 0px;
+  right: 72px;
+  text-align: right;
+}
+/* line 716, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2 !important;
+  background-size: 100%;
+  background-position: center;
+}
+/* line 726, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-bg-filter {
+  background: rgba(0, 0, 0, 0.2);
+}
+/* line 729, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-bg-norm {
+  opacity: 0;
+  -webkit-transition: opacity .2s ease;
+  -moz-transition: opacity .2s ease;
+  -o-transition: opacity .2s ease;
+  transition: opacity .2s ease;
+}
+/* line 736, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-bg-blured {
+  z-index: 3 !important;
+  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='svgBlur' x='-5%' y='-5%' width='110%' height='Đ%'><feGaussianBlur in='SourceGraphic' stdDeviation='20'/></filter></svg>#svgBlur");
+  -webkit-filter: blur(20px);
+  -moz-filter: blur(20px);
+  -o-filter: blur(20px);
+  -ms-filter: blur(20px);
+  filter: blur(20px);
+  opacity: 1;
+  -webkit-transition: opacity .2s ease;
+  -moz-transition: opacity .2s ease;
+  -o-transition: opacity .2s ease;
+  transition: opacity .2s ease;
+}
+/* line 753, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-cont {
+  -webkit-transition: -webkit-transform .2s ease;
+  -moz-transition: -moz-transform .2s ease;
+  -o-transition: -o-transform .2s ease;
+  transition: transform .2s ease;
+}
+/* line 758, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-cont-top {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  padding: 0 14px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  z-index: 4 !important;
+  height: 36px;
+  top: 14px;
+}
+/* line 770, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-cont-top.hover {
+  -webkit-transform: translate(0, -60px);
+  -moz-transform: translate(0, -60px);
+  -ms-transform: translate(0, -60px);
+  -o-transform: translate(0, -60px);
+  transform: translate(0, -60px);
+}
+/* line 778, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-cont-bottom {
+  position: absolute;
+  left: 0px;
+  padding: 0 14px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  z-index: 4 !important;
+  bottom: 15px;
+  height: 20px;
+  color: blue;
+}
+/* line 791, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-cont-bottom a {
+  color: #fff;
+}
+/* line 794, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-card-cont-bottom.hover {
+  -webkit-transform: translate(0, 50px);
+  -moz-transform: translate(0, 50px);
+  -ms-transform: translate(0, 50px);
+  -o-transform: translate(0, 50px);
+  transform: translate(0, 50px);
+}
+/* line 867, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-subnav {
+  width: inherit;
+  height: 24px;
+  position: relative;
+}
+/* line 874, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-subnav-newreview {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  vertical-align: top;
+  line-height: 30px;
+  font-size: 16px;
+  font-weight: 900;
+  color: #000;
+  float: right;
+}
+/* line 888, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-subnav-newreview:hover {
+  color: #f0433d;
+}
+/* line 892, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-subnav-edit, .lo-r-subnav-delete {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+/* line 901, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-subnav-edit:hover path, .lo-r-subnav-delete:hover path {
+  fill: #f0433d;
+}
+/* line 907, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-add {
+  position: relative;
+  right: 0;
+  top: 25px;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  background: #f0433d;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  margin: auto;
+  top: 58px;
+  z-index: 5;
+}
+/* line 925, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont {
+  width: inherit;
+  position: relative;
+  margin-top: 50px;
+}
+/* line 926, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-fix {
+  top: 100px;
+}
+/* line 934, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review {
+  background: #fff;
+  box-sizing: border-box;
+  padding: 14px;
+  height: auto;
+  position: relative;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-top: 1px solid #e8e8e8;
+  padding-top: 10px;
+}
+/* line 947, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review img {
+  width: 100%;
+  display: block;
+  margin: 14px 0 14px;
+}
+/* line 953, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review:hover .lo-r-cont-review-title {
+  color: #000 !important;
+}
+/* line 957, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-head {
+  width: 100%;
+  position: relative;
+  margin-bottom: 30px;
+  height: 40px;
+  top: 0;
+  left: 0;
+}
+/* line 965, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-head-user {
+  position: relative;
+  display: inline-block;
+}
+/* line 969, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-head-user-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  display: inline-block;
+  position: relative;
+  margin-right: 7px;
+}
+/* line 980, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-head-user-img.anon {
+  background-image: url("anon-5.png");
+}
+/* line 984, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-head-user-info {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  margin-top: 5px;
+}
+/* line 990, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-head-user-info-name {
+  font-size: 14px;
+  color: #272727;
+  display: inline-block;
+  position: relative;
+}
+/* line 996, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-head-user-info-name a {
+  color: #272727;
+  text-decoration: none;
+}
+/* line 999, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-head-user-info-name a:hover {
+  color: #000;
+}
+/* line 1004, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-head-user-info-date {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  font-size: 11px;
+  color: gray;
+  width: 100px;
+}
+/* line 1013, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-head-user-edit, .lo-r-cont-review-head-user-delete {
+  width: 20px;
+  height: 20px;
+  margin: 11px 0 0 20px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  vertical-align: top;
+}
+/* line 1022, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-head-user-edit:hover path, .lo-r-cont-review-head-user-delete:hover path {
+  fill: #f0433d;
+}
+/* line 1027, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-head-user-delete {
+  margin-left: 0 !important;
+}
+/* line 1031, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-head-rating {
+  position: relative;
+  float: right;
+  height: 40px;
+  line-height: 40px;
+  font-size: 24px;
+  color: #ffce06;
+  font-family: 'helvetica';
+  text-align: center;
+  width: 50px;
+  font-weight: 800;
+  text-shadow: 1px 1px 0px #212020;
+}
+/* line 1046, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-body {
+  max-height: 200px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  -moz-transition: max-height .8s ease;
+  -webkit-transition: max-height .8s ease;
+  -moz-transition: max-height .8s ease;
+  -o-transition: max-height .8s ease;
+  transition: max-height .8s ease;
+}
+/* line 1058, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-body-title {
+  font-size: 22px !important;
+  font-weight: 800;
+  color: #000;
+}
+/* line 1066, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-body-text {
+  position: relative;
+  margin: 12px 0 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #a7a7a7;
+}
+/* line 1076, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-body-grad {
+  position: absolute;
+  background-image: url("grad.png");
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  width: 100%;
+  height: 70px;
+  bottom: 0;
+  left: 0;
+}
+/* line 1087, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-body.ext {
+  cursor: default !important;
+  max-height: 4200px;
+}
+/* line 1090, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-body.ext .lo-r-cont-review-body-text {
+  color: #1c1c1c;
+}
+/* line 1093, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-body.ext .lo-r-cont-review-body-grad {
+  display: none;
+}
+/* line 1098, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-subnav {
+  position: relative;
+}
+/* line 1102, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-subnav-open {
+  display: inline-block;
+  position: relative;
+  float: right;
+  color: #000;
+  cursor: pointer;
+  margin-bottom: 30px;
+  font-weight: 800;
+}
+/* line 1113, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review-subnav-open:active {
+  color: #f0433d;
+}
+/* line 1119, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-cont-review.ext .lo-r-cont-review-subnav-open {
+  display: none;
+}
+/* line 1125, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-places {
+  width: inherit;
+}
+/* line 1127, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-places-place {
+  width: inherit;
+  background: #fff;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  position: relative;
+  box-sizing: border-box;
+  padding: 14px;
+}
+/* line 1136, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-places-place:hover .lo-r-places-place-title {
+  color: #000;
+}
+/* line 1140, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-places-place-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #535353;
+}
+/* line 1147, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-fb {
+  width: 100%;
+  position: relative;
+  margin-bottom: 50px;
+  padding: 14px;
+  box-sizing: border-box;
+}
+/* line 1153, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-fb-title {
+  font-size: 20px;
+  font-weight: 800;
+  position: relative;
+  margin-bottom: 20px;
+}
+/* line 1159, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-fb-who {
+  position: relative;
+  margin: 10px 0;
+}
+/* line 1162, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-fb-who input {
+  width: 70%;
+  height: 30px;
+  border: none;
+  background: #f5f5f5;
+  padding: 0 14px;
+  font-size: 14px;
+}
+/* line 1169, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-fb-who input:focus {
+  outline: none;
+}
+/* line 1174, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-fb-addimg {
+  font-weight: 600;
+  position: relative;
+  margin: 20px 0 0;
+  cursor: pointer;
+}
+/* line 1179, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-fb-addimg:active {
+  color: #f0433d;
+}
+/* line 1183, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-fb-dropzone {
+  position: relative;
+  margin: 10px 0;
+}
+/* line 1187, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-fb-submit-wrap {
+  position: relative;
+  margin-top: 14px;
+  text-align: right;
+}
+/* line 1192, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-fb-submit {
+  font-weight: 800;
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* line 1197, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r-fb-submit:hover {
+  color: #f0433d;
+}
+/* line 1202, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.lo-r hr {
+  width: 100%;
+  height: 1px;
+  background: #eee;
+  position: relative;
+  border: none;
+}
+
+/* line 1212, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review {
+  font-weight: 500;
+  width: inherit;
+  position: relative;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 14px 14px 14px 14px;
+}
+/* line 1224, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-delete {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 14px;
+  top: 18px;
+}
+/* line 1232, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-delete:hover path {
+  fill: #f0433d;
+}
+/* line 1237, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-title {
+  border: none;
+  width: 290px;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  padding-left: 10px;
+  background: #f5f5f5;
+  border-radius: 2px;
+  font-weight: 800;
+  font-size: 14px;
+  position: relative;
+  margin-bottom: 10px;
+}
+/* line 1250, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-title:focus {
+  outline: none;
+}
+/* line 1254, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-body {
+  width: 100%;
+  height: 150px;
+  resize: none;
+  padding: 14px 10px;
+  background: #f5f5f5;
+  border-radius: 2px;
+  border: none;
+  box-sizing: border-box;
+  font-size: 13px;
+}
+/* line 1267, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-body:focus {
+  outline: none;
+}
+/* line 1273, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-images-one {
+  width: 100px;
+}
+/* line 1277, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-price {
+  height: 30px;
+  line-height: 30px;
+  margin: 10px 0 14px;
+  font-weight: 600;
+}
+/* line 1282, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-price-input {
+  border: none;
+  width: 60px;
+  height: 30px;
+  margin: 0 5px;
+  background: #f5f5f5;
+  text-align: center;
+  font-weight: 800;
+  font-size: 14px;
+}
+/* line 1291, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-price-input:focus {
+  outline: none;
+}
+/* line 1295, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-price span {
+  font-size: 16px;
+}
+/* line 1299, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-rate {
+  width: 100%;
+  height: 60px;
+  background: rgba(255, 247, 215, 0.5);
+  border: 2px;
+  position: relative;
+}
+/* line 1305, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-rate-title {
+  color: #ffd633;
+  position: absolute;
+  display: inline-block;
+  top: 5px;
+  left: 5px;
+}
+/* line 1312, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-rate-stars {
+  width: 260px;
+  top: 10px;
+  display: block;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+/* line 1322, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-rate-stars .rating li {
+  font-size: 24px !important;
+}
+/* line 1327, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-extrate {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40px 0 2px;
+  position: relative;
+  border-radius: 2px;
+  text-align: center;
+  margin: 10px 0;
+  max-height: 900px;
+}
+/* line 1337, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-extrate-title {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #7e7e7e;
+}
+/* line 1343, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-extrate-wrap {
+  width: 296px;
+  padding-right: 20px;
+  position: relative;
+  margin: auto;
+}
+/* line 1349, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-extrate-titles {
+  margin-top: 4px;
+  vertical-align: top;
+  color: #000;
+  display: inline-block;
+  width: 100px;
+}
+/* line 1356, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-extrate-titles-item {
+  text-align: right;
+  height: 34px;
+  font-weight: 600;
+}
+/* line 1367, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-extrate-stars {
+  margin-left: 8px;
+  vertical-align: top;
+  display: inline-block;
+  width: 180px;
+  position: relative;
+}
+/* line 1373, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-extrate-stars-item {
+  height: 34px;
+}
+/* line 1378, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-extrate-stars-hover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 1387, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-dropzone {
+  width: 100%;
+  height: 80px;
+  border-radius: 3px;
+  margin: 10px 0;
+  position: relative;
+  overflow: hidden;
+}
+/* line 1396, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-dropzone #media-dropzone {
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  min-height: 0px;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiNlZWUiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=");
+}
+/* line 1410, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-dropzone #media-dropzone:hover .dz-message {
+  color: #000;
+}
+/* line 1414, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-dropzone #media-dropzone .dz-preview {
+  min-height: 50px !important;
+}
+/* line 1417, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-dropzone #media-dropzone .dz-image {
+  border-radius: 2px !important;
+  width: 50px !important;
+  height: 50px !important;
+}
+/* line 1421, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-dropzone #media-dropzone .dz-image img {
+  width: 100%;
+}
+/* line 1425, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-dropzone #media-dropzone .dz-details {
+  display: none;
+}
+/* line 1430, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-submit {
+  text-align: right;
+}
+/* line 1432, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-submit button {
+  border: none;
+  background: none;
+  color: #f0433d;
+  font-size: 16px;
+}
+/* line 1438, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-review-submit button:focus {
+  outline: none;
+}
+
+/* line 1444, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.dz-message {
+  height: 20px !important;
+  color: #6a6a6a;
+  position: relative;
+  margin-top: 10px;
+}
+
+/* line 1452, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-place-submit-wrap {
+  text-align: right;
+}
+/* line 1455, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-place-submit {
+  font-weight: 800;
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* line 1460, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.add-place-submit:hover {
+  color: #f0433d;
+}
+
+/* line 1474, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+ya-map {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+}
+
+/* line 1492, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.placemark_layout_container {
+  width: 36px;
+  height: 36px;
+  display: block;
+  border-radius: 100%;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.14);
+  transform: translate(-18px, -18px);
+  -webkit-transform: translate(-18px, -18px);
+  /** Chrome & Safari **/
+  -o-transform: translate(-18px, -18px);
+  /** Opera **/
+  -moz-transform: translate(-18px, -18px);
+  /** Firefox **/
+}
+
+/* line 1506, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.new-place-map {
+  width: 500px;
+  height: 400px;
+  position: relative;
+}
+
+/* line 1513, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.rating {
+  color: #c9c9c9;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 1519, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+ul.rating {
+  display: inline-block;
+}
+
+/* line 1523, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* line 1533, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.rating .filled {
+  color: #ffce06;
+}
+
+/*===================== checkbox ===================*/
+/* line 1543, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+.clear {
+  clear: both;
+}
+
+/* line 1548, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+input.switch:empty {
+  /* margin-left: -999px; */
+  display: none;
+}
+
+/* line 1552, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+input.switch:empty ~ label {
+  position: relative;
+  float: left;
+  line-height: 25px;
+  text-indent: 4em;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: gray;
+  font-size: 16px;
+}
+
+/* line 1566, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+input.switch:empty ~ label:before, input.switch:empty ~ label:after {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  height: 24px;
+  width: 42px;
+  background-color: lightgray;
+  border-radius: 12px;
+  -webkit-transition: all 90ms ease-in;
+  transition: all 90ms ease-in;
+}
+
+/* line 1582, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+input.switch:empty ~ label:after {
+  width: 19px;
+  height: 19px;
+  top: 3px;
+  margin-left: 3px;
+  background-color: white;
+  border-radius: 100%;
+}
+
+/* line 1596, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+input.switch:checked ~ label:before {
+  background-color: #f0433d;
+}
+
+/* line 1600, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+input.switch:checked ~ label:after {
+  margin-left: 20px;
+}
+
+/* line 1604, /home/oleg/topdoner/app/assets/stylesheets/style.scss */
+input.switch:checked ~ label {
+  color: darkgray;
+}
+@media screen and (min-width: 1020px) {
+  /* line 2, /home/oleg/topdoner/app/assets/stylesheets/media.scss */
+  .cont {
+    width: 1000px !important;
+  }
+
+  /* line 9, /home/oleg/topdoner/app/assets/stylesheets/media.scss */
+  .lo-r {
+    width: 430px !important;
+  }
+  /* line 12, /home/oleg/topdoner/app/assets/stylesheets/media.scss */
+  .lo-r-cont-review {
+    min-height: 100px;
+  }
+  /* line 15, /home/oleg/topdoner/app/assets/stylesheets/media.scss */
+  .lo-r-cont-review-title {
+    font-size: 16px !important;
+  }
+  /* line 18, /home/oleg/topdoner/app/assets/stylesheets/media.scss */
+  .lo-r-cont-review-body {
+    font-size: 14px !important;
+  }
+  /* line 24, /home/oleg/topdoner/app/assets/stylesheets/media.scss */
+  .lo-r-card-dist {
+    top: 21px !important;
+  }
+}
+/*
+ * The MIT License
+ * Copyright (c) 2012 Matias Meno <m@tias.me>
+ */
+@-webkit-keyframes passing-through {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(40px);
+    -moz-transform: translateY(40px);
+    -ms-transform: translateY(40px);
+    -o-transform: translateY(40px);
+    transform: translateY(40px);
+  }
+  30%, 70% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+    -moz-transform: translateY(-40px);
+    -ms-transform: translateY(-40px);
+    -o-transform: translateY(-40px);
+    transform: translateY(-40px);
+  }
+}
+@-moz-keyframes passing-through {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(40px);
+    -moz-transform: translateY(40px);
+    -ms-transform: translateY(40px);
+    -o-transform: translateY(40px);
+    transform: translateY(40px);
+  }
+  30%, 70% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+    -moz-transform: translateY(-40px);
+    -ms-transform: translateY(-40px);
+    -o-transform: translateY(-40px);
+    transform: translateY(-40px);
+  }
+}
+@keyframes passing-through {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(40px);
+    -moz-transform: translateY(40px);
+    -ms-transform: translateY(40px);
+    -o-transform: translateY(40px);
+    transform: translateY(40px);
+  }
+  30%, 70% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+    -moz-transform: translateY(-40px);
+    -ms-transform: translateY(-40px);
+    -o-transform: translateY(-40px);
+    transform: translateY(-40px);
+  }
+}
+@-webkit-keyframes slide-in {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(40px);
+    -moz-transform: translateY(40px);
+    -ms-transform: translateY(40px);
+    -o-transform: translateY(40px);
+    transform: translateY(40px);
+  }
+  30% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+}
+@-moz-keyframes slide-in {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(40px);
+    -moz-transform: translateY(40px);
+    -ms-transform: translateY(40px);
+    -o-transform: translateY(40px);
+    transform: translateY(40px);
+  }
+  30% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+}
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(40px);
+    -moz-transform: translateY(40px);
+    -ms-transform: translateY(40px);
+    -o-transform: translateY(40px);
+    transform: translateY(40px);
+  }
+  30% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+}
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  10% {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  20% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@-moz-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  10% {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  20% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  10% {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  20% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+}
+/* line 174, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone, .dropzone * {
+  box-sizing: border-box;
+}
+
+/* line 177, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone {
+  min-height: 150px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  background: white;
+  padding: 20px 20px;
+}
+
+/* line 182, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone.dz-clickable {
+  cursor: pointer;
+}
+
+/* line 184, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone.dz-clickable * {
+  cursor: default;
+}
+
+/* line 186, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone.dz-clickable .dz-message, .dropzone.dz-clickable .dz-message * {
+  cursor: pointer;
+}
+
+/* line 188, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone.dz-started .dz-message {
+  display: none;
+}
+
+/* line 190, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone.dz-drag-hover {
+  border-style: solid;
+}
+
+/* line 192, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone.dz-drag-hover .dz-message {
+  opacity: 0.5;
+}
+
+/* line 194, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-message {
+  text-align: center;
+  margin: 2em 0;
+}
+
+/* line 197, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin: 16px;
+  min-height: 100px;
+}
+
+/* line 203, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview:hover {
+  z-index: 1000;
+}
+
+/* line 205, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview:hover .dz-details {
+  opacity: 1;
+}
+
+/* line 207, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview.dz-file-preview .dz-image {
+  border-radius: 20px;
+  background: #999;
+  background: linear-gradient(to bottom, #eee, #ddd);
+}
+
+/* line 211, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview.dz-file-preview .dz-details {
+  opacity: 1;
+}
+
+/* line 213, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview.dz-image-preview {
+  background: white;
+}
+
+/* line 215, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview.dz-image-preview .dz-details {
+  -webkit-transition: opacity 0.2s linear;
+  -moz-transition: opacity 0.2s linear;
+  -ms-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+}
+
+/* line 221, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-remove {
+  font-size: 14px;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+  border: none;
+}
+
+/* line 227, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-remove:hover {
+  text-decoration: underline;
+}
+
+/* line 229, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview:hover .dz-details {
+  opacity: 1;
+}
+
+/* line 231, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-details {
+  z-index: 20;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  font-size: 13px;
+  min-width: 100%;
+  max-width: 100%;
+  padding: 2em 1em;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.9);
+  line-height: 150%;
+}
+
+/* line 244, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-details .dz-size {
+  margin-bottom: 1em;
+  font-size: 16px;
+}
+
+/* line 247, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-details .dz-filename {
+  white-space: nowrap;
+}
+
+/* line 249, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-details .dz-filename:hover span {
+  border: 1px solid rgba(200, 200, 200, 0.8);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* line 252, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-details .dz-filename:not(:hover) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* line 255, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-details .dz-filename:not(:hover) span {
+  border: 1px solid transparent;
+}
+
+/* line 257, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-details .dz-filename span, .dropzone .dz-preview .dz-details .dz-size span {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 0 0.4em;
+  border-radius: 3px;
+}
+
+/* line 261, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview:hover .dz-image img {
+  -webkit-transform: scale(1.05, 1.05);
+  -moz-transform: scale(1.05, 1.05);
+  -ms-transform: scale(1.05, 1.05);
+  -o-transform: scale(1.05, 1.05);
+  transform: scale(1.05, 1.05);
+  -webkit-filter: blur(8px);
+  filter: blur(8px);
+}
+
+/* line 269, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-image {
+  border-radius: 20px;
+  overflow: hidden;
+  width: 120px;
+  height: 120px;
+  position: relative;
+  display: block;
+  z-index: 10;
+}
+
+/* line 277, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-image img {
+  display: block;
+}
+
+/* line 279, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview.dz-success .dz-success-mark {
+  -webkit-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);
+  -moz-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);
+  -ms-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);
+  -o-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);
+  animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* line 285, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview.dz-error .dz-error-mark {
+  opacity: 1;
+  -webkit-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);
+  -moz-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);
+  -ms-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);
+  -o-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);
+  animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* line 292, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-success-mark, .dropzone .dz-preview .dz-error-mark {
+  pointer-events: none;
+  opacity: 0;
+  z-index: 500;
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  margin-left: -27px;
+  margin-top: -27px;
+}
+
+/* line 302, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-success-mark svg, .dropzone .dz-preview .dz-error-mark svg {
+  display: block;
+  width: 54px;
+  height: 54px;
+}
+
+/* line 306, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview.dz-processing .dz-progress {
+  opacity: 1;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+/* line 313, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview.dz-complete .dz-progress {
+  opacity: 0;
+  -webkit-transition: opacity 0.4s ease-in;
+  -moz-transition: opacity 0.4s ease-in;
+  -ms-transition: opacity 0.4s ease-in;
+  -o-transition: opacity 0.4s ease-in;
+  transition: opacity 0.4s ease-in;
+}
+
+/* line 320, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview:not(.dz-processing) .dz-progress {
+  -webkit-animation: pulse 6s ease infinite;
+  -moz-animation: pulse 6s ease infinite;
+  -ms-animation: pulse 6s ease infinite;
+  -o-animation: pulse 6s ease infinite;
+  animation: pulse 6s ease infinite;
+}
+
+/* line 326, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-progress {
+  opacity: 1;
+  z-index: 1000;
+  pointer-events: none;
+  position: absolute;
+  height: 16px;
+  left: 50%;
+  top: 50%;
+  margin-top: -8px;
+  width: 80px;
+  margin-left: -40px;
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-transform: scale(1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* line 341, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-progress .dz-upload {
+  background: #333;
+  background: linear-gradient(to bottom, #666, #444);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  -webkit-transition: width 300ms ease-in-out;
+  -moz-transition: width 300ms ease-in-out;
+  -ms-transition: width 300ms ease-in-out;
+  -o-transition: width 300ms ease-in-out;
+  transition: width 300ms ease-in-out;
+}
+
+/* line 354, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview.dz-error .dz-error-message {
+  display: block;
+}
+
+/* line 356, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview.dz-error:hover .dz-error-message {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* line 359, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-error-message {
+  pointer-events: none;
+  z-index: 1000;
+  position: absolute;
+  display: block;
+  display: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+  font-size: 13px;
+  top: 130px;
+  left: -10px;
+  width: 140px;
+  background: #be2626;
+  background: linear-gradient(to bottom, #be2626, #a92222);
+  padding: 0.5em 1.2em;
+  color: white;
+}
+
+/* line 380, /home/oleg/.rvm/gems/ruby-2.2.1/gems/dropzonejs-rails-0.7.1/app/assets/stylesheets/dropzone/dropzone.scss */
+.dropzone .dz-preview .dz-error-message:after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 64px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #be2626;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+
+
+ */
+
