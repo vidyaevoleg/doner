@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     if self.provider == 'Facebook'
       'http://facebook.com/' + self.uid
     elsif self.provider == 'Vkontakte'
-      'http://vk.com/' + self.uid
+      'http://vk.com/id' + self.uid
     else
       '#'
     end
