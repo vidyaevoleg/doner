@@ -540,8 +540,10 @@ body {
 					top: 2px;
 				}
 				.lo-r-card-dist {
-					color: rgb(240,67,61) !important;
-					border-color: rgb(240,67,61);
+//					color: rgb(240,67,61) !important;
+//					border-color: rgb(240,67,61);
+					color: #888 !Important;
+					border-color: #888;
 				}
 				.lo-r-card-city {
 					color: darkgray;
@@ -597,8 +599,9 @@ body {
 					fill: $act !important;
 				}
 				&-logo {
-					width: 14px;
-//					height: 15px;
+					width: 15px;
+					height: 11px;
+					vertical-align: top;
 //					background: pink;
 					overflow: hidden;
 					position: relative;
@@ -616,7 +619,7 @@ body {
 				}
 				&-ap {
 					& #metro-logo {
-						fill: blue !important;
+						fill: #2d2ddd !important;
 					}
 				}
 				&-fil {
@@ -626,7 +629,7 @@ body {
 				}
 				&-kol {
 					& #metro-logo {
-						fill: brown !important;
+						fill: #966b30 !important;
 					}
 				}
 				&-kr {
@@ -636,7 +639,7 @@ body {
 				}
 				&-tk {
 					& #metro-logo {
-						fill: purple !important;
+						fill: #9b009b !important;
 					}
 				}
 				&-kal {
@@ -646,7 +649,7 @@ body {
 				}
 				&-st {
 					& #metro-logo {
-						fill: dimgray !important;
+						fill: #888 !important;
 					}
 				}
 				&-lub {
@@ -755,12 +758,13 @@ body {
 //					opacity: 0;
 //				}
 			}
-//			&-bg-grad {
-//				background-image: url('grad_x.png');
-//				background-position: left;
-//				background-repeat: repeat-y;
-//				background-size: 50%;
-//			}
+			&-bg-grad {
+				background-image: url('grad_x.png');
+				background-position: left;
+				background-repeat: repeat-y;
+				background-size: 50%;
+				color: cyan;
+			}
 			&-cont {
 					-webkit-transition: -webkit-transform .2s ease;
 					   -moz-transition:    -moz-transform .2s ease;
@@ -932,6 +936,14 @@ body {
 			margin: auto;
 			top: 58px;
 			z-index: 5;
+		}
+		&-noreviews {
+			font-weight: 500;
+			position: relative;
+			margin-top: 100px;
+			text-align: center;
+			color: #acacac;
+			font-size: 14px;
 		}
 		&-cont {
 			&-fix {
@@ -1105,26 +1117,6 @@ body {
 							display: none;
 						}
 					}
-				}
-				&-subnav {
-					position: relative;
-//					top: -10px;
-//					background: cyan;
-					&-open {
-	//					top: 40px;
-						display: inline-block;
-	//					margin-top: 10px;
-						position: absolute;
-						right: 0;
-						color: #000;
-						cursor: pointer;
-						margin-bottom: 30px;
-						font-weight: 800;
-	//					background: cyan;
-						&:active {
-							color: $act;
-						}
-					}
 					.share {
 						display: inline-block;
 						&-item {
@@ -1146,6 +1138,26 @@ body {
 //							&.fb {
 //								background: #3b5998;
 //							}
+						}
+					}
+				}
+				&-subnav {
+					position: relative;
+//					top: -10px;
+//					background: cyan;
+					&-open {
+	//					top: 40px;
+						display: inline-block;
+	//					margin-top: 10px;
+						position: absolute;
+						right: 0;
+						color: #000;
+						cursor: pointer;
+						margin-bottom: 30px;
+						font-weight: 800;
+	//					background: cyan;
+						&:active {
+							color: $act;
 						}
 					}
 				}
@@ -1299,7 +1311,7 @@ body {
 		border-radius: 2px;
 		border: none;
 		box-sizing: border-box;
-		font-size: 13px;
+		font-size: 14px;
 //		-webkit-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
 //		   -moz-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
 //				box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
@@ -1444,6 +1456,7 @@ body {
 			top: 0;
 			left: 0;
 			min-height: 0px;
+//			background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J3doaXRlJy8+CiAgPHBhdGggZD0nTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVonIHN0cm9rZT0nIzg4OCcgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPg==");
 			background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiNlZWUiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=");
 			&:hover {
 				.dz-message {
@@ -1471,9 +1484,13 @@ body {
 		button {
 			border: none;
 			background: none;
-			color: $act;
-//			font-weight: 600;
+			color: #000;
+			font-weight: 800;
 			font-size: 16px;
+			cursor: pointer;
+			&:hover {
+				color: $act;
+			}
 			&:focus {
 				outline: none;
 			}

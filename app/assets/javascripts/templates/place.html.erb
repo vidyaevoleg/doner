@@ -19,7 +19,7 @@
 				<div class="lo-r-card-rating">
 					{{place.properties.rating}}
 				</div>
-				<div class="lo-r-card-dist" ng-show="isUserLocation()">{{showPlaceDist()}} км</div>
+				<div class="lo-r-card-dist" ng-show="isUserLocation()">{{showPlaceDist()}}</div>
 <!--				<div>{{place.properties.max_price}}</div>-->
 			</div>
 			<div class="lo-r-card-cont lo-r-card-cont-bottom">
@@ -57,6 +57,7 @@
 		</div>
 	</div>
 
+	<div class="lo-r-noreviews" ng-show="isNoReviews(reviews)">Пока нет ни одного обзора. Будте первыми!</div>
 	<div ng-repeat="review in reviews | orderBy:'-date'" class="lo-r-cont" id="review-{{review.id}}">
 		<!--<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" ng-click="makeReviewCurrent(review)">-->
 		<div class="lo-r-cont-review">
@@ -124,11 +125,6 @@
 					</div>
 				</div>
 				<div class="lo-r-cont-review-body-grad"></div>
-			</div>
-<!--			<p><a ng-show="can(review)" href="/#/places/{{place.properties.id}}/edit_review/{{review.id}}">редактировать</a></p>-->
-<!--			<p><a ng-show="can(review)" ng-click="deleteReview(review.id)">удалить</a></p>-->
-			
-			<div class="lo-r-cont-review-subnav">
 				<div class="share" ng-controller="ShareReviewCtrl">
 					<div class="share-item vk" ng-click="share_vk(review)">
 						<svg width="100%" height="100%" viewBox="0 0 412 236" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
@@ -147,7 +143,7 @@
 -->
 						<svg width="100%" height="100%" viewBox="0 0 61 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-								<g id="social-media10" sketch:type="MSLayerGroup" fill="#3b5998">
+								<g id="social-media10" sketch:type="MSLayerGroup" fill="#3b5998	">
 									<path d="M57.378,0.001 L3.352,0.001 C1.502,0.001 0,1.5 0,3.353 L0,57.379 C0,59.232 1.502,60.733 3.352,60.733 L32.438,60.733 L32.438,37.214 L24.524,37.214 L24.524,28.047 L32.438,28.047 L32.438,21.287 C32.438,13.444 37.227,9.171 44.225,9.171 C47.58,9.171 50.457,9.422 51.296,9.531 L51.296,17.729 L46.442,17.731 C42.637,17.731 41.903,19.54 41.903,22.193 L41.903,28.044 L50.981,28.044 L49.794,37.21 L41.902,37.21 L41.902,60.73 L57.377,60.73 C59.229,60.73 60.732,59.227 60.732,57.379 L60.732,3.351 C60.731,1.5 59.23,0.001 57.378,0.001 L57.378,0.001 L57.378,0.001 L57.378,0.001 Z M57.378,0.001" id="Shape" sketch:type="MSShapeGroup"></path>
 								</g>
 							</g>
@@ -156,6 +152,11 @@
 <!--					<button class="share-icon" ng-click="share_vk(review)"> vk</button>-->
 <!--					<button class="share-icon" ng-click="share_fb(review)"> fb</button>-->
 				</div>
+			</div>
+<!--			<p><a ng-show="can(review)" href="/#/places/{{place.properties.id}}/edit_review/{{review.id}}">редактировать</a></p>-->
+<!--			<p><a ng-show="can(review)" ng-click="deleteReview(review.id)">удалить</a></p>-->
+			
+			<div class="lo-r-cont-review-subnav">
 				<div class="lo-r-cont-review-subnav-open" ng-hide="isReviewCurrent(review)" ng-click="makeReviewCurrent(review)">Читать</div>
 			</div>
 			

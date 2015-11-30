@@ -25,6 +25,14 @@ Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope',
 //	  $scope.current_review.indexOf(review.id)
   }
   
+  $scope.isNoReviews = function(reviews) {
+	  if(reviews.length === 0) {
+		  return true
+	  } else {
+		  return false
+	  }
+  }
+  
 
 $scope.calcTime = function(t) {
 	var post = Date.parse(t),
