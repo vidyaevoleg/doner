@@ -38,7 +38,7 @@ Topdoner.filter('getReviewById', function() {
 //});
 	
 Topdoner.directive('starRating',
-	function($compile) {
+	['$compile',function($compile) {
 		return {
 			restrict : 'A',
 			template : '<ul class="rating">'
@@ -77,7 +77,7 @@ Topdoner.directive('starRating',
 				);
 			}
 		};
-	}
+	}]
 );
 
 Topdoner.config(['$stateProvider','$urlRouterProvider',
