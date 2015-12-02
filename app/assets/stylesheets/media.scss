@@ -1,49 +1,112 @@
-@media screen and (min-width: 1020px) {
+
+@media screen and (max-width: 1020px) {
 	.cont {
-//		background: pink !important;
-//		display: none !important;
-		width: 1000px !important;
+		width: 900px !important;
 	}
 	
 	.lo {
 		&-r {
-			width: 430px !important;
-			&-cont {
-				&-review {
-					min-height: 100px;
-//					padding: 15px !important;
-					&-title {
-						font-size: 16px !important;
-					}
-					&-body {
-						font-size: 14px !important;
-					}
-				}
-			}
+			width: 380px !important;
 			&-card {
 				&-dist {
-					top: 21px !important;
+//					top: 0px !important;
+//					top: 21px !important;
 				}
+			}
+		}
+		&-l {
+			width: 500px !important;
+			&-map {
+				width: 500px !important;
 			}
 		}
 	}
 }
 
-//@media screen and (max-width: 1040px) {
-//	.cont {
-//		width: 900px;
-//	}
-//	.lo-l {
-//		width: 360px !important;
-//	}
-//}
-//
-@media screen and (max-width: 940px) {
-//	.cont {
-//		width: 900px;
-//	}
-//	.lo-l-map {
-//		width: 460px !important;
-//		background: cyan;
-//	}
+
+@media screen and (max-width: 930px) {
+	.cont {
+		width: 800px !important;
+	}
+	.lo-l {
+		width: 400px !important;
+		&-map {
+			width: 400px !important;
+		}
+	}
+}
+
+@media screen and (max-width: 830px) {
+	.cont {
+		width: 750px !important;
+	}
+	.lo-l {
+		width: 350px !important;
+		&-map {
+			width: 350px !important;
+		}
+	}
+}
+
+
+@media screen and (max-width: 600px) {
+	.cont {
+		width: 500px !important;
+	}
+	.lo-l {
+		position: relative !important;
+		&-map {
+			width: 500px !important;
+		}
+	}
+	.lo-r {
+		position: relative !important;
+		width: 500px !important;
+	}
+}
+
+
+@media screen and (max-width: 530px) {
+	.cont {
+		width: 450px !important;
+	}
+	.lo-l {
+		width: 450px !important;
+		&-map {
+			width: 450px !important;
+		}
+	}
+	.lo-r {
+		width: 450px !important;
+	}
+}
+
+@media screen and (max-width: 470px) {
+	.cont {
+		width: 400px !important;
+	}
+	.lo-l {
+		width: 400px !important;
+		&-map {
+			width: 400px !important;
+		}
+	}
+	.lo-r {
+		width: 400px !important;
+	}
+}
+
+@media screen and (max-width: 420px) {
+	.cont {
+		width: 350px !important;
+	}
+	.lo-l {
+		width: 350px !important;
+		&-map {
+			width: 350px !important;
+		}
+	}
+	.lo-r {
+		width: 350px !important;
+	}
 }

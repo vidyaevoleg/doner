@@ -212,7 +212,7 @@ body {
 
 
 .cont {
-	width: 900px;
+	width: 1000px;
 	position: relative;
 	margin: auto;
 }
@@ -261,13 +261,9 @@ body {
 		vertical-align: top;
 	}
 	&-l {
-//		display: inline-block;
-		width: 560px;
+		width: 550px;
 		height: 600px;
 		position: fixed;
-//		position: relative;
-//		top: 60px;
-//		left: 0;
 		&-head {
 			width: inherit;
 			position: relative;
@@ -453,11 +449,11 @@ body {
 		}
 	}
 	&-r {
-		width: 330px;
+		width: 430px;
 		position: absolute;
 		margin-bottom: 50px;
 		right: 0;
-		font-size: 13px;
+//		font-size: 13px;
 		&-nav {
 			width: inherit;
 			height: 70px;
@@ -717,7 +713,7 @@ body {
 				padding: 0 4px;
 				height: 14px;
 				color: #ffce06 !important;
-				top: 0px;
+				top: 21px;
 				right: 72px;
 				text-align: right;
 			}
@@ -961,6 +957,7 @@ body {
 //				border-top: 1px solid #eee;
 //				padding: 13px 10px;
 				height: auto;
+				min-height: 130px;
 //				background: pink;
 				position: relative;
 				margin-bottom: 20px;
@@ -1072,6 +1069,7 @@ body {
 					position: relative;
 					overflow: hidden;
 					cursor: pointer;
+					font-size: 14px;
 					-moz-transition: max-height .8s ease;
 					-webkit-transition: max-height .8s ease;
 					   -moz-transition: max-height .8s ease;
@@ -1144,13 +1142,13 @@ body {
 				&-subnav {
 					position: relative;
 //					top: -10px;
-//					background: cyan;
 					&-open {
 	//					top: 40px;
 						display: inline-block;
 	//					margin-top: 10px;
 						position: absolute;
 						right: 0;
+						top: -10px;
 						color: #000;
 						cursor: pointer;
 						margin-bottom: 30px;
