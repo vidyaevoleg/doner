@@ -161,8 +161,6 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		return 'lo-r-card-metro-'+line;
 	}
 	
-	
-	
 	$rootScope.mapClick=function(e){
 //		console.log('pop');
 

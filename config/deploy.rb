@@ -3,7 +3,7 @@ lock '3.4.0'
 
 set :application, 'topdoner'
 set :repo_url, 'git@github.com:vidyaevoleg/doner.git'
-set :deploy_to, '/var/www/topdoner'0
+set :deploy_to, '/var/www/topdoner'
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml','config/oauth.yml')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 set :format, :pretty

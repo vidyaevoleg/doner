@@ -1,6 +1,6 @@
 Topdoner.controller('ShareReviewCtrl', ['$scope','$location','$rootScope', function ($scope,$location,$rootScope) {
-	var enviroment = 'http://localhost:3000/#',
-		enviroment_rails = 'http://localhost:3000';
+	var enviroment = BASE_URL + '#',
+		enviroment_rails = BASE_URL;
 	
 	var reviewUrlHelper = function(review){
 		return enviroment + $location.path() + '/reviews/' + review.id;
