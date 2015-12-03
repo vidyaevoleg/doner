@@ -155,6 +155,12 @@
 	.lo-r {
 		width: 350px !important;
 	}
+	.add-review-extrate-titles {
+		width: 80px !important;
+		&-item {
+			font-size: 12px !important;
+		}
+	}
 }
 
 @media screen and (max-width: 380px) {

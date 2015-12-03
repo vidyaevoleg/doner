@@ -52,6 +52,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'PT Serif';
+    src: local('PT Serif'), local('PTSerif-Regular'), url('ptserif.woff2') format('woff2'), url('ptserif.woff') format('woff'), url('ptserif.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
 
 
 
@@ -217,7 +224,7 @@ body {
 	right: 0px;
 	background: #fff;
 	box-sizing: border-box;
-	padding: 20px;
+	padding: 40px 20px 20px 20px;
 	  -webkit-transform: translateX(180px);
 	  -moz-transform:    translateX(180px);
 	  -ms-transform:     translateX(180px);
@@ -390,7 +397,7 @@ body {
 				}
 			}
 			&-menu {
-				width: 30px;
+				width: 23px;
 				right: 10px;
 				top: 23px;
 				position: absolute;
@@ -1090,6 +1097,7 @@ body {
 	//					margin-top: 2px;
 					}
 					&-text {
+						font-family: 'PT Serif' !important;
 						position: relative;
 	//					margin-top: 8px;
 						margin: 12px 0 20px;
