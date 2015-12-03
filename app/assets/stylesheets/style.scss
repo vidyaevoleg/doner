@@ -92,8 +92,6 @@ body {
 	height: 100%;
 	position: fixed;
 	background: rgba(0, 0, 0, 0.85);
-//	background: rgba(30, 183, 118, 0.52);
-	
 	z-index: 10;
 	top: 0;
 	left: 0;
@@ -210,6 +208,46 @@ body {
 	}
 }
 
+.sn {
+	width: 180px;
+	height: 100%;
+	position: fixed;
+	z-index: 10;
+	top: 0;
+	right: 0px;
+	background: #fff;
+	box-sizing: border-box;
+	padding: 20px;
+	  -webkit-transform: translateX(180px);
+	  -moz-transform:    translateX(180px);
+	  -ms-transform:     translateX(180px);
+	  -o-transform:      translateX(180px);
+	  transform:         translateX(180px);
+	   -moz-transition: all .3s ease;
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+		 -o-transition: all .3s ease;
+			transition: all .3s ease;
+	&.opened {
+		  -webkit-transform: translateX(0px);
+		  -moz-transform:    translateX(0px);
+		  -ms-transform:     translateX(0px);
+		  -o-transform:      translateX(0px);
+		  transform:         translateX(0px);
+	}
+	&-item {
+		width: 100%;
+		height: 30px;
+		position: relative;
+		margin-bottom: 20px;
+//		background: pink;
+		text-align: right;
+		line-height: 30px;
+		font-size: 16px;
+		font-weight: 800;
+		cursor: pointer;
+	}
+}
 
 .cont {
 	width: 1000px;
@@ -262,14 +300,13 @@ body {
 	}
 	&-l {
 		width: 550px;
-		height: 600px;
+		height: auto;
 		position: fixed;
 		&-head {
 			width: inherit;
 			position: relative;
 			margin-bottom: 20px;
 			height: 70px;
-//			background: red;
 			&-logo {
 				width: 70px;
 				height: 70px;
@@ -351,47 +388,15 @@ body {
 						}
 					}
 				}
-//				&-user {
-////					background: yellow;
-//					height: 60px;
-//					display: inline-block;
-//					position: relative;
-//					top: -10px;
-////					margin: 0;
-//					&-img {
-//						width: 34px;
-//						height: 34px;
-////						background-color: red;
-//						background-position: center;
-//						background-size: cover;
-//						border-radius: 3px;
-//						overflow: hidden;
-//						position: relative;
-//						margin: auto;
-//					}
-//					&-logout {
-//						position: absolute;
-//						top: 0;
-//						left: 50%;
-//						width: 15px;
-//						margin-left: 22px;
-//						font-size: 10px;
-//						color: #b4b4b4;
-//						cursor: pointer;
-//						&:hover {
-//							path {
-//								fill: $act;
-//							}
-//						}
-//					}
-//					&-name {
-//						font-weight: 800;
-//						font-size: 13px;
-//						margin-top: 8px;
-//						text-align: center;
-//						color: #4d4d4d;
-//					}
-//				}
+			}
+			&-menu {
+				width: 30px;
+				right: 10px;
+				top: 23px;
+				position: absolute;
+				display: none;
+				height: 20px;
+				cursor: pointer;
 			}
 		}
 		&-map {
@@ -478,7 +483,7 @@ body {
 						color: #000 !important;
 					}
 					&:last-child {
-						margin-right: 0;
+						margin-right: 0 !important;
 					}
 				}
 				&-wait {

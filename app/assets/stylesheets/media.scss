@@ -1,5 +1,5 @@
 
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 1026px) {
 	.cont {
 		width: 900px !important;
 	}
@@ -48,19 +48,55 @@
 	}
 }
 
+//=============================================== MOBILE
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 780px) {
+	.cont {
+		width: 600px !important;
+	}
+	.lo-l {
+		position: relative !important;
+		margin-bottom: 20px !important;
+		&-head {
+			width: 600px !important;
+			&-nav {
+				display: none;
+			}
+			&-menu {
+				display: block;
+			}
+		}
+		&-map {
+			width: 600px !important;
+		}
+		&-addplace {
+			display: none !important;
+		}
+	}
+	.lo-r {
+		position: relative !important;
+		width: 600px !important;
+	}
+	.feedback {
+		display: none !important;
+	}
+}
+
+
+
+@media screen and (max-width: 650px) {
 	.cont {
 		width: 500px !important;
 	}
 	.lo-l {
-		position: relative !important;
+		&-head {
+			width: 500px !important;
+		}
 		&-map {
 			width: 500px !important;
 		}
 	}
 	.lo-r {
-		position: relative !important;
 		width: 500px !important;
 	}
 }
@@ -72,6 +108,9 @@
 	}
 	.lo-l {
 		width: 450px !important;
+		&-head {
+			width: 450px !important;
+		}
 		&-map {
 			width: 450px !important;
 		}
@@ -87,6 +126,9 @@
 	}
 	.lo-l {
 		width: 400px !important;
+		&-head {
+			width: 400px !important;
+		}
 		&-map {
 			width: 400px !important;
 		}
@@ -102,11 +144,43 @@
 	}
 	.lo-l {
 		width: 350px !important;
+		&-head {
+			width: 350px !important;
+		}
 		&-map {
 			width: 350px !important;
+			height: 350px !important;
 		}
 	}
 	.lo-r {
 		width: 350px !important;
+	}
+}
+
+@media screen and (max-width: 380px) {
+	.cont {
+		width: 300px !important;
+	}
+	.lo-l {
+		width: 300px !important;
+//		margin-bottom: 20px !important;
+		&-head {
+			width: 300px !important;
+		}
+		&-map {
+			width: 300px !important;
+			height: 300px !important;
+		}
+//		&-addplace {
+//			display: none !important;
+//		}
+	}
+	.lo-r {
+		width: 300px !important;
+		&-nav {
+			&-select {
+				font-size: 14px !important;
+			}
+		}
 	}
 }

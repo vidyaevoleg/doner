@@ -4,6 +4,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	
 	$scope.list_limit = 4;
 	
+	
 
 //	$scope.logoCycle;
 	
@@ -47,13 +48,22 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	}
 
 	
+	$scope.openSlideNav = function() {
+		$scope.opn($('.prnj-sn'));
+		$('.sn').addClass('opened');
+	}
+	$scope.closeSlideNav = function() {
+		$scope.cls($('.prnj-sn'));
+		$('.sn').removeClass('opened');
+	}
+	
 	
 	$scope.goToPlace = function(place,zoom,location) {
 		if ($rootScope.MAP) {
 	  	$rootScope.MAP.panTo(location || place.geometry.coordinates,{duration: 600});
 	  	setTimeout(function() {
 		    $rootScope.MAP.setCenter(location || place.geometry.coordinates, zoom || 16, {duration: 500});
-	  	}, 600);			
+	  	}, 600);
 		}
 	}
 
@@ -80,6 +90,10 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 
   $rootScope.choosePlace = function(place){
 		$location.path('/places/'+place.properties.id);
+	  setTimeout(function(){
+//			alert('WOW');
+			$('body').animate({ scrollTop: $('.lo-r-card-cur').offset().top - 10}, 1000);
+		}, 800);
   };
 	
 	$rootScope.setRightCenter = function() {
@@ -162,9 +176,8 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	}
 	
 	$rootScope.mapClick=function(e){
-//		console.log('pop');
-
       var coords = e.get('coords');
+		
       $scope.new_place = {coordinates: coords.toString(),
       										city: '',
       										metro: '',
@@ -251,18 +264,18 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	}
 	
 	$rootScope.openPopup = function(popup_sel) {
-		$scope.opn($('.prnj'));
+		$scope.opn($('.prnj-popup'));
 		$scope.opn($(popup_sel));
 		$('.lo-r-cont').css('position', 'fixed');
 		$('.lo-r-card').css('position', 'fixed');
-		$('.cont').addClass('blured');
+//		$('.cont').addClass('blured');
 	}
 	$scope.closePopup = function() {
 		$scope.cls($('.popup'));
-		$scope.cls($('.prnj'));
+		$scope.cls($('.prnj-popup'));
 		$('.lo-r-cont').css('position', 'relative');
 		$('.lo-r-card').css('position', 'relative');
-		$('.cont').removeClass('blured');
+//		$('.cont').removeClass('blured');
 	}
 	
 	

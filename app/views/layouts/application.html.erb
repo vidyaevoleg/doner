@@ -5,7 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-	<meta name="viewport" content="width=400">
+<!--	<meta name="viewport" content="width=400">-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <!--
     /$$$$$$$$ /$$$$$$  /$$$$$$$        /$$$$$$$   /$$$$$$  /$$   /$$ /$$$$$$$$ /$$$$$$$
@@ -60,10 +61,13 @@
 -->
 						</div>
 					</div>
-<!--
-					<div class="lo-l-head-user"></div>
-					<div class="lo-l-head-logout"></div>
--->
+					<div class="lo-l-head-menu" ng-click="openSlideNav()">
+						<svg width="100%" viewBox="0 0 412 316" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+								<path d="M412,65.5 L0,65.5 L0,0.5 L412,0.5 L412,65.5 L412,65.5 L412,65.5 L412,65.5 Z M412,125.5 L0,125.5 L0,190.5 L412,190.5 L412,125.5 L412,125.5 L412,125.5 L412,125.5 Z M412,250.5 L0,250.5 L0,315.5 L412,315.5 L412,250.5 L412,250.5 L412,250.5 L412,250.5 Z M412,250.5" id="menu-icon" fill="#000000" sketch:type="MSShapeGroup"></path>
+							</g>
+						</svg>
+					</div>
 				</div>
 				<div class="lo-l-map" ng-controller="MapCtrl">
 					<ya-map ya-zoom="12" ya-after-init="afterMapInit($target)" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl" ya-event-click="mapClick($event)">
@@ -73,7 +77,6 @@
 						</ya-cluster>
 					</ya-map>
 				</div>
-				
 				<a href="#/create_place" class="lo-l-addplace" ng-click="addPlaceAction()">Добавить место</a>
 			</div>
 			<ui-view></ui-view>
@@ -91,7 +94,8 @@
 	</div>
 	<%= yield %>
 
-	<div class="prnj hidden" ng-click="closePopup()"></div>
+	<div class="prnj prnj-popup hidden" ng-click="closePopup()"></div>
+	<div class="prnj prnj-sn hidden" ng-click="closeSlideNav()"></div>
 	<div class="popup popup-about hidden">
 		<div class="popup-close" ng-click="closePopup()">✕</div>
 <!--		<h1>Что такое DONER.IO?</h1>-->
@@ -138,6 +142,14 @@
 		   	<% end %>
 		 <% end %>
 -->
+	</div>
+	
+	<div class="sn">
+		<div class="sn-item" ng-click="closeSlideNav()">✕</div>
+		<div class="sn-item">Войти</div>
+		<div class="sn-item">Добавить место</div>
+		<div class="sn-item">Что это?</div>
+		<div class="sn-item">Написать нам</div>
 	</div>
 </body>
 </html>
