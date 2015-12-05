@@ -76,9 +76,20 @@
 	.lo-r {
 		position: relative !important;
 		width: 600px !important;
+		&-nav-addplace {
+			display: none !important;
+		}
+		&-nav-fb {
+			display: none !important;
+		}
 	}
 	.feedback {
 		display: none !important;
+	}
+	.sn {
+		.lo-l-head-nav-user-logout {
+			top: 24px !important;
+		}
 	}
 }
 
@@ -167,11 +178,23 @@
 	.cont {
 		width: 300px !important;
 	}
+	.lo {
+		margin-top: 10px !Important;
+	}
 	.lo-l {
 		width: 300px !important;
-//		margin-bottom: 20px !important;
+		margin-bottom: 10px !important;
 		&-head {
 			width: 300px !important;
+			height: 40px !important;
+			margin-bottom: 10px !important;
+			&-logo {
+				width: 40px !important;
+				height: 40px !important;
+			}
+			&-menu {
+				top: 10px !important;
+			}
 		}
 		&-map {
 			width: 300px !important;
@@ -188,5 +211,17 @@
 				font-size: 14px !important;
 			}
 		}
+		&-card {
+			white-space: nowrap !important;
+		}
+		&-cont-review-body-text {
+			font-size: 15px !important;
+		}
+	}
+	.dz-message {
+		font-size: 13px !important;
+	}
+	.add-review-title {
+		width: 270px !important;
 	}
 }

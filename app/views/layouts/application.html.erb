@@ -7,6 +7,28 @@
   <%= csrf_meta_tags %>
 <!--	<meta name="viewport" content="width=400">-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="шаурма, донер, обзоры, ревью, отзывы, оценки, санитария, мясо, лаваш">
+
+	
+	<%= favicon_link_tag 'favicon/favicon-32.png', rel: 'icon', type: 'image/png', sizes: '32x32' %>
+	<%= favicon_link_tag 'favicon/favicon-16.png', rel: 'icon', type: 'image/png', sizes: '16x16' %>
+	<%= favicon_link_tag 'favicon/favicon-16.png', rel: 'icon', type: 'image/png', sizes: '16x16' %>
+	<%= favicon_link_tag 'favicon/favicon-76.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '76x76' %>
+	<%= favicon_link_tag 'favicon/favicon-120.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '120x120' %>
+	<%= favicon_link_tag 'favicon/favicon-152.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '152x152' %>
+	<%= favicon_link_tag 'favicon/favicon-180.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180' %>
+	<%= favicon_link_tag 'favicon/favicon-152.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '152x152' %>
+	<%= favicon_link_tag 'favicon/favicon-max.png', rel: 'apple-touch-icon' %>
+
+<!--
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
+	<link rel="apple-touch-icon" href="favicon/favicon-max.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="favicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="favicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="favicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/favicon-180.png">
+-->
 </head>
 <!--
     /$$$$$$$$ /$$$$$$  /$$$$$$$        /$$$$$$$   /$$$$$$  /$$   /$$ /$$$$$$$$ /$$$$$$$
@@ -132,11 +154,21 @@
 	</div>
 	
 	<div class="sn">
-<!--		<div class="sn-item" ng-click="closeSlideNav()">✕</div>-->
-		<div class="sn-item">Войти</div>
-		<div class="sn-item">Добавить место</div>
-		<div class="sn-item" "openPopup('.popup-about')">Что это?</div>
-		<div class="sn-item">Написать нам</div>
+		<div class="sn-item" ng-hide="current_user">
+			<div class="sn-item-login" ng-click="snClick('login')">Войти</div>
+		</div>
+		<div class="sn-item" ng-show="current_user">
+			<div class="sn-item-user">
+				<div class="sn-item-user-img" style="background-image: url({{current_user.image_url}})"></div>
+				<div class="sn-item-user-name">{{ getOnlyName(current_user.username) }}</div>
+			</div>
+<!--			<div class="lo-l-head-nav-user-logout" ng-click="logOut()">Выйти</div>-->
+		</div>
+		<hr>
+		<div class="sn-item" ng-click="snClick('addplace')"><a href="#/create_place">Добавить место</a></div>
+		<div class="sn-item" ng-click="snClick('what')">Что это?</div>
+		<div class="sn-item" ng-click="snClick('fb')"><a ng-href="#/write_us">Написать нам</a></div>
+		<div class="sn-logout" ng-show="current_user" ng-click="logOut()">Выйти</div>
 	</div>
 </body>
 </html>

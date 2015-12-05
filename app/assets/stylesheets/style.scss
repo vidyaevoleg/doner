@@ -52,12 +52,12 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'PT Serif';
-    src: local('PT Serif'), local('PTSerif-Regular'), url('ptserif.woff2') format('woff2'), url('ptserif.woff') format('woff'), url('ptserif.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-}
+//@font-face {
+//    font-family: 'PT Serif';
+//    src: local('PT Serif'), local('PTSerif-Regular'), url('ptserif.woff2') format('woff2'), url('ptserif.woff') format('woff'), url('ptserif.ttf') format('truetype');
+//    font-weight: 400;
+//    font-style: normal;
+//}
 
 
 
@@ -244,15 +244,74 @@ body {
 	}
 	&-item {
 		width: 100%;
-		height: 30px;
+		height: 26px;
 		position: relative;
 		margin-bottom: 20px;
 //		background: pink;
 		text-align: right;
-		line-height: 30px;
+		line-height: 26px;
 		font-size: 16px;
 		font-weight: 800;
 		cursor: pointer;
+		a {
+			color: #000;
+			text-decoration: none;
+		}
+		&-login {
+			width: 80px;
+			height: 30px;
+			background: #000;
+			color: #fff;
+			text-align: center;
+			line-height: 30px;
+			position: relative;
+			margin: auto;
+			border-radius: 2px;
+		}
+		&-user {
+			text-align: center;
+			&-img {
+				width: 28px;
+				height: 28px;
+				border-radius: 100%;
+				background-position: center;
+				background-size: cover;
+				overflow: hidden;
+				position: relative;
+				display: inline-block;
+				margin-right: 7px;
+				vertical-align: middle;
+			}
+			&-name {
+				font-size: 16px;
+				font-weight: 500;
+				color: #888;
+				display: inline-block;
+				vertical-align: middle;
+				white-space: nowrap;
+			}
+		}
+	}
+	&-logout {
+		width: 80px;
+		height: 30px;
+		text-align: center;
+		line-height: 30px;
+		color: #888;
+//		border: 1px solid #888;
+//		border-radius: 2px;
+		position: absolute;
+		bottom: 20px;
+		left: 0; right: 0;
+		margin: auto;
+	}
+	hr {
+		width: 100%;
+		height: 1px;
+		background: #eee;
+		position: relative;
+		border: none;
+		margin-bottom: 20px;
 	}
 }
 
@@ -362,15 +421,15 @@ body {
 //					background: pink;
 					position: relative;
 					&-img {
-						width: 24px;
-						height: 24px;
+						width: 28px;
+						height: 28px;
 						border-radius: 100%;
 						background-position: center;
 						background-size: cover;
 						overflow: hidden;
 						position: relative;
 						margin-right: 6px;
-						top: 6px;
+						top: 8px;
 						display: inline-block;
 					}
 					&-name {
@@ -384,7 +443,7 @@ body {
 					}
 					&-logout {
 						position: absolute;
-						top: 16px;
+						top: 18px;
 						right: 0px;
 						font-weight: 500;
 						font-size: 11px;
@@ -823,69 +882,6 @@ body {
 					}
 				}
 			}
-//			&-create {
-//				position: absolute;
-//				right: 14px;
-//				bottom: 10px;
-//				cursor: pointer;
-//				color: $act;
-//				path {
-//					fill: $act;
-//				}
-//				&-icon {
-//					position: relative;
-//					left: 2px;
-//					top: 2px;
-//				}
-//				span:first-child {
-//					width: 10px;
-//				}
-//				&:hover {
-////					text-decoration: underline;
-//				}
-//			}
-//			&-share {
-//				width: 16px;
-//				height: 16px;
-//				position: absolute;
-//				bottom: 11px;
-//				right: 96px;
-//				path {
-//					fill: #cecece;
-////					fill: blue;
-//				}
-//			}
-//			&-revnum {
-//				&-places {
-//					right: 12px !important;
-//				}
-//				position: absolute;
-//				bottom: 11px;
-//				right: 120px;
-//				display: inline-block;
-//				height: 12px;
-//				height: 16px;
-//				path {
-//					fill: #cecece;
-//					position: absolute;
-//				}
-//				&-icon {
-//					position: relative;
-//					top: 2px;
-//				}
-//				&-num {
-//					position: relative;
-////					top: 1px;
-//					left: 2px;
-//					color: #000;
-//					width: 22px;
-//					text-align: center;
-//					font-family: 'helvetica';
-//					color: #cecece;
-//					font-weight: 400;
-//					font-size: 14px;
-//				}
-//			}
 		}
 		&-subnav {
 			width: inherit;
@@ -1097,7 +1093,7 @@ body {
 	//					margin-top: 2px;
 					}
 					&-text {
-						font-family: 'PT Serif' !important;
+//						font-family: 'PT Serif' !important;
 						position: relative;
 	//					margin-top: 8px;
 						margin: 12px 0 20px;
