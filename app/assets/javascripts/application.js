@@ -19,11 +19,12 @@
 //= require angular.min
 //= require angular-yandex
 //= require ui-router
+//= require ui-router-metatags.min
 //= require angular-sanitize
 //= require angular-rails-templates
 //= require_tree ./templates
 //= require app
-//= require main
+
 
 //= require_tree ./factories
 //= require_tree ./controllers

@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="Topdoner">
 <head>
-  <title>Topdoner</title>
+	<title ng-bind="MetaTags.title">Topdoner</title>
+	<meta name="description" content="Обзоры на самую изысканую и наивкуснейшую шаурму по всему миру. Авторитетные мнения, подробные ревью и глубокая аналитика.">
+	<meta name="description" content="{{MetaTags.description}}">
+	<meta name="keywords" content="{{MetaTags.keywords}}">
+	<meta ng-repeat="(key, value) in MetaTags.properties" property="{{key}}" content="{{value}}" >
+	<meta name="prerender-status-code" content="{{MetaTags.prerender.statusCode}}">
+	<meta name="prerender-header" ng-if="MetaTags.prerender.header" content="{{MetaTags.prerender.header}}">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-<!--	<meta name="viewport" content="width=400">-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta name="keywords" content="шаурма, донер, обзоры, ревью, отзывы, оценки, санитария, мясо, лаваш">
+
 
 	
 	<%= favicon_link_tag 'favicon/favicon-32.png', rel: 'icon', type: 'image/png', sizes: '32x32' %>
@@ -19,16 +24,6 @@
 	<%= favicon_link_tag 'favicon/favicon-180.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180' %>
 	<%= favicon_link_tag 'favicon/favicon-152.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '152x152' %>
 	<%= favicon_link_tag 'favicon/favicon-max.png', rel: 'apple-touch-icon' %>
-
-<!--
-	<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
-	<link rel="apple-touch-icon" href="favicon/favicon-max.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="favicon/favicon-76.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="favicon/favicon-120.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="favicon/favicon-152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="favicon/favicon-180.png">
--->
 </head>
 <!--
     /$$$$$$$$ /$$$$$$  /$$$$$$$        /$$$$$$$   /$$$$$$  /$$   /$$ /$$$$$$$$ /$$$$$$$
@@ -43,7 +38,7 @@
    ¯\_(ツ)_/¯   ¯\_(ツ)_/¯   ¯\_(ツ)_/¯   ¯\_(ツ)_/¯   ¯\_(ツ)_/¯   ¯\_(ツ)_/¯   ¯\_(ツ)_/¯
 -->
 
-<body ng-app="Topdoner" ng-controller="MainCtrl">
+<body  ng-controller="MainCtrl">
 	<script type="text/javascript">
 		var BASE_URL = "<%= request.base_url %>";
 	</script>

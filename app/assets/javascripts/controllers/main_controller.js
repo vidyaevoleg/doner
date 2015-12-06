@@ -1,11 +1,33 @@
 Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$location','$rootScope','$stateParams', function ($scope,$filter,places,reviews,$location,$rootScope,$stateParams) {
 
-	$rootScope.MAP;
-	
-	$scope.list_limit = 4;
-	
-	
 
+
+	$rootScope.MAP;
+	$scope.list_limit = 4;
+
+
+	$rootScope.metaTitlePlace = function(place) {
+		return place.properties.city
+	} 
+
+	$rootScope.metaDescriptionPlace = function(place) {
+		var str = 'Обзоры для алтаря по адресу';
+
+		if (place.properties.metro.length > 0) {
+			str += ' м. ' +  place.properties.metro + ' ';
+		}
+
+		str += place.properties.street + ', ' + place.properties.city;
+		return str;
+	}
+	
+	$rootScope.metaTitleReview = function(review) {
+		return review.title;
+	}	
+
+	$rootScope.metaTitleDescription = function(review) {
+		return review.body;
+	}
 //	$scope.logoCycle;
 	
 //	$scope.startLogo = function() {
@@ -103,25 +125,15 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	
 	$scope.goToPlace = function(place,zoom,location) {
 		if ($rootScope.MAP) {
-	  	$rootScope.MAP.panTo(location || place.geometry.coordinates,{duration: 600});
-	  	setTimeout(function() {
-		    $rootScope.MAP.setCenter(location || place.geometry.coordinates, zoom || 16, {duration: 500});
-	  	}, 600);
+		  	$rootScope.MAP.panTo(location || place.geometry.coordinates,{duration: 600});
+		  	setTimeout(function() {
+			    $rootScope.MAP.setCenter(location || place.geometry.coordinates, zoom || 16, {duration: 500});
+		  	}, 600);
 		}
 	}
 
 	$rootScope.afterMapInit=function(Map){
 		$rootScope.MAP = Map;
-//		debugger
-//		$rootScope.searchControl = new $rootScope.MAP.controls.SearchControl({
-//     		options: {
-//         		float: 'right',
-//         		floatIndex: 100,
-//         		noPlacemark: true
-//     		}
-//		});
-//		$rootScope.MAP.controls.add($rootScope.searchControl());
-	//		console.log($rootScope.MAP);
 
 		setTimeout(function() {
 			var place = $rootScope.place;

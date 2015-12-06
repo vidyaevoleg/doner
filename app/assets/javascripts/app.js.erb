@@ -1,11 +1,34 @@
-var Topdoner = angular.module('Topdoner', ['yaMap','ui.router','templates','ngSanitize']);
+var Topdoner = angular.module('Topdoner', ['yaMap','ui.router','templates','ngSanitize','ui.router.metatags']);
+
+
+function runBlock($rootScope, MetaTags) {
+    $rootScope.MetaTags = MetaTags;
+}
+
+function configure($urlRouterProvider, $stateProvider, UIRouterMetatagsProvider) {
+    UIRouterMetatagsProvider
+        .setTitlePrefix(' ')
+        .setTitleSuffix(' | Обзоры на шаурму')
+        .setDefaultTitle('Topdoner')
+        .setDefaultDescription('Обзоры на самую изысканую и наивкуснейшую шаурму по всему миру. Авторитетные мнения, подробные ревью и глубокая аналитика.')
+        .setDefaultKeywords('шаурма, обзоры на шаурму, аналитика, Москва, карта, Питер, Санкт-Петербург, Московская область')
+        .setStaticProperties({
+                'fb:app_id': '529146080586779',
+                'og:site_name': 'http://topdoner.com'
+            })
+        .setOGURL(true);
+}
+
+Topdoner.run(['$rootScope', 'MetaTags', runBlock])
+
 Topdoner.filter('isRated', function () {
   return function(items) {
     return items.filter(function(item){
       return parseInt(item.properties.rating) > 0
     })
   }
-})
+});
+
 Topdoner.filter('getPlaceById', function() {
   return function(input, id) {
     var i=0, len=input.length;
@@ -17,6 +40,7 @@ Topdoner.filter('getPlaceById', function() {
     return null;
   }
 });
+
 Topdoner.filter('getReviewById', function() {
   return function(input, id) {
     var i=0, len=input.length;
@@ -29,14 +53,162 @@ Topdoner.filter('getReviewById', function() {
   }
 });
 
-//Topdoner.filter('limitHtml', function() {
-//	return function(text, limit) {
-//		
-////		var changedString = String(text).replace(/<[^>]+>/gm, '');
-////		var length = changedString.length;
-////		return changedString.length > limit ? changedString.substr(0, limit - 1) : changedString;
-//});
+Topdoner.service('dataProvider', ['places','users', 'reviews', '$stateParams', '$filter','$rootScope', function (places, users, reviews, $stateParams, $filter, $rootScope) {
 	
+
+	if (!($rootScope.current_user)) {
+    users.getCurrentUser().then(function(data){
+    	$rootScope.current_user = data;
+    })
+  }
+	
+	var obj = {
+		getPlaces: function (id) {
+	    if (!($rootScope.places)) {
+		    return places.getPlaces().then(function(data){
+		    	if (id) {
+			    	$rootScope.place = $filter('getPlaceById')(data, id);
+		    	}
+					$rootScope.places = data;
+		    })
+	    } else {
+				$rootScope.place = $filter('getPlaceById')($rootScope.places, id);
+		  }
+		},
+		getReviews: function (ids) {
+			var place_id = ids['place_id'],
+					review_id = ids['review_id'];
+	    return places.getReviews(place_id).then(function(res) {
+				if (review_id) {
+					$rootScope.review = $filter('getReviewById')(res.data, review_id);
+				}
+				$rootScope.reviews = res.data;
+	    });
+		}
+	}
+	return obj;
+}]);
+
+
+
+Topdoner.config(['$stateProvider','$urlRouterProvider',
+	function($stateProvider, $urlRouterProvider) {
+	  $stateProvider
+		.state('home', {
+		  resolve: {
+	  		places: ['dataProvider', function(dataProvider) {
+	  			return dataProvider.getPlaces();
+	  		}]
+			},
+		  url: '/home',
+		  templateUrl: "<%= asset_path('templates/index.html.erb') %>",
+		  controller: 'PlacesCtrl',
+	    metaTags: {
+        title: 'Topdoner',
+        description: 'Обзоры на самую пиздатую и наивкуснейшую шаурму по всему миру. Авторитетные мнения, подробные ревью и глубокая аналитика.'
+	    }
+		})
+		.state('places', {
+		  resolve: {
+				places: ['dataProvider', '$stateParams', function(dataProvider, $stateParams) {
+	  			return dataProvider.getPlaces($stateParams.id);
+	  		}],
+			  reviews: ['dataProvider', '$stateParams', function(dataProvider, $stateParams) {
+	  			return dataProvider.getReviews({place_id: $stateParams.id});
+	  		}]
+			},
+		  url: '/places/{id}',
+		  templateUrl: "<%= asset_path('templates/place.html.erb') %>",
+		  controller: 'PlaceCtrl',
+	    metaTags: {
+        title: ['$rootScope', function($rootScope){
+        	return 'Topdoner | ' + $rootScope.metaTitlePlace($rootScope.place);
+        }],
+        description: ['$rootScope', function($rootScope){
+        	return 'Topdoner | ' + $rootScope.metaDescriptionPlace($rootScope.place);
+        }]
+	    }
+		})
+		.state('show_review', {
+		  resolve: {
+			  reviews: ['dataProvider', '$stateParams', function(dataProvider, $stateParams) {
+	  			return dataProvider.getReviews({place_id: $stateParams.id, review_id: $stateParams.review_id });
+	  		}],	  
+				places: ['dataProvider', '$stateParams', function(dataProvider, $stateParams) {
+	  			return dataProvider.getPlaces($stateParams.id);
+	  		}]
+			},
+		  url: '/places/{id}/reviews/{review_id}',
+		  templateUrl: "<%= asset_path('templates/place.html.erb') %>",
+		  controller: 'PlaceCtrl',
+	    metaTags: {
+        title: ['$rootScope', function($rootScope){
+        	return 'Topdoner | ' + $rootScope.metaTitleReview($rootScope.review);
+        }],
+        description: ['$rootScope', function($rootScope){
+        	return 'Topdoner | ' + $rootScope.metaDescriptionReview($rootScope.review);
+        }]
+	    }
+		})
+		.state('new_place', {
+		  resolve: {
+				places: ['dataProvider', '$stateParams', function(dataProvider, $stateParams) {
+	  			return dataProvider.getPlaces($stateParams.id);
+	  		}]		
+			},
+		  url: '/create_place',
+		  templateUrl: "<%= asset_path('templates/new_place.html.erb') %>",
+		  controller: 'NewPlaceCtrl'
+		})
+		.state('new_review', {
+		  resolve: {
+				places: ['dataProvider', '$stateParams', function(dataProvider, $stateParams) {
+	  			return dataProvider.getPlaces($stateParams.id);
+	  		}]				  
+			},
+		  url: '/places/{id}/new_review',
+		  templateUrl: "<%= asset_path('templates/new_review.html.erb') %>",
+		  controller: 'NewReviewCtrl'
+		})
+		.state('edit_review', {
+		  resolve: {
+			  reviews: ['dataProvider', '$stateParams', function(dataProvider, $stateParams) {
+	  			return dataProvider.getReviews({place_id: $stateParams.id, review_id: $stateParams.review_id });
+	  		}],
+				places: ['dataProvider', '$stateParams', function(dataProvider, $stateParams) {
+	  			return dataProvider.getPlaces($stateParams.id);
+	  		}]
+			},
+		  url: '/places/{id}/edit_review/{review_id}',
+		  templateUrl: "<%= asset_path('templates/edit_review.html.erb') %>",
+		  controller: 'EditReviewCtrl'
+		})
+		.state('edit_place', {
+		  resolve: {
+				places: ['dataProvider', '$stateParams', function(dataProvider, $stateParams) {
+	  			return dataProvider.getPlaces($stateParams.id);
+	  		}]					  
+			},
+		  url: '/places/{id}/edit_place',
+		  templateUrl: "<%= asset_path('templates/edit_place.html.erb') %>",
+		  controller: 'EditPlaceCtrl'
+		})
+		.state('new_feedback', {
+		  resolve: {
+				places: ['dataProvider', '$stateParams', function(dataProvider, $stateParams) {
+	  			return dataProvider.getPlaces($stateParams.id);
+	  		}]					  
+			},
+		  url: '/write_us',
+		  templateUrl: "<%= asset_path('templates/new_feedback.html.erb') %>",
+		  controller: 'FeedbackCtrl'
+		})
+	  $urlRouterProvider.otherwise('home');
+}]);
+
+Topdoner.config(['$urlRouterProvider', '$stateProvider', 'UIRouterMetatagsProvider', configure]);
+
+
 Topdoner.directive('starRating',
 	['$compile',function($compile) {
 		return {
@@ -79,217 +251,3 @@ Topdoner.directive('starRating',
 		};
 	}]
 );
-
-Topdoner.config(['$stateProvider','$urlRouterProvider',
-	function($stateProvider, $urlRouterProvider) {
-	  $stateProvider
-		.state('home', {
-		  resolve: {
-			  places: ['places','$stateParams','$rootScope', function(places,$stateParams,$rootScope){
-			    if (!($rootScope.places)) {
-				    return places.getPlaces().then(function(data){
-							$rootScope.places = data;
-				    })
-			    }
-			  }],
-			  current_user: ['users','$rootScope', function(users,$rootScope){
-			    if (!($rootScope.current_user)) {
-				    return users.getCurrentUser().then(function(data){
-				    	$rootScope.current_user = data;
-				    })
-			    }
-			  }]
-			},
-		  url: '/home',
-		  templateUrl: "<%= asset_path('templates/index.html.erb') %>",
-		  controller: 'PlacesCtrl'
-		})
-		.state('places', {
-		  resolve: {
-				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
-			    if (!($rootScope.places)){
-				    return places.getPlaces().then(function(data){
-						$rootScope.place = $filter('getPlaceById')(data, $stateParams.id);
-						$rootScope.places = data;
-				    })
-			    } else {
-						$rootScope.place = $filter('getPlaceById')($rootScope.places, $stateParams.id);
-			    }
-			  }],
-			  // place: ['$stateParams','$rootScope', function($stateParams,$rootScope){
-			  // 	console.log($rootScope.places)
-					// return $rootScope.place = $filter('getPlaceById')($rootScope.places, $stateParams.id)
-			  // }],
-			  reviews: ['places','$stateParams','$rootScope', function(places,$stateParams,$rootScope){
-			    return places.getReviews($stateParams.id).then(function(res){
-						$rootScope.reviews = res.data;
-			    });
-			  }],
-			  current_user: ['users','$rootScope', function(users,$rootScope){
-			    if (!($rootScope.current_user)) {
-				    return users.getCurrentUser().then(function(data){
-				    	$rootScope.current_user = data;
-				    })
-			    }
-			  }]
-			},
-		  url: '/places/{id}',
-		  templateUrl: "<%= asset_path('templates/place.html.erb') %>",
-		  controller: 'PlaceCtrl'
-		})
-		.state('show_review', {
-		  resolve: {
-			  review: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
-			    return places.getReviews($stateParams.id).then(function(res){
-			    	// debugger
-			    	$rootScope.review = $filter('getReviewById')(res.data, $stateParams.review_id);
-						$rootScope.reviews = res.data;
-			    })
-			  }],		  
-				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
-			    if (!($rootScope.places)) {
-				    return places.getPlaces().then(function(data){
-							$rootScope.place = $filter('getPlaceById')(data, $stateParams.id)
-							$rootScope.places = data				
-				    })			    	
-			    } else {
-						$rootScope.place = $filter('getPlaceById')($rootScope.places, $stateParams.id);
-			    }
-			  }],	
-			  current_user: ['users','$rootScope', function(users,$rootScope){
-			    if (!($rootScope.current_user)) {
-				    return users.getCurrentUser().then(function(data){
-				    	$rootScope.current_user = data;
-				    })			    	
-			    }
-			  }]
-			},
-		  url: '/places/{id}/reviews/{review_id}',
-		  templateUrl: "<%= asset_path('templates/place.html.erb') %>",
-		  controller: 'PlaceCtrl'
-		})
-		.state('new_place', {
-		  resolve: {
-				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
-			    if (!($rootScope.places)) {
-				    return places.getPlaces().then(function(data){
-							$rootScope.place = $filter('getPlaceById')(data, $stateParams.id)
-							$rootScope.places = data				
-				    })			    	
-			    } else {
-						$rootScope.place = $filter('getPlaceById')($rootScope.places, $stateParams.id);
-			    }
-			  }],			
-			  current_user: ['users','$rootScope', function(users,$rootScope){
-			    if (!($rootScope.current_user)) {
-				    return users.getCurrentUser().then(function(data){
-				    	$rootScope.current_user = data;
-				    })			    	
-			    }
-			  }]
-			},
-		  url: '/create_place',
-		  templateUrl: "<%= asset_path('templates/new_place.html.erb') %>",
-		  controller: 'NewPlaceCtrl'
-		})
-		.state('new_review', {
-		  resolve: {
-				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
-			    if (!($rootScope.places)) {
-				    return places.getPlaces().then(function(data){
-							$rootScope.place = $filter('getPlaceById')(data, $stateParams.id)
-							$rootScope.places = data				
-				    })			    	
-			    } else {
-						$rootScope.place = $filter('getPlaceById')($rootScope.places, $stateParams.id);
-			    }
-			  }],					  
-			  current_user: ['users','$rootScope', function(users,$rootScope){
-			    if (!($rootScope.current_user)) {
-				    return users.getCurrentUser().then(function(data){
-				    	$rootScope.current_user = data;
-				    })			    	
-			    }
-			  }]
-			},
-		  url: '/places/{id}/new_review',
-		  templateUrl: "<%= asset_path('templates/new_review.html.erb') %>",
-		  controller: 'NewReviewCtrl'
-		})
-		.state('edit_review', {
-		  resolve: {
-			  review: ['reviews','$filter', '$stateParams','$rootScope', function(reviews,$filter,$stateParams,$rootScope){
-			    if ($rootScope.reviews) {
-			  		return $rootScope.review = $filter('getReviewById')($rootScope.reviews, $stateParams.review_id)
-			    } else {
-				    return reviews.getReview($stateParams.review_id).then(function(res){
-				    	$rootScope.review = res.review
-				    })			    	
-			    }
-			  }],
-				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
-			    return places.getPlaces().then(function(data){
-						$rootScope.place = $filter('getPlaceById')(data, $stateParams.id)
-						$rootScope.places = data				
-			    })
-			  }],	
-			  current_user: ['users','$rootScope', function(users,$rootScope){
-			    return users.getCurrentUser().then(function(data){
-			    	$rootScope.current_user = data
-			    })
-			  }]
-			},
-		  url: '/places/{id}/edit_review/{review_id}',
-		  templateUrl: "<%= asset_path('templates/edit_review.html.erb') %>",
-		  controller: 'EditReviewCtrl'
-		})
-		.state('edit_place', {
-		  resolve: {
-				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
-			    if (!($rootScope.places)) {
-				    return places.getPlaces().then(function(data){
-							$rootScope.place = $filter('getPlaceById')(data, $stateParams.id)
-							$rootScope.places = data				
-				    })			    	
-			    } else {
-						$rootScope.place = $filter('getPlaceById')($rootScope.places, $stateParams.id);
-			    }
-			  }],					  
-			  current_user: ['users','$rootScope', function(users,$rootScope){
-			    if (!($rootScope.current_user)) {
-				    return users.getCurrentUser().then(function(data){
-				    	$rootScope.current_user = data;
-				    })			    	
-			    }
-			  }]
-			},
-		  url: '/places/{id}/edit_place',
-		  templateUrl: "<%= asset_path('templates/edit_place.html.erb') %>",
-		  controller: 'EditPlaceCtrl'
-		})
-		.state('new_feedback', {
-		  resolve: {
-				place: ['places','$stateParams','$filter','$rootScope', function(places,$stateParams,$filter,$rootScope){
-			    if (!($rootScope.places)) {
-				    return places.getPlaces().then(function(data){
-							$rootScope.place = $filter('getPlaceById')(data, $stateParams.id)
-							$rootScope.places = data				
-				    })			    	
-			    } else {
-						$rootScope.place = $filter('getPlaceById')($rootScope.places, $stateParams.id);
-			    }
-			  }],					  
-			  current_user: ['users','$rootScope', function(users,$rootScope){
-			    if (!($rootScope.current_user)) {
-				    return users.getCurrentUser().then(function(data){
-				    	$rootScope.current_user = data;
-				    })			    	
-			    }
-			  }]
-			},
-		  url: '/write_us',
-		  templateUrl: "<%= asset_path('templates/new_feedback.html.erb') %>",
-		  controller: 'FeedbackCtrl'
-		})
-	  $urlRouterProvider.otherwise('home');
-}])
