@@ -55,12 +55,31 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	$scope.closeSlideNav = function() {
 		$scope.cls($('.prnj-sn'));
 		$('.sn').removeClass('opened');
+//		setTimeout(function(){
+//			$('.sn-item-choose').removeClass('unrot').addClass('hidden');
+//			$('.sn-item-login').removeClass('hidden rot');
+//		}, 210);
 	}
 	
 	$scope.getOnlyName = function(name) {
 		if (name) {
 			return name.split(' ')[0]
 		}
+	}
+	
+	$scope.showLogin = function() {
+		$scope.cls($('.sn-item-login'));
+		setTimeout(function(){
+			$scope.opn($('.sn-item-choose'));
+		}, 220);
+//		$('.sn-item-login').addClass('rot');
+//		setTimeout(function(){
+//			$('.sn-item-login').addClass('hidden');
+//			$('.sn-item-choose').removeClass('hidden');
+//			setTimeout(function(){
+//				$('.sn-item-choose').addClass('unrot');
+//			}, 10);
+//		}, 200);
 	}
 	
 	$scope.snClick = function(what) {
@@ -114,10 +133,12 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 
   $rootScope.choosePlace = function(place){
 		$location.path('/places/'+place.properties.id);
-	  setTimeout(function(){
+	  if (!$('.lo-l-head-menu').hasClass('hidden')) {
+		  setTimeout(function(){
 //			alert('WOW');
 			$('body').animate({ scrollTop: $('.lo-r-card-cur').offset().top - 10}, 1000);
 		}, 800);
+	  }
   };
 	
 	$rootScope.setRightCenter = function() {
@@ -143,7 +164,12 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		}
 	}
 
-	
+	$scope.cutAddress = function(a) {
+		if (a) {
+			return a
+//			return a.split(',')[0].replace('улица','ул.').replace('переулок', 'пер.').replace('проспект', 'пр-т').replace('проезд', 'пр.').replace('набережная', 'наб.').replace('площадь', 'пл.').replace('бульвар', 'б-р') + ', ' + a.split(',')[1];
+		}
+	}
 	
 	$rootScope.getMetroLine = function(st) {
 		if (st !== undefined){
@@ -179,10 +205,10 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	}
 	
 	$scope.showDist = function(d){
-		if (d >= 1) {
-			return d + ' км';
+		if (d >= 1000) {
+			return Math.round(d/1000) + ' км';
 		} else {
-			return 'Близко'
+			return d + ' м';
 		}
 	}
 	
@@ -249,7 +275,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	         	if (dist == loc) {
 	          	$scope.new_place['city'] = loc;
 	          } else {
-	          	$scope.new_place['city'] = dist + ',' + loc
+	          	$scope.new_place['city'] = dist + ', ' + loc
 	          }
       	  });
 				});
@@ -357,7 +383,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		function toRads(angle) {
 			return angle * (Math.PI / 180);
 		}
-		return Math.round(6371 * Math.acos(Math.sin(toRads(me[0]))*Math.sin(toRads(place[0])) + Math.cos(toRads(me[0]))*Math.cos(toRads(place[0]))*Math.cos(toRads(me[1]) - toRads(place[1]))));
+		return Math.round(1000 * 6371 * Math.acos(Math.sin(toRads(me[0]))*Math.sin(toRads(place[0])) + Math.cos(toRads(me[0]))*Math.cos(toRads(place[0]))*Math.cos(toRads(me[1]) - toRads(place[1]))));
 	}
 	
 	$scope.showListDisp = function() {

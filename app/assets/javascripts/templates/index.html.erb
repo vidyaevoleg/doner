@@ -13,11 +13,10 @@
 			<div class="lo-r-card lo-r-card-places" ng-click="choosePlace(place)">
 				<div class="lo-r-card-cont lo-r-card-cont-top">
 					<div class="lo-r-card-city">{{place.properties.city}}</div>
-					<div class="lo-r-card-title">{{place.properties.street}}</div>
+					<div class="lo-r-card-title">{{cutAddress(place.properties.street)}}</div>
 					<div class="lo-r-card-rating">
 						{{place.properties.rating}}
 					</div>
-					<div class="lo-r-card-dist" ng-show="isDistExist(place.properties.dist)">{{showDist(place.properties.dist)}}</div>
 				</div>
 				<div class="lo-r-card-cont lo-r-card-cont-bottom">
 <!--					{{place.properties.dist}}км-->
@@ -33,6 +32,7 @@
 						</div>
 						<div class="lo-r-card-metro-title">{{place.properties.metro}}</div>
 					</div>
+					<div class="lo-r-card-dist" ng-show="isDistExist(place.properties.dist)">{{showDist(place.properties.dist)}}</div>
 					<div class="lo-r-card-count">{{renameReviewCount(place.properties.reviews_count)}}</div>
 				</div>
 			</div>
