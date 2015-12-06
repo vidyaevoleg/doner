@@ -253,16 +253,22 @@
 	.dz-message {
 		font-size: 13px !important;
 	}
-	.add-review-extrate-stars {
-		& .rating li {
-			font-size: 13px !Important;
+	.add-review {
+		padding: 10px 0 0 !important;
+		&-title {
+			width: 100% !important;
 		}
-		margin-left: 0px !important;
-	}
-	.add-review-rate-stars .rating li {
-		font-size: 20px !Important;
-	}
-	.add-review-title {
-		width: 270px !important;
+		&-body {
+			font-size: 16px !important;
+		}
+		&-extrate-stars {
+			& .rating li {
+				font-size: 13px !Important;
+			}
+			margin-left: 0px !important;
+		}
+		&-rate-stars .rating li {
+			font-size: 20px !important;
+		}
 	}
 }

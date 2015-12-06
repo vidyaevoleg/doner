@@ -115,21 +115,15 @@ body {
 }
 
 .popup {
-	max-width: 700px;
-	width: 90%;
-	position: relative;
-	height: auto;
+	position: absolute;
 	z-index: 11;
-	top: 20px;
-	margin: 0 auto 40px;
-//	background: #fff;
-	color: #fff;
+//	top: 20px;
+//	margin: 0 auto 40px;
+	background: #fff;
+//	color: #fff;
 	border-radius: 2px;
 	padding-top: 60px;
 	box-sizing: border-box;
-	-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
-	   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
-			box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 	&-close {
 		position: absolute;
 		top: 20px;
@@ -145,6 +139,12 @@ body {
 		}
 	}
 	&-login {
+		top: 0; left: 0; right: 0; bottom: 0;
+		margin: auto;
+		max-width: 400px;
+		width: 70%;
+		height: 400px;
+		font-size: 13px;
 		text-align: center;
 		&-button {
 			width: 208px;
@@ -200,6 +200,17 @@ body {
 		}
 	}
 	&-about {
+		margin: 30px auto;
+		left: 0; right: 0;
+		height: auto;
+		max-width: 700px;
+		width: 90%;
+		padding: 40px 30px;
+		h2 {
+			font-size: 26px !important;
+			font-weight: 800;
+		}
+		
 		&-logo {
 			width: 70px;
 			height: 70px;
@@ -1403,18 +1414,17 @@ body {
 	}
 	&-rate {
 		width: 100%;
-		height: 60px;
-//		background: rgba(255, 247, 215, .5);
+//		height: 40px;
 //		border: 2px;
 		text-align: center;
 		position: relative;
-		margin-top: 24px;
+		margin: 20px 0 10px;
+		
 		&-stars {
 			width: 260px;
-			top: 10px;
 //			height: 20px;
-			display: block;
-			
+			display: inline-block;
+			background: white;
 //			margin: auto;
 //			position: absolute;
 //			left: 0; right: 0;
