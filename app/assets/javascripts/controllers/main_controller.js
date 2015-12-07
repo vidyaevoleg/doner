@@ -238,62 +238,65 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	}
 	
 	$rootScope.mapClick=function(e){
-      var coords = e.get('coords');
-		
-      $scope.new_place = {coordinates: coords.toString(),
-      										city: '',
-      										metro: '',
-						  					metro_line: '',
-      										street: ''
-      									};
-      ymaps.geocode(coords,{kind: 'metro'}).then(function (res) {
-          var metros = [];
-          res.geoObjects.each(function (obj) {
-              metros.push(obj.properties.get('name'));
-          });
-          var metro = metros[0]
-          $scope.$apply(function(){
-            $scope.new_place['metro'] = metro.replace('метро ', '');
-			  $scope.new_place['metro_line'] = $rootScope.getMetroLine($scope.new_place['metro']);
-          });
-      });
-      ymaps.geocode(coords,{kind: 'house'}).then(function (res) {
-          var houses = [];
-          res.geoObjects.each(function (obj) {
-              houses.push(obj.properties.get('name'));
-          });
-          var house = houses[0];
-          $scope.$apply(function(){
-            $scope.new_place['street'] = house
-          });
+    var coords = e.get('coords');
+	
+    $scope.new_place = {coordinates: coords.toString(),
+    										city: '',
+    										metro: '',
+					  					metro_line: '',
+    										street: ''
+    									};
+    ymaps.geocode(coords,{kind: 'metro'}).then(function (res) {
+        var metros = [];
+        res.geoObjects.each(function (obj) {
+            metros.push(obj.properties.get('name'));
+        });
+        var metro = metros[0]
+        $scope.$apply(function(){
+          $scope.new_place['metro'] = metro.replace('метро ', '');
+		  $scope.new_place['metro_line'] = $rootScope.getMetroLine($scope.new_place['metro']);
+        });
+    });
+    ymaps.geocode(coords,{kind: 'house'}).then(function (res) {
+        var houses = [];
+        res.geoObjects.each(function (obj) {
+            houses.push(obj.properties.get('name'));
+        });
+        var house = houses[0];
+        $scope.$apply(function(){
+          $scope.new_place['street'] = house
+        });
 //		  		  console.log();
 
+    });
+    ymaps.geocode(coords).then(function (res) {
+      var names = [];
+      res.geoObjects.each(function (obj) {
+          names.push(obj.properties.get('name'));
       });
-      ymaps.geocode(coords).then(function (res) {
-          var names = [];
-          res.geoObjects.each(function (obj) {
-              names.push(obj.properties.get('name'));
-          });
-          var loc = names[names.length-3],
-          		dist = names[names.length-4];
-          for (var i=1;i<names.length;i++) {
-          	var word = names[i];
-          	if (word.indexOf('городской') !== -1 ) {
-          		dist = names[names.indexOf(dist)-1];
-          		break;
-          	};
-          };
-		     	$scope.$apply(function() {
-	         	if (dist == loc) {
-	          	$scope.new_place['city'] = loc;
-	          } else {
-	          	$scope.new_place['city'] = dist + ', ' + loc
-	          }
-      	  });
-				});
-    };
+      var loc = names[names.length-3],
+      		dist = names[names.length-4];
+      for (var i=1;i<names.length;i++) {
+      	var word = names[i];
+      	if (word.indexOf('городской') !== -1 ) {
+      		dist = names[names.indexOf(dist)-1];
+      		break;
+      	};
+      };
+     	$scope.$apply(function() {
+       	if (dist == loc) {
+        	$scope.new_place['city'] = loc;
+        } else {
+        	$scope.new_place['city'] = dist + ', ' + loc
+        }
+  	  });
+		});
+  };
 	
-	
+	$rootScope.createFuckingPlace = function(place){
+		places.createPlace(place);
+	}
+
 	$rootScope.fixDropzone = function() {
 		$('.dz-message').html('Кликните или перетащите сюда фотографии');
 	}
