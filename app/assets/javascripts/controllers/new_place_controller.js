@@ -1,11 +1,11 @@
-Topdoner.controller('NewPlaceCtrl', ['$scope','places','$location','$rootScope', function ($scope,places,$location,$rootScope) {
+Topdoner.controller('NewPlaceCtrl', ['$scope', '$location', '$rootScope', function ($scope, $location, $rootScope) {
   $scope.images_id = ''
   var creating =  true
   $scope.createPlace = function(e){
     if (creating) {
         var new_place = $scope.new_place
       new_place['images_id'] = $scope.images_id
-      places.createPlace(new_place)  
+      $rootScope.createFuckingPlace(new_place)  
     };
     creating = false;
   }
