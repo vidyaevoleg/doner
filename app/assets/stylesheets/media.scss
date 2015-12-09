@@ -185,8 +185,23 @@
 	.lo-r {
 		width: 350px !important;
 	}
-	.add-review-title {
-		width: 275px !important;
+	
+	
+	.add-review {
+		&-title {
+			width: 275px !important;
+		}
+		&-body {
+			&-extrate-stars {
+				& .rating li {
+					font-size: 13px !Important;
+				}
+				margin-left: 0px !important;
+			}
+			&-rate-stars .rating li {
+				font-size: 20px !important;
+			}
+		}
 	}
 	.add-review-extrate-titles {
 		width: 80px !important;
@@ -195,6 +210,8 @@
 		}
 	}
 }
+
+
 
 @media screen and (max-width: 380px) {
 	.cont {
@@ -255,9 +272,9 @@
 //				top: 0px !important;
 //			}
 		}
-		&-cont-review-body-text {
-			font-size: 15px !important;
-		}
+//		&-cont-review-body-text {
+//			font-size: 15px !important;
+//		}
 	}
 	.ymaps-2-1-31-search {
 		display: block !important;
@@ -274,15 +291,6 @@
 		}
 		&-body {
 			font-size: 16px !important;
-		}
-		&-extrate-stars {
-			& .rating li {
-				font-size: 13px !Important;
-			}
-			margin-left: 0px !important;
-		}
-		&-rate-stars .rating li {
-			font-size: 20px !important;
 		}
 	}
 	.share-item {
