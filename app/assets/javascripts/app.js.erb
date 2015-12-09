@@ -57,6 +57,15 @@ Topdoner.filter('getReviewById', function() {
   }
 });
 
+
+Topdoner.run(function($rootScope, $location) {
+
+  $rootScope.$on('$locationChangeSuccess', function() {
+    $rootScope.actualLocation = $location.path();
+  });
+
+});
+
 Topdoner.service('dataProvider', ['places','users', 'reviews', '$stateParams', '$filter','$rootScope', function (places, users, reviews, $stateParams, $filter, $rootScope) {
 	
 
