@@ -97,6 +97,11 @@
 						<a ng-href="#/home" ng-click="setDefaultZoom()"></a>
 					</div>
 					<div class="lo-l-head-nav">
+<!--
+						<div class="lo-l-head-nav-item act">
+							<a href="#/create_place" ng-click="addPlaceAction()">Добавить место</a>
+						</div>
+-->
 						<div class="lo-l-head-nav-item act" ng-click="openPopup('.popup-about')">
 							Что это?
 						</div>
@@ -129,6 +134,7 @@
 					</ya-map>
 				</div>
 				<a href="#/create_place" class="lo-l-addplace" ng-click="addPlaceAction()">Добавить место</a>
+<!--				<footer>kek</footer>-->
 			</div>
 			<ui-view></ui-view>
 		</div>
