@@ -3,8 +3,24 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 
 
 	$rootScope.MAP;
-	$scope.list_limit = 4;
+	$scope.list_limit = 8;
+	
+	$scope.noBackspaceEvent = function(){
+		/*
+		 * this swallows backspace keys on any non-input element.
+		 * stops backspace -> back
+		 */
+		var rx = /INPUT|SELECT|TEXTAREA/i;
 
+		$(document).bind("keydown keypress", function(e){
+			if( e.which == 8 ){ // 8 == backspace
+				if(!rx.test(e.target.tagName) || e.target.disabled || e.target.readOnly ){
+					e.preventDefault();
+				}
+			}
+		});
+	}
+	
 
 	$rootScope.metaTitlePlace = function(place) {
 		return place.properties.city
@@ -134,14 +150,19 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 
 	$rootScope.afterMapInit=function(Map){
 		$rootScope.MAP = Map;
-
 		setTimeout(function() {
 			var place = $rootScope.place;
 			if (place) {
-				$scope.goToPlace(place)    	
+				$scope.goToPlace(place)
 			}
+//			$scope.cls($('.ymaps-2-1-31-search'));
 		}, 1000);
 	};
+	
+	$scope.toggleSearch = function() {
+		$scope.opn($('.ymaps-2-1-31-search'));
+	}
+
 
   $rootScope.choosePlace = function(place){
 		$location.path('/places/'+place.properties.id);
