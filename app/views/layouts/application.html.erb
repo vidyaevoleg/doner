@@ -120,14 +120,14 @@
 					</div>
 				</div>
 				<div class="lo-l-map" ng-controller="MapCtrl">
+					<button class="lo-l-map-opnsearch" ng-click="toggleSearch()">Найти</button>
 					<ya-map ya-zoom="12" ya-after-init="afterMapInit($target)" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl searchControl" ya-event-click="mapClick($event)">
-<!--						<ya-control ya-type="searchControl" ></ya-control>-->
+<!--						<ya-control ya-type="button" ya-params="Найти" ya-options="{float:'left'}"></ya-control>-->
 						<ya-cluster ya-options="{preset:'islands#invertedRedClusterIcons'}">
 							<ya-geo-object href="#/places/{{place.id}}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ya-options="{preset: 'islands#redIcon'}"></ya-geo-object>
 						</ya-cluster>
 					</ya-map>
 				</div>
-				<button class="kek" ng-click="toggleSearch()">show search</button>
 				<a href="#/create_place" class="lo-l-addplace" ng-click="addPlaceAction()">Добавить место</a>
 			</div>
 			<ui-view></ui-view>

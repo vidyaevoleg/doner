@@ -159,8 +159,20 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		}, 1000);
 	};
 	
+	
 	$scope.toggleSearch = function() {
-		$scope.opn($('.ymaps-2-1-31-search'));
+		if (!$('.lo-l-map-opnsearch').hasClass('opened')) {
+			$('.lo-l-map-opnsearch').html('Скрыть').addClass('opened');
+			$scope.opn($('.ymaps-2-1-31-search'));
+		} else {
+			$('.lo-l-map-opnsearch').html('Найти').removeClass('opened');
+			$scope.cls($('.ymaps-2-1-31-search'));
+		}
+		
+//		$scope.cls($('.lo-l-map-opnsearch'));
+//		setTimeout(function(){
+			
+//		}, 200);
 	}
 
 

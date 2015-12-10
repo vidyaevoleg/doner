@@ -75,14 +75,8 @@ $act: rgb(240,67,61);
 
 .ymaps-2-1-31-search {
 	display: none;
+	left: 35px;
 }
-//.act {
-//	color: #000;
-//	&:active {
-//		colr
-//	}
-//}
-
 
 html {
 	overflow-y: scroll;
@@ -544,6 +538,21 @@ body {
 //			-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 //			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 //					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
+			&-opnsearch {
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				width: 60px;
+				height: 27px;
+				background: white;
+				border-radius: 2px;
+				border: 1px solid #888;
+				font-size: 12px;
+				z-index: 10;
+				&:focus {
+					outline: none;
+				}
+			}
 		}
 		&-addplace {
 			display: inline-block;

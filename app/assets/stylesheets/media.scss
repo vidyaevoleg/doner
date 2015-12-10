@@ -163,6 +163,9 @@
 	.lo-r {
 		width: 400px !important;
 	}
+	.ymaps-2-1-31-search {
+		width: 260px !important;
+	}
 }
 
 @media screen and (max-width: 420px) {
@@ -215,6 +218,9 @@
 		&-map {
 			width: 300px !important;
 			height: 300px !important;
+			&-opnsearch {
+				display: none !important;
+			}
 		}
 	}
 	.lo-r {
@@ -252,6 +258,7 @@
 	}
 	.ymaps-2-1-31-search {
 		display: block !important;
+		width: 100% !important;
 		left: 0 !important;
 	}
 	.dz-message {
