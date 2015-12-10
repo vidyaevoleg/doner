@@ -544,11 +544,14 @@ body {
 				left: 10px;
 				width: 60px;
 				height: 27px;
-				background: white;
+				background: #fcfcfc;
 				border-radius: 2px;
 				border: 1px solid #888;
 				font-size: 12px;
-				z-index: 10;
+				z-index: 8;
+				&:hover {
+					background: #fff;
+				}
 				&:focus {
 					outline: none;
 				}
@@ -580,12 +583,6 @@ body {
 //				-webkit-box-shadow: 0px rgba(0,0,0,0.2);
 //				   -moz-box-shadow: 0px rgba(0,0,0,0.2);
 //						box-shadow: 0px rgba(0,0,0,0.2);
-			}
-			&-tip {
-				margin-left: 30px;
-				position: relative;
-				font-size: 14px;
-				color: #797979;
 			}
 		}
 	}
@@ -1198,24 +1195,69 @@ body {
 					.share {
 						display: inline-block;
 						&-item {
-							width: 16px;
-							height: 12px;
+//							width: 44px;
+							height: 20px;
+							line-height: 20px;
+							border-radius: 2px;
 							position: relative;
-							margin-right: 14px;
-//							background: pink;
+							margin: 0 4px 8px 0;
+							border: 1px solid;
 							cursor: pointer;
 							display: inline-block;
+							vertical-align: top;
 							&:hover {
 								path {
-									fill: $act;
+									fill: #fff;
+								}
+								&.vk {
+									background: #5B7FA6;
+								}
+								&.fb {
+									background: #3b5998;
+								}
+								&.url {
+									background: #5a5a5a;
+								}
+								.share-item-title {
+									color: #fff;
 								}
 							}
-//							&.vk {
-//								background: #5B7FA6;
-//							}
-//							&.fb {
-//								background: #3b5998;
-//							}
+							&.vk {
+								border-color: #5B7FA6;
+								color: #5B7FA6;
+							}
+							&.fb {
+								border-color: #3b5998;
+								color: #3b5998;
+								.share-item-icon {
+									height: 14px !important;
+									width: 14px !important;
+									margin-top: 2px !important;
+								}
+							}
+							&.url {
+								border-color: #5a5a5a;
+								color: #5a5a5a;
+								.share-item-icon {
+									height: 14px !important;
+									width: 14px !important;
+									margin-top: 2px !important;
+								}
+							}
+							&-icon {
+//								background: pink;
+								display: inline-block;
+								height: 18px;
+								width: 18px;
+								margin: 1px 4px 0 4px;
+							}
+							&-title {
+								display: inline-block;
+								font-size: 12px;
+								vertical-align: top;
+								height: 100%;
+								margin-right: 6px;
+							}
 						}
 					}
 				}
@@ -1370,7 +1412,9 @@ body {
 		line-height: 40px;
 		box-sizing: border-box;
 		padding-left: 10px;
-		background: #f5f5f5;
+//		background: #f5f5f5;
+		border: 1px solid #d1d1d1;
+		background: none;
 		border-radius: 2px;
 		font-weight: 800;
 		font-size: 14px;
@@ -1382,12 +1426,13 @@ body {
 	}
 	&-body {
 		width: 100%;
-		height: 150px;
+		height: 280px;
 		resize: none;
 		padding: 14px 10px;
-		background: #f5f5f5;
+//		background: #f5f5f5;
+		background: none;
 		border-radius: 2px;
-		border: none;
+		border: 1px solid #d1d1d1;
 		box-sizing: border-box;
 		font-size: 14px;
 //		-webkit-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.14);
@@ -1398,9 +1443,35 @@ body {
 //			border: 1px solid #959595;
 		}
 	}
-	&-images {
-		&-one {
-			width: 100px;
+	&-img {
+		position: relative;
+		margin-top: 20px;
+		&-item {
+			width: 120px;
+			display: inline-block;
+			position: relative;
+			vertical-align: middle;
+			margin: 0 0 10px 10px;
+			img {
+				width: 100%;
+				display: block;
+			}
+			&-delete {
+				position: absolute;
+				top: -8px;
+				right: -8px;
+				width: 20px;
+				height: 20px;
+				background: #fff;
+				border-radius: 100%;
+				padding: 3px;
+				cursor: pointer;
+				&:hover {
+					path {
+						fill: $act;
+					}
+				}
+			}
 		}
 	}
 	&-price {
@@ -1409,11 +1480,12 @@ body {
 		margin: 10px 0 14px;
 		font-weight: 600;
 		&-input {
-			border: none;
+			border: 1px solid #d1d1d1;
 			width: 60px;
 			height: 30px;
 			margin: 0 5px;
-			background: #f5f5f5;
+//			background: #f5f5f5;
+			background: none;
 			text-align: center;
 			font-weight: 800;
 			font-size: 14px;
@@ -1513,9 +1585,8 @@ body {
 	&-dropzone {
 		width: 100%;
 		height: 80px;
-//		background: red;
+		margin: 20px 0;
 		border-radius: 3px;
-		margin: 10px 0;
 		position: relative;
 		overflow: hidden;
 //		border: 1px dashed #fff;
@@ -1556,6 +1627,8 @@ body {
 	}
 	&-submit {
 		text-align: right;
+		position: relative;
+		margin-top: 20px;
 		button {
 			border: none;
 			background: none;
@@ -1704,14 +1777,14 @@ input.switch:empty {
 input.switch:empty ~ label {
 	position: relative;
 	float: left;
-	line-height: 25px;
-	text-indent: 4em;
+	line-height: 24px;
+	text-indent: 50px;
 	cursor: pointer;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	color: gray;
+	color: #888;
 	font-size: 16px;
 
 }
@@ -1723,7 +1796,7 @@ input.switch:empty ~ label:before, input.switch:empty ~ label:after {
 	left: 0;
 	content:' ';
 	// width: 48px;
-	height: 24px;
+	height: 23px;
 	width: 42px;
 	background-color: lightgray;
 	border-radius: 12px;
@@ -1735,24 +1808,24 @@ input.switch:empty ~ label:after {
 	 width: 19px;
 	height: 19px;
 //	width: 23px;
-	 top: 3px;
+	 top: 2px;
 //	top: 1px;
 //	bottom: 1px;
 //	 bottom: 3px;
-	 margin-left: 3px;
+	 margin-left: 2px;
 //	margin-left: 1px;
 	background-color: white;
 	border-radius: 100%;
 
 }
 input.switch:checked ~ label:before {
-	background-color: $act;
+	background-color: #000;
 
 }
 input.switch:checked ~ label:after {
 	// margin-left: 25px;
-	margin-left: 20px;
+	margin-left: 21px;
 }
 input.switch:checked ~ label {
-	color: darkgray;
+	color: #000;
 }

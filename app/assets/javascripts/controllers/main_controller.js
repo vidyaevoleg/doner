@@ -164,6 +164,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		if (!$('.lo-l-map-opnsearch').hasClass('opened')) {
 			$('.lo-l-map-opnsearch').html('Скрыть').addClass('opened');
 			$scope.opn($('.ymaps-2-1-31-search'));
+			$('.ymaps-2-1-31-input__control').focus();
 		} else {
 			$('.lo-l-map-opnsearch').html('Найти').removeClass('opened');
 			$scope.cls($('.ymaps-2-1-31-search'));
@@ -179,10 +180,11 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
   $rootScope.choosePlace = function(place){
 		$location.path('/places/'+place.properties.id);
 	  if (!$('.lo-l-head-menu').hasClass('hidden')) {
-		  setTimeout(function(){
-//			alert('WOW');
-			$('body').animate({ scrollTop: $('.lo-r-card-cur').offset().top - 10}, 1000);
-		}, 800);
+		  if ($('.lo-l').css('position') === 'relative') {
+			setTimeout(function(){
+				$('body').animate({ scrollTop: $('.lo-r-card-cur').offset().top - 10}, 1000);
+			}, 800);
+		  }
 	  }
   };
 	
@@ -207,6 +209,11 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 			$('#review-'+review_id).toggle(500)
 			$location.path('/places/'+ $stateParams.id)
 		}
+	}
+
+	$scope.copyReviewUrl = function(place, review) {
+		var url = 'http://topdoner.com/#/places/'+ place.properties.id +'/reviews/' + review.id;
+		prompt("Copy to clipboard: Ctrl+C, Enter", url);
 	}
 
 	$scope.cutAddress = function(a) {
@@ -272,7 +279,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	
 	$rootScope.mapClick=function(e){
     var coords = e.get('coords');
-	
+//	$('.addplace-tip').addClass('hidden');
     $scope.new_place = {coordinates: coords.toString(),
     										city: '',
     										metro: '',
@@ -342,11 +349,11 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
     return true
   }
 	$scope.addPlaceAction = function() {
-    $scope.new_place = undefined
-		$('.lo-l-addplace').after('<span class="lo-l-addplace-tip">Выбирай на карте место, браток.</span>');
-		setTimeout(function(){
-			$('.lo-l-addplace-tip').fadeOut(2000);
-		}, 1000);
+    	$scope.new_place = undefined;
+//		$('.lo-l-addplace').after('<span class="lo-l-addplace-tip">Выбирай на карте место, браток.</span>');
+//		setTimeout(function(){
+//			$('.lo-l-addplace-tip').fadeOut(2000);
+//		}, 1000);
 	}
 	
 	$scope.opn = function(what) {
@@ -446,33 +453,43 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		}
 	}
 	
-	  $scope.stopBlur = function() {
-//	  $('.lo-r-card-bg').removeClass('blured');
+	  $scope.stopBlur = function(touch) {
 		$('.lo-r-card-bg-norm').css('opacity', 1);
-//		$('.lo-r-card-bg-blured').addClass('hover');
 		  $('.lo-r-card-bg-blured').css('opacity', 0);
-//	  $('.lo-r-card-cont').fadeTo(200,0);
-//		  	  $('.lo-r-card-cont').addClass('hidden');
 		  $('.lo-r-card-cont-top').addClass('hover');
 		  $('.lo-r-card-cont-bottom').addClass('hover');
+		  if (touch) {
+			setTimeout(function(){
+				$scope.startBlur();
+			}, 1200);
+		  }
   }
+	  
+	$scope.hoverOrClick = function() {
+		var isTouch = 'ontouchstart' in document.documentElement;
+		$('.lo-r-card').off();
+		if (isTouch) {
+			$('.lo-r-card').click(function(){
+				$scope.stopBlur(true);
+			});
+		} else {
+			setTimeout(function(){
+				$('.lo-r-card').mouseenter(function(){
+					$scope.stopBlur(false);
+				})
+				$('.lo-r-card').mouseleave(function(){
+					$scope.startBlur();
+				})
+			}, 800);
+		}
+	}
+	  
+	  
   $scope.startBlur = function() {
-//	  		$('.lo-r-card-bg-norm').fadeTo(200,0);
-	  		$('.lo-r-card-bg-norm').css('opacity', 0);
-
-//	  $('.lo-r-card-bg-blured').fadeTo(200,1);
-//	  		$('.lo-r-card-bg-blured').removeClass('hover');
-	  		  $('.lo-r-card-bg-blured').css('opacity', 1);
-
-
-//	  $('.lo-r-card-cont').fadeTo(200,1);
-//	  $('.lo-r-card-cont').removeClass('hidden');
-//	  		  $('.lo-r-card-cont-top','.lo-r-card-cont-bottom').removeClass('hover');
+			$('.lo-r-card-bg-norm').css('opacity', 0);
+			  $('.lo-r-card-bg-blured').css('opacity', 1);
 	  $('.lo-r-card-cont-top').removeClass('hover');
 		  $('.lo-r-card-cont-bottom').removeClass('hover');
-	  
-	  
-
   }
   
   

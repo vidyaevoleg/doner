@@ -15,8 +15,6 @@
 				<div class="lo-r-card-rating">
 					{{place.properties.rating}}
 				</div>
-				<div class="lo-r-card-dist" ng-show="isUserLocation()">{{showPlaceDist()}} км</div>
-<!--				<div>{{place.properties.max_price}}</div>-->
 			</div>
 			<div class="lo-r-card-cont lo-r-card-cont-bottom">
 				<div class="lo-r-card-metro" ng-show="place.properties.metro" ng-class="getMetroColor(place.properties.metro_line)">
@@ -31,6 +29,7 @@
 					</div>
 					<div class="lo-r-card-metro-title">{{place.properties.metro}}</div>
 				</div>
+				<div class="lo-r-card-dist" ng-show="isUserLocation()">{{showPlaceDist()}}</div>
 				<div class="lo-r-card-count">{{renameReviewCount(place.properties.reviews_count)}}</div>
 			</div>
 	</div>
