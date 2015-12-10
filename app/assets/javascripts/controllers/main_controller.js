@@ -3,7 +3,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 
 
 	$rootScope.MAP;
-	$scope.list_limit = 8;
+	$scope.list_limit = 4;
 	
 	$scope.noBackspaceEvent = function(){
 		/*
@@ -71,7 +71,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	
 	$scope.loadMore = function() {
 		if ($scope.list_limit < $scope.places.length) {
-			$scope.list_limit = $scope.list_limit + 6;
+			$scope.list_limit = $scope.list_limit + 8;
 		} else {
 			$scope.list_limit = $scope.list_limit + 1;
 			$scope.cls($('.load-more'));
