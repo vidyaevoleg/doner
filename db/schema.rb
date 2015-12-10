@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123192118) do
+ActiveRecord::Schema.define(version: 20151210182331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,11 +52,13 @@ ActiveRecord::Schema.define(version: 20151123192118) do
     t.string   "street"
     t.string   "metro"
     t.string   "coordinates"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "city"
     t.integer  "user_id"
     t.string   "metro_line"
+    t.string   "rating"
+    t.integer  "reviews_count", default: 0
   end
 
   add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree

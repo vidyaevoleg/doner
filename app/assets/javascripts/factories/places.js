@@ -19,6 +19,7 @@ Topdoner.factory('places', ['$http','$location','$rootScope','$q',function($http
       this.deletePlace = function (place_id) {
         $http.delete('/places/'+place_id)
       }
+      
       this.createPlace = function(place){
         $http.post('/places',{place: place}).success(function(data){
           $rootScope.place = data

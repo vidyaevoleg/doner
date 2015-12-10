@@ -11,7 +11,7 @@ Topdoner.controller('ShareReviewCtrl', ['$scope','$location','$rootScope', funct
 	};
 
 	var reviewDescriptionHelper = function(review) {
-		return review.body.split(/\s+/).slice(0,40).join(" ") + '...'
+		return review.body.split(/\s+/).slice(0,50).join(" ") + '...'
 	};
 
 	var reviewMediaHelper = function(review) {
