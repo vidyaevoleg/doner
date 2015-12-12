@@ -19,11 +19,7 @@ function configure($urlRouterProvider, $stateProvider, UIRouterMetatagsProvider)
         .setOGURL(true);
 }
 
-Topdoner.run(['$rootScope', 'MetaTags', runBlock])
-
-
-
-
+Topdoner.run(['$rootScope', 'MetaTags', runBlock]);
 
 Topdoner.filter('isRated', function () {
   return function(items) {
