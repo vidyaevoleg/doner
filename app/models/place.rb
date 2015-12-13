@@ -25,7 +25,7 @@ class Place < ActiveRecord::Base
     end  
   end
 
-  def rating
+  def updated_rating
   	if reviews.count > 0
       data = reviews.map {|review| review.rating}.compact
   		rating = (data.inject(0){|sum,x| sum+x}.to_f / data.count.to_f).to_f.round(1)
@@ -95,18 +95,14 @@ class Place < ActiveRecord::Base
         metro_line: metro_line,
         author: user,
         min_price: min_price,
-        max_price: max_price
+        max_price: max_price,
+        reviews_count: reviews_count
       },
       geometry: {
         coordinates: get_coords,
         type: 'Point'
       }
     }
-    if reviews.any? 
-      json[:properties][:reviews_count] = reviews.count
-    else 
-      json[:properties][:reviews_count] = 0 
-  	end
     if images.any?
       json[:properties][:image] = {url: images.last.file.url}
     end

@@ -205,9 +205,9 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 
 	$rootScope.deleteReview = function(review_id){
 		if (confirm('Удалить обзор?')) {
-			reviews.deleteReview(review_id)
+			var place_id = $stateParams.id;
+			reviews.deleteReview(review_id, place_id)
 			$('#review-'+review_id).toggle(500)
-			$location.path('/places/'+ $stateParams.id)
 		}
 	}
 

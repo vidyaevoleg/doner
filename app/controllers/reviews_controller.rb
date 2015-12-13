@@ -1,10 +1,11 @@
 class ReviewsController < ApplicationController
 	skip_before_filter :verify_authenticity_token, only: [:create,:destroy,:update]
-	before_action :set_place, only: :create
 	before_action :set_review, only: [:update,:destroy,:show]
+	before_action :set_place, only: [:update,:create]
 	before_action :check_ability, only: [:destroy,:update]
 	def create
 		@review = current_user.reviews.create(review_params)
+		@place.update!(rating: @place.updated_rating, reviews_count: @place.reviews.count)
 		if params[:review][:images_id]
 			images_id = params[:review][:images_id].to_s.split(',')
 			bind_image_and_review(images_id)
@@ -15,6 +16,7 @@ class ReviewsController < ApplicationController
 
 	def update
 		@review.update_attributes(review_params)
+		@place.update!(rating: @place.updated_rating, reviews_count: @place.reviews.count)
 		if params[:review][:images_id]
 			images_id = params[:review][:images_id].to_s.split(',')
 			bind_image_and_review(images_id)
@@ -23,11 +25,10 @@ class ReviewsController < ApplicationController
 	end
 
 	def destroy
+		@place = @review.place
 		@review.destroy
-		respond_to do |f|
-			f.json
-			f.html {redirect_to :back}
-		end
+		@place.update!(rating: @place.updated_rating, reviews_count: @place.reviews.count)
+		render json: @place.to_nice_json
 	end
 
 	def show
@@ -62,7 +63,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def set_place
-		@place = Place.find(params[:review][:place_id].to_i)
+		@place = Place.find(params[:review][:place_id])
 	end
 
 end

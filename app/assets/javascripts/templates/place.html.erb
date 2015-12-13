@@ -57,7 +57,7 @@
 		</div>
 	</div>
 
-	<div class="lo-r-noreviews" ng-show="isNoReviews(reviews)">Пока нет ни одного обзора. Будте первыми!</div>
+	<div class="lo-r-noreviews" ng-show="place.reviews_count === 0">Пока нет ни одного обзора. Будте первыми!</div>
 	<div ng-repeat="review in reviews | orderBy:'-date'" class="lo-r-cont" id="review-{{review.id}}">
 		<!--<div class="lo-r-cont-review" ng-class="review == current_review ? 'ext' : ''" ng-click="makeReviewCurrent(review)">-->
 		<div class="lo-r-cont-review">
