@@ -19,6 +19,10 @@ class Review < ActiveRecord::Base
 	def n_to_br
 		self.body = self.body.gsub(/\n/, '<br>')
 	end
+	
+	def br_to_n
+		body.gsub("<br>", "\r\n")
+	end
 
 	def to_nice_json
 		json={
@@ -31,6 +35,7 @@ class Review < ActiveRecord::Base
 			min_price: min_price,
 			max_price: max_price,
 			body: body.html_safe,
+			body_nl: br_to_n,
 			title: title,
 			total: total,
 			author: user.to_nice_json,

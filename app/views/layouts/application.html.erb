@@ -46,8 +46,18 @@
 	<div class="prnj prnj-sn hidden" ng-click="closeSlideNav()"></div>
 	<div class="popup popup-about hidden">
 <!--		<div class="popup-close" ng-click="closePopup()">✕</div>-->
-		Это тип такой сайтик с картой где шаурма.
-		АХХАХАХАХХА)))
+		<h2>Что это?</h2>
+		<p>Топдонер – инструмент для мгновенного поиска шаурмы, чтения и публикации соответсвующих обзоров. 
+		Любые вопросы, замечания и предложения по работе сервиса принимаются в разделе обратной связи.</p>
+		<br>
+		<h2>Фичи</h2>
+		<ul>
+			<li>Мгновенная регистрация без паролей и почт</li>
+			<li>Объявление нового места в один клик</li>
+			<li>Система рейтинга, на основе которой можно найти подходящие варианты</li>
+			<li>Поиск ближайших мест (разрешите браузеру определить ваше местоположение)</li>
+			<li>Возможность анонимной публикации обзора</li>
+		</ul>
 	</div>
 	<div class="popup popup-login hidden">
 <!--		<div class="popup-close" ng-click="closePopup()">✕</div>-->
@@ -97,14 +107,16 @@
 						<a ng-href="#/home" ng-click="setDefaultZoom()"></a>
 					</div>
 					<div class="lo-l-head-nav">
-<!--
+
 						<div class="lo-l-head-nav-item act">
-							<a href="#/create_place" ng-click="addPlaceAction()">Добавить место</a>
+							<a href="#/create_place" ng-click="addPlaceAction()">Новое место</a>
 						</div>
--->
+
+<!--
 						<div class="lo-l-head-nav-item act" ng-click="openPopup('.popup-about')">
 							Что это?
 						</div>
+-->
 						<div class="lo-l-head-nav-item act" ng-hide="current_user" ng-click="openPopup('.popup-login')">
 							Войти
 						</div>
@@ -126,15 +138,27 @@
 				</div>
 				<div class="lo-l-map" ng-controller="MapCtrl">
 					<button class="lo-l-map-opnsearch" ng-click="toggleSearch()">Найти</button>
+					<div class="lo-l-map-finduser" ng-click="findUser()">
+						<svg width="14px" height="14px" viewBox="0 0 411 412" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+								<path d="M0,150.596 L410.17,0 L257.743,412 L207.65,202.521 L0,150.596 Z M0,150.596" id="navigation-icon" fill="#666666" sketch:type="MSShapeGroup"></path>
+							</g>
+						</svg>
+					</div>
 					<ya-map ya-zoom="12" ya-after-init="afterMapInit($target)" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl searchControl" ya-event-click="mapClick($event)">
 <!--						<ya-control ya-type="button" ya-params="Найти" ya-options="{float:'left'}"></ya-control>-->
 						<ya-cluster ya-options="{preset:'islands#invertedRedClusterIcons'}">
 							<ya-geo-object href="#/places/{{place.id}}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ya-options="{preset: 'islands#redIcon'}"></ya-geo-object>
+<!--							<ya-geo-object ng-show="super_new_place" ya-source="super_new_place" ya-options="{preset: 'islands#dotIcon',iconColor: '#735184'}"></ya-geo-object>-->
 						</ya-cluster>
 					</ya-map>
 				</div>
-				<a href="#/create_place" class="lo-l-addplace" ng-click="addPlaceAction()">Добавить место</a>
+<!--				<a href="#/create_place" class="lo-l-addplace" ng-click="addPlaceAction()">Добавить место</a>-->
 <!--				<footer>kek</footer>-->
+				<div class="lo-l-footer">
+					<div class="lo-l-footer-item" ng-click="openPopup('.popup-about')">Что это?</div>
+					<div class="lo-l-footer-item"><a ng-href="#/write_us">Написать нам</a></div>
+				</div>
 			</div>
 			<ui-view></ui-view>
 		</div>
@@ -142,6 +166,7 @@
 	
 	
 <!--	<div class="what" ng-click="openPopup('.popup-about')">?</div>-->
+<!--
 	<div class="feedback">
 		<a ng-href="#/write_us">
 			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
@@ -149,6 +174,7 @@
 			</svg>
 		</a>
 	</div>
+-->
 	<%= yield %>
 
 
@@ -186,7 +212,7 @@
 <!--			<div class="lo-l-head-nav-user-logout" ng-click="logOut()">Выйти</div>-->
 		</div>
 		<hr>
-		<div class="sn-item" ng-click="snClick('addplace')"><a href="#/create_place">Добавить место</a></div>
+		<div class="sn-item" ng-click="snClick('addplace')"><a href="#/create_place">Новое место</a></div>
 		<div class="sn-item" ng-click="snClick('what')">Что это?</div>
 		<div class="sn-item" ng-click="snClick('fb')"><a ng-href="#/write_us">Написать нам</a></div>
 		<div class="sn-logout" ng-show="current_user" ng-click="logOut()">Выйти</div>

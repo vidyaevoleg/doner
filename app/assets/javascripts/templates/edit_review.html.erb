@@ -43,9 +43,9 @@
 			</div>
 <!--			<p><span ng-show="can(review)" ng-click="deleteReview(review.id)">удалить</span></p>-->
 			<input name="total" placeholder="Заголовок" ng-model="review.title" class="add-review-title"></textarea>
-			<textarea name="body" placeholder="Дело было так..." ng-model="review.body" class="add-review-body"></textarea>
+			<textarea name="body" placeholder="Дело было так..." ng-model="review.body_nl" class="add-review-body"></textarea>
 			<div class="add-review-price">
-				Прайс <input name="min_price" ng-model="review.min_price" class="add-review-price-input"><span> – </span><input name="max_price" ng-model="review.max_price" class="add-review-price-input">
+				Прайс <input name="min_price" type="number" ng-model="review.min_price" class="add-review-price-input"><span> – </span><input name="max_price" type="number" ng-model="review.max_price" class="add-review-price-input">
 				<span>
 					<svg width="12px" height="12px" y="2px" viewBox="0 0 464 511" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 						<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">

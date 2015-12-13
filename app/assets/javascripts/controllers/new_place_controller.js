@@ -18,6 +18,14 @@ Topdoner.controller('NewPlaceCtrl', ['$scope', '$location', '$rootScope', functi
       $rootScope.openPopup('.popup-login');
     }
   }
+  
+  $scope.updateImg = function() {
+	  $scope.cls($('.add-place-updateimg'));
+	  setTimeout(function(){
+		  $scope.opn($('.add-place-title'));
+	  	$scope.opn($('.add-place-dropzone'));
+	  }, 201);
+  }
  
   
   $scope.dropzone = function(){
@@ -36,14 +44,12 @@ Topdoner.controller('NewPlaceCtrl', ['$scope', '$location', '$rootScope', functi
     }
     return mediaDropzone.on("success", function(file, responseText) {
       $('.lo-r-card').css('background-image','url('+responseText.image.file.url+')');
-//		$('.add-place-submit-wrap').removeClass('hidden');
-		$scope.cls($('.add-place-dropzone'));
-		$scope.cls($('.add-place-title'));
+//		$scope.cls($('.add-place-dropzone'));
+//		$scope.cls($('.add-place-title'));
 		setTimeout(function(){
 			$scope.opn($('.add-place-submit-wrap'));
+			$scope.opn($('.add-place-updateimg'));
 		}, 400);
-//		$('.add-place-title').addClass('hidden');
-//      $('.add-place-dropzone').fadeOut(500);
       if ($scope.images_id.length > 0){
         $scope.$apply( $scope.images_id = $scope.images_id + ','+ responseText.image.id.toString())
       } else {

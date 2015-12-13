@@ -279,7 +279,13 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	
 	$rootScope.mapClick=function(e){
     var coords = e.get('coords');
-//	$('.addplace-tip').addClass('hidden');
+//	$scope.super_new_place = {
+//		geometry: {
+//			type: 'Point',
+//			coordinates: coords
+//		}
+//	};
+	//	$('.addplace-tip').addClass('hidden');
     $scope.new_place = {coordinates: coords.toString(),
     										city: '',
     										metro: '',
@@ -341,13 +347,14 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		$('.dz-message').html('Кликните или перетащите сюда фотографии');
 	}
 
-  $rootScope.reviewValid = function(review){
-    if ((review.place_id.length < 1) || (review.meat.length < 1) || (review.vegetables.length < 1) || (review.body.length < 1) || (review.service.length<1) || (review.sanitation.length <1)){
-      alert('чувак заполни все формы')
-      return false
-    }
-    return true
-  }
+	$rootScope.reviewValid = function(review){
+		if (review.body.length < 400) {
+			return false
+		} else {
+			return true
+		}
+	}
+	
 	$scope.addPlaceAction = function() {
     	$scope.new_place = undefined;
 //		$('.lo-l-addplace').after('<span class="lo-l-addplace-tip">Выбирай на карте место, браток.</span>');
@@ -381,6 +388,28 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		$('.lo-r-cont').css('position', 'relative');
 		$('.lo-r-card').css('position', 'relative');
 //		$('.cont').removeClass('blured');
+	}
+	
+	$scope.findUser = function () {
+		if (!$rootScope.places[1].properties.dist) {
+//			$scope.opn($('.lo-r-nav-select-wait'));
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition);
+			} else {
+				console.log('geolocation error :(');
+			}
+			function showPosition(position) {
+				var location = [position.coords.longitude, position.coords.latitude];
+				var list_order = $scope.places_list_order;
+				$rootScope.user_location = location;
+				$scope.goToPlace(null, 12, location)
+				$scope.showListDisp();
+				$scope.$apply($scope.places_list_order = 'properties.rating');
+				$scope.$apply($scope.places_list_order = list_order);
+			}
+		} else {
+			$scope.goToPlace(null, 12, $rootScope.user_location)
+		}
 	}
 	
 	

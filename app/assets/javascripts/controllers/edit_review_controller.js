@@ -18,8 +18,9 @@ Topdoner.controller('EditReviewCtrl', ['$scope','$filter','$stateParams','places
 
   $scope.updateReview = function(){
     var review = $rootScope.review;
-    review['place_id'] = $scope.place.properties.id
+    review['place_id'] = $scope.place.properties.id;
     delete review['images'];
+	review.body = review.body_nl;
     review['images_id'] = $scope.new_images_id;    
     if ($rootScope.reviewValid(review)){
       $http.put('/reviews/'+review.id,{review: review}).then(function(res) {

@@ -48,7 +48,6 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
 
   $scope.submitReview = function(){
     var review = $scope.new_review
-    if (creating) {
       if ($rootScope.reviewValid(review)){
         $http.post('/reviews',{review: review}).success(function(data){
           var updated_place = data.place;
@@ -57,10 +56,16 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
           $location.path('/places/'+ $stateParams.id)
         }).error(function(data,status){
           alert('error')
-        })       
-      }       
-    }
-    creating = false;
+        })
+      } else {
+		  $('.add-review-submit').after('<p class="add-review-error" style="color: red;">Слишком немногословный обзор. Попробуйте еще</p>');
+		  setTimeout(function(){
+			  $('.add-review-error').fadeTo(900, 0);
+			  setTimeout(function(){
+				  $('.add-review-error').addClass('hidden');
+			  }, 901);
+		  }, 500);
+	  }
   }
   $scope.closePlace = function(place){
     $location.path('/home')

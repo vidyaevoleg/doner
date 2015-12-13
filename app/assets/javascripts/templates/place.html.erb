@@ -94,8 +94,11 @@
 					</svg>
 				</div>
 -->
-				<div class="lo-r-cont-review-head-rating">
-					{{review.rating}}
+				<div class="lo-r-cont-review-head-right">
+					<div ng-show="review.min_price" class="lo-r-cont-review-head-price">{{review.min_price}} р.</div>
+					<div class="lo-r-cont-review-head-rating">
+						{{review.rating}}
+					</div>
 				</div>
 			</div>
 			<div class="lo-r-cont-review-body" ng-click="makeReviewCurrent(review)" ng-class="isReviewCurrent(review) ? 'ext' : ''">
