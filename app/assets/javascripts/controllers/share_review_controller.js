@@ -7,7 +7,7 @@ Topdoner.controller('ShareReviewCtrl', ['$scope','$location','$rootScope', funct
 	};
 
 	var reviewTitleHelper = function(review) {
-		return review.title + ' (отзыв на topdoner.com)';
+		return review.title;
 	};
 
 	var reviewDescriptionHelper = function(review) {
