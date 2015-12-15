@@ -163,11 +163,11 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	$scope.toggleSearch = function() {
 		if (!$('.lo-l-map-opnsearch').hasClass('opened')) {
 			$('.lo-l-map-opnsearch').html('Скрыть').addClass('opened');
-			$scope.opn($('.ymaps-2-1-31-search'));
-			$('.ymaps-2-1-31-input__control').focus();
+			$scope.opn($('.ymaps-2-1-34-search'));
+			$('.ymaps-2-1-34-input__control').focus();
 		} else {
 			$('.lo-l-map-opnsearch').html('Найти').removeClass('opened');
-			$scope.cls($('.ymaps-2-1-31-search'));
+			$scope.cls($('.ymaps-2-1-34-search'));
 		}
 		
 //		$scope.cls($('.lo-l-map-opnsearch'));
