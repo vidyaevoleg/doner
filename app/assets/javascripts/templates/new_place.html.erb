@@ -1,11 +1,13 @@
 <div class="lo-r" ng-init="signIn()">
 	<div class="lo-r-nav lo-r-nav-addplace"></div>
 	<div class="lo-r-addplace">
-		<div class="lo-r-addplace-place">
-			<h3 ng-hide="new_place">Отметьте место на карте</h3>
-			<h4 ng-hide="new_place">Для удобства поиска можно нажать кнопку "Найти" на карте и по ближайшим ориентирам перейти к искомой локации.</h4>
-			<div ng-show="new_place" class="lo-r-card"  ng-init="dropzone()">
+		<div ng-hide="new_place" class="lo-r-card lo-r-card-phantom">Клик по карте объявляет место</div>
+		<div ng-show="new_place" class="lo-r-card lo-r-card-newplace"  ng-init="dropzone()">
 		<!--		<div class="lo-r-card-bg lo-r-card-bg-grad"></div>-->
+				<div class="lo-r-card-bg lo-r-card-bg-norm"></div>
+				<div class="lo-r-card-bg lo-r-card-bg-blured">
+					<div class="lo-r-card-bg lo-r-card-bg-filter"></div>
+				</div>
 				<div class="lo-r-card-cont lo-r-card-cont-top">
 					<div class="lo-r-card-city">{{new_place.city}}</div>
 					<div class="lo-r-card-title">{{cutAddress(new_place.street)}}</div>
@@ -26,16 +28,37 @@
 		<!--			<div class="lo-r-card-count">{{renameReviewCount(place.properties.reviews_count)}}</div>-->
 				</div>
 			</div>
+		<div class="lo-r-addplace-place">
+			<div class="lo-r-addplace-title">
+				Отметьте место на карте
+				<div class="lo-r-addplace-checkmark lo-r-addplace-checkmark-place hidden">
+					<svg width="100%" height="100%" viewBox="0 0 412 326" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+						<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+							<path d="M348.218,0 L149.729,198.49 L63.754,112.491 L0,176.257 L149.733,326.03 L412,63.741 L348.218,0 Z M348.218,0" id="check-mark-icon" fill="#000000" sketch:type="MSShapeGroup"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+			<div class="lo-r-addplace-subtitle">Для удобства поиска можно нажать кнопку "Найти" на карте и по ближайшим ориентирам перейти к искомой локации.</div>
 		</div>
 		<div class="lo-r-addplace-img">
-			<h3>Загрузите фотографию места</h3>
-			<h4>Её можно будет изменить в любой момент</h4>
+			<div class="lo-r-addplace-title">
+				Загрузите фотографию места
+				<div class="lo-r-addplace-checkmark lo-r-addplace-checkmark-img hidden">
+					<svg width="100%" height="100%" viewBox="0 0 412 326" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+						<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+							<path d="M348.218,0 L149.729,198.49 L63.754,112.491 L0,176.257 L149.733,326.03 L412,63.741 L348.218,0 Z M348.218,0" id="check-mark-icon" fill="#000000" sketch:type="MSShapeGroup"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
+			<div class="lo-r-addplace-subtitle">В дальнейшем фотографию можно будет поменять.</div>
 			<div class="add-place-dropzone add-review-dropzone" ng-init="fixDropzone()">
 				<form action="/images" id="media-dropzone" class="dropzone" enctype="multipart/form-data">
 				</form>
 			</div>
 			<div class="add-place-submit-wrap">
-				<a ng-show="new_place" ng-click="createPlace()" class="add-place-submit">Создать место</a>
+				<a ng-click="createPlace()" class=" hidden add-place-submit">Создать место</a>
 			</div>
 		</div>
 	</div>

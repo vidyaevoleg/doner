@@ -43,12 +43,16 @@ Topdoner.controller('NewPlaceCtrl', ['$scope', '$location', '$rootScope', functi
       }
     }
     return mediaDropzone.on("success", function(file, responseText) {
-      $('.lo-r-card').css('background-image','url('+responseText.image.file.url+')');
+      $('.lo-r-card-bg').css('cssText','background-image: url('+responseText.image.file.url+'); background-position: center; background-size: 100%;');
+		
 //		$scope.cls($('.add-place-dropzone'));
 //		$scope.cls($('.add-place-title'));
 		setTimeout(function(){
+			$scope.opn($('.lo-r-addplace-checkmark-img'));
 			$scope.opn($('.add-place-submit-wrap'));
 			$scope.opn($('.add-place-updateimg'));
+			$rootScope.new_place_img = true;
+			$scope.validNewPlace();
 		}, 400);
       if ($scope.images_id.length > 0){
         $scope.$apply( $scope.images_id = $scope.images_id + ','+ responseText.image.id.toString())

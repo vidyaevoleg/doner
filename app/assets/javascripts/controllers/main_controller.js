@@ -150,6 +150,8 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 
 	$rootScope.afterMapInit=function(Map){
 		$rootScope.MAP = Map;
+		$rootScope.YMAPS = ymaps;
+
 		setTimeout(function() {
 			var place = $rootScope.place;
 			if (place) {
@@ -277,14 +279,19 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		return 'lo-r-card-metro-'+line;
 	}
 	
-	$rootScope.mapClick=function(e){
-    var coords = e.get('coords');
-//	$scope.super_new_place = {
+	
+	
+//	$rootScope.meme = {
 //		geometry: {
 //			type: 'Point',
-//			coordinates: coords
+//			coordinates: [55.653503, 37.648745]
 //		}
 //	};
+//	
+	
+	$rootScope.mapClick=function(e){
+    var coords = e.get('coords');
+		
 	//	$('.addplace-tip').addClass('hidden');
     $scope.new_place = {coordinates: coords.toString(),
     										city: '',
@@ -337,7 +344,29 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
         }
   	  });
 		});
+//		setTimeout(function(){
+			if ($scope.new_place) {
+				$scope.opn($('.lo-r-addplace-checkmark-place'));
+				$scope.validNewPlace();
+			}
+//		}, 80);
   };
+	
+	$scope.validNewPlace = function() {
+//		alert('place: '+ !!$scope.new_place + ' / img: '+ $rootScope.new_place_img);
+		if ($scope.new_place_img) {
+			$('.lo-r-card-newplace').mouseenter(function(){
+				$scope.stopBlur();
+			}).mouseleave(function(){
+				$scope.startBlur();
+			});
+		}
+		if ($scope.new_place && $rootScope.new_place_img) {
+			$scope.opn($('.add-place-submit'));
+		} else {
+			return false;
+		}
+	}
 	
 	$rootScope.createFuckingPlace = function(place){
 		places.createPlace(place);
@@ -402,7 +431,9 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 				var location = [position.coords.longitude, position.coords.latitude];
 				var list_order = $scope.places_list_order;
 				$rootScope.user_location = location;
-				$scope.goToPlace(null, 12, location)
+				$scope.goToPlace(null, 12, location);
+//				$scope.user_location_place.geometry.coordinates = location;
+				$scope.addUserLocationPlacemark(location);
 				$scope.showListDisp();
 				$scope.$apply($scope.places_list_order = 'properties.rating');
 				$scope.$apply($scope.places_list_order = list_order);
@@ -412,6 +443,21 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		}
 	}
 	
+	
+	$scope.addUserLocationPlacemark = function (loc) {
+		var placemark = new $rootScope.YMAPS.Placemark(loc, {
+//				balloonContent: '<img src="http://img-fotki.yandex.ru/get/6114/82599242.2d6/0_88b97_ec425cf5_M" />',
+//				iconContent: "Ты тут уёбок"
+			}, {
+				preset: "islands#dotIcon",
+				iconColor: '#0014ff',
+				// Отключаем кнопку закрытия балуна.
+				balloonCloseButton: false,
+				// Балун будем открывать и закрывать кликом по иконке метки.
+				hideIconOnBalloonOpen: false
+			});
+		$rootScope.MAP.geoObjects.add(placemark);
+	}
 	
 	$rootScope.placesSort = 'r';
 	$scope.whatPlacesSort = function(i) {
@@ -444,7 +490,8 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 				function showPosition(position) {
 					var location = [position.coords.longitude, position.coords.latitude];
 					$rootScope.user_location = location;
-					$scope.goToPlace(null, 12, location)
+					$scope.goToPlace(null, 12, location);
+					$scope.addUserLocationPlacemark(location);
 //					console.log('STARTS');
 	//				if (!$rootScope.places[1].properties.dist) {
 						$scope.showListDisp();
