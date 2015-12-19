@@ -1,4 +1,5 @@
 <div class="lo-r" ng-init="findCurrentReview()">
+		<div ng-init="setLastViewedPlace()"></div>
 	<!--<div class="lo-r-card-wrapper">-->
 		<div class="lo-r-nav" ng-init="setRightCenter()">
 			<div class="lo-r-nav-select">
@@ -15,7 +16,7 @@
 			</div>
 			<div class="lo-r-card-cont lo-r-card-cont-top">
 				<div class="lo-r-card-city">{{place.properties.city}}</div>
-				<div class="lo-r-card-title">{{cutAddress(place.properties.street)}}</div>
+				<div class="lo-r-card-title">{{place.properties.street}}</div>
 				<div class="lo-r-card-rating">
 					{{place.properties.rating}}
 				</div>

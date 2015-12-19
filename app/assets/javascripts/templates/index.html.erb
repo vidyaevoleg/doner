@@ -1,4 +1,5 @@
 <div class="lo-r" ng-init="removeSuperNewMark()">
+	<div ng-init="showLastViewedPlace()"></div>
 	<div class="lo-r-nav">
 		<div class="lo-r-nav-select">
 			<span ng-click="choosePlacesSort('r')" class="lo-r-nav-select-item lo-r-nav-select-item-r" ng-class="whatPlacesSort('r')">Лучшие</span>
@@ -10,16 +11,15 @@
 	<div class="lo-r-places">
 		<div ng-repeat="place in places | isRated | orderBy: places_list_order | limitTo: list_limit">
 			<hr>
-			<div class="lo-r-card lo-r-card-places" ng-click="choosePlace(place)">
+			<div class="lo-r-card lo-r-card-places" ng-click="choosePlace(place)" id="{{'place-' + place.properties.id}}">
 				<div class="lo-r-card-cont lo-r-card-cont-top">
 					<div class="lo-r-card-city">{{place.properties.city}}</div>
-					<div class="lo-r-card-title">{{cutAddress(place.properties.street)}}</div>
+					<div class="lo-r-card-title">{{place.properties.street}}</div>
 					<div class="lo-r-card-rating">
 						{{place.properties.rating}}
 					</div>
 				</div>
 				<div class="lo-r-card-cont lo-r-card-cont-bottom">
-<!--					{{place.properties.dist}}км-->
 					<div class="lo-r-card-metro" ng-show="place.properties.metro" ng-class="getMetroColor(place.properties.metro_line)">
 						<div class="lo-r-card-metro-logo">
 							<svg width="100%" viewBox="0 0 670 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">

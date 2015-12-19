@@ -104,82 +104,72 @@
 			<div class="popup-login-button-title">Войти через Фейсбук</div>
 			<a href="users/auth/facebook"></a>
 		</div>
-<!--		<a class="popup-login-button vk" href="users/auth/facebook">piska</a>-->
-<!--		<a class="popup-login-button fb" href="users/auth/facebook">siska</a>-->
-<!--
-		
-		 <% if devise_mapping.omniauthable? %>
-		   	<% resource_class.omniauth_providers.each do |provider| %>
-				<div class="popup-login-button">
-		     	<%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %>
-				</div>
-		   	<% end %>
-		 <% end %>
--->
 	</div>
 
 	<div class="cont" ng-controller="UsersCtrl">
-		<div class="lo">
-			<div class="lo-l">
-				<div class="lo-l-head">
-					<div class="lo-l-head-logo">
-						<a ng-href="#/home" ng-click="setDefaultZoom()"></a>
-					</div>
-					<div class="lo-l-head-nav">
+		<div class="lo" ng-controller="PresenterCtrl">
+			<div class="lo-interface" ng-controller="InterfaceCtrl">
+				<div class="lo-l">
+					<div class="lo-l-head">
+						<div class="lo-l-head-logo">
+							<a ng-href="#/home" ng-click="setDefaultZoom()"></a>
+						</div>
+						<div class="lo-l-head-nav">
 
-						<div class="lo-l-head-nav-item act">
-							<a href="#/create_place" ng-click="addPlaceAction()">Новое место</a>
-						</div>
+							<div class="lo-l-head-nav-item act">
+								<a href="#/create_place">Новое место</a>
+							</div>
 
-<!--
-						<div class="lo-l-head-nav-item act" ng-click="openPopup('.popup-about')">
-							Что это?
+	<!--
+							<div class="lo-l-head-nav-item act" ng-click="openPopup('.popup-about')">
+								Что это?
+							</div>
+	-->
+							<div class="lo-l-head-nav-item act" ng-hide="current_user" ng-click="openPopup('.popup-login')">
+								Войти
+							</div>
+							<div class="lo-l-head-nav-user" ng-show="current_user">
+								<div class="lo-l-head-nav-user-img" style="background-image: url({{current_user.image_url}})"></div>
+								<a href="{{current_user.link}}" target="_blank" class="lo-l-head-nav-user-name">
+									{{ current_user.username }}
+								</a>
+								<div class="lo-l-head-nav-user-logout" ng-click="logOut()">Выйти</div>
+							</div>
 						</div>
--->
-						<div class="lo-l-head-nav-item act" ng-hide="current_user" ng-click="openPopup('.popup-login')">
-							Войти
-						</div>
-						<div class="lo-l-head-nav-user" ng-show="current_user">
-							<div class="lo-l-head-nav-user-img" style="background-image: url({{current_user.image_url}})"></div>
-							<a href="{{current_user.link}}" target="_blank" class="lo-l-head-nav-user-name">
-								{{ current_user.username }}
-							</a>
-							<div class="lo-l-head-nav-user-logout" ng-click="logOut()">Выйти</div>
+						<div class="lo-l-head-menu" ng-click="openSlideNav()">
+							<svg width="100%" viewBox="0 0 412 316" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+								<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+									<path d="M412,65.5 L0,65.5 L0,0.5 L412,0.5 L412,65.5 L412,65.5 L412,65.5 L412,65.5 Z M412,125.5 L0,125.5 L0,190.5 L412,190.5 L412,125.5 L412,125.5 L412,125.5 L412,125.5 Z M412,250.5 L0,250.5 L0,315.5 L412,315.5 L412,250.5 L412,250.5 L412,250.5 L412,250.5 Z M412,250.5" id="menu-icon" fill="#000000" sketch:type="MSShapeGroup"></path>
+								</g>
+							</svg>
 						</div>
 					</div>
-					<div class="lo-l-head-menu" ng-click="openSlideNav()">
-						<svg width="100%" viewBox="0 0 412 316" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-								<path d="M412,65.5 L0,65.5 L0,0.5 L412,0.5 L412,65.5 L412,65.5 L412,65.5 L412,65.5 Z M412,125.5 L0,125.5 L0,190.5 L412,190.5 L412,125.5 L412,125.5 L412,125.5 L412,125.5 Z M412,250.5 L0,250.5 L0,315.5 L412,315.5 L412,250.5 L412,250.5 L412,250.5 L412,250.5 Z M412,250.5" id="menu-icon" fill="#000000" sketch:type="MSShapeGroup"></path>
-							</g>
-						</svg>
+					<div class="lo-l-map" ng-controller="MapCtrl">
+						<button class="lo-l-map-opnsearch" ng-click="toggleSearch()">Найти</button>
+						<div class="lo-l-map-finduser" ng-click="findUser()">
+							<svg width="14px" height="14px" viewBox="0 0 411 412" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+								<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+									<path d="M0,150.596 L410.17,0 L257.743,412 L207.65,202.521 L0,150.596 Z M0,150.596" id="navigation-icon" fill="#666666" sketch:type="MSShapeGroup"></path>
+								</g>
+							</svg>
+						</div>
+						<ya-map ya-zoom="12" ya-after-init="afterMapInit($target)" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl searchControl" ya-event-click="mapClick($event)">
+	<!--						<ya-control ya-type="button" ya-params="Найти" ya-options="{float:'left'}"></ya-control>-->
+							<ya-cluster ya-options="{preset:'islands#invertedRedClusterIcons'}">
+								<ya-geo-object href="#/places/{{place.id}}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ya-options="{preset: 'islands#redIcon'}"></ya-geo-object>
+	<!--							<ya-geo-object ya-source="meme" ya-options="{preset: 'islands#dotIcon',iconColor: '#735184'}"></ya-geo-object>-->
+							</ya-cluster>
+						</ya-map>
+					</div>
+	<!--				<a href="#/create_place" class="lo-l-addplace" ng-click="addPlaceAction()">Добавить место</a>-->
+	<!--				<footer>kek</footer>-->
+					<div class="lo-l-footer">
+						<div class="lo-l-footer-item" ng-click="openPopup('.popup-about')">Что это?</div>
+						<div class="lo-l-footer-item"><a ng-href="#/write_us">Написать нам</a></div>
 					</div>
 				</div>
-				<div class="lo-l-map" ng-controller="MapCtrl">
-					<button class="lo-l-map-opnsearch" ng-click="toggleSearch()">Найти</button>
-					<div class="lo-l-map-finduser" ng-click="findUser()">
-						<svg width="14px" height="14px" viewBox="0 0 411 412" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-								<path d="M0,150.596 L410.17,0 L257.743,412 L207.65,202.521 L0,150.596 Z M0,150.596" id="navigation-icon" fill="#666666" sketch:type="MSShapeGroup"></path>
-							</g>
-						</svg>
-					</div>
-					<ya-map ya-zoom="12" ya-after-init="afterMapInit($target)" ya-behaviors="default scrollZoom multiTouch" ya-controls="zoomControl searchControl" ya-event-click="mapClick($event)">
-<!--						<ya-control ya-type="button" ya-params="Найти" ya-options="{float:'left'}"></ya-control>-->
-						<ya-cluster ya-options="{preset:'islands#invertedRedClusterIcons'}">
-							<ya-geo-object href="#/places/{{place.id}}" ng-repeat="place in places" ya-source="place" ya-event-click="choosePlace(place)" ya-options="{preset: 'islands#redIcon'}"></ya-geo-object>
-<!--							<ya-geo-object ya-source="meme" ya-options="{preset: 'islands#dotIcon',iconColor: '#735184'}"></ya-geo-object>-->
-						</ya-cluster>
-					</ya-map>
-				</div>
-<!--				<a href="#/create_place" class="lo-l-addplace" ng-click="addPlaceAction()">Добавить место</a>-->
-<!--				<footer>kek</footer>-->
-				<div class="lo-l-footer">
-					<div class="lo-l-footer-item" ng-click="openPopup('.popup-about')">Что это?</div>
-					<div class="lo-l-footer-item"><a ng-href="#/write_us">Написать нам</a></div>
-				</div>
+				<ui-view></ui-view>
 			</div>
-			<ui-view></ui-view>
 		</div>
 	</div>
 	

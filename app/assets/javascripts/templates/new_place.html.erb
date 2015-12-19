@@ -1,7 +1,8 @@
 <div class="lo-r" ng-init="signIn()">
+	<div ng-init="undefineNewPlace()"></div>
 	<div class="lo-r-nav lo-r-nav-addplace"></div>
 	<div class="lo-r-addplace">
-		<div ng-hide="new_place" class="lo-r-card lo-r-card-phantom">Клик по карте объявляет место</div>
+		<div ng-hide="new_place" class="lo-r-card lo-r-card-phantom">Клик по карте определяет место</div>
 		<div ng-show="new_place" class="lo-r-card lo-r-card-newplace"  ng-init="dropzone()">
 		<!--		<div class="lo-r-card-bg lo-r-card-bg-grad"></div>-->
 				<div class="lo-r-card-bg lo-r-card-bg-norm"></div>
@@ -10,7 +11,7 @@
 				</div>
 				<div class="lo-r-card-cont lo-r-card-cont-top">
 					<div class="lo-r-card-city">{{new_place.city}}</div>
-					<div class="lo-r-card-title">{{cutAddress(new_place.street)}}</div>
+					<div class="lo-r-card-title">{{new_place.street}}</div>
 				</div>
 				<div class="lo-r-card-cont lo-r-card-cont-bottom">
 					<div class="lo-r-card-metro" ng-show="new_place.metro" ng-class="getMetroColor(new_place.metro_line)">

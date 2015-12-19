@@ -46,9 +46,17 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
     });
   }
 
+  $scope.reviewValid = function(review){
+    if (review.body.length < 400) {
+      return false
+    } else {
+      return true
+    }
+  }
+
   $scope.submitReview = function(){
     var review = $scope.new_review
-      if ($rootScope.reviewValid(review)){
+      if ($scope.reviewValid(review)){
         $http.post('/reviews',{review: review}).success(function(data){
           var updated_place = data.place;
           $rootScope.places.splice($rootScope.places.indexOf($rootScope.place), 1);

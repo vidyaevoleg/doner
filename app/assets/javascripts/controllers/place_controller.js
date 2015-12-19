@@ -1,10 +1,14 @@
 Topdoner.controller('PlaceCtrl', ['$scope','$stateParams','places','$rootScope','$location',function ($scope,$stateParams,places,$rootScope,$location) {
+  $scope.current_review = [];
+
 
   $scope.closePlace = function(place){
     $location.path('/home')
   }
   
-  $scope.current_review = [];
+  $scope.setLastViewedPlace = function() {
+    $rootScope.lastViewedPlace = $rootScope.place;
+  }
 
   $scope.makeReviewCurrent = function(review){
     // $('#review-' + review.id).find('.lo-r-cont-review-body').addClass('ext');

@@ -1,6 +1,10 @@
 Topdoner.controller('NewPlaceCtrl', ['$scope', '$location', '$rootScope', function ($scope, $location, $rootScope) {
-  $scope.images_id = ''
+  
+
+  $scope.images_id = '';
+  
   var creating =  true
+  
   $scope.createPlace = function(e){
     if (creating) {
         var new_place = $scope.new_place
@@ -10,6 +14,10 @@ Topdoner.controller('NewPlaceCtrl', ['$scope', '$location', '$rootScope', functi
     creating = false;
   }
   
+  $scope.undefineNewPlace = function() {
+      $rootScope.new_place = undefined;
+  }
+
   $scope.signIn = function(){
     if ($rootScope.current_user){
       return true
@@ -22,11 +30,25 @@ Topdoner.controller('NewPlaceCtrl', ['$scope', '$location', '$rootScope', functi
   $scope.updateImg = function() {
 	  $scope.cls($('.add-place-updateimg'));
 	  setTimeout(function(){
-		  $scope.opn($('.add-place-title'));
-	  	$scope.opn($('.add-place-dropzone'));
+		  $rootScope.opn($('.add-place-title'));
+	  	$rootScope.opn($('.add-place-dropzone'));
 	  }, 201);
   }
- 
+
+  $rootScope.validNewPlace = function() {
+    if ($scope.new_place_img) {
+      $('.lo-r-card-newplace').mouseenter(function(){
+        $rootScope.stopBlur();
+      }).mouseleave(function(){
+        $rootScope.startBlur();
+      });
+    }
+    if ($scope.new_place && $rootScope.new_place_img) {
+      $rootScope.opn($('.add-place-submit'));
+    } else {
+      return false;
+    }
+  }
   
   $scope.dropzone = function(){
     var mediaDropzone = new Dropzone("#media-dropzone")
@@ -45,8 +67,6 @@ Topdoner.controller('NewPlaceCtrl', ['$scope', '$location', '$rootScope', functi
     return mediaDropzone.on("success", function(file, responseText) {
       $('.lo-r-card-bg').css('cssText','background-image: url('+responseText.image.file.url+'); background-position: center; background-size: 100%;');
 		
-//		$scope.cls($('.add-place-dropzone'));
-//		$scope.cls($('.add-place-title'));
 		setTimeout(function(){
 			$scope.opn($('.lo-r-addplace-checkmark-img'));
 			$scope.opn($('.add-place-submit-wrap'));
