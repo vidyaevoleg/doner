@@ -10,8 +10,8 @@
 	</div>
 	<div class="lo-r-places">
 	    <input data-ng-model="place_query.keyword" type="text" placeholder="Введите город, улицу, метро ...">
-	    <button ng-click="clearSearch()">очистить</button>
-		<div ng-repeat="place in places | isRated | orderBy: places_list_order | limitTo: list_limit | filter: query">
+	    <button ng-click="clearSearch()" ng-init="clearSearch()">очистить</button>
+		<div ng-repeat="place in places | isRated | orderBy: places_list_order | limitTo: list_limit | filter: query" class="repeated-item">
 			<hr>
 			<div class="lo-r-card lo-r-card-places" ng-click="choosePlace(place)" id="{{'place-' + place.properties.id}}">
 				<div class="lo-r-card-cont lo-r-card-cont-top">

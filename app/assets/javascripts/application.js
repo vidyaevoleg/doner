@@ -17,6 +17,7 @@
 //= require dropzone
 //= require angular.min
 //= require angular-yandex
+//= require angular-animate.min
 //= require ui-router
 //= require ui-router-metatags.min
 //= require angular-sanitize
