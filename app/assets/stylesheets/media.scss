@@ -73,8 +73,8 @@
 	.lo-l {
 		position: relative !important;
 //		margin-bottom: 20px !important;
-		min-height: auto !important;
-		
+		min-height: 0 !important;
+		height: auto !important;
 		&-head {
 			width: 600px !important;
 			&-nav {
@@ -199,12 +199,12 @@
 		&-body {
 			&-extrate-stars {
 				& .rating li {
-					font-size: 13px !Important;
+					font-size: 12px !Important;
 				}
 				margin-left: 0px !important;
 			}
 			&-rate-stars .rating li {
-				font-size: 20px !important;
+				font-size: 18px !important;
 			}
 		}
 	}
