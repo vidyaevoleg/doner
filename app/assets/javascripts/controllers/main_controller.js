@@ -16,7 +16,23 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 			}
 		});
 	}
+
+	$rootScope.place_query = {};
+
+	$rootScope.$watch('place_query.keyword', function(val) { 
+		if (val && val.length) {
+			$rootScope.list_limit = $rootScope.places.length;
+			$rootScope.query = val;
+		} else {
+			$rootScope.list_limit = 4;
+			$rootScope.query = '';
+		}
+	}); 
 	
+	$rootScope.clearSearch = function() {
+		$rootScope.place_query = {};
+		$rootScope.list_limit = 4;
+	}
 	$rootScope.showLastViewedPlace = function() {
 		var place = $rootScope.lastViewedPlace;
 		if (place) {

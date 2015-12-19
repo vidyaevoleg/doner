@@ -23,6 +23,8 @@
 	<%= favicon_link_tag 'favicon/favicon-152.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '152x152' %>
 	<%= favicon_link_tag 'favicon/favicon-180.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180' %>
 	<%= favicon_link_tag 'favicon/favicon-152.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '152x152' %>
+	<%= favicon_link_tag 'doner-4.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180' %>
+	<%= favicon_link_tag 'doner-4.png', rel: 'icon', type: 'image/png', sizes: '152x152' %>
 	<%= favicon_link_tag 'favicon/favicon-max.png', rel: 'apple-touch-icon' %>
 </head>
 <!--
@@ -42,69 +44,7 @@
 	<script type="text/javascript">
 		var BASE_URL = "<%= request.base_url %>";
 	</script>
-	<div class="prnj prnj-popup hidden" ng-click="closePopup()"></div>
-	<div class="prnj prnj-sn hidden" ng-click="closeSlideNav()"></div>
-	<div class="popup popup-about hidden">
-<!--		<div class="popup-close" ng-click="closePopup()">✕</div>-->
-		<div class="popup-about-item">
-			<h2>Что это?</h2>
-			Топдонер это сайт для поиска ближайшей шаурмы
-		</div>
-		<div class="popup-about-item">
-			<ul>
-				<li>Быстрый поиск спотов с шаурмой</li>
-				<li>Возможность чтения и публикации обзоров</li>
-				<li>Мгновенная регистрация без паролей и почт</li>
-				<li>Система рейтинга, на основе которой можно найти подходящие варианты</li>
-				<li>Поиск ближайших мест (разрешите браузеру определить ваше местоположение)</li>
-				<li>Возможность анонимной публикации обзора</li>
-			</ul>
-		</div>
-		<div class="popup-about-shawarma"></div>
-
-<!--
-		<div class="popup-about-item">
-			<h2>Фичи</h2>
-			<p>
-				<ul>
-					<li>Мгновенная регистрация без паролей и почт</li>
-					<li>Система рейтинга, на основе которой можно найти подходящие варианты</li>
-					<li>Поиск ближайших мест (разрешите браузеру определить ваше местоположение)</li>
-					<li>Возможность анонимной публикации обзора</li>
-				</ul>
-			</p>
-		</div>
--->
-	</div>
-	<div class="popup popup-login hidden">
-<!--		<div class="popup-close" ng-click="closePopup()">✕</div>-->
-		<p>Войдите чтобы открывать места и писать обзоры</p>
-		<div class="popup-login-button vk">
-			<div class="popup-login-button-icon">
-				<svg width="100%" height="100%" viewBox="0 0 412 236" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-					<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-						<path d="M225.94423,235.528275 C236.39223,235.528275 240.68123,228.551275 240.54323,219.821275 C240.01023,186.909275 252.80323,169.202275 275.88823,192.290275 C301.44323,217.843275 306.72623,235.528275 337.73923,235.528275 L392.67623,235.528275 C435.89423,235.528275 397.38123,192.157275 366.93423,163.899275 C337.98623,137.029275 336.62723,136.395275 361.55523,104.052275 C392.50623,63.9122751 432.94823,12.1942751 397.16323,12.1942751 L328.81623,12.1942751 C315.55523,12.1942751 314.59923,19.9422751 309.88823,31.0642751 C292.81823,71.3432751 260.35023,123.535275 248.01523,115.565275 C235.11523,107.228275 241.02223,78.9532751 242.01123,29.9482751 C242.27223,17.0062751 242.20623,8.11527508 222.42523,3.52427508 C168.41623,-9.01072492 121.61523,15.6462751 140.73323,19.2062751 C167.69623,24.2342751 165.11023,77.9012751 158.82123,103.096275 C147.87023,146.966275 106.70723,68.3442751 89.5472301,29.2002751 C85.4192301,19.7812751 84.1572301,12.1942751 69.3822301,12.1942751 L13.5012301,12.1942751 C2.72823014,12.1942751 -2.55376986,17.1282751 1.20723014,27.1332751 C4.96823014,37.1382751 48.2062301,133.860275 99.3262301,189.042275 C146.63923,240.114275 193.40423,235.528275 225.94423,235.528275 C225.94423,235.528275 193.40423,235.528275 225.94423,235.528275 L225.94423,235.528275 L225.94423,235.528275 Z M225.94423,235.528275" id="vk-icon" fill="#000" sketch:type="MSShapeGroup"></path>
-					</g>
-				</svg>
-			</div>
-			<div class="popup-login-button-title">Войти через Вконтакте</div>
-			<a href="users/auth/vkontakte"></a>
-		</div>
-		
-		<div class="popup-login-button fb">
-			<div class="popup-login-button-icon">
-				<svg width="100%" height="100%" viewBox="0 0 61 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-					<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-						<g id="social-media10" sketch:type="MSLayerGroup" fill="#000	">
-							<path d="M57.378,0.001 L3.352,0.001 C1.502,0.001 0,1.5 0,3.353 L0,57.379 C0,59.232 1.502,60.733 3.352,60.733 L32.438,60.733 L32.438,37.214 L24.524,37.214 L24.524,28.047 L32.438,28.047 L32.438,21.287 C32.438,13.444 37.227,9.171 44.225,9.171 C47.58,9.171 50.457,9.422 51.296,9.531 L51.296,17.729 L46.442,17.731 C42.637,17.731 41.903,19.54 41.903,22.193 L41.903,28.044 L50.981,28.044 L49.794,37.21 L41.902,37.21 L41.902,60.73 L57.377,60.73 C59.229,60.73 60.732,59.227 60.732,57.379 L60.732,3.351 C60.731,1.5 59.23,0.001 57.378,0.001 L57.378,0.001 L57.378,0.001 L57.378,0.001 Z M57.378,0.001" id="Shape" sketch:type="MSShapeGroup"></path>
-						</g>
-					</g>
-				</svg>
-			</div>
-			<div class="popup-login-button-title">Войти через Фейсбук</div>
-			<a href="users/auth/facebook"></a>
-		</div>
-	</div>
+	<%= render 'layouts/popup' %>
 
 	<div class="cont" ng-controller="UsersCtrl">
 		<div class="lo" ng-controller="PresenterCtrl">

@@ -1,10 +1,12 @@
-Topdoner.controller('ShareReviewCtrl', ['$scope','$location','$rootScope', function ($scope,$location,$rootScope) {
+Topdoner.controller('ShareReviewCtrl', ['$scope','$location','$rootScope', '$stateParams', function ($scope, $location, $rootScope, $stateParams) {
 	var enviroment = BASE_URL + '#',
 		enviroment_rails = BASE_URL;
-	
+
 	var reviewUrlHelper = function(review){
-		return enviroment + $location.path() + '/reviews/' + review.id;
-	};
+		if (review) {
+			return 'http://topdoner.com/#/places/' + $scope.place.properties.id +'/reviews/' + review.id; 
+		}
+	}
 
 	var reviewTitleHelper = function(review) {
 		return review.title;
@@ -20,13 +22,29 @@ Topdoner.controller('ShareReviewCtrl', ['$scope','$location','$rootScope', funct
 		}
 	};	
 	
+	$scope.share_vk_main = function() {
+		url  = 'http://vkontakte.ru/share.php?';
+		url += '&url='         + 'http://topdoner.com/';
+		url += '&noparse=false';
+		$scope.share_popup(url);		
+	}
+
+	$scope.share_fb_main = function() {
+		url  = 'http://www.facebook.com/sharer.php?s=100';
+		url += '&p[title]='     + 'TOPDONER dote COM';
+		url += '&p[url]='       + 'http://topdoner.com/';
+
+		$scope.share_popup(url);		
+	};
+	
+
 	$scope.share_vk = function(review) {
 		url  = 'http://vkontakte.ru/share.php?';
-		url += 'url='          + encodeURIComponent(reviewUrlHelper(review));
+		url += '&url='         + encodeURIComponent(reviewUrlHelper(review));
 		url += '&title='       + encodeURIComponent(reviewTitleHelper(review));
 		url += '&description=' + encodeURIComponent(reviewDescriptionHelper(review));
 		url += '&image='       + encodeURIComponent(reviewMediaHelper(review));
-		url += '&noparse=true';
+		url += '&noparse=false';
 		$scope.share_popup(url);
 	};
 	

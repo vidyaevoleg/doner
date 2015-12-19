@@ -78,7 +78,10 @@ Topdoner.service('dataProvider', ['places','users', 'reviews', '$stateParams', '
 		    	if (id) {
 			    	$rootScope.place = $filter('getPlaceById')(data, id);
 		    	}
-					$rootScope.places = data;
+				$rootScope.places = data;
+				angular.forEach($rootScope.places, function (place) {
+    				place.properties.rating = parseFloat(place.properties.rating);
+   				});
 		    })
 	    } else {
 				$rootScope.place = $filter('getPlaceById')($rootScope.places, id);
