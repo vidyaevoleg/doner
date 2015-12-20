@@ -132,7 +132,19 @@
 		width: 500px !important;
 	}
 	.popup-about {
-		padding: 20px;
+		padding: 20px !important;
+	}
+	.popup-login {
+		padding-left: 20px !important;
+		padding-right: 20px !important;
+		width: 400px !important;
+		height: 300px !important;
+		p {
+			margin-bottom: 30px !important;
+		}
+		&-button {
+			margin: 10px 0 !important;
+		}
 	}
 }
 
@@ -209,6 +221,7 @@
 		&-extrate-stars-item li {
 			font-size: 14px !important;
 		}
+		
 //		&-body {
 //			&-extrate-stars {
 ////				margin-left: 0px !important;
@@ -220,6 +233,9 @@
 //				font-size: 18px !important;
 //			}
 //		}
+	}
+	.add-review-rate-stars {
+		font-size: 20px !important;
 	}
 	.add-review-extrate-titles {
 		width: 80px !important;

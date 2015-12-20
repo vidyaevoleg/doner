@@ -14,6 +14,8 @@ Topdoner.controller('InterfaceCtrl', ['$location', '$rootScope', function ($loca
   }
   
   $rootScope.openPopup = function(popup_sel) {
+//	$('body').animate({ scrollTop: 0}, 800);
+	  $('body').scrollTop(0);
     $rootScope.opn($('.prnj-popup'));
     $rootScope.opn($(popup_sel));
     $('.lo-r-cont').css('position', 'fixed');
