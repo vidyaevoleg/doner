@@ -87,6 +87,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 				}, 800);
 		  }
 	  }
+	  $rootScope.clearSearch();
   };
 	
 	$rootScope.deletePlace = function(place_id) {
