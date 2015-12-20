@@ -1,8 +1,10 @@
 class Review < ActiveRecord::Base
+  include ActionView::Helpers::SanitizeHelper
+
   belongs_to :place
   belongs_to :user
   has_many :images, as: :imaginable
-  before_save :n_to_br
+  before_save  :parse_links, :n_to_br
 
   attr_reader :images_id
 
@@ -15,6 +17,16 @@ class Review < ActiveRecord::Base
 		# end
 		total ? total : 0
 	end
+
+	def parse_links
+		self.body = self.body.to_s.split(' ').map do |word|
+			if word.include?('http://') || word.include?('https://') || word.include?('www.')
+				word = "<a href='" + word + "' class='review-body-link'>" + word +"</a>"
+			else
+				word
+			end
+		end.join(' ')
+	end
 	
 	def n_to_br
 		self.body = self.body.gsub(/\n/, '<br>')
@@ -22,6 +34,10 @@ class Review < ActiveRecord::Base
 	
 	def br_to_n
 		body.gsub("<br>", "\r\n")
+	end
+
+	def to_format
+		strip_tags(self.body)
 	end
 
 	def to_nice_json
@@ -35,7 +51,7 @@ class Review < ActiveRecord::Base
 			min_price: min_price,
 			max_price: max_price,
 			body: body.html_safe,
-			body_nl: br_to_n,
+			body_nl: to_format,
 			title: title,
 			total: total,
 			author: user.to_nice_json,

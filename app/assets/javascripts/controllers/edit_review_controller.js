@@ -6,7 +6,8 @@ Topdoner.controller('EditReviewCtrl', ['$scope','$filter','$stateParams','places
     }
   }
 
-  $scope.new_images_id = ''
+  $scope.new_images_id = '';
+
   $scope.signIn = function(){
     if ($rootScope.current_user){
       return true
@@ -16,13 +17,13 @@ Topdoner.controller('EditReviewCtrl', ['$scope','$filter','$stateParams','places
     }
   }  
 
-  $scope.updateReview = function(){
+  $scope.updateReview = function() {
     var review = $rootScope.review;
     review['place_id'] = $scope.place.properties.id;
     delete review['images'];
-	review.body = review.body_nl;
-    review['images_id'] = $scope.new_images_id;    
-    if ($rootScope.reviewValid(review)){
+	  review.body = review.body_nl;
+    review['images_id'] = $scope.new_images_id; 
+    if ($scope.reviewValid(review)){
       $http.put('/reviews/'+review.id,{review: review}).then(function(res) {
         var updated_place = res.data.place;
         $rootScope.places.splice($rootScope.places.indexOf($rootScope.place), 1);
@@ -30,6 +31,14 @@ Topdoner.controller('EditReviewCtrl', ['$scope','$filter','$stateParams','places
         $location.path('/places/'+ updated_place.properties.id); 
       })
     } 
+  }
+
+  $scope.reviewValid = function(review){
+    if (review.body.length < 400) {
+      return false
+    } else {
+      return true
+    }
   }
 
   $scope.deleteImage = function (image_id) {
