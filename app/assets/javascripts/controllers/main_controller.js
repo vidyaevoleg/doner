@@ -23,21 +23,29 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		if (val && val.length) {
 			$rootScope.list_limit = $rootScope.places.length;
 			$rootScope.query = val;
+//			$rootScope.cls($('.load-more'));
+			$('.load-more').addClass('hidden');
 		} else {
 			$rootScope.list_limit = 4;
 			$rootScope.query = '';
+//			$rootScope.opn($('.load-more'));
+			$('.load-more').removeClass('hidden');
 		}
 	}); 
+	
+	$rootScope.opened_search = false;
 	
 	$rootScope.openSearch = function() {
 		$rootScope.opn($('.lo-r-nav-select-search'));
 		$('.lo-r-nav-select-search input').focus();
+		$rootScope.opened_search = true;
 	}
   
 	$rootScope.clearSearch = function() {
 		$rootScope.place_query = {};
 		$rootScope.list_limit = 4;
 		$rootScope.cls($('.lo-r-nav-select-search'));
+		$rootScope.opened_search = false;
 	}
 	$rootScope.showLastViewedPlace = function() {
 		var place = $rootScope.lastViewedPlace;
@@ -69,6 +77,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 //		$('.lo-l-head-logo').css('background-color', '#000');
 //	}
 	
+	
 	$rootScope.loadMore = function() {
 		if ($rootScope.list_limit < $scope.places.length) {
 			$rootScope.list_limit = $scope.list_limit + 8;
@@ -87,7 +96,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 				}, 800);
 		  }
 	  }
-	  $rootScope.clearSearch();
+//	  $rootScope.clearSearch();
   };
 	
 	$rootScope.deletePlace = function(place_id) {

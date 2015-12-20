@@ -13,7 +13,7 @@
 						</g>
 					</svg>
 				</span>
-				<div class="lo-r-nav-select-search hidden">
+				<div class="lo-r-nav-select-search" ng-class="opened_search ? '' : 'hidden'">
 					<div class="lo-r-nav-select-search-wrap">
 						<input data-ng-model="place_query.keyword" type="text" placeholder="Поиск по городу / улице / метро">
 						<div class="lo-r-nav-select-search-close" ng-click="clearSearch()">

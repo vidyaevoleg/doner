@@ -131,6 +131,9 @@
 	.lo-r {
 		width: 500px !important;
 	}
+	.popup-about {
+		padding: 20px;
+	}
 }
 
 
@@ -179,6 +182,7 @@
 	}
 	.lo-l {
 		width: 350px !important;
+		margin-bottom: 14px !important;
 		&-head {
 			width: 350px !important;
 		}
@@ -190,23 +194,32 @@
 	.lo-r {
 		width: 350px !important;
 	}
-	
+	.popup-about {
+		width: 100% !important;
+		padding: 20px 18px !important;
+		margin: 0 !important;
+		top: 0 !important;
+		border: 10px solid #000;
+	}
 	
 	.add-review {
 		&-title {
 			width: 275px !important;
 		}
-		&-body {
-			&-extrate-stars {
-				& .rating li {
-					font-size: 12px !Important;
-				}
-				margin-left: 0px !important;
-			}
-			&-rate-stars .rating li {
-				font-size: 18px !important;
-			}
+		&-extrate-stars-item li {
+			font-size: 14px !important;
 		}
+//		&-body {
+//			&-extrate-stars {
+////				margin-left: 0px !important;
+//				&-item .rating li {
+//					font-size: 12px !Important;
+//				}
+//			}
+//			&-rate-stars .rating li {
+//				font-size: 18px !important;
+//			}
+//		}
 	}
 	.add-review-extrate-titles {
 		width: 80px !important;
@@ -279,6 +292,16 @@
 ////				right: 5px !important;
 //				top: 0px !important;
 //			}
+		}
+		&-cont-review-head-user-edit ,
+		&-cont-review-head-user-delete {
+			position: absolute !important;
+			margin: 0 !important;
+			left: 0px !important;
+			bottom: -18px !important;
+		}
+		&-cont-review-head-user-delete {
+			left: 20px !important;
 		}
 	}
 	.ymaps-2-1-34-search {
