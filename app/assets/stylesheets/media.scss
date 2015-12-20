@@ -186,6 +186,9 @@
 	.ymaps-2-1-34-search {
 		width: 260px !important;
 	}
+	.popup-login {
+		width: 340px !important;
+	}
 }
 
 @media screen and (max-width: 420px) {
@@ -220,6 +223,9 @@
 		}
 		&-extrate-stars-item li {
 			font-size: 14px !important;
+		}
+		&-rate-stars li {
+			font-size: 20px !important;
 		}
 		
 //		&-body {
@@ -342,6 +348,9 @@
 	}
 	.share-item {
 		margin-right: 1px !important;
+	}
+	.popup-login {
+		width: 300px !important;
 	}
 }
 

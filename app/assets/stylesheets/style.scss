@@ -74,11 +74,6 @@ $fb: #3b5998;
 	display: none !important;
 }
 
-input {
-	-webkit-appearance: none !important;
-	-moz-appearance: none !important;
-	appearance: none !important;
-}
 
 .ymaps-2-1-34-search {
 	display: none;
@@ -150,6 +145,7 @@ body {
 		}
 	}
 	&-login {
+		position: fixed !important;
 		top: 0; left: 0; right: 0; bottom: 0;
 		margin: auto;
 		max-width: 580px;
@@ -818,6 +814,9 @@ body {
 						}
 					}
 					input {
+						-webkit-appearance: none !important;
+						-moz-appearance: none !important;
+						appearance: none !important;
 						box-sizing: border-box;
 						background: none;
 						border: none;
@@ -1769,7 +1768,7 @@ body {
 //			position: absolute;
 //			left: 0; right: 0;
 			.rating li {
-				font-size: 24px !important;
+				font-size: 24px;
 			}
 		}
 	}
