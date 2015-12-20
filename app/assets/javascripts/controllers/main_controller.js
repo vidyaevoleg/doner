@@ -29,9 +29,15 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		}
 	}); 
 	
+	$rootScope.openSearch = function() {
+		$rootScope.opn($('.lo-r-nav-select-search'));
+		$('.lo-r-nav-select-search input').focus();
+	}
+  
 	$rootScope.clearSearch = function() {
 		$rootScope.place_query = {};
 		$rootScope.list_limit = 4;
+		$rootScope.cls($('.lo-r-nav-select-search'));
 	}
 	$rootScope.showLastViewedPlace = function() {
 		var place = $rootScope.lastViewedPlace;

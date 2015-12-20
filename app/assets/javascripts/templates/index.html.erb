@@ -2,16 +2,35 @@
 	<div ng-init="showLastViewedPlace()"></div>
 	<div class="lo-r-nav">
 		<div class="lo-r-nav-select">
-			<span ng-click="choosePlacesSort('r')" class="lo-r-nav-select-item lo-r-nav-select-item-r" ng-class="whatPlacesSort('r')">Лучшие</span>
-			<span ng-click="choosePlacesSort('p')" class="lo-r-nav-select-item lo-r-nav-select-item-p" ng-class="whatPlacesSort('p')">Популярные</span>
-			<span ng-click="choosePlacesSort('n')" class="lo-r-nav-select-item lo-r-nav-select-item-n" ng-class="whatPlacesSort('n')">Ближайшие</span>
+			<div class="lo-r-nav-select-wrap">
+				<span ng-click="choosePlacesSort('r')" class="lo-r-nav-select-item lo-r-nav-select-item-r" ng-class="whatPlacesSort('r')">Лучшие</span>
+				<span ng-click="choosePlacesSort('p')" class="lo-r-nav-select-item lo-r-nav-select-item-p" ng-class="whatPlacesSort('p')">Популярные</span>
+				<span ng-click="choosePlacesSort('n')" class="lo-r-nav-select-item lo-r-nav-select-item-n" ng-class="whatPlacesSort('n')">Ближайшие</span>
+				<span ng-click="openSearch()" class="lo-r-nav-select-item lo-r-nav-select-item-search">
+					<svg width="100%" height="100%" viewBox="0 0 410 412" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+						<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+							<path d="M409.475,358.443 L300.4,249.37 C316.35,224.233 325.6,194.447 325.6,162.537 C325.601,72.914 252.687,0 163.062,0 C73.439,0 0.525,72.914 0.525,162.537 C0.525,252.16 73.439,325.074 163.062,325.074 C193.388,325.074 221.795,316.718 246.117,302.198 L355.918,412 L409.475,358.443 L409.475,358.443 L409.475,358.443 L409.475,358.443 Z M61.117,162.537 C61.117,106.324 106.849,60.591 163.062,60.591 C219.275,60.591 265.009,106.324 265.009,162.537 C265.009,218.75 219.276,264.482 163.062,264.482 C106.849,264.482 61.117,218.75 61.117,162.537 C61.117,162.537 61.117,218.75 61.117,162.537 L61.117,162.537 L61.117,162.537 Z M61.117,162.537" id="magnifier-icon" fill="#000000" sketch:type="MSShapeGroup"></path>
+						</g>
+					</svg>
+				</span>
+				<div class="lo-r-nav-select-search hidden">
+					<div class="lo-r-nav-select-search-wrap">
+						<input data-ng-model="place_query.keyword" type="text" placeholder="Поиск по городу / улице / метро">
+						<div class="lo-r-nav-select-search-close" ng-click="clearSearch()">
+							<svg width="100%" height="100%" viewBox="0 0 365 365" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+								<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+									<path d="M364.786,300.988 L246.15,182.37 L364.771,63.741 L300.988,0 L182.388,118.618 L63.768,0.015 L0,63.745 L118.639,182.376 L0.015,301.018 L63.745,364.786 L182.395,246.127 L301.045,364.771 L364.786,300.988 Z M364.786,300.988" id="x-mark-icon" fill="#000000" sketch:type="MSShapeGroup"></path>
+								</g>
+							</svg>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="lo-r-nav-select-wait hidden">Погоди-ка...</div>
 		</div>
 	</div>
 	<div class="lo-r-places">
-	    <input data-ng-model="place_query.keyword" type="text" placeholder="Введите город, улицу, метро ...">
-	    <button ng-click="clearSearch()" ng-init="clearSearch()">очистить</button>
-		<div ng-repeat="place in places | isRated | orderBy: places_list_order | limitTo: list_limit | filter: query" class="repeated-item">
+		<div ng-repeat="place in places | isRated | orderBy: places_list_order | limitTo: list_limit | filter: query">
 			<hr>
 			<div class="lo-r-card lo-r-card-places" ng-click="choosePlace(place)" id="{{'place-' + place.properties.id}}">
 				<div class="lo-r-card-cont lo-r-card-cont-top">
