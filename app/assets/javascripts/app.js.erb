@@ -95,6 +95,10 @@ Topdoner.service('dataProvider', ['places','users', 'reviews', '$stateParams', '
 					$rootScope.review = $filter('getReviewById')(res.data, review_id);
 				}
 				$rootScope.reviews = res.data;
+				angular.forEach($rootScope.reviews, function (review) {
+    				review.min_price = parseFloat(review.min_price);
+					review.max_price = parseFloat(review.max_price);
+   				});
 	    });
 		}
 	}

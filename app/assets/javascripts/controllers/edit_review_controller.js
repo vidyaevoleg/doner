@@ -34,7 +34,7 @@ Topdoner.controller('EditReviewCtrl', ['$scope','$filter','$stateParams','places
   }
 
   $scope.reviewValid = function(review){
-    if (review.body.length < 400) {
+    if (review.body.length < 300) {
       return false
     } else {
       return true

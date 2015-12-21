@@ -21,7 +21,7 @@ class Review < ActiveRecord::Base
 	def parse_links
 		self.body = self.body.to_s.split(' ').map do |word|
 			if word.include?('http://') || word.include?('https://') || word.include?('www.')
-				word = "<a href='" + word + "' class='review-body-link'>" + word +"</a>"
+				word = "<a href='" + word + "' target='_blank'>" + word +"</a>"
 			else
 				word
 			end
