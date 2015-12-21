@@ -84,7 +84,7 @@ class Place < ActiveRecord::Base
   	json = {
       properties: {
         id: id,
-        rating: rating,
+        rating: rating || 1,
         meat: meat,
         vegetables: vegetables,
         sanitation: sanitation,
