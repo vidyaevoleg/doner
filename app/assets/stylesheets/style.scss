@@ -384,32 +384,43 @@ body {
 				transform: rotateY( 0deg );
 			}
 			&-icon {
-				width: 20px;
-				height: 20px;
+				width: 18px;
+				height: 18px;
 				position: absolute;
-				top: 5px;
-				left: 5px;
+				top: 4px;
+				left: 6px;
 			}
 			&-vk, &-fb {
 				width: 30px;
 				height: 30px;
-				border-radius: 15px;
+				border-radius: 2px;
+				border: 2px solid #000;
 				position: relative;
 				display: inline-block;
+				background: none;
 				a {
 					display: block;
 					height: 100%;
 				}
 				path {
-					fill: #fff;
+					fill: #000;
+				}
+				&:first-child {
+					margin-right: 30px;
+				}
+				&:hover {
+					path {
+						fill: #fff;
+					}
 				}
 			}
-			&-vk {
-				background: #5B7FA6;
-				margin-right: 30px;
+			&-vk:hover {
+				background: $vk;
+				border-color: $vk;
 			}
-			&-fb {
-				background: #3b5998;
+			&-fb:hover {
+				background: $fb;
+				border-color: $fb;
 			}
 		}
 		&-user {
@@ -1256,7 +1267,7 @@ body {
 			&-review {
 				background: $win;
 				box-sizing: border-box;
-				padding: 14px;
+				padding: 10px 4px 14px 4px;
 //				border-top: 1px solid #eee;
 //				padding: 13px 10px;
 				height: auto;
@@ -1266,7 +1277,6 @@ body {
 				margin-bottom: 20px;
 				overflow: hidden;
 				border-top: 1px solid #e8e8e8;
-				padding-top: 10px;
 				img {
 					width: 100%;
 					display: block;
@@ -1315,7 +1325,8 @@ body {
 //								background: pink;
 								color: #272727;
 								display: inline-block;
-								position: relative;
+								position: absolute;
+								white-space: nowrap;
 								a {
 									color: #272727;
 									text-decoration: none;
@@ -1336,11 +1347,12 @@ body {
 						&-edit, &-delete {
 							width: 20px;
 							height: 20px;
-							margin: 11px 0 0 20px;
 							display: inline-block;
-							position: relative;
+							position: absolute;
 							cursor: pointer;
 							vertical-align: top;
+							left: 0;
+							bottom: -18px;
 							&:hover {
 								path {
 									fill: $act;
@@ -1348,7 +1360,8 @@ body {
 							}
 						}
 						&-delete {
-							margin-left: 0 !important;
+//							margin-left: 0 !important;
+							left: 20px !important;
 						}
 					}
 					&-right {
@@ -1360,28 +1373,38 @@ body {
 						position: relative;
 						display: inline-block;
 						height: 40px;
+						width: 40px;
 						line-height: 40px;
 						font-size: 13px;
 						color: #888;
-						font-family: 'helvetica';
+						font-family: 'courier new';
 						box-sizing: border-box;
-						padding: 0 10px 0 0;
+						padding: 4px 4px 0 0;
+						line-height: 17px;
+//						padding: 0 10px 0 0;
 						text-align: right;
 						vertical-align: top;
 //						border-right: 1px solid #eee;
+//						background: black;
+//						border: 1px solid #888;
+						&-top {
+							background: red;
+						}
 					}
 					&-rating {
 						position: relative;
 						display: inline-block;
 						vertical-align: top;
+						padding-left: 6px;
 						height: 40px;
 						line-height: 40px;
 						font-size: 20px;
 						color: #ffce06;
 						font-family: 'helvetica';
 						box-sizing: border-box;
-						padding: 0 0 0 10px;
+//						padding: 0 0 0 10px;
 //						text-align: center;
+//						background: pink;
 //						width: 50px;
 						font-weight: 800;
 						text-shadow: 1px 1px 0px #212020;
@@ -2004,34 +2027,39 @@ ya-map {
 		border: 1px solid;
 		cursor: pointer;
 		display: inline-block;
+		border: 1px solid #000;
+		color: #000;
 		vertical-align: top;
 		path {
-			fill: #fff;
+			fill: #000;
 		}
-//							&:hover {
-//								path {
-//									fill: #fff;
-//								}
-//								&.vk {
-//									background: #5B7FA6;
-//								}
-//								&.fb {
-//									background: #3b5998;
-//								}
-//								&.url {
-//									background: #5a5a5a;
-//								}
-//								.share-item-title {
-//									color: #fff;
-//								}
-//							}
-		&.vk {
-			background-color: #5B7FA6;
-			color: #fff;
+		&:hover {
+			path {
+				fill: #fff;
+			}
+			&.vk {
+				background: $vk;
+				border-color: $vk;
+			}
+			&.fb {
+				background: $fb;
+				border-color: $fb;
+			}
+			&.url {
+				background: #5a5a5a;
+				border-color: #5a5a5a;
+			}
+			.share-item-title {
+				color: #fff;
+			}
 		}
+//		&.vk {
+////			background-color: #5B7FA6;
+//			color: #fff;
+//		}
 		&.fb {
-			background-color: #3b5998;
-			color: #fff;
+//			background-color: #3b5998;
+//			color: #fff;
 			.share-item-icon {
 				height: 14px !important;
 				width: 14px !important;
@@ -2041,8 +2069,8 @@ ya-map {
 			}
 		}
 		&.url {
-			background-color: #5a5a5a;
-			color: #fff;
+//			background-color: #5a5a5a;
+//			color: #fff;
 			.share-item-icon {
 				height: 14px !important;
 				width: 14px !important;
@@ -2066,6 +2094,7 @@ ya-map {
 			vertical-align: top;
 			height: 100%;
 			margin-right: 6px;
+			font-weight: 600;
 		}
 	}
 }

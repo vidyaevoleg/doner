@@ -80,7 +80,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 	
 	$rootScope.loadMore = function() {
 		if ($rootScope.list_limit < $scope.places.length) {
-			$rootScope.list_limit = $scope.list_limit + 8;
+			$rootScope.list_limit = $scope.list_limit + 14;
 		} else {
 			$rootScope.list_limit = $scope.list_limit + 1;
 			$rootScope.cls($('.load-more'));
