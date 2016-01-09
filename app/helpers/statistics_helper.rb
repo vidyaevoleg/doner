@@ -1,7 +1,7 @@
 module StatisticsHelper
 
 	def month_data
-		per_day = Visit.where("started_at < ?",1.month.ago).order(started_at: :desc).group_by {|visit| visit.started_at.to_date}
+		per_day = Visit.where("started_at > ?",1.month.ago).order(started_at: :desc).group_by {|visit| visit.started_at.to_date}
 		per_day.sort_by {|obj| obj[0].to_datetime}.map do |day|
 			{
 				time_at: day[0].to_datetime.strftime("%d.%m.%y"),
@@ -17,13 +17,13 @@ module StatisticsHelper
 	%w(user place review).map do |instance|
 		define_method(instance + '_per_day') do
 			clazz = instance.capitalize.constantize
-			per_day = clazz.where("created_at < ?",1.month.ago).order(created_at: :desc).group_by {|visit| visit.created_at.to_date}
+			per_day = clazz.where("created_at > ?",1.month.ago).order(created_at: :desc).group_by {|visit| visit.created_at.to_date}
 			per_day.map do |day|
 				{
 					time_at: day[0].to_datetime.strftime("%d.%m.%y"),
 					values: day[1].count 
 				}
-			end
+			end.reverse
 		end
 	end
 
