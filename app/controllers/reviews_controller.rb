@@ -5,29 +5,23 @@ class ReviewsController < ApplicationController
 	before_action :check_ability, only: [:destroy,:update]
 	def create
 		@review = current_user.reviews.create(review_params)
-		@place.update!(rating: @place.updated_rating, reviews_count: @place.reviews.count)
-		if params[:review][:images_id]
-			images_id = params[:review][:images_id].to_s.split(',')
-			bind_image_and_review(images_id)
-		end 
+		save_images
+
 		render json: {review: @review.to_nice_json, place: @review.place.to_nice_json }
 	end
 
 
 	def update
 		@review.update_attributes(review_params)
-		@place.update!(rating: @place.updated_rating, reviews_count: @place.reviews.count)
-		if params[:review][:images_id]
-			images_id = params[:review][:images_id].to_s.split(',')
-			bind_image_and_review(images_id)
-		end 
+		save_images
+
 		render json: {review: @review.to_nice_json, place: @review.place.to_nice_json }
 	end
 
 	def destroy
 		@place = @review.place
 		@review.destroy
-		@place.update!(rating: @place.updated_rating, reviews_count: @place.reviews.count)
+
 		render json: @place.to_nice_json
 	end
 
@@ -36,6 +30,13 @@ class ReviewsController < ApplicationController
 	end
 
 	private
+
+	def save_images
+		if params[:review][:images_id]
+			images_id = params[:review][:images_id].to_s.split(',')
+			bind_image_and_review(images_id)
+		end 
+	end
 
 	def bind_image_and_review(images_id)
 		if images_id.size>0

@@ -1,4 +1,5 @@
 Topdoner.controller('EditReviewCtrl', ['$scope','$filter','$stateParams','places','reviews','$rootScope','$location','$http',function ($scope,$filter,$stateParams,places,reviews,$rootScope,$location,$http) {
+  
   $scope.openExtRates = function() {
     var panel = $('.add-review-extrate');
     if (panel.hasClass('hidden')) {

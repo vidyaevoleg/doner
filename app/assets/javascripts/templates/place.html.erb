@@ -43,7 +43,7 @@
 	<div class="lo-r-border"></div>-->
 	
 	<div class="lo-r-subnav">
-		<a class="lo-r-subnav-edit" ng-show="can(place)" href="/#/places/{{place.properties.id}}/edit_place">
+		<a class="lo-r-subnav-edit" ng-show="current_user" href="/#/places/{{place.properties.id}}/edit_place">
 			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="100%" height="100%" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
 				<path fill="#bebebe" id="edit-10-icon" d="M256,90c91.743,0,166,74.245,166,166c0,91.743-74.245,166-166,166c-91.743,0-166-74.245-166-166 C90,164.257,164.245,90,256,90 M256,50C142.229,50,50,142.229,50,256s92.229,206,206,206s206-92.229,206-206S369.771,50,256,50 L256,50z M181.25,275.854l56.86,56.828l-75.235,17.029L181.25,275.854z M369.817,202.847L257.351,315.246l-58.592-58.56 l112.471-112.398L369.817,202.847z"/>
 			</svg>
@@ -96,7 +96,7 @@
 				</div>
 -->
 				<div class="lo-r-cont-review-head-right">
-					<div ng-show="review.min_price" class="lo-r-cont-review-head-price">{{review.min_price}}<br>{{review.max_price}}</div>
+					<div ng-show="review.min_price" class="lo-r-cont-review-head-price"></div>
 					<div class="lo-r-cont-review-head-rating">
 						{{review.rating}}
 					</div>
@@ -126,6 +126,9 @@
 						<div ng-repeat="image in review.images">
 							<img src="{{image.url}}">
 						</div>
+						<p ng-bind-html="pricePresenter(review.min_price, review.max_price)"> 
+						
+						</p>
 					</div>
 				</div>
 				<div class="lo-r-cont-review-body-grad"></div>

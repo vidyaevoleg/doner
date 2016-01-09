@@ -5,97 +5,41 @@ class Place < ActiveRecord::Base
   serialize :coordinates
   before_create :cut_city
 
+
+  def update_rating
+    place = self
+    new_rating = place.reviews_count.to_f + (place.reviews.map {|r| r.rating.to_i}.inject(0,&:+).to_f/place.reviews_count)
+    place.update(rating: new_rating)
+  end
+
   def cut_city
     city.split(',').uniq
   end
 
   def min_price
-    if reviews.count > 0
-      reviews.map {|review| review.min_price}.compact.min
-    else 
-      nil
-    end  
+    if self.reviews.count > 0
+      return self.reviews.map {|rew| rew.min_price}.compact.min
+    end
+    nil
   end
 
   def max_price
-    if reviews.count > 0
-      reviews.map {|review| review.min_price}.compact.max
-    else 
-      nil
-    end  
-  end
-
-  def updated_rating
-  	if reviews.count > 0
-      data = reviews.map {|review| review.rating}.compact
-  		rating = (data.inject(0){|sum,x| sum+x}.to_f / data.count.to_f).to_f.round(1)
-    else 
-      nil
+    if self.reviews.count > 0
+      return self.reviews.map {|rew| rew.max_price}.compact.max
     end
-  end
-
-  def min_price
-  	if self.reviews.count > 0
-  		return self.reviews.map {|rew| rew.min_price}.compact.min
-  	end
-  	nil
-  end
-
-  def max_price
-  	if self.reviews.count > 0
-  		return self.reviews.map {|rew| rew.max_price}.compact.max
-  	end
-  	nil
-  end
-
-  def vegetables
-    data = reviews.map {|review| review.vegetables}.compact
-    if data.count > 0
-      return (data.inject(0){|sum,x| sum+x} / data.count).to_i
-    end
-    nil  
-  end
-
-  def sanitation
-    data = reviews.map {|review| review.sanitation}.compact
-    if data.count > 0
-      return (data.inject(0){|sum,x| sum+x} / data.count).to_i
-    end
-    nil 
-  end
-
-  def meat
-    data = reviews.map {|review| review.meat}.compact
-    if data.count > 0
-      return (data.inject(0){|sum,x| sum+x} / data.count).to_i
-    end
-    nil   
-  end
-
-  def service
-    data = reviews.map {|review| review.service}.compact
-    if data.count > 0
-      return (data.inject(0){|sum,x| sum+x} / data.count).to_i
-    end
-    nil 
+    nil
   end
 
   def to_nice_json
-  	json = {
+    json = {
       properties: {
         id: id,
         rating: rating || 1,
-        meat: meat,
-        vegetables: vegetables,
-        sanitation: sanitation,
-        service: service,
         city: city,
         street: street,
         metro: metro,
         metro_line: metro_line,
         author: user,
-        min_price: min_price,
-        max_price: max_price,
         reviews_count: reviews_count
       },
       geometry: {
@@ -110,7 +54,7 @@ class Place < ActiveRecord::Base
   end
 
   def get_coords
-  	coordinates.to_s.tr('[]', '').split(',').map {|coord| coord.to_f}
+    coordinates.to_s.tr('[]', '').split(',').map {|coord| coord.to_f}
   end
 
 end

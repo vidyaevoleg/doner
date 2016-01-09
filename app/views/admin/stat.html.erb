@@ -1,11 +1,27 @@
-<div id="annual">
+<h1> posechenie </h1>
+<div id="visits">
+</div>
+<h1> reviews </h1>
+<div id="reviews">
 </div>
 
-<div id="device">
+<h1> places</h1>
+<div id="places">
 </div>
 
-<div id="geo">
+<h1> users</h1>
+<div id="users">
 </div>
-<%= content_tag :div, "", id: "chart", data: {visits: @visits } %> 
-<%= content_tag :div, "", id: "chart-device", data: {devices: @devices } %>
-<%= content_tag :div, "", id: "chart-geo", data: {geo: @geo } %>
+
+<h1> devices </h1>
+<div id="devices">
+</div>
+
+<%= content_tag :div, "", id: "chart", data: {
+												visits: month_data,
+												devices: device_data,
+												places_per_day: place_per_day,
+												reviews_per_day: review_per_day,
+												users_per_day: user_per_day
+											} 
+%> 

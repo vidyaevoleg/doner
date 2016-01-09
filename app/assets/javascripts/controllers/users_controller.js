@@ -1,4 +1,5 @@
 Topdoner.controller('UsersCtrl', ['$scope','$location','$rootScope','users',function ($scope,$location,$rootScope,users) {
+  
   $rootScope.signIn = function() {
     if ($rootScope.current_user){
       true
@@ -6,12 +7,14 @@ Topdoner.controller('UsersCtrl', ['$scope','$location','$rootScope','users',func
       false
     }
   }
+  
   $rootScope.logOut = function(){
     users.logOut().then(function(){
       $rootScope.current_user = undefined
       $location.path('/home');
     }) 
   }
+
   $rootScope.can = function(object) {
     var user = $rootScope.current_user;
     if (user){

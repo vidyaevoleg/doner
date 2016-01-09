@@ -39,6 +39,20 @@ Topdoner.controller('PresenterCtrl', ['$location', '$rootScope', function ($loca
     } 
   } 
 
+  $rootScope.pricePresenter = function (min_price,max_price) {
+
+    var word = ' руб.',
+        span = "<span class='bold-price'>Прайс: </span>"
+
+    if ((min_price == max_price) && (!isNaN(max_price))) {
+      return span + min_price + word;
+    } else if ( !isNaN(min_price) && !isNaN(max_price)) {
+      return span + min_price + ' - ' + max_price + word;
+    } else {
+      return '';
+    }
+  }
+
   $rootScope.renameReviewCount = function(c) {
     if (c > 4) {
       return c + ' отзывов';

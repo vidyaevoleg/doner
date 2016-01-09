@@ -4,14 +4,11 @@ class AdminController < ApplicationController
 	include StatisticsHelper
 
 	def index
-		# @new_users_today = new_users_today
+
 	end
 
 	def stat
-	    visits = Visit.all
-	    @visits = month_data(visits)
-	    @devices = device_data(visits)
-	    @geo = geo_data(visits)
+
 	end
 	
 	private
