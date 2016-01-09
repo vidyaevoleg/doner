@@ -4,10 +4,10 @@ module StatisticsHelper
 		per_day = Visit.group("DATE(started_at)").count.to_a.reject { |date| date[0].to_datetime < 1.month.ago }
 		per_day.map do |day|
 			{
-				time_at: day[0].to_datetime.strftime("%d.%m"),
+				time_at: day[0].to_datetime.strftime("%d.%m.%y"),
 				values: day[1] 
 			}
-		end
+		end.sort_by {|obj| obj[:time_at].to_datetime}
 	end
 
 	def device_data
@@ -20,10 +20,10 @@ module StatisticsHelper
 			per_day = clazz.group("DATE(created_at)").count.to_a.reject { |date| date[0].to_datetime < 1.month.ago }
 			per_day.map do |day|
 				{
-					time_at: day[0].to_datetime.strftime("%d.%m"),
+					time_at: day[0].to_datetime.strftime("%d.%m.%y"),
 					values: day[1] 
 				}
-			end
+			end.sort_by {|obj| obj[:time_at].to_datetime}
 		end
 	end
 
