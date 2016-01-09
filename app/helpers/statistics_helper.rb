@@ -1,13 +1,13 @@
 module StatisticsHelper
 
 	def month_data
-		per_day = Visit.group("DATE(started_at)").count.to_a.reject { |date| date[0].to_datetime < 1.month.ago }
-		per_day.map do |day|
+		per_day = Visit.where("started_at < ?",1.month.ago).order(started_at: :desc).group_by {|visit| visit.started_at.to_date}
+		per_day.sort_by {|obj| obj[0].to_datetime}.map do |day|
 			{
 				time_at: day[0].to_datetime.strftime("%d.%m.%y"),
-				values: day[1] 
+				values: day[1].count 
 			}
-		end.sort_by {|obj| obj[:time_at].to_datetime}
+		end
 	end
 
 	def device_data
@@ -17,13 +17,13 @@ module StatisticsHelper
 	%w(user place review).map do |instance|
 		define_method(instance + '_per_day') do
 			clazz = instance.capitalize.constantize
-			per_day = clazz.group("DATE(created_at)").count.to_a.reject { |date| date[0].to_datetime < 1.month.ago }
+			per_day = clazz.where("created_at < ?",1.month.ago).order(created_at: :desc).group_by {|visit| visit.created_at.to_date}
 			per_day.map do |day|
 				{
 					time_at: day[0].to_datetime.strftime("%d.%m.%y"),
-					values: day[1] 
+					values: day[1].count 
 				}
-			end.sort_by {|obj| obj[:time_at].to_datetime}
+			end
 		end
 	end
 
