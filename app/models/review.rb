@@ -22,8 +22,7 @@ class Review < ActiveRecord::Base
 
 
   def update_place_rating
-    new_rating = ((2 * place.reviews_count.to_f + (place.reviews.map {|r| r.rating.to_i}.inject(0,&:+).to_f/place.reviews_count)) / 2).round(2)
-    place.update(rating: new_rating)
+    place.update_rating
   end
 
   def parse_links

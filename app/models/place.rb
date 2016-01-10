@@ -8,7 +8,12 @@ class Place < ActiveRecord::Base
 
   def update_rating
     place = self
-    new_rating = ((2 * place.reviews_count.to_f + (place.reviews.map {|r| r.rating.to_i}.inject(0,&:+).to_f/place.reviews_count)) / 2).round(2)
+    new_rating = if place.reviews.any?
+                  ((2 * place.reviews_count.to_f + (place.reviews.map {|r| r.rating.to_i}.inject(0,&:+).to_f/place.reviews_count)) / 2).round(2)
+                else
+                  1
+                end
+    p new_rating
     place.update(rating: new_rating)
   end
 
