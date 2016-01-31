@@ -3,25 +3,23 @@ class ReviewsController < ApplicationController
 	before_action :set_review, only: [:update,:destroy,:show]
 	before_action :set_place, only: [:update,:create]
 	before_action :check_ability, only: [:destroy,:update]
+	
 	def create
-		@review = current_user.reviews.create(review_params)
+		@review = @place.reviews.create(review_params)
 		save_images
-
-		render json: {review: @review.to_nice_json, place: @review.place.to_nice_json }
+		render json: {review: @review.to_nice_json, place: Place.find(@review.place_id).to_nice_json }
 	end
 
 
 	def update
-		@review.update_attributes(review_params)
+		@review.update_attributes!(review_params)
 		save_images
-
-		render json: {review: @review.to_nice_json, place: @review.place.to_nice_json }
+		render json: {review: @review.to_nice_json, place: Place.find(@review.place_id).to_nice_json }
 	end
 
 	def destroy
-		@place = @review.place
 		@review.destroy
-
+		@place = Place.find(@review.place.id) 
 		render json: @place.to_nice_json
 	end
 
@@ -56,7 +54,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def review_params
-		params.require(:review).permit(:body,:total,:title,:max_price,:min_price,:vegetables,:meat,:anonym,:sanitation,:service,:place_id)
+		params.require(:review).permit(:body,:total,:title,:max_price,:min_price,:vegetables,:meat,:anonym,:sanitation,:service,:place_id, :images_id).merge(user_id: current_user.id)
 	end
 
 	def set_review

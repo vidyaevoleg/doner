@@ -1,11 +1,13 @@
 Topdoner.factory('reviews', ['$http','$location','$rootScope', '$filter', function($http, $location, $rootScope, $filter){
-	this.getReview = function(review_id){
+	
+  this.getReview = function(review_id){
     return $http.get('/reviews/'+ review_id)
       .then(function(res) {
         return res.data;
     	}
     );
 	}
+
 	this.deleteReview = function(review_id, place_id) {
 		return $http.delete('/reviews/'+review_id)
       .then(function(res){
@@ -20,5 +22,6 @@ Topdoner.factory('reviews', ['$http','$location','$rootScope', '$filter', functi
         $location.path('/places/'+ updated_place.properties.id)
       })
 	}
+
   return this   
 }]);

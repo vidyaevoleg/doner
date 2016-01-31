@@ -6,9 +6,9 @@ class Review < ActiveRecord::Base
   has_many :images, as: :imaginable
   before_save  :parse_links, :n_to_br
   after_save :update_place_rating 
-  before_destroy :update_place_rating
+  after_destroy :update_place_rating
 
-  attr_reader :images_id
+  attr_accessor :images_id
 
   def rating
       # attrs = [self.vegetables,self.meat,self.service,self.sanitation,self.total].compact
@@ -22,7 +22,8 @@ class Review < ActiveRecord::Base
 
 
   def update_place_rating
-    place.update_rating
+    Place.find(place.id).update_rating
+    #  place.update_rating # очень странно работает
   end
 
   def parse_links

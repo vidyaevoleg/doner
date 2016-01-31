@@ -14,6 +14,7 @@ class Place < ActiveRecord::Base
                   1
                 end
     p new_rating
+    # binding.pry
     place.update(rating: new_rating)
   end
 
