@@ -1,0 +1,51 @@
+= javascript_include_tag 'admin_spa'
+%div{"ng-app" => "Topdoner_admin"}
+	.vkposts-container
+		.vkposts-container-posts
+			.vkposts-container-posts-navbar
+				
+			.vkposts-container-posts-post
+		.vkposts-container-map{"ng-controller" => "MapCtrl"}
+			.vkposts-container-map-navbar
+				.map-navbar-item
+					%a.navbar-link{"ng-click" => "defineNewPlace();"}
+						%button.btn-new_place Новое место
+				.map-navbar-info
+					.current-place-info{"ng-show"=>"current_place"}
+						.current-place-info-address
+							{{ fullAdress(current_place) }}
+						.current-place-info-reviews
+							обзоров - {{ current_place.properties.reviews_count }}
+
+			.vkposts-container-map-yandex
+				.container-map
+					.init{"ng-init" => "getAllData()"}
+					%button.lo-l-map-opnsearch{"ng-click" => "toggleSearch()"} Найти
+					%ya-map{"ya-after-init" => "afterMapInit($target)", "ya-behaviors" => "default scrollZoom multiTouch", "ya-controls" => "zoomControl searchControl", "ya-event-click" => "mapClick($event)", "ya-zoom" => "12"}
+						%ya-cluster{"ya-options" => "{preset:'islands#invertedRedClusterIcons'}"}
+						%ya-geo-object{"ng-repeat" => "place_data in places", "ya-options" => "{preset: 'islands#redIcon'}", "ya-source" => "place_data.place", "ya-event-click" =>"choosePlace(place_data)" }
+				.container-reviews{"ng-show" => "reviews"}
+					.lo-r-cont{:id => "review-{{review.id}}", "ng-repeat" => "review in reviews | orderBy:'-date'"}
+						.lo-r-cont-review
+							.lo-r-cont-review-head
+								.lo-r-cont-review-head-user.ext
+									.lo-r-cont-review-head-user-img{"ng-hide" => "review.anonym", :style => "background-image: url({{review.author.image_url}})"}
+									.lo-r-cont-review-head-user-img.anon{"ng-show" => "review.anonym"}
+									.lo-r-cont-review-head-user-info
+										.lo-r-cont-review-head-user-info-name{"ng-hide" => "review.anonym"}
+											%a{"ng-href" => "{{review.author.link}}", :target => "_blank"} {{review.author.username}}
+										.lo-r-cont-review-head-user-info-name{"ng-show" => "review.anonym"} Некто
+										.lo-r-cont-review-head-user-info-date {{calcTime(review.date)}}
+								.lo-r-cont-review-head-right
+									.lo-r-cont-review-head-price{"ng-show" => "review.min_price"}
+									.lo-r-cont-review-head-rating
+										{{review.rating}}
+							.lo-r-cont-review-body.ext
+								.lo-r-cont-review-body-title {{ review.title }}
+								.lo-r-cont-review-body-text
+									%div{}
+										.lo-r-cont-review-body-text
+											{{review.body}}
+										%div{"ng-repeat" => "image in review.images"}
+											%img{:src => "{{image.url}}"}
+

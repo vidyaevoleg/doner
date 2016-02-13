@@ -12,6 +12,12 @@ Topdoner.factory('places', ['$http','$location','$rootScope','$q',function($http
         })  
       }
 
+      this.getPlacesWithReviews = function () {
+        return $http.get('/places.json').success( function (res) {
+          return res;
+        });
+      }
+
       this.getReviews = function(place_id){
         return $http.get('/places/'+place_id+'/get_reviews').success(function(res){
             if (res.data){

@@ -38,6 +38,28 @@ class User < ActiveRecord::Base
     self.update!(image_url: url)
   end
 
+  def self.create_from_params user_params
+    provider = user_params['provider']
+    uid = user_params['uid']
+    username = user_params['username']
+    image_url = user_params['image_url']
+
+    user = User.create(
+                  provider: provider,
+                  uid: uid,
+                  username: username,
+                  email: username + '@' + provider + '.com',
+                  image_url: image_url,
+                  password: Devise.friendly_token[0,20] 
+                )
+    user
+  end
+
+  def self.registrated? user_params
+    provider = user_params['provider'].capitalize
+    uid = user_params['uid']
+    User.find_by(uid: uid, provider: provider)
+  end
 
   def self.find_for_facebook_oauth access_token
     if user = User.where(:uid => access_token.extra.raw_info.id).where(provider: 'Facebook').first

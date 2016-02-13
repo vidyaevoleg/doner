@@ -47,6 +47,7 @@ Topdoner.controller('MainCtrl', ['$scope','$filter','places','reviews','$locatio
 		$rootScope.cls($('.lo-r-nav-select-search'));
 		$rootScope.opened_search = false;
 	}
+	
 	$rootScope.showLastViewedPlace = function() {
 		var place = $rootScope.lastViewedPlace;
 		if (place) {

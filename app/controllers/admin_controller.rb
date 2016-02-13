@@ -11,6 +11,10 @@ class AdminController < ApplicationController
 
 	end
 	
+	def vkposts
+		
+	end
+
 	private
 
 	def check_ability

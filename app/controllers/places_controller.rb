@@ -2,7 +2,8 @@ class PlacesController < ApplicationController
 	skip_before_filter :verify_authenticity_token, only: [:create,:destroy,:update]
 	before_action :set_place, only: [:show,:destroy,:update,:get_reviews]
 	before_action :check_ability, only: :destroy
-
+	respond_to :html, :json
+	
 	def new
 		@place = Place.new
 	end
@@ -14,6 +15,12 @@ class PlacesController < ApplicationController
 			bind_image_and_place(images_id)
 		end 
 		render json: @place.to_nice_json
+	end
+
+	def index
+		@places = Place.all
+		# binding.pry
+		respond_with :json
 	end
 
 	def update

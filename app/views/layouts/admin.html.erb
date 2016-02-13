@@ -4,9 +4,6 @@
   <title>Topdoner</title>
   <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -18,7 +15,7 @@
 			<%= link_to 'главная', '/admin/index', class: 'image-link menu-link' %>
 		</div
 		><div class="admin-menu-item">
-			<%= link_to 'юзеры', '/admin/users', class: 'image-link menu-link' %>
+			<%= link_to 'очередь', '/admin/vkposts', class: 'image-link menu-link' %>
 		</div
 		><div class="admin-menu-item">
 			<%= link_to 'места/отзывы', '/admin/places', class: 'image-link menu-link' %>

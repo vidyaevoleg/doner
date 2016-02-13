@@ -12,8 +12,20 @@ Rails.application.routes.draw do
     get 'get_reviews', on: :member
   end
   resources :reviews
+  resources :vkposts 
+
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :places
+      resources :reviews
+      resources :users
+    end
+  end
+
+
   namespace :admin do
     get 'index'
+    get 'vkposts'
     get 'stat'
     resources :feedbacks
     resources :places do
