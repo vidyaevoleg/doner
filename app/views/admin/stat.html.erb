@@ -1,29 +1,28 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-
-<h1> posechenie </h1>
+<h1> devices: <%= device_data %></h1>
+<h2> posechenie </h2>
 <div id="visits">
 </div>
-<h1> reviews </h1>
+<h2> reviews </h2>
 <div id="reviews">
 </div>
 
-<h1> places</h1>
+<h2> places</h2>
 <div id="places">
 </div>
 
-<h1> users</h1>
+<h2> users</h2>
 <div id="users">
 </div>
 
-<h1> devices </h1>
+<h2> devices </h2>
 <div id="devices">
 </div>
 
 <%= content_tag :div, "", id: "chart", data: {
 												visits: month_data,
-												devices: device_data,
 												places_per_day: place_per_day,
 												reviews_per_day: review_per_day,
 												users_per_day: user_per_day

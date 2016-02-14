@@ -28,6 +28,4 @@ jQuery ->
 		ykeys: ['values']
 		labels: ['Создание юзеров']
 		parseTime: false		
-	Morris.Donut
-	  element: 'devices'
-	  data: JSON.parse(cont.attr('data-devices'))
+

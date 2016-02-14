@@ -11,7 +11,12 @@ module StatisticsHelper
 	end
 
 	def device_data
-		Visit.group(:device_type).count
+		all_count = Visit.count
+		answer = []
+		Visit.group(:device_type).count.map do |device, count|
+			answer << (device + ' - ' + (100 * count/all_count).round(2).to_s + '%')
+		end
+		answer.join(',')
 	end
 
 	%w(user place review).map do |instance|

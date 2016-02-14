@@ -14,7 +14,8 @@ gem 'carrierwave'
 gem 'dropzonejs-rails'
 gem 'pry'
 gem 'rails', '4.2.0'
-gem "haml-rails", "~> 0.9"
+gem "haml-rails"
+gem 'haml'
 gem 'devise'
 # Use postgresql as the database for Active Record
 gem 'pg'

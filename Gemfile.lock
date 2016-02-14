@@ -271,7 +271,8 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   dropzonejs-rails
-  haml-rails (~> 0.9)
+  haml
+  haml-rails
   httparty
   jbuilder
   jquery-rails
