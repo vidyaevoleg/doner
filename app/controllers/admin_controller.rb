@@ -11,6 +11,10 @@ class AdminController < ApplicationController
 
 	end
 	
+	def upload
+	
+	end
+
 	def vkposts
 		
 	end

@@ -13,4 +13,4 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require morris
+//= require admin_spa

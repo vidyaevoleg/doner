@@ -1,8 +1,9 @@
 class ImagesController < ApplicationController
 	skip_before_filter :verify_authenticity_token, only: [:create,:destroy]
 	before_action :check_ability, only: :destroy
+	
 	def create
-		@image = Image.new(file: params[:file])
+		@image = Image.new(file: params[:file] || params[:image][:file])
 		if @image.save
 			render json: {image: @image}
 		else

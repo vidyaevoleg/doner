@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
+    get 'upload'
     get 'index'
     get 'vkposts'
     get 'stat'
