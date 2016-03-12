@@ -64,7 +64,7 @@
 		<div class="lo-r-cont-review">
 			<div class="lo-r-cont-review-head">
 				<div class="lo-r-cont-review-head-user" ng-class="isReviewCurrent(review) ? 'ext' : ''">
-					<div class="lo-r-cont-review-head-user-img" ng-hide="review.anonym" style="background-image: url({{review.author.image_url}})"></div>
+					<div class="lo-r-cont-review-head-user-img" ng-hide="review.anonym && review.author.role != 'admin'" style="background-image: url({{review.author.image_url}})"></div>
 					<div class="lo-r-cont-review-head-user-img anon"  ng-show="review.anonym && review.author.role != 'admin'"></div>
 					<div class="lo-r-cont-review-head-user-info">
 						<div class="lo-r-cont-review-head-user-info-name" ng-hide="review.anonym && review.author.role != 'admin'"><a ng-href="{{review.author.link}}" target="_blank">{{review.author.username}}</a></div>
