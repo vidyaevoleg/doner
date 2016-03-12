@@ -119,10 +119,15 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 
 	$scope.initVkPost = function () {
 		posts_ids = postsStorage.get();
-		current_id = posts_ids.current_id;
-		next_id = posts_ids.next_id;
-		prev_id = posts_ids.prev_id;
-		$scope.getVkPost(current_id || next_id || prev_id);
+		if (posts_ids) {
+			current_id = posts_ids.current_id;
+			next_id = posts_ids.next_id;
+			prev_id = posts_ids.prev_id;
+			$scope.getVkPost(current_id || next_id || prev_id);			
+		} else {
+			$scope.getVkPost();
+		}
+
 	}
 
 	$scope.getVkPost = function (id) {
