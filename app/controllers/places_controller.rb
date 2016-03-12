@@ -10,25 +10,18 @@ class PlacesController < ApplicationController
 
 	def create
 		@place = current_user.places.create(place_params)
-		if params[:place][:images_id]
-			images_id = params[:place][:images_id].to_s.split(',')
-			bind_image_and_place(images_id)
-		end 
+		check_images
 		render json: @place.to_nice_json
 	end
 
 	def index
 		@places = Place.all
-		# binding.pry
 		respond_with :json
 	end
 
 	def update
 		@place.update_attributes(place_params)
-		if params[:place][:images_id]
-			images_id = params[:place][:images_id].to_s.split(',')
-			bind_image_and_place(images_id)
-		end
+		check_images 
 		render json: @place.to_nice_json
 	end
 	
@@ -55,6 +48,18 @@ class PlacesController < ApplicationController
 
 	private
 	
+	def check_images
+		if params[:place][:images_id]
+			images_id = params[:place][:images_id].to_s.split(',')
+			bind_image_and_place(images_id)
+		end
+		if params[:place][:image_url]
+			url = params[:place][:image_url]
+			@place.images.create(vk_url: url)
+		end 
+	end
+
+
 	def bind_image_and_place(images_id)
 		if images_id.size>0
 			images_id.map do |id|

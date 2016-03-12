@@ -54,7 +54,7 @@ class Place < ActiveRecord::Base
       }
     }
     if images.any?
-      json[:properties][:image] = {url: images.last.file.url}
+      json[:properties][:image] = {url: images.last.valid_url}
     end
     json
   end

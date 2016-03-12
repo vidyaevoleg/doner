@@ -7,4 +7,13 @@ class Image < ActiveRecord::Base
 	    file = MiniMagick::Image.new(self.file.path)
 	    file.resize "800x800"
   	end
+
+  	def valid_url
+  		if file.url
+			file.url
+  		else
+  			# ссылка на фото ВК
+  			vk_url
+  		end
+  	end
 end

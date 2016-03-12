@@ -66,7 +66,7 @@ class Review < ActiveRecord::Base
           anonym: anonym,
           date: updated_at
       }
-      json[:images] = images.map {|i| {url: i.file.url, id: i.id}} if images
+      json[:images] = images.map {|i| {url: i.valid_url, id: i.id}} if images
       json
   end
 

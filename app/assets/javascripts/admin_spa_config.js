@@ -32,12 +32,44 @@ Topdoner.filter('getReviewById', function () {
   }
 });
 
+Topdoner.service('mapsDriver', function() {
+	this.goTo = function (coords, MAP) {
+	  	MAP.panTo(coords,{duration: 600});
+		MAP.setCenter(coords, 13, {duration: 500});
+	}
+	
+});
+
+
+Topdoner.service('postsStorage', function () {
+
+		// ids = {
+		// 	prev_id: ...,
+		// 	current_id: ...,
+		// 	next_id: ...
+		// }
+
+		var storage = localStorage;
+
+		this.get = function () {
+			ids_string = storage.getItem('vkposts');
+			ids_json = JSON.parse(ids_string);
+			return ids_json;
+		}
+
+		this.update = function (ids) {
+			ids_string = JSON.stringify(ids)
+			storage.setItem('vkposts', ids_string);
+		}
+});
+
+
 Topdoner.service('geocodingService', [function () {
 	var place; 
 	
 	this.get = function (coordinates) {
 		place = {
-	    	coords: coordinates,
+	    	coordinates: coordinates.join(','),
 	    	metro: undefined,
 	    	metro_line: undefined,
 	    	street: undefined,

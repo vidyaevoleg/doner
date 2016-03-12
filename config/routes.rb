@@ -12,7 +12,10 @@ Rails.application.routes.draw do
     get 'get_reviews', on: :member
   end
   resources :reviews
-  resources :vkposts 
+  resources :vkposts, defaults: {format: 'json'} do
+    get 'get_post', on: :collection
+    post 'approve', on: :member
+  end
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do

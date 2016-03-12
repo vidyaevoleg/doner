@@ -24,14 +24,26 @@ class User < ActiveRecord::Base
   def to_nice_json
     json = {
       id: id,
-      username: username,
-      image_url: image_url,
-      link: link,
+      username: username_dec,
+      image_url: avatar,
+      link: link_dec,
       places_count: places.count,
       reviews_count: reviews.count,
       role: role
     }
     json
+  end
+
+  def username_dec
+    role == 'admin' ? 'Администрация Topdoner' : username
+  end
+
+  def avatar
+    role == 'admin' ? 'assets/logo-sphere.png' : image_url 
+  end 
+
+  def link_dec
+    role == 'admin' ? '/' : link
   end
 
   def update_photo url

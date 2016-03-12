@@ -13,4 +13,6 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/draggable
+//= require jquery-ui/droppable
 //= require admin_spa

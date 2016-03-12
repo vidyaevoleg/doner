@@ -1,37 +1,72 @@
 %div{"ng-app" => "Topdoner_admin"}
-	.vkposts-container
-		.vkposts-container-posts
+	.vkposts-container{"ng-controller" => "MapCtrl"}
+		.vkposts-container-posts{"ng-init" => "initVkPost()"}
 			.vkposts-container-posts-navbar
-				
+				%a.vkpost-link.vkpost-prev{"ng-click" => "toPrevPost()"}
+					<<<<
+				%a.vkpost-link.vkpost-delete{"ng-click" => "deleteVkPost()"}
+					delete
+				%a.vkpost-link.vkpost-take{"ng-click" => "toThisPlace()"}
+					to this place
+				%a.vkpost-link.vkpost-next{"ng-click" => "toNextPost()"}
+					>>>>
 			.vkposts-container-posts-post
-		.vkposts-container-map{"ng-controller" => "MapCtrl"}
+				.vkpost-body
+					%textarea.vkpost-textarea{"ng-model" => "current.vkpost.body"}
+				.vkpost-date
+					{{current.vkpost.date}}
+				.vkpost-author
+					%a{href: "{{current.vkpost.author_link}}", target: "_blank"} автор					
+				.vkpost-photos
+					.vkpost-photos-one{"ng-repeat" => "photo in current.vkpost.attachments"}
+						%img.vkpost-img{src: "{{photo.url}}"}
+						%a.vkpost-delete_img{"ng-click" => "deleteAttachment(photo.url)", id: "{{photo.url}}"} ✖
+			.vkposts-container-posts-new_post
+				.new_post-title
+					%input.new_post-input{placeholder: 'Заголовок', name: 'title', "ng-model" => "new_post.title"}
+				.new_post-price
+					%p цены
+					%input.new_post-input-price{type: 'number', name: 'min_price', min: 0, "ng-model" => "new_post.min_price"}- 
+					%input.new_post-input-price{type: 'number', name: 'max_pirce', min: 0, "ng-model" => 'new_post.max_price'}
+				.new_post_marks
+					.add-review-extrate-stars
+						%p итог 
+						.add-review-extrate-stars-item{"data-max" => "10", "on-rating-selected" => "", "rating-value" => "new_post.total", "star-rating" => ""}
+						%p мясо
+						.add-review-extrate-stars-item{"data-max" => "10", "on-rating-selected" => "", "rating-value" => "new_post.meat", "star-rating" => ""}
+						%p овощи
+						.add-review-extrate-stars-item{"data-max" => "10", "on-rating-selected" => "", "rating-value" => "new_post.vegetables", "star-rating" => ""}
+						%p обслуживание
+						.add-review-extrate-stars-item{"data-max" => "10", "on-rating-selected" => "", "rating-value" => "new_post.service", "star-rating" => ""}
+						%p санитария
+						.add-review-extrate-stars-item{"data-max" => "10", "on-rating-selected" => "", "rating-value" => "new_post.sanitation", "star-rating" => ""}
+		.vkposts-container-map
 			.vkposts-container-map-navbar
 				.map-navbar-item
 					%a.navbar-link{"ng-click" => "defineNewPlace();"}
-						%button.btn-new_place{"ng-hide" => "current_state == 'new_place'"} Новое место
-						%button.btn-new_place.btn-creating-place{"ng-show" => "current_state == 'new_place'"} Новое место
+						%button.btn-new_place{"ng-hide" => "current.state == 'new_place'"} новое место
+						%button.btn-new_place.btn-creating-place{"ng-show" => "current.state == 'new_place'"} новое место
 				.map-navbar-info
-					.current-place-info{"ng-show"=>"current_place"}
+					.current-place-info{"ng-show"=>"current.place"}
 						.current-place-info-address
-							{{ fullAdress(current_place) }}
+							{{ fullAdress(current.place) }}
 						.current-place-info-reviews
-							обзоров - {{ current_place.properties.reviews_count }}
+							обзоров - {{ current.place.properties.reviews_count }}
 
 			.vkposts-container-map-yandex
 				.container-map
-					.init{"ng-init" => "getAllData()"}
+					.init{"ng-init" => "getPlacesData()"}
 					%button.lo-l-map-opnsearch{"ng-click" => "toggleSearch()"} Найти
 					%ya-map{"ya-after-init" => "afterMapInit($target)", "ya-behaviors" => "default scrollZoom multiTouch", "ya-controls" => "zoomControl searchControl", "ya-event-click" => "mapClick($event)", "ya-zoom" => "12"}
 						%ya-cluster{"ya-options" => "{preset:'islands#invertedRedClusterIcons'}"}
 						%ya-geo-object{"ng-repeat" => "place_data in places", "ya-options" => "{preset: 'islands#redIcon'}", "ya-source" => "place_data.place", "ya-event-click" =>"choosePlace(place_data)" }
-				.state_current_place{"ng-show" =>"current_state == 'current_place'"}	
+				.state_current_place{"ng-show" =>"current.state == 'current_place'"}	
 					.container-reviews{"ng-show" => "reviews"}
 						.lo-r-cont{:id => "review-{{review.id}}", "ng-repeat" => "review in reviews | orderBy:'-date'"}
 							.lo-r-cont-review
 								.lo-r-cont-review-head
 									.lo-r-cont-review-head-user.ext
-										.lo-r-cont-review-head-user-img{"ng-hide" => "review.anonym", :style => "background-image: url({{review.author.image_url}})"}
-										.lo-r-cont-review-head-user-img.anon{"ng-show" => "review.anonym"}
+										.lo-r-cont-review-head-user-img{style: "background-image: url({{review.author.image_url}})"}
 										.lo-r-cont-review-head-user-info
 											.lo-r-cont-review-head-user-info-name{"ng-hide" => "review.anonym"}
 												%a{"ng-href" => "{{review.author.link}}", :target => "_blank"} {{review.author.username}}
@@ -50,14 +85,18 @@
 											%div{"ng-repeat" => "image in review.images"}
 												%img{:src => "{{image.url}}"}
 
-				.state_new_review{"ng-show" =>"current_state == 'new_review'"}
+				.state_new_review{"ng-show" =>"current.state == 'new_review'"}
 					%h3 new review
-				.state_new_place{"ng-show" =>"current_state == 'new_place'"}
-					.new-place-info{"ng-show" => "new_place"} 
-						%p м. {{new_place.metro}}
-						%p {{new_place.street}}
-						%p {{new_place.city}}
-						%button создать место
-					.new-place-wait{"ng-hide" => "new_place"} 
+				.state_new_place{"ng-show" =>"current.state == 'new_place'"}
+					.new-place-info{"ng-show" => "current.new_place"}
+						.new-place-info-avatar{"ng-show" => "current.new_place.image_url"}
+							%img.new-place-img{src: "{{current.new_place.image_url}}"}
+						%p м. {{current.new_place.metro}}
+						%p {{current.new_place.street}}
+						%p {{current.new_place.city}}
+						%button{"ng-click" => "createPlace()"} создать место
+						%p.advice 
+							братан, перетащи фотки слева сюда - в выделенную область
+					.new-place-wait{"ng-hide" => "current.new_place"} 
 						%h3 новое место
 						%p кликай на карту браток
