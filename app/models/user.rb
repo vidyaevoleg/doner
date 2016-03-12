@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def username_dec
-    role == 'admin' ? 'Администрация Topdoner' : username
+    role == 'admin' ? 'TOPDONER' : username
   end
 
   def avatar
