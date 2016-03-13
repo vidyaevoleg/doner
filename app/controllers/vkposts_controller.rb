@@ -27,7 +27,7 @@ class VkpostsController < ApplicationController
 	end
 
 	def destroy
-		@post.destroy!
+		@post.approve!
 		render json: {status: 200}
 	end
 

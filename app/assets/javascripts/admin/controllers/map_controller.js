@@ -1,12 +1,17 @@
 Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService', 'postsStorage', '$http', 'mapsDriver',
 	 function ($scope, vkposts, places, geocodingService, postsStorage, $http, mapsDriver) {
 
-	var states = ['current_place', 'new_review', 'new_place'];
+	var 
+		states = ['current_place', 'new_review', 'new_place'],
+		paranja = $('.paranja'),
+		popup_image = $('.popup-vkphoto-img');
+
 
 	$scope.current = {
 		state: undefined,
 		place: undefined,
 		new_place: undefined,
+		photo: undefined,
 		vkpost: undefined,
 		next_post_id: undefined,
 		prev_post_id: undefined
@@ -22,6 +27,33 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 		places.getPlacesWithReviews().then(function (res) {
 			$scope.places = res.data;
 		});
+	}
+
+	$scope.openPopup = function (url) {
+		paranja.toggle(500);
+		// $scope.opn(paranja);
+		$scope.current.photo = url;
+	}
+
+	$scope.closePopup = function () {
+		// $scope.cls(paranja);
+		paranja.toggle(500);
+		
+		$scope.current.photo = undefined;
+	}
+
+	$scope.nextPhoto = function () {
+		photos = $scope.current.vkpost.attachments.map(function (attch) {
+			return attch.url;
+		})
+		current_photo = $scope.current.photo;
+		old_index = photos.indexOf(current_photo);
+		if (old_index < photos.length - 1 ) {
+			next_photo = photos[old_index+1]
+		} else {
+			next_photo = photos[0]
+		}
+		$scope.current.photo = next_photo;
 	}
 
 	$scope.deleteVkPost = function () {

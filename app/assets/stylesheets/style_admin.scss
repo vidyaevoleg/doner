@@ -644,10 +644,57 @@
 	&-img {
 		height: 100%;
 		width: 100px;
+		cursor: pointer;
 	}
 }
 .advice {
 	font-size: 14px;
 	color: #767676;
 	font-weight: bolder;
+}
+.paranja {
+	position: fixed;
+	margin: auto;
+	top: 0;
+	width: 100%;
+	left: 0;
+	height: 100%;
+	z-index: 10;
+	display: none;
+	background: rgba(12,12,14,0.8);
+	// background: red;
+}
+.popup {
+	z-index: 11;
+	position: fixed;
+	width: 800px;
+	height: 500px;
+	top: 10px;
+	left: 0;	
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	background: rgba(12,12,14,0.0);
+	padding: 20px;
+	&-vkphoto-img {
+		z-index: 12;
+		margin: auto;
+		position: relative;
+		height: 100%;
+		display: block;
+		cursor: pointer;
+	}
+	&-close {
+		position: absolute;
+		right: 15%;
+		top: 5%;
+		color: red;
+		&:hover {
+			color: red;
+			font-weight: bolder;
+		}
+	}
+}
+.hidden {
+	display: none;
 }
