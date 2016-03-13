@@ -10,8 +10,14 @@ Topdoner.controller('MapCtrl', ['$scope','$stateParams','places','$location','$r
 	$rootScope.goToPlace = function(place,zoom,location) {
 		if ($rootScope.MAP) {
 		  	$rootScope.MAP.panTo(location || place.geometry.coordinates,{duration: 600});
+		  	old_zoom = $rootScope.MAP._zoom;
+		  	if (old_zoom > 14 ) {
+		  		new_zoom = zoom || old_zoom;
+		  	} else {
+		  		new_zoom = zoom || 16;
+		  	}
 		  	setTimeout(function() {
-			    $rootScope.MAP.setCenter(location || place.geometry.coordinates, zoom || 16, {duration: 500});
+			    $rootScope.MAP.setCenter(location || place.geometry.coordinates, new_zoom, {duration: 500});
 		  	}, 600);
 		}
 	}

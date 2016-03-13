@@ -35,7 +35,13 @@ Topdoner.filter('getReviewById', function () {
 Topdoner.service('mapsDriver', function() {
 	this.goTo = function (coords, MAP) {
 	  	MAP.panTo(coords,{duration: 600});
-		MAP.setCenter(coords, 13, {duration: 500});
+	  	old_zoom = MAP._zoom;
+	  	if (old_zoom > 14) {
+	  		new_zoom = old_zoom;
+	  	} else {
+	  		new_zoom = 13;
+	  	}
+		MAP.setCenter(coords, new_zoom, {duration: 500});
 	}
 	
 });
