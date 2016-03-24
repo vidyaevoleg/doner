@@ -26,11 +26,11 @@ class PlacesController < ApplicationController
 	end
 	
 	def get_places
-		render json: Place.all.map {|place| place.to_nice_json }
+		render json: Place.includes(:images).includes(:user).all.map {|place| place.to_nice_json }
 	end
 
 	def get_reviews
-		reviews = @place.reviews.map {|review| review.to_nice_json } if @place.reviews.any?
+		reviews = @place.reviews.includes(:user).includes(:images).map {|review| review.to_nice_json } if @place.reviews.any?
 		render json: reviews || nil
 	end
 
