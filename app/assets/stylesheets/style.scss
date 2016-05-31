@@ -75,12 +75,12 @@ $fb: #3b5998;
 }
 
 
-.ymaps-2-1-35-search {
+.ymaps-2-1-39-search {
 	display: none;
 	left: 35px;
 }
 
-.ymaps-2-1-35-balloon {
+.ymaps-2-1-39-balloon {
 	display: none !important;
 }
 
@@ -1671,7 +1671,7 @@ body {
 //					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 	box-sizing: border-box;
 	padding: 14px 14px 14px 14px;
-	
+
 	&-delete {
 		width: 30px;
 		height: 30px;
@@ -1790,7 +1790,7 @@ body {
 		text-align: center;
 		position: relative;
 		margin: 20px 0 10px;
-		
+
 		&-stars {
 			width: 260px;
 //			height: 20px;
@@ -2111,7 +2111,7 @@ ya-map {
 				-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 			   -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
 					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.14);
-	
+
 	 		transform: translate(-18px,-18px);
     -webkit-transform: translate(-18px,-18px); /** Chrome & Safari **/
     	 -o-transform: translate(-18px,-18px); /** Opera **/

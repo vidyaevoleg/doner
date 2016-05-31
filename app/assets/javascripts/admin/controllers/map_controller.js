@@ -1,7 +1,7 @@
 Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService', 'postsStorage', '$http', 'mapsDriver',
 	 function ($scope, vkposts, places, geocodingService, postsStorage, $http, mapsDriver) {
 
-	var 
+	var
 		states = ['current_place', 'new_review', 'new_place'],
 		paranja = $('.paranja'),
 		popup_image = $('.popup-vkphoto-img');
@@ -38,7 +38,7 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 	$scope.closePopup = function () {
 		// $scope.cls(paranja);
 		paranja.toggle(500);
-		
+
 		$scope.current.photo = undefined;
 	}
 
@@ -74,7 +74,7 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 			return {url: url};
 		});
 		setTimeout(function() {
-			initDragAndDrop();		
+			initDragAndDrop();
 		}, 100);
 	}
 
@@ -87,13 +87,13 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 			return {url: url};
 		});
 		setTimeout(function() {
-			initDragAndDrop();		
+			initDragAndDrop();
 		}, 100);
 	}
 
 	$scope.createPlace = function () {
-		place = $scope.current.new_place; 
-		
+		place = $scope.current.new_place;
+
 		if (!(place)) {
 			return ;
 		}
@@ -102,7 +102,7 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 			alert('прикрепи фото');
 			return ;
 		}
-		
+
 		$scope.changeState('current_place');
 
 		$http.post('/places', {place: place}).then(function (res) {
@@ -146,7 +146,7 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 			$scope.reviews.push(review);
 			$scope.toNextPost();
 		})
-		
+
 	}
 
 	$scope.initVkPost = function () {
@@ -155,7 +155,7 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 			current_id = posts_ids.current_id;
 			next_id = posts_ids.next_id;
 			prev_id = posts_ids.prev_id;
-			$scope.getVkPost(current_id || next_id || prev_id);			
+			$scope.getVkPost(current_id || next_id || prev_id);
 		} else {
 			$scope.getVkPost();
 		}
@@ -170,8 +170,8 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 			updateStorage();
 			setTimeout(function() {
 				clearPlaceAvatar();
-				initDragAndDrop();		
-			}, 100);			
+				initDragAndDrop();
+			}, 100);
 		});
 		$scope.initNewPost();
 	}
@@ -188,8 +188,8 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 			max_price: undefined
 		}
 		setTimeout(function() {
-			initDragAndDrop();		
-		}, 100);		
+			initDragAndDrop();
+		}, 100);
 	}
 
 	$scope.fullAdress = function (current_place) {
@@ -214,7 +214,7 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 		prev_post_id = $scope.current.prev_post_id;
 		if (prev_post_id == null) {
 			alert('no post');
-		}		
+		}
 		$scope.getVkPost(prev_post_id);
 	}
 
@@ -229,7 +229,7 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 	  		initDragAndDrop();
 	  	})
 	}
-	
+
 	$scope.mapClick = function (e) {
 		if (!($scope.current.state == 'new_place')) {
 			return
@@ -256,7 +256,7 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 			}
 		}
 	}
-	
+
 	$scope.choosePlace = function (place_data) {
 		$scope.changeState('current_place');
 		$scope.current.place = place_data.place;
@@ -273,11 +273,11 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 	$scope.toggleSearch = function() {
 		if (!$('.lo-l-map-opnsearch').hasClass('opened')) {
 			$('.lo-l-map-opnsearch').html('Скрыть').addClass('opened');
-			$scope.opn($('.ymaps-2-1-35-search'));
-			$('.ymaps-2-1-35-input__control').focus();
+			$scope.opn($('.ymaps-2-1-39-search'));
+			$('.ymaps-2-1-39-input__control').focus();
 		} else {
 			$('.lo-l-map-opnsearch').html('Найти').removeClass('opened');
-			$scope.cls($('.ymaps-2-1-35-search'));
+			$scope.cls($('.ymaps-2-1-39-search'));
 		}
 	}
 
@@ -286,7 +286,7 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 	      .removeClass('hidden')
 	      .fadeTo(200,1);
 	}
-	
+
 	$scope.cls = function(what){
 	    what.fadeTo(200,0);
 	    setTimeout(function(){
@@ -333,4 +333,3 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 	}
 
 }]);
-
