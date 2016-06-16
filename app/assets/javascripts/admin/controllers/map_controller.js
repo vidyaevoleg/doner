@@ -273,11 +273,11 @@ Topdoner.controller('MapCtrl', ['$scope', 'vkposts', 'places', 'geocodingService
 	$scope.toggleSearch = function() {
 		if (!$('.lo-l-map-opnsearch').hasClass('opened')) {
 			$('.lo-l-map-opnsearch').html('Скрыть').addClass('opened');
-			$scope.opn($('.ymaps-2-1-39-search'));
-			$('.ymaps-2-1-39-input__control').focus();
+			$scope.opn($('.ymaps-2-1-41-search'));
+			$('.ymaps-2-1-41-input__control').focus();
 		} else {
 			$('.lo-l-map-opnsearch').html('Найти').removeClass('opened');
-			$scope.cls($('.ymaps-2-1-39-search'));
+			$scope.cls($('.ymaps-2-1-41-search'));
 		}
 	}
 
