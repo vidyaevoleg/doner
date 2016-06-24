@@ -26,9 +26,7 @@ class PlacesController < ApplicationController
 	end
 	
 	def get_places
-    @places = data_cache("places", 10.minutes) do
-        Place.includes(:images).includes(:user)
-    end		
+    	@places = Place.includes(:images).includes(:user)
 		render template: 'places/all.json' 
 	end
 
