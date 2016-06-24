@@ -26,11 +26,13 @@ class PlacesController < ApplicationController
 	end
 	
 	def get_places
-		@places = Place.includes(:images).includes(:user)
+    @places = data_cache("places", 10.minutes) do
+        Place.includes(:images).includes(:user)
+    end		
 		render template: 'places/all.json' 
 	end
 
-	def get_reviews
+	def get_reviews		
 		@reviews = @place.reviews.includes(:user).includes(:images)
 		render template: 'places/reviews.json' 
 	end
