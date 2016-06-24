@@ -13,8 +13,6 @@ class Place < ActiveRecord::Base
                 else
                   1
                 end
-    p new_rating
-    # binding.pry
     place.update(rating: new_rating)
   end
 
@@ -34,29 +32,6 @@ class Place < ActiveRecord::Base
       return self.reviews.map {|rew| rew.max_price}.compact.max
     end
     nil
-  end
-
-  def to_nice_json
-    json = {
-      properties: {
-        id: id,
-        rating: rating || 1,
-        city: city,
-        street: street,
-        metro: metro,
-        metro_line: metro_line,
-        author: user,
-        reviews_count: reviews_count
-      },
-      geometry: {
-        coordinates: get_coords,
-        type: 'Point'
-      }
-    }
-    if images.any?
-      json[:properties][:image] = {url: images.last.valid_url}
-    end
-    json
   end
 
   def get_coords

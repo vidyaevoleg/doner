@@ -7,24 +7,24 @@ class ReviewsController < ApplicationController
 	def create
 		@review = @place.reviews.create(review_params)
 		save_images
-		render json: {review: @review.to_nice_json, place: Place.find(@review.place_id).to_nice_json }
+		render_review_and_place
 	end
 
 
 	def update
 		@review.update_attributes!(review_params)
 		save_images
-		render json: {review: @review.to_nice_json, place: Place.find(@review.place_id).to_nice_json }
+		render_review_and_place
 	end
 
 	def destroy
 		@review.destroy
 		@place = Place.find(@review.place.id) 
-		render json: @place.to_nice_json
+		render json: JSON.parse(render_to_string(partial: 'places/place.json', locals: {place: @place}))
 	end
 
 	def show
-		render json: {review: @review.to_nice_json}
+		render_review_and_place
 	end
 
 	private
@@ -40,7 +40,7 @@ class ReviewsController < ApplicationController
 		if images_id.size>0
 			images_id.map do |id|
 				image = Image.find(id)
-				image.update_attributes(imaginable_id: @review.id,imaginable_type: @review.class.to_s)
+				image.update_attributes(imaginable_id: @review.id, imaginable_type: @review.class.to_s)
 			end 
 		end
 	end
@@ -53,6 +53,13 @@ class ReviewsController < ApplicationController
 		end
 	end
 
+	def render_review_and_place
+		@place = Place.find(@review.place_id)
+		place_json = JSON.parse(render_to_string(partial: 'places/place.json', locals: {place: @place}))
+		review_json = JSON.parse(render_to_string(partial: 'reviews/review.json', locals: {review: @review}))
+		render json: {review: review_json, place: place_json }
+	end
+	
 	def review_params
 		params.require(:review).permit(:body,:total,:title,:max_price,:min_price,:vegetables,:meat,:anonym,:sanitation,:service,:place_id, :images_id).merge(user_id: current_user.id)
 	end

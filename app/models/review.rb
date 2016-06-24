@@ -48,26 +48,4 @@ class Review < ActiveRecord::Base
       strip_tags(self.body)
   end
 
-  def to_nice_json
-      json={
-          id: id,
-          vegetables: vegetables,
-          meat: meat,
-          service: service,
-          sanitation: sanitation,
-          rating: rating,
-          min_price: min_price,
-          max_price: max_price,
-          body: body.html_safe,
-          body_nl: to_format,
-          title: title,
-          total: total,
-          author: user.to_nice_json,
-          anonym: anonym,
-          date: updated_at
-      }
-      json[:images] = images.map {|i| {url: i.valid_url, id: i.id}} if images
-      json
-  end
-
 end

@@ -143,7 +143,8 @@ Devise.setup do |config|
   # ==> Configuration for :validatable
   # Range for password length.
   config.password_length = 8..72          
-     
+  config.secret_key = YAML.load_file(Rails.root.join("config", "oauth.yml"))[Rails.env][:secret_key_base]
+
   YAML.load_file(Rails.root.join("config", "oauth.yml"))[Rails.env].each do |key, value|
     config.omniauth key, value[:app_id], value[:app_secret], (value[:params] || {})
   end

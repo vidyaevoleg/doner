@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(username: 'vidyai', url: 'http://vk.com/oleg_vidyaev', nickname: 'olezha', email: 'admin@mail.ru',password: '12345678')
+User.create(username: 'vidyai', username: 'olezha', email: 'admin@mail.ru',password: '12345678', image_url: 'http://vignette1.wikia.nocookie.net/keklandia/images/1/19/%D0%9A%D0%95%D0%9A/revision/latest/scale-to-width-down/670?cb=20150909100914&path-prefix=ru')
 Place.create(user_id: 1,street: 'Каширская',city: 'Москва', metro: 'Каширская',coordinates: '[37.411961,55.831903]')
 Place.create(user_id: 1,street: 'Москворечье',city: 'Москва', metro: 'Чеховская',coordinates: '[37.565466,55.763338]')
 Place.create(user_id: 1,street: 'Советская',city: 'Москва', metro: 'Серпуховская',coordinates: '[37.565466,55.766318]')
