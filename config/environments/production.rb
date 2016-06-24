@@ -35,8 +35,14 @@ Rails.application.configure do
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
   config.consider_all_requests_local       = false
-  config.action_controller.perform_caching = true
   config.serve_static_files = true
+
+
+  config.action_controller.perform_caching = true
+  config.cache_store = :dalli_store, {  namespace: "topdoner",
+                                        expires_in: 1.day,
+                                        socket_timeout: 3,
+                                        compress: true }  
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Specifies the header that your server uses for sending files.

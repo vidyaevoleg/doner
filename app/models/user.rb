@@ -21,19 +21,6 @@ class User < ActiveRecord::Base
     role == 'admin' ? true : false
   end
 
-  def to_nice_json
-    json = {
-      id: id,
-      username: username_dec,
-      image_url: avatar,
-      link: link_dec,
-      places_count: places.count,
-      reviews_count: reviews.count,
-      role: role
-    }
-    json
-  end
-
   def username_dec
     role == 'admin' ? 'TOPDONER' : username
   end

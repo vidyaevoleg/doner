@@ -35,7 +35,8 @@ class VkpostsController < ApplicationController
 		@post.approve!
 		create_review
 		bind_images
-		render json: {review: @review.to_nice_json}
+		review_json = JSON.parse(render_to_string(partial: 'reviews/review', locals: {review: @review}))
+		render json: {review: review_json}
 	end
 
 	private

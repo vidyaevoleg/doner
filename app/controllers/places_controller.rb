@@ -11,7 +11,7 @@ class PlacesController < ApplicationController
 	def create
 		@place = current_user.places.create(place_params)
 		check_images
-		render json: @place.to_nice_json
+		render template: 'places/show.json'
 	end
 
 	def index
@@ -22,20 +22,23 @@ class PlacesController < ApplicationController
 	def update
 		@place.update_attributes(place_params)
 		check_images 
-		render json: @place.to_nice_json
+		render template: 'places/show.json'
 	end
 	
 	def get_places
-		render json: Place.includes(:images).includes(:user).all.map {|place| place.to_nice_json }
+    @places = data_cache("places", 10.minutes) do
+        Place.includes(:images).includes(:user)
+    end		
+		render template: 'places/all.json' 
 	end
 
-	def get_reviews
-		reviews = @place.reviews.includes(:user).includes(:images).map {|review| review.to_nice_json } if @place.reviews.any?
-		render json: reviews || nil
+	def get_reviews		
+		@reviews = @place.reviews.includes(:user).includes(:images)
+		render template: 'places/reviews.json' 
 	end
 
 	def show
-		render json: @place.to_nice_json
+		render template: 'places/show.json'
 	end
 	
 	def destroy
@@ -76,11 +79,7 @@ class PlacesController < ApplicationController
 	end
 
 	def check_ability
-		if current_user.id == @place.user.id #TODO: or admin 
-			true
-		else
-			return 
-		end 
+		current_user.id == @place.user.id ? true : return  
 	end
 
 	def set_place
