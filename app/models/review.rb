@@ -1,7 +1,7 @@
 class Review < ActiveRecord::Base
   include ActionView::Helpers::SanitizeHelper
 
-  belongs_to :place, counter_cache: :reviews_count
+  belongs_to :place, counter_cache: :reviews_count, touch: true
   belongs_to :user
   has_many :images, as: :imaginable
   before_save  :parse_links, :n_to_br

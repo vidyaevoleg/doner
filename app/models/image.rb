@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-	belongs_to :imaginable, polymorphic: true
+	belongs_to :imaginable, polymorphic: true, touch: true
 	mount_uploader :file, UploadUploader
 	# after_save :resize_original
 
