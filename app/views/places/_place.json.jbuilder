@@ -4,6 +4,7 @@ json.properties do
   json.id place.id
   json.rating (place.rating || 1)
   json.city place.city
+  json.street place.street
   json.metro place.metro
   json.metro_line place.metro_line
   
