@@ -17,7 +17,7 @@ json.cache! place do
     json.reviews_count place.reviews_count
 
     if place.images.any?
-      json.image {url: place.images.last.valid_url}
+      json.image ({url: place.images.last.valid_url})
     end
 
   end
