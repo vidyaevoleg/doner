@@ -47,7 +47,7 @@ Topdoner.controller('NewReviewCtrl', ['$scope','$stateParams','places','$rootSco
   }
 
   $rootScope.reviewValid = function(review){
-    if (review.body.length < 300) {
+    if (review.body.length < 20) {
       return false
     } else {
       return true

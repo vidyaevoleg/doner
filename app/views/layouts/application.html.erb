@@ -3,8 +3,6 @@
 <head>
 	<title ng-bind="MetaTags.title">Topdoner</title>
 	<meta name="description" content="Обзоры на самую изысканую и наивкуснейшую шаурму по всему миру. Авторитетные мнения, подробные ревью и глубокая аналитика.">
-	<meta name="description" content="{{MetaTags.description}}">
-	<meta name="keywords" content="{{MetaTags.keywords}}">
 	<meta ng-repeat="(key, value) in MetaTags.properties" property="{{key}}" content="{{value}}" >
 	<meta name="prerender-status-code" content="{{MetaTags.prerender.statusCode}}">
 	<meta name="prerender-header" ng-if="MetaTags.prerender.header" content="{{MetaTags.prerender.header}}">
