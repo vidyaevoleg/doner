@@ -49,7 +49,7 @@ class ReviewsController < ApplicationController
 		if current_user.id == @review.user.id
 			true
 		else
-			return
+			render json: {kek: :kek}, status: 401
 		end
 	end
 
