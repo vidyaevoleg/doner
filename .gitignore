@@ -8,6 +8,8 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
+.DS_Store
+/app/.DS_Store
 /public/uploads
 /log/*
 !/log/.keep

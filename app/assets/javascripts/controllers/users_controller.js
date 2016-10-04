@@ -1,5 +1,5 @@
 Topdoner.controller('UsersCtrl', ['$scope','$location','$rootScope','users',function ($scope,$location,$rootScope,users) {
-  
+
   $rootScope.signIn = function() {
     if ($rootScope.current_user){
       true
@@ -7,12 +7,12 @@ Topdoner.controller('UsersCtrl', ['$scope','$location','$rootScope','users',func
       false
     }
   }
-  
+
   $rootScope.logOut = function(){
     users.logOut().then(function(){
       $rootScope.current_user = undefined
       $location.path('/home');
-    }) 
+    })
   }
 
   $rootScope.can = function(object) {
@@ -20,6 +20,7 @@ Topdoner.controller('UsersCtrl', ['$scope','$location','$rootScope','users',func
     if (user){
       if (object.id){
         // review
+        debugger
         if ((user.id == object.author.id) || (user.role == 'admin')){
           return true
         } else {
@@ -34,7 +35,6 @@ Topdoner.controller('UsersCtrl', ['$scope','$location','$rootScope','users',func
       } else { return false }
     } else {
       return false
-    } 
+    }
   }
 }]);
-
