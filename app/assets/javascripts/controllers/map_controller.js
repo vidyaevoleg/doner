@@ -25,11 +25,11 @@ Topdoner.controller('MapCtrl', ['$scope','$stateParams','places','$location','$r
 	$rootScope.toggleSearch = function() {
 		if (!$('.lo-l-map-opnsearch').hasClass('opened')) {
 			$('.lo-l-map-opnsearch').html('Скрыть').addClass('opened');
-			$scope.opn($('.ymaps-2-1-42-search'));
-			$('.ymaps-2-1-42-input__control').focus();
+			$scope.opn($('.ymaps-2-1-45-search'));
+			$('.ymaps-2-1-45-input__control').focus();
 		} else {
 			$('.lo-l-map-opnsearch').html('Найти').removeClass('opened');
-			$scope.cls($('.ymaps-2-1-42-search'));
+			$scope.cls($('.ymaps-2-1-45-search'));
 		}
 	}
 
